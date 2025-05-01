@@ -1,0 +1,533 @@
+2025-05-01 00:47:23,447 - INFO - Vendor CSV path from .env: C:\Users\USER\po_agent_os\mock_vendor_emails.csv
+2025-05-01 00:47:23,453 - INFO - Loaded 1 vendor emails: ['mario904@snu.ac.kr']
+2025-05-01 00:49:50,411 - INFO - "GET /?state=FQanAo9d6hFuWIXgm53nzIo3m3uZLL&code=4/0Ab_5qlmYF8TB_UwETumxtfca8433rCWGMtODE3soveA1BkQ7WeX5IU-QRYG4YOfMM5DlEw&scope=https://mail.google.com/ HTTP/1.1" 200 65
+2025-05-01 00:49:50,705 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-05-01 00:49:51,120 - INFO - Initializing Supabase client with URL: https://ujvbinqvvgbzgwqluian.supabase.co
+2025-05-01 00:49:51,191 - INFO - Supabase client initialized successfully
+2025-05-01 00:49:51,192 - INFO - Searching emails with query: after:2025/03/31
+2025-05-01 00:49:54,715 - WARNING - Failed to parse date for msg 1968614074973d76: unconverted data remains:  (UTC)
+2025-05-01 00:49:55,930 - WARNING - Failed to parse date for msg 196853f9d1bc1d2b: unconverted data remains:  (PDT)
+2025-05-01 00:49:56,869 - WARNING - Failed to parse date for msg 19684a07992ee607: unconverted data remains:  (UTC)
+2025-05-01 00:49:57,109 - WARNING - Failed to parse date for msg 196849e358ba9ffa: unconverted data remains:  (UTC)
+2025-05-01 00:49:57,342 - WARNING - Failed to parse date for msg 196849e22242940e: unconverted data remains:  (UTC)
+2025-05-01 00:49:58,599 - WARNING - Failed to parse date for msg 196829b3f1bb8ffb: unconverted data remains:  (UTC)
+2025-05-01 00:49:58,831 - WARNING - Failed to parse date for msg 196829b392112b61: unconverted data remains:  (UTC)
+2025-05-01 00:49:59,530 - WARNING - Failed to parse date for msg 1968242db3273e3b: unconverted data remains:  (UTC)
+2025-05-01 00:50:01,051 - WARNING - Failed to parse date for msg 1968027a0d05a57e: unconverted data remains:  (PDT)
+2025-05-01 00:50:04,551 - WARNING - Failed to parse date for msg 1967ae5d4b3feac0: unconverted data remains:  (UTC)
+2025-05-01 00:50:08,413 - WARNING - Failed to parse date for msg 196729535825f65c: unconverted data remains:  (UTC)
+2025-05-01 00:50:08,654 - WARNING - Failed to parse date for msg 19671ccc9c2b85fa: unconverted data remains:  (UTC)
+2025-05-01 00:50:08,893 - WARNING - Failed to parse date for msg 196715605f3cebe6: unconverted data remains:  (UTC)
+2025-05-01 00:50:09,630 - WARNING - Failed to parse date for msg 1966e5e6e2bea1f3: unconverted data remains:  (UTC)
+2025-05-01 00:50:10,323 - WARNING - Failed to parse date for msg 1966c90a04da0476: unconverted data remains:  (UTC)
+2025-05-01 00:50:10,783 - WARNING - Failed to parse date for msg 1966bd50e3313b4f: unconverted data remains:  (UTC)
+2025-05-01 00:50:12,696 - WARNING - Failed to parse date for msg 19668c480a1ad604: unconverted data remains:  (UTC)
+2025-05-01 00:50:12,927 - WARNING - Failed to parse date for msg 19668c2485dff58b: unconverted data remains:  (UTC)
+2025-05-01 00:50:14,893 - WARNING - Failed to parse date for msg 19667b03cf6ec9a4: unconverted data remains:  (UTC)
+2025-05-01 00:50:15,166 - WARNING - Failed to parse date for msg 19667a1aa8c5d141: unconverted data remains:  (UTC)
+2025-05-01 00:50:15,398 - WARNING - Failed to parse date for msg 196671cb160698fa: unconverted data remains:  (+0000)
+2025-05-01 00:50:15,634 - WARNING - Failed to parse date for msg 1966675e551856f8: unconverted data remains:  (UTC)
+2025-05-01 00:50:16,386 - WARNING - Failed to parse date for msg 196651a274baee03: unconverted data remains:  (UTC)
+2025-05-01 00:50:17,084 - WARNING - Failed to parse date for msg 19664c297b6cda37: unconverted data remains:  (UTC)
+2025-05-01 00:50:20,165 - ERROR - Error collecting historical emails: can't compare offset-naive and offset-aware datetimes
+2025-05-01 00:50:20,165 - INFO - GmailWatcher initialized
+2025-05-01 01:11:19,639 - INFO - Vendor CSV path from .env: C:\Users\USER\po_agent_os\mock_vendor_emails.csv
+2025-05-01 01:11:19,640 - INFO - Loaded 1 vendor emails: ['mario904@snu.ac.kr']
+2025-05-01 01:11:19,646 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-05-01 01:11:20,297 - INFO - Initializing Supabase client with URL: https://ujvbinqvvgbzgwqluian.supabase.co
+2025-05-01 01:11:20,326 - INFO - Supabase client initialized successfully
+2025-05-01 01:11:20,327 - INFO - Searching emails with query: after:2025/03/31
+2025-05-01 01:11:23,270 - WARNING - Failed to parse date for msg 1968614074973d76: unconverted data remains:  +0000 (UTC)
+2025-05-01 01:11:24,505 - WARNING - Failed to parse date for msg 196853f9d1bc1d2b: unconverted data remains:  -0700 (PDT)
+2025-05-01 01:11:25,463 - WARNING - Failed to parse date for msg 19684a07992ee607: unconverted data remains:  +0000 (UTC)
+2025-05-01 01:11:25,709 - WARNING - Failed to parse date for msg 196849e358ba9ffa: unconverted data remains:  +0000 (UTC)
+2025-05-01 01:11:25,945 - WARNING - Failed to parse date for msg 196849e22242940e: unconverted data remains:  +0000 (UTC)
+2025-05-01 01:11:26,934 - WARNING - Failed to parse date for msg 196829b3f1bb8ffb: unconverted data remains:  +0000 (UTC)
+2025-05-01 01:11:27,170 - WARNING - Failed to parse date for msg 196829b392112b61: unconverted data remains:  +0000 (UTC)
+2025-05-01 01:11:28,201 - WARNING - Failed to parse date for msg 1968242db3273e3b: unconverted data remains:  +0000 (UTC)
+2025-05-01 01:11:29,967 - WARNING - Failed to parse date for msg 1968027a0d05a57e: unconverted data remains:  -0700 (PDT)
+2025-05-01 01:11:33,594 - WARNING - Failed to parse date for msg 1967ae5d4b3feac0: unconverted data remains:  +0000 (UTC)
+2025-05-01 01:11:37,784 - WARNING - Failed to parse date for msg 196729535825f65c: unconverted data remains:  +0000 (UTC)
+2025-05-01 01:11:38,028 - WARNING - Failed to parse date for msg 19671ccc9c2b85fa: unconverted data remains:  +0000 (UTC)
+2025-05-01 01:11:38,258 - WARNING - Failed to parse date for msg 196715605f3cebe6: unconverted data remains:  +0000 (UTC)
+2025-05-01 01:11:39,294 - WARNING - Failed to parse date for msg 1966e5e6e2bea1f3: unconverted data remains:  +0000 (UTC)
+2025-05-01 01:11:40,012 - WARNING - Failed to parse date for msg 1966c90a04da0476: unconverted data remains:  +0000 (UTC)
+2025-05-01 01:11:40,499 - WARNING - Failed to parse date for msg 1966bd50e3313b4f: unconverted data remains:  +0000 (UTC)
+2025-05-01 01:11:42,480 - WARNING - Failed to parse date for msg 19668c480a1ad604: unconverted data remains:  +0000 (UTC)
+2025-05-01 01:11:42,718 - WARNING - Failed to parse date for msg 19668c2485dff58b: unconverted data remains:  +0000 (UTC)
+2025-05-01 01:11:44,432 - WARNING - Failed to parse date for msg 19667b03cf6ec9a4: unconverted data remains:  +0000 (UTC)
+2025-05-01 01:11:44,673 - WARNING - Failed to parse date for msg 19667a1aa8c5d141: unconverted data remains:  +0000 (UTC)
+2025-05-01 01:11:44,920 - WARNING - Failed to parse date for msg 196671cb160698fa: unconverted data remains:  +0000 (+0000)
+2025-05-01 01:11:45,162 - WARNING - Failed to parse date for msg 1966675e551856f8: unconverted data remains:  +0000 (UTC)
+2025-05-01 01:11:45,907 - WARNING - Failed to parse date for msg 196651a274baee03: unconverted data remains:  +0000 (UTC)
+2025-05-01 01:11:46,627 - WARNING - Failed to parse date for msg 19664c297b6cda37: unconverted data remains:  +0000 (UTC)
+2025-05-01 01:11:49,549 - ERROR - Error collecting historical emails: can't compare offset-naive and offset-aware datetimes
+2025-05-01 01:11:49,549 - INFO - GmailWatcher initialized
+2025-05-01 01:15:30,601 - INFO - Vendor CSV path from .env: C:\Users\USER\po_agent_os\mock_vendor_emails.csv
+2025-05-01 01:15:30,601 - INFO - Loaded 1 vendor emails: ['mario904@snu.ac.kr']
+2025-05-01 01:15:30,606 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-05-01 01:15:31,166 - INFO - Initializing Supabase client with URL: https://ujvbinqvvgbzgwqluian.supabase.co
+2025-05-01 01:15:31,192 - INFO - Supabase client initialized successfully
+2025-05-01 01:15:31,193 - INFO - Searching emails with query: after:2025/03/31
+2025-05-01 01:15:34,351 - WARNING - Failed to parse date for msg 1968614074973d76: unconverted data remains:  +0000 (UTC)
+2025-05-01 01:15:35,548 - WARNING - Failed to parse date for msg 196853f9d1bc1d2b: unconverted data remains:  -0700 (PDT)
+2025-05-01 01:15:36,515 - WARNING - Failed to parse date for msg 19684a07992ee607: unconverted data remains:  +0000 (UTC)
+2025-05-01 01:15:36,760 - WARNING - Failed to parse date for msg 196849e358ba9ffa: unconverted data remains:  +0000 (UTC)
+2025-05-01 01:15:36,996 - WARNING - Failed to parse date for msg 196849e22242940e: unconverted data remains:  +0000 (UTC)
+2025-05-01 01:15:37,978 - WARNING - Failed to parse date for msg 196829b3f1bb8ffb: unconverted data remains:  +0000 (UTC)
+2025-05-01 01:15:38,514 - WARNING - Failed to parse date for msg 196829b392112b61: unconverted data remains:  +0000 (UTC)
+2025-05-01 01:15:39,251 - WARNING - Failed to parse date for msg 1968242db3273e3b: unconverted data remains:  +0000 (UTC)
+2025-05-01 01:15:40,714 - WARNING - Failed to parse date for msg 1968027a0d05a57e: unconverted data remains:  -0700 (PDT)
+2025-05-01 01:15:44,349 - WARNING - Failed to parse date for msg 1967ae5d4b3feac0: unconverted data remains:  +0000 (UTC)
+2025-05-01 01:15:48,531 - WARNING - Failed to parse date for msg 196729535825f65c: unconverted data remains:  +0000 (UTC)
+2025-05-01 01:15:48,761 - WARNING - Failed to parse date for msg 19671ccc9c2b85fa: unconverted data remains:  +0000 (UTC)
+2025-05-01 01:15:48,995 - WARNING - Failed to parse date for msg 196715605f3cebe6: unconverted data remains:  +0000 (UTC)
+2025-05-01 01:15:49,715 - WARNING - Failed to parse date for msg 1966e5e6e2bea1f3: unconverted data remains:  +0000 (UTC)
+2025-05-01 01:15:50,439 - WARNING - Failed to parse date for msg 1966c90a04da0476: unconverted data remains:  +0000 (UTC)
+2025-05-01 01:15:50,925 - WARNING - Failed to parse date for msg 1966bd50e3313b4f: unconverted data remains:  +0000 (UTC)
+2025-05-01 01:15:52,873 - WARNING - Failed to parse date for msg 19668c480a1ad604: unconverted data remains:  +0000 (UTC)
+2025-05-01 01:15:53,110 - WARNING - Failed to parse date for msg 19668c2485dff58b: unconverted data remains:  +0000 (UTC)
+2025-05-01 01:15:55,162 - WARNING - Failed to parse date for msg 19667b03cf6ec9a4: unconverted data remains:  +0000 (UTC)
+2025-05-01 01:15:55,395 - WARNING - Failed to parse date for msg 19667a1aa8c5d141: unconverted data remains:  +0000 (UTC)
+2025-05-01 01:15:55,646 - WARNING - Failed to parse date for msg 196671cb160698fa: unconverted data remains:  +0000 (GMT)
+2025-05-01 01:15:55,905 - WARNING - Failed to parse date for msg 1966675e551856f8: unconverted data remains:  +0000 (UTC)
+2025-05-01 01:15:56,622 - WARNING - Failed to parse date for msg 196651a274baee03: unconverted data remains:  +0000 (UTC)
+2025-05-01 01:15:57,345 - WARNING - Failed to parse date for msg 19664c297b6cda37: unconverted data remains:  +0000 (UTC)
+2025-05-01 01:16:09,225 - INFO - Is vendor: True
+2025-05-01 01:16:11,430 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-01 01:16:11,436 - INFO - Generated email type: purchase order review
+2025-05-01 01:16:32,646 - ERROR - Error downloading attachment: The read operation timed out
+2025-05-01 01:16:32,647 - INFO - Fetching thread history for thread_id: 1967aac700cf1999
+2025-05-01 01:16:33,050 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.1967aac700cf1999&order=sent_at "HTTP/1.1 200 OK"
+2025-05-01 01:16:33,058 - INFO - Found 0 emails in thread
+2025-05-01 01:16:33,912 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-01 01:16:33,913 - INFO - Parsed delivery date: None
+2025-05-01 01:16:33,915 - INFO - Attempting to save email log: new po
+2025-05-01 01:16:33,959 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-01 01:16:33,961 - INFO - Email saved successfully: new po
+2025-05-01 01:16:36,241 - ERROR - Error sending message to MCP server: Cannot connect to host localhost:8000 ssl:default [원격 컴퓨터가 네트워크 연결을 거부했습니다]
+2025-05-01 01:16:36,244 - INFO - Processed email: 1967aac700cf1999
+2025-05-01 01:16:36,629 - INFO - Is vendor: True
+2025-05-01 01:16:38,701 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-01 01:16:38,702 - INFO - Generated email type: delivery delay
+2025-05-01 01:16:38,703 - INFO - Fetching thread history for thread_id: 1967ab19c3293811
+2025-05-01 01:16:38,734 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.1967ab19c3293811&order=sent_at "HTTP/1.1 200 OK"
+2025-05-01 01:16:38,736 - INFO - Found 0 emails in thread
+2025-05-01 01:16:39,471 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-01 01:16:39,475 - INFO - Parsed delivery date: None
+2025-05-01 01:16:39,476 - INFO - Attempting to save email log: po status update
+2025-05-01 01:16:39,526 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-01 01:16:39,528 - INFO - Email saved successfully: po status update
+2025-05-01 01:16:41,832 - ERROR - Error sending message to MCP server: Cannot connect to host localhost:8000 ssl:default [원격 컴퓨터가 네트워크 연결을 거부했습니다]
+2025-05-01 01:16:41,832 - INFO - Processed email: 1967ab19c3293811
+2025-05-01 01:16:42,802 - INFO - Is vendor: True
+2025-05-01 01:16:45,035 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-01 01:16:45,036 - INFO - Generated email type: delivery confirmation
+2025-05-01 01:16:45,036 - INFO - Fetching thread history for thread_id: 1967b271a1c91212
+2025-05-01 01:16:45,216 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.1967b271a1c91212&order=sent_at "HTTP/1.1 200 OK"
+2025-05-01 01:16:45,217 - INFO - Found 0 emails in thread
+2025-05-01 01:16:46,224 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-01 01:16:46,229 - INFO - Parsed delivery date: 2025-05-01
+2025-05-01 01:16:46,229 - INFO - Attempting to save email log: 
+2025-05-01 01:16:46,283 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-01 01:16:46,285 - INFO - Email saved successfully: 
+2025-05-01 01:16:48,583 - ERROR - Error sending message to MCP server: Cannot connect to host localhost:8000 ssl:default [원격 컴퓨터가 네트워크 연결을 거부했습니다]
+2025-05-01 01:16:48,583 - INFO - Processed email: 1967b271a1c91212
+2025-05-01 01:16:48,827 - INFO - Is vendor: True
+2025-05-01 01:16:51,888 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-01 01:16:51,890 - INFO - Generated email type: delivery confirmation
+2025-05-01 01:16:51,890 - INFO - Fetching thread history for thread_id: 1967b32b2f36808c
+2025-05-01 01:16:52,031 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.1967b32b2f36808c&order=sent_at "HTTP/1.1 200 OK"
+2025-05-01 01:16:52,033 - INFO - Found 0 emails in thread
+2025-05-01 01:16:52,949 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-01 01:16:52,954 - INFO - Parsed delivery date: 2025-05-01
+2025-05-01 01:16:52,954 - INFO - Attempting to save email log: 
+2025-05-01 01:16:52,996 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-01 01:16:52,997 - INFO - Email saved successfully: 
+2025-05-01 01:16:55,297 - ERROR - Error sending message to MCP server: Cannot connect to host localhost:8000 ssl:default [원격 컴퓨터가 네트워크 연결을 거부했습니다]
+2025-05-01 01:16:55,298 - INFO - Processed email: 1967b32b2f36808c
+2025-05-01 01:17:02,519 - INFO - Is vendor: True
+2025-05-01 01:17:04,792 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-01 01:17:04,800 - INFO - Generated email type: purchase order
+2025-05-01 01:17:04,801 - INFO - Fetching thread history for thread_id: 1968507ce2f9fef8
+2025-05-01 01:17:04,881 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.1968507ce2f9fef8&order=sent_at "HTTP/1.1 200 OK"
+2025-05-01 01:17:04,884 - INFO - Found 0 emails in thread
+2025-05-01 01:17:06,121 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-01 01:17:06,125 - INFO - Parsed delivery date: 2025-05-01
+2025-05-01 01:17:06,125 - INFO - Attempting to save email log: 
+2025-05-01 01:17:06,166 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-01 01:17:06,169 - INFO - Email saved successfully: 
+2025-05-01 01:17:08,481 - ERROR - Error sending message to MCP server: Cannot connect to host localhost:8000 ssl:default [원격 컴퓨터가 네트워크 연결을 거부했습니다]
+2025-05-01 01:17:08,483 - INFO - Processed email: 1968507ce2f9fef8
+2025-05-01 01:17:08,724 - INFO - Is vendor: True
+2025-05-01 01:17:10,831 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-01 01:17:10,832 - INFO - Generated email type: shipment scheduling
+2025-05-01 01:17:10,833 - INFO - Fetching thread history for thread_id: 19685655410ff470
+2025-05-01 01:17:10,878 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.19685655410ff470&order=sent_at "HTTP/1.1 200 OK"
+2025-05-01 01:17:10,882 - INFO - Found 0 emails in thread
+2025-05-01 01:17:11,748 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-01 01:17:11,750 - INFO - Parsed delivery date: 2023-05-07
+2025-05-01 01:17:11,750 - INFO - Attempting to save email log: eta alert
+2025-05-01 01:17:11,784 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-01 01:17:11,785 - INFO - Email saved successfully: eta alert
+2025-05-01 01:17:14,085 - ERROR - Error sending message to MCP server: Cannot connect to host localhost:8000 ssl:default [원격 컴퓨터가 네트워크 연결을 거부했습니다]
+2025-05-01 01:17:14,087 - INFO - Processed email: 19685655410ff470
+2025-05-01 01:17:14,348 - INFO - Is vendor: True
+2025-05-01 01:17:16,373 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-01 01:17:16,379 - INFO - Generated email type: delivery delay
+2025-05-01 01:17:16,380 - INFO - Fetching thread history for thread_id: 196858d50560d69c
+2025-05-01 01:17:16,426 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.196858d50560d69c&order=sent_at "HTTP/1.1 200 OK"
+2025-05-01 01:17:16,435 - INFO - Found 0 emails in thread
+2025-05-01 01:17:17,212 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-01 01:17:17,214 - INFO - Parsed delivery date: None
+2025-05-01 01:17:17,214 - INFO - Attempting to save email log: new eta for the latest po
+2025-05-01 01:17:17,251 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-01 01:17:17,252 - INFO - Email saved successfully: new eta for the latest po
+2025-05-01 01:17:19,554 - ERROR - Error sending message to MCP server: Cannot connect to host localhost:8000 ssl:default [원격 컴퓨터가 네트워크 연결을 거부했습니다]
+2025-05-01 01:17:19,554 - INFO - Processed email: 196858d50560d69c
+2025-05-01 01:17:19,791 - INFO - Is vendor: True
+2025-05-01 01:17:22,098 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-01 01:17:22,100 - INFO - Generated email type: delivery delay
+2025-05-01 01:17:22,101 - INFO - Fetching thread history for thread_id: 196858fe40e734ea
+2025-05-01 01:17:22,147 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.196858fe40e734ea&order=sent_at "HTTP/1.1 200 OK"
+2025-05-01 01:17:22,150 - INFO - Found 0 emails in thread
+2025-05-01 01:17:23,027 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-01 01:17:23,029 - INFO - Parsed delivery date: None
+2025-05-01 01:17:23,029 - INFO - Attempting to save email log: delay alert for the latest po
+2025-05-01 01:17:23,069 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-01 01:17:23,070 - INFO - Email saved successfully: delay alert for the latest po
+2025-05-01 01:17:25,363 - ERROR - Error sending message to MCP server: Cannot connect to host localhost:8000 ssl:default [원격 컴퓨터가 네트워크 연결을 거부했습니다]
+2025-05-01 01:17:25,364 - INFO - Processed email: 196858fe40e734ea
+2025-05-01 01:17:34,540 - INFO - GmailWatcher initialized
+2025-05-01 01:18:14,715 - INFO - Vendor CSV path from .env: C:\Users\USER\po_agent_os\mock_vendor_emails.csv
+2025-05-01 01:18:14,716 - INFO - Loaded 1 vendor emails: ['mario904@snu.ac.kr']
+2025-05-01 01:18:14,720 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-05-01 01:18:15,006 - INFO - Initializing Supabase client with URL: https://ujvbinqvvgbzgwqluian.supabase.co
+2025-05-01 01:18:15,040 - INFO - Supabase client initialized successfully
+2025-05-01 01:18:15,041 - INFO - Searching emails with query: after:2025/03/31
+2025-05-01 01:18:18,476 - WARNING - Failed to parse date for msg 1968614074973d76: unconverted data remains:  \1
+2025-05-01 01:18:19,688 - WARNING - Failed to parse date for msg 196853f9d1bc1d2b: unconverted data remains:  \1
+2025-05-01 01:18:20,652 - WARNING - Failed to parse date for msg 19684a07992ee607: unconverted data remains:  \1
+2025-05-01 01:18:20,898 - WARNING - Failed to parse date for msg 196849e358ba9ffa: unconverted data remains:  \1
+2025-05-01 01:18:21,135 - WARNING - Failed to parse date for msg 196849e22242940e: unconverted data remains:  \1
+2025-05-01 01:18:22,119 - WARNING - Failed to parse date for msg 196829b3f1bb8ffb: unconverted data remains:  \1
+2025-05-01 01:18:22,359 - WARNING - Failed to parse date for msg 196829b392112b61: unconverted data remains:  \1
+2025-05-01 01:18:23,071 - WARNING - Failed to parse date for msg 1968242db3273e3b: unconverted data remains:  \1
+2025-05-01 01:18:24,501 - WARNING - Failed to parse date for msg 1968027a0d05a57e: unconverted data remains:  \1
+2025-05-01 01:18:28,410 - WARNING - Failed to parse date for msg 1967ae5d4b3feac0: unconverted data remains:  \1
+2025-05-01 01:18:32,605 - WARNING - Failed to parse date for msg 196729535825f65c: unconverted data remains:  \1
+2025-05-01 01:18:32,850 - WARNING - Failed to parse date for msg 19671ccc9c2b85fa: unconverted data remains:  \1
+2025-05-01 01:18:33,085 - WARNING - Failed to parse date for msg 196715605f3cebe6: unconverted data remains:  \1
+2025-05-01 01:18:33,794 - WARNING - Failed to parse date for msg 1966e5e6e2bea1f3: unconverted data remains:  \1
+2025-05-01 01:18:34,521 - WARNING - Failed to parse date for msg 1966c90a04da0476: unconverted data remains:  \1
+2025-05-01 01:18:34,990 - WARNING - Failed to parse date for msg 1966bd50e3313b4f: unconverted data remains:  \1
+2025-05-01 01:18:36,934 - WARNING - Failed to parse date for msg 19668c480a1ad604: unconverted data remains:  \1
+2025-05-01 01:18:37,170 - WARNING - Failed to parse date for msg 19668c2485dff58b: unconverted data remains:  \1
+2025-05-01 01:18:38,824 - WARNING - Failed to parse date for msg 19667b03cf6ec9a4: unconverted data remains:  \1
+2025-05-01 01:18:39,062 - WARNING - Failed to parse date for msg 19667a1aa8c5d141: unconverted data remains:  \1
+2025-05-01 01:18:39,298 - WARNING - Failed to parse date for msg 196671cb160698fa: unconverted data remains:  \1
+2025-05-01 01:18:39,538 - WARNING - Failed to parse date for msg 1966675e551856f8: unconverted data remains:  \1
+2025-05-01 01:18:40,278 - WARNING - Failed to parse date for msg 196651a274baee03: unconverted data remains:  \1
+2025-05-01 01:20:36,402 - INFO - Vendor CSV path from .env: C:\Users\USER\po_agent_os\mock_vendor_emails.csv
+2025-05-01 01:20:36,403 - INFO - Loaded 1 vendor emails: ['mario904@snu.ac.kr']
+2025-05-01 01:20:36,410 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-05-01 01:20:36,683 - INFO - Initializing Supabase client with URL: https://ujvbinqvvgbzgwqluian.supabase.co
+2025-05-01 01:20:36,720 - INFO - Supabase client initialized successfully
+2025-05-01 01:20:36,721 - INFO - Searching emails with query: after:2025/03/31
+2025-05-01 01:21:19,985 - INFO - Is vendor: True
+2025-05-01 01:21:22,448 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-01 01:21:22,452 - INFO - Generated email type: order review
+2025-05-01 01:21:23,592 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/storage/v1/object/attachments-from-vendor//None "HTTP/1.1 400 Bad Request"
+2025-05-01 01:21:23,593 - ERROR - Error downloading attachment: {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-05-01 01:21:23,594 - INFO - Fetching thread history for thread_id: 1967aac700cf1999
+2025-05-01 01:21:23,707 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.1967aac700cf1999&order=sent_at "HTTP/1.1 200 OK"
+2025-05-01 01:21:23,710 - INFO - Found 1 emails in thread
+2025-05-01 01:21:24,372 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-01 01:21:24,382 - INFO - Parsed delivery date: None
+2025-05-01 01:21:24,383 - INFO - Attempting to save email log: new po
+2025-05-01 01:21:24,415 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-01 01:21:24,418 - INFO - Email saved successfully: new po
+2025-05-01 01:21:26,706 - ERROR - Error sending message to MCP server: Cannot connect to host localhost:8000 ssl:default [원격 컴퓨터가 네트워크 연결을 거부했습니다]
+2025-05-01 01:21:26,707 - INFO - Processed email: 1967aac700cf1999
+2025-05-01 01:21:26,930 - INFO - Is vendor: True
+2025-05-01 01:21:29,420 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-01 01:21:29,423 - INFO - Generated email type: delivery delay
+2025-05-01 01:21:29,424 - INFO - Fetching thread history for thread_id: 1967ab19c3293811
+2025-05-01 01:21:29,537 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.1967ab19c3293811&order=sent_at "HTTP/1.1 200 OK"
+2025-05-01 01:21:29,538 - INFO - Found 1 emails in thread
+2025-05-01 01:21:30,157 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-01 01:21:30,165 - INFO - Parsed delivery date: None
+2025-05-01 01:21:30,166 - INFO - Attempting to save email log: po status update
+2025-05-01 01:21:30,200 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-01 01:21:30,201 - INFO - Email saved successfully: po status update
+2025-05-01 01:21:32,487 - ERROR - Error sending message to MCP server: Cannot connect to host localhost:8000 ssl:default [원격 컴퓨터가 네트워크 연결을 거부했습니다]
+2025-05-01 01:21:32,487 - INFO - Processed email: 1967ab19c3293811
+2025-05-01 01:21:33,658 - INFO - Is vendor: True
+2025-05-01 01:21:35,882 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-01 01:21:35,889 - INFO - Generated email type: delivery confirmation
+2025-05-01 01:21:35,889 - INFO - Fetching thread history for thread_id: 1967b271a1c91212
+2025-05-01 01:21:35,974 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.1967b271a1c91212&order=sent_at "HTTP/1.1 200 OK"
+2025-05-01 01:21:35,977 - INFO - Found 1 emails in thread
+2025-05-01 01:21:37,558 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-01 01:21:37,562 - INFO - Parsed delivery date: 2025-05-01
+2025-05-01 01:21:37,562 - INFO - Attempting to save email log: 
+2025-05-01 01:21:37,592 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-01 01:21:37,594 - INFO - Email saved successfully: 
+2025-05-01 01:21:39,905 - ERROR - Error sending message to MCP server: Cannot connect to host localhost:8000 ssl:default [원격 컴퓨터가 네트워크 연결을 거부했습니다]
+2025-05-01 01:21:39,907 - INFO - Processed email: 1967b271a1c91212
+2025-05-01 01:21:40,151 - INFO - Is vendor: True
+2025-05-01 01:21:42,777 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-01 01:21:42,781 - INFO - Generated email type: delivery confirmation
+2025-05-01 01:21:42,782 - INFO - Fetching thread history for thread_id: 1967b32b2f36808c
+2025-05-01 01:21:42,886 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.1967b32b2f36808c&order=sent_at "HTTP/1.1 200 OK"
+2025-05-01 01:21:42,887 - INFO - Found 1 emails in thread
+2025-05-01 01:21:43,988 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-01 01:21:43,991 - INFO - Parsed delivery date: 2025-05-01
+2025-05-01 01:21:43,991 - INFO - Attempting to save email log: 
+2025-05-01 01:21:44,027 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-01 01:21:44,029 - INFO - Email saved successfully: 
+2025-05-01 01:21:46,334 - ERROR - Error sending message to MCP server: Cannot connect to host localhost:8000 ssl:default [원격 컴퓨터가 네트워크 연결을 거부했습니다]
+2025-05-01 01:21:46,335 - INFO - Processed email: 1967b32b2f36808c
+2025-05-01 01:21:55,602 - INFO - Is vendor: True
+2025-05-01 01:21:57,860 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-01 01:21:57,862 - INFO - Generated email type: order confirmation
+2025-05-01 01:21:57,863 - INFO - Fetching thread history for thread_id: 1968507ce2f9fef8
+2025-05-01 01:21:57,974 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.1968507ce2f9fef8&order=sent_at "HTTP/1.1 200 OK"
+2025-05-01 01:21:57,976 - INFO - Found 1 emails in thread
+2025-05-01 01:21:59,109 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-01 01:21:59,114 - INFO - Parsed delivery date: 2025-05-01
+2025-05-01 01:21:59,116 - INFO - Attempting to save email log: 
+2025-05-01 01:21:59,175 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-01 01:21:59,176 - INFO - Email saved successfully: 
+2025-05-01 01:22:01,477 - ERROR - Error sending message to MCP server: Cannot connect to host localhost:8000 ssl:default [원격 컴퓨터가 네트워크 연결을 거부했습니다]
+2025-05-01 01:22:01,478 - INFO - Processed email: 1968507ce2f9fef8
+2025-05-01 01:22:01,949 - INFO - Is vendor: True
+2025-05-01 01:22:05,204 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-01 01:22:05,211 - INFO - Generated email type: shipment scheduling
+2025-05-01 01:22:05,212 - INFO - Fetching thread history for thread_id: 19685655410ff470
+2025-05-01 01:22:05,361 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.19685655410ff470&order=sent_at "HTTP/1.1 200 OK"
+2025-05-01 01:22:05,365 - INFO - Found 1 emails in thread
+2025-05-01 01:22:06,562 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-01 01:22:06,565 - INFO - Parsed delivery date: 2023-05-07
+2025-05-01 01:22:06,566 - INFO - Attempting to save email log: eta alert
+2025-05-01 01:22:06,619 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-01 01:22:06,621 - INFO - Email saved successfully: eta alert
+2025-05-01 01:22:08,916 - ERROR - Error sending message to MCP server: Cannot connect to host localhost:8000 ssl:default [원격 컴퓨터가 네트워크 연결을 거부했습니다]
+2025-05-01 01:22:08,917 - INFO - Processed email: 19685655410ff470
+2025-05-01 01:22:09,196 - INFO - Is vendor: True
+2025-05-01 01:22:11,529 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-01 01:22:11,533 - INFO - Generated email type: delivery delay
+2025-05-01 01:22:11,533 - INFO - Fetching thread history for thread_id: 196858d50560d69c
+2025-05-01 01:22:11,566 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.196858d50560d69c&order=sent_at "HTTP/1.1 200 OK"
+2025-05-01 01:22:11,571 - INFO - Found 1 emails in thread
+2025-05-01 01:22:12,523 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-01 01:22:12,526 - INFO - Parsed delivery date: None
+2025-05-01 01:22:12,526 - INFO - Attempting to save email log: new eta for the latest po
+2025-05-01 01:22:12,578 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-01 01:22:12,579 - INFO - Email saved successfully: new eta for the latest po
+2025-05-01 01:22:14,880 - ERROR - Error sending message to MCP server: Cannot connect to host localhost:8000 ssl:default [원격 컴퓨터가 네트워크 연결을 거부했습니다]
+2025-05-01 01:22:14,881 - INFO - Processed email: 196858d50560d69c
+2025-05-01 01:22:15,114 - INFO - Is vendor: True
+2025-05-01 01:22:17,504 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-01 01:22:17,506 - INFO - Generated email type: delivery delay
+2025-05-01 01:22:17,507 - INFO - Fetching thread history for thread_id: 196858fe40e734ea
+2025-05-01 01:22:17,559 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.196858fe40e734ea&order=sent_at "HTTP/1.1 200 OK"
+2025-05-01 01:22:17,563 - INFO - Found 1 emails in thread
+2025-05-01 01:22:18,925 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-01 01:22:18,927 - INFO - Parsed delivery date: None
+2025-05-01 01:22:18,928 - INFO - Attempting to save email log: delay alert for the latest po
+2025-05-01 01:22:18,973 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-01 01:22:18,976 - INFO - Email saved successfully: delay alert for the latest po
+2025-05-01 01:22:21,278 - ERROR - Error sending message to MCP server: Cannot connect to host localhost:8000 ssl:default [원격 컴퓨터가 네트워크 연결을 거부했습니다]
+2025-05-01 01:22:21,279 - INFO - Processed email: 196858fe40e734ea
+2025-05-01 01:22:24,754 - INFO - GmailWatcher initialized
+2025-05-01 01:24:09,706 - ERROR - Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x0000015E16A4C730>
+2025-05-01 01:24:25,228 - INFO - Vendor CSV path from .env: C:\Users\USER\po_agent_os\mock_vendor_emails.csv
+2025-05-01 01:24:25,229 - INFO - Loaded 1 vendor emails: ['news4sungho@gmail.com']
+2025-05-01 01:24:25,238 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-05-01 01:24:25,534 - INFO - Initializing Supabase client with URL: https://ujvbinqvvgbzgwqluian.supabase.co
+2025-05-01 01:24:25,572 - INFO - Supabase client initialized successfully
+2025-05-01 01:24:25,574 - INFO - Searching emails with query: after:2025/03/31
+2025-05-01 01:25:20,096 - INFO - Is vendor: True
+2025-05-01 01:25:22,610 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-01 01:25:22,617 - INFO - Generated email type: purchase order confirmation
+2025-05-01 01:25:23,862 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/storage/v1/object/attachments-from-vendor//None "HTTP/1.1 400 Bad Request"
+2025-05-01 01:25:23,865 - ERROR - Error downloading attachment: {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-05-01 01:25:23,866 - INFO - Fetching thread history for thread_id: 196872f923934e74
+2025-05-01 01:25:23,992 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.196872f923934e74&order=sent_at "HTTP/1.1 200 OK"
+2025-05-01 01:25:24,002 - INFO - Found 0 emails in thread
+2025-05-01 01:25:24,847 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-01 01:25:24,850 - INFO - Parsed delivery date: 2023-05-07
+2025-05-01 01:25:24,851 - INFO - Attempting to save email log: PO for 100ml cosmetic containers
+2025-05-01 01:25:24,895 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-01 01:25:24,897 - INFO - Email saved successfully: PO for 100ml cosmetic containers
+2025-05-01 01:25:27,204 - ERROR - Error sending message to MCP server: Cannot connect to host localhost:8000 ssl:default [원격 컴퓨터가 네트워크 연결을 거부했습니다]
+2025-05-01 01:25:27,205 - INFO - Processed email: 19687301aeba3f47
+2025-05-01 01:25:27,686 - INFO - Is vendor: True
+2025-05-01 01:25:30,290 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-01 01:25:30,292 - INFO - Generated email type: shipment confirmation
+2025-05-01 01:25:30,292 - INFO - Fetching thread history for thread_id: 196872f923934e74
+2025-05-01 01:25:30,386 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.196872f923934e74&order=sent_at "HTTP/1.1 200 OK"
+2025-05-01 01:25:30,389 - INFO - Found 1 emails in thread
+2025-05-01 01:25:31,304 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-01 01:25:31,306 - INFO - Parsed delivery date: 2023-05-07
+2025-05-01 01:25:31,306 - INFO - Attempting to save email log: Re: PO for 100ml cosmetic containers
+2025-05-01 01:25:31,352 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-01 01:25:31,357 - INFO - Email saved successfully: Re: PO for 100ml cosmetic containers
+2025-05-01 01:25:33,665 - ERROR - Error sending message to MCP server: Cannot connect to host localhost:8000 ssl:default [원격 컴퓨터가 네트워크 연결을 거부했습니다]
+2025-05-01 01:25:33,665 - INFO - Processed email: 1968733cd67bc06f
+2025-05-01 01:25:33,894 - INFO - Is vendor: True
+2025-05-01 01:25:36,803 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-01 01:25:36,805 - INFO - Generated email type: delivery delay
+2025-05-01 01:25:36,805 - INFO - Fetching thread history for thread_id: 196872f923934e74
+2025-05-01 01:25:36,899 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.196872f923934e74&order=sent_at "HTTP/1.1 200 OK"
+2025-05-01 01:25:36,901 - INFO - Found 2 emails in thread
+2025-05-01 01:25:37,730 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-01 01:25:37,731 - INFO - Parsed delivery date: 2023-05-09
+2025-05-01 01:25:37,731 - INFO - Attempting to save email log: Re: PO for 100ml cosmetic containers
+2025-05-01 01:25:37,769 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-01 01:25:37,770 - INFO - Email saved successfully: Re: PO for 100ml cosmetic containers
+2025-05-01 01:25:40,079 - ERROR - Error sending message to MCP server: Cannot connect to host localhost:8000 ssl:default [원격 컴퓨터가 네트워크 연결을 거부했습니다]
+2025-05-01 01:25:40,081 - INFO - Processed email: 196873410fd5bbde
+2025-05-01 01:25:40,321 - INFO - Is vendor: True
+2025-05-01 01:25:43,809 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-01 01:25:43,811 - INFO - Generated email type: shipment confirmation
+2025-05-01 01:25:43,811 - INFO - Fetching thread history for thread_id: 196872f923934e74
+2025-05-01 01:25:43,899 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.196872f923934e74&order=sent_at "HTTP/1.1 200 OK"
+2025-05-01 01:25:43,901 - INFO - Found 3 emails in thread
+2025-05-01 01:25:44,860 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-01 01:25:44,864 - INFO - Parsed delivery date: 2023-05-07
+2025-05-01 01:25:44,865 - INFO - Attempting to save email log: Re: PO for 100ml cosmetic containers
+2025-05-01 01:25:44,894 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-01 01:25:44,899 - INFO - Email saved successfully: Re: PO for 100ml cosmetic containers
+2025-05-01 01:25:47,190 - ERROR - Error sending message to MCP server: Cannot connect to host localhost:8000 ssl:default [원격 컴퓨터가 네트워크 연결을 거부했습니다]
+2025-05-01 01:25:47,190 - INFO - Processed email: 19687342396240ae
+2025-05-01 01:25:47,676 - INFO - GmailWatcher initialized
+2025-05-01 01:25:48,647 - INFO - Is vendor: True
+2025-05-01 01:37:30,562 - ERROR - Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x000001DEC8C19F30>
+2025-05-01 15:15:54,450 - INFO - Vendor CSV path from .env: C:\Users\USER\po_agent_os\mock_vendor_emails.csv
+2025-05-01 15:15:54,453 - INFO - Loaded 1 vendor emails: ['news4sungho@gmail.com']
+2025-05-01 15:15:54,463 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-05-01 15:15:54,700 - INFO - Initializing Supabase client with URL: https://ujvbinqvvgbzgwqluian.supabase.co
+2025-05-01 15:15:54,726 - INFO - Supabase client initialized successfully
+2025-05-01 15:15:54,727 - INFO - Searching emails with query: after:2025/04/01
+2025-05-01 15:16:54,495 - INFO - Is vendor: True
+2025-05-01 15:16:57,079 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-01 15:16:57,081 - INFO - Generated email type: purchase order
+2025-05-01 15:16:57,874 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/storage/v1/object/attachments-from-vendor//None "HTTP/1.1 400 Bad Request"
+2025-05-01 15:16:57,877 - ERROR - Error downloading attachment: {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-05-01 15:16:57,878 - INFO - Fetching thread history for thread_id: 196872f923934e74
+2025-05-01 15:16:58,022 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.196872f923934e74&order=sent_at "HTTP/1.1 200 OK"
+2025-05-01 15:16:58,030 - INFO - Found 0 emails in thread
+2025-05-01 15:16:58,790 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-01 15:16:58,798 - INFO - Parsed delivery date: 2023-05-07
+2025-05-01 15:16:58,799 - INFO - Attempting to save email log: PO for 100ml cosmetic containers
+2025-05-01 15:16:58,876 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-01 15:16:58,877 - INFO - Email saved successfully: PO for 100ml cosmetic containers
+2025-05-01 15:17:01,203 - ERROR - Error sending message to MCP server: Cannot connect to host localhost:8000 ssl:default [원격 컴퓨터가 네트워크 연결을 거부했습니다]
+2025-05-01 15:17:01,204 - INFO - Processed email: 19687301aeba3f47
+2025-05-01 15:17:01,662 - INFO - Is vendor: True
+2025-05-01 15:17:03,752 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-01 15:17:03,755 - INFO - Generated email type: shipment confirmation
+2025-05-01 15:17:03,755 - INFO - Fetching thread history for thread_id: 196872f923934e74
+2025-05-01 15:17:03,807 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.196872f923934e74&order=sent_at "HTTP/1.1 200 OK"
+2025-05-01 15:17:03,807 - INFO - Found 1 emails in thread
+2025-05-01 15:17:04,643 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-01 15:17:04,647 - INFO - Parsed delivery date: 2023-05-07
+2025-05-01 15:17:04,647 - INFO - Attempting to save email log: Re: PO for 100ml cosmetic containers
+2025-05-01 15:17:04,697 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-01 15:17:04,698 - INFO - Email saved successfully: Re: PO for 100ml cosmetic containers
+2025-05-01 15:17:07,003 - ERROR - Error sending message to MCP server: Cannot connect to host localhost:8000 ssl:default [원격 컴퓨터가 네트워크 연결을 거부했습니다]
+2025-05-01 15:17:07,003 - INFO - Processed email: 1968733cd67bc06f
+2025-05-01 15:17:07,235 - INFO - Is vendor: True
+2025-05-01 15:17:09,642 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-01 15:17:09,653 - INFO - Generated email type: delivery delay
+2025-05-01 15:17:09,653 - INFO - Fetching thread history for thread_id: 196872f923934e74
+2025-05-01 15:17:09,702 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.196872f923934e74&order=sent_at "HTTP/1.1 200 OK"
+2025-05-01 15:17:09,705 - INFO - Found 2 emails in thread
+2025-05-01 15:17:10,574 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-01 15:17:10,577 - INFO - Parsed delivery date: 2023-05-08
+2025-05-01 15:17:10,578 - INFO - Attempting to save email log: Re: PO for 100ml cosmetic containers
+2025-05-01 15:17:10,628 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-01 15:17:10,630 - INFO - Email saved successfully: Re: PO for 100ml cosmetic containers
+2025-05-01 15:17:12,947 - ERROR - Error sending message to MCP server: Cannot connect to host localhost:8000 ssl:default [원격 컴퓨터가 네트워크 연결을 거부했습니다]
+2025-05-01 15:17:12,948 - INFO - Processed email: 196873410fd5bbde
+2025-05-01 15:17:13,192 - INFO - Is vendor: True
+2025-05-01 15:17:15,265 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-01 15:17:15,268 - INFO - Generated email type: shipment confirmation
+2025-05-01 15:17:15,268 - INFO - Fetching thread history for thread_id: 196872f923934e74
+2025-05-01 15:17:15,320 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.196872f923934e74&order=sent_at "HTTP/1.1 200 OK"
+2025-05-01 15:17:15,322 - INFO - Found 3 emails in thread
+2025-05-01 15:17:16,156 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-01 15:17:16,158 - INFO - Parsed delivery date: 2025-05-07
+2025-05-01 15:17:16,158 - INFO - Attempting to save email log: Re: PO for 100ml cosmetic containers
+2025-05-01 15:17:16,200 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-01 15:17:16,201 - INFO - Email saved successfully: Re: PO for 100ml cosmetic containers
+2025-05-01 15:17:18,487 - ERROR - Error sending message to MCP server: Cannot connect to host localhost:8000 ssl:default [원격 컴퓨터가 네트워크 연결을 거부했습니다]
+2025-05-01 15:17:18,488 - INFO - Processed email: 19687342396240ae
+2025-05-01 15:17:20,091 - INFO - GmailWatcher initialized
+2025-05-01 15:17:22,576 - ERROR - Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x000001DBC3BBAB60>
+2025-05-01 15:18:08,486 - INFO - Vendor CSV path from .env: C:\Users\USER\po_agent_os\mock_vendor_emails.csv
+2025-05-01 15:18:08,487 - INFO - Loaded 1 vendor emails: ['news4sungho@gmail.com']
+2025-05-01 15:18:08,492 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-05-01 15:18:08,686 - INFO - Initializing Supabase client with URL: https://ujvbinqvvgbzgwqluian.supabase.co
+2025-05-01 15:18:08,710 - INFO - Supabase client initialized successfully
+2025-05-01 15:18:08,711 - INFO - Searching emails with query: after:2025/04/01
+2025-05-01 15:19:04,513 - INFO - Is vendor: True
+2025-05-01 15:19:06,586 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-01 15:19:06,589 - INFO - Generated email type: purchase order
+2025-05-01 15:19:07,399 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/storage/v1/object/attachments-from-vendor//None "HTTP/1.1 400 Bad Request"
+2025-05-01 15:19:07,400 - ERROR - Error downloading attachment: {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-05-01 15:19:07,400 - INFO - Fetching thread history for thread_id: 196872f923934e74
+2025-05-01 15:19:07,507 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.196872f923934e74&order=sent_at "HTTP/1.1 200 OK"
+2025-05-01 15:19:07,511 - INFO - Found 0 emails in thread
+2025-05-01 15:19:08,581 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-01 15:19:08,587 - INFO - Parsed delivery date: 2023-05-07
+2025-05-01 15:19:08,589 - INFO - Attempting to save email log: PO for 100ml cosmetic containers
+2025-05-01 15:19:08,629 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-01 15:19:08,630 - INFO - Email saved successfully: PO for 100ml cosmetic containers
+2025-05-01 15:19:08,924 - INFO - Message sent to MCP server: PO for 100ml cosmetic containers
+2025-05-01 15:19:08,925 - INFO - Processed email: 19687301aeba3f47
+2025-05-01 15:19:09,399 - INFO - Is vendor: True
+2025-05-01 15:19:11,645 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-01 15:19:11,648 - INFO - Generated email type: shipment confirmation
+2025-05-01 15:19:11,649 - INFO - Fetching thread history for thread_id: 196872f923934e74
+2025-05-01 15:19:11,684 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.196872f923934e74&order=sent_at "HTTP/1.1 200 OK"
+2025-05-01 15:19:11,686 - INFO - Found 1 emails in thread
+2025-05-01 15:19:12,547 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-01 15:19:12,556 - INFO - Parsed delivery date: 2023-05-07
+2025-05-01 15:19:12,556 - INFO - Attempting to save email log: Re: PO for 100ml cosmetic containers
+2025-05-01 15:19:12,589 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-01 15:19:12,591 - INFO - Email saved successfully: Re: PO for 100ml cosmetic containers
+2025-05-01 15:19:12,593 - INFO - Message sent to MCP server: Re: PO for 100ml cosmetic containers
+2025-05-01 15:19:12,594 - INFO - Processed email: 1968733cd67bc06f
+2025-05-01 15:19:12,825 - INFO - Is vendor: True
+2025-05-01 15:19:14,764 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-01 15:19:14,767 - INFO - Generated email type: delivery delay
+2025-05-01 15:19:14,767 - INFO - Fetching thread history for thread_id: 196872f923934e74
+2025-05-01 15:19:14,807 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.196872f923934e74&order=sent_at "HTTP/1.1 200 OK"
+2025-05-01 15:19:14,810 - INFO - Found 2 emails in thread
+2025-05-01 15:19:15,517 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-01 15:19:15,520 - INFO - Parsed delivery date: 2023-05-08
+2025-05-01 15:19:15,521 - INFO - Attempting to save email log: Re: PO for 100ml cosmetic containers
+2025-05-01 15:19:15,559 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-01 15:19:15,563 - INFO - Email saved successfully: Re: PO for 100ml cosmetic containers
+2025-05-01 15:19:15,822 - INFO - Message sent to MCP server: Re: PO for 100ml cosmetic containers
+2025-05-01 15:19:15,822 - INFO - Processed email: 196873410fd5bbde
+2025-05-01 15:19:16,045 - INFO - Is vendor: True
+2025-05-01 15:19:17,975 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-01 15:19:17,985 - INFO - Generated email type: shipment confirmation
+2025-05-01 15:19:17,987 - INFO - Fetching thread history for thread_id: 196872f923934e74
+2025-05-01 15:19:18,037 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.196872f923934e74&order=sent_at "HTTP/1.1 200 OK"
+2025-05-01 15:19:18,043 - INFO - Found 3 emails in thread
+2025-05-01 15:19:19,116 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-01 15:19:19,121 - INFO - Parsed delivery date: 2023-05-08
+2025-05-01 15:19:19,121 - INFO - Attempting to save email log: Re: PO for 100ml cosmetic containers
+2025-05-01 15:19:19,160 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-01 15:19:19,162 - INFO - Email saved successfully: Re: PO for 100ml cosmetic containers
+2025-05-01 15:19:19,432 - INFO - Message sent to MCP server: Re: PO for 100ml cosmetic containers
+2025-05-01 15:19:19,432 - INFO - Processed email: 19687342396240ae
+2025-05-01 15:19:21,632 - INFO - GmailWatcher initialized

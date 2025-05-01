@@ -1,64 +1,117 @@
 # email_draft_confirm.py
 
 import os
+import sys
+import base64
 from datetime import datetime
+from email.mime.text import MIMEText
+from googleapiclient.discovery import build
+from google.oauth2.credentials import Credentials
+from google_auth_oauthlib.flow import InstalledAppFlow
+from google.auth.transport.requests import Request
 from dotenv import load_dotenv
-from supabase import create_client
-from send_email import send_email_and_update
 
-# Load env and connect
-load_dotenv()
-SUPABASE_URL = os.getenv("SUPABASE_URL")
-SUPABASE_KEY = os.getenv("SUPABASE_KEY")
-supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
+# 프로젝트 루트(=po_agent_os) 경로
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+load_dotenv(dotenv_path=os.path.join(BASE_DIR, '.env'))
 
-# 1. Fetch pending drafts
-def fetch_pending_drafts():
-    response = supabase.table("email_logs") \
-        .select("id, request_form_id, subject, draft_body, recipient_email, sent_at, status, trigger_reason, summary") \
-        .eq("status", "draft") \
-        .is_("sent_at", "null") \
-        .execute()
-    return response.data
+sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'Vendor_email_logger_agent'))
+from config import supabase
 
-# 2. Display and confirm
-def review_and_send():
-    drafts = fetch_pending_drafts()
+# Gmail API scopes
+SCOPES = ['https://www.googleapis.com/auth/gmail.send', 'https://www.googleapis.com/auth/gmail.modify']
+
+# credentials.json, token.json 경로를 po_agent_os 폴더 기준으로 설정
+CREDENTIALS_PATH = os.path.join(BASE_DIR, 'credentials.json')
+TOKEN_PATH = os.path.join(BASE_DIR, 'token.json')
+
+def authenticate_gmail():
+    """Authenticate and return a Gmail API service."""
+    creds = None
+    if os.path.exists(TOKEN_PATH):
+        creds = Credentials.from_authorized_user_file(TOKEN_PATH, SCOPES)
+    if not creds or not creds.valid:
+        if creds and creds.expired and creds.refresh_token:
+            creds.refresh(Request())
+        else:
+            flow = InstalledAppFlow.from_client_secrets_file(
+                CREDENTIALS_PATH, SCOPES
+            )
+            creds = flow.run_local_server(port=0)
+        with open(TOKEN_PATH, 'w') as token:
+            token.write(creds.to_json())
+    service = build('gmail', 'v1', credentials=creds)
+    return service
+
+def create_message(to_email, subject, body_text):
+    """Create a MIME email message."""
+    message = MIMEText(body_text, "plain")
+    message["to"] = to_email
+    message["subject"] = subject
+    raw_message = base64.urlsafe_b64encode(message.as_bytes()).decode()
+    return {"raw": raw_message}
+
+def send_email(service, to_email, subject, body):
+    """Send an email using the Gmail API."""
+    message = create_message(to_email, subject, body)
+    sent_message = service.users().messages().send(userId="me", body=message).execute()
+    return sent_message.get("threadId")
+
+def main():
+    """Display drafts for human confirmation and send emails upon approval."""
+    service = authenticate_gmail()
+
+    response = supabase.table("email_logs").select("*").eq("status", "draft").is_("sent_at", "null").execute()
+    drafts = response.data
+
     if not drafts:
-        print("✅ No pending drafts to review.")
+        print("No drafts available for confirmation.")
         return
 
     for draft in drafts:
-        print("\n==============================")
-        print(f"📬 Draft ID: {draft['id']}")
-        print(f"📨 To: {draft['recipient_email']}")
-        print(f"📌 Reason: {draft.get('trigger_reason')} ({draft.get('summary', 'No summary')})")
-        print(f"📝 Subject: {draft['subject']}")
-        print(f"📄 Body:\n{draft['draft_body']}")
-        print("==============================")
+        print("\n--- Draft Preview ---")
+        print(f"ID: {draft['id']}")
+        print(f"Recipient: {draft['recipient_email']}")
+        print(f"Subject: {draft['subject']}")
+        print(f"Body:\n{draft['draft_body']}")
+        print("----------------------")
 
-        confirm = input("✅ Send this email? (y/n): ").lower()
-        if confirm == "y":
-            # Send email
-            send_email_and_update(
-                po_id=draft['request_form_id'],
-                email_subject=draft['subject'],
-                email_body=draft['draft_body'],
-                recipient_email=draft['recipient_email']
-            )
-            
-            # Update email_logs with sent timestamp and status
-            supabase.table("email_logs").update({
-                "sent_at": datetime.utcnow().isoformat(),
-                "status": "sent"
-            }).eq("id", draft["id"]).execute()
-            
-            print(f"✅ Email sent and status updated for draft ID {draft['id']}")
+        decision = input("Send this email? (y/n): ").strip().lower()
+
+        if decision == 'y':
+            try:
+                # Step 1: Send the email
+                thread_id = send_email(
+                    service,
+                    to_email=draft["recipient_email"],
+                    subject=draft["subject"],
+                    body=draft["draft_body"]
+                )
+
+                # Step 2: Update email_logs
+                now = datetime.utcnow().isoformat()
+                supabase.table("email_logs").update({
+                    "thread_id": thread_id,
+                    "status": "sent",
+                    "sent_at": now
+                }).eq("id", draft["id"]).execute()
+
+                # Step 3: Update purchase_orders if applicable
+                if draft.get("po_number"):
+                    supabase.table("purchase_orders").update({
+                        "submitted_at": now
+                    }).eq("po_number", draft["po_number"]).execute()
+
+                print(f"✅ Successfully sent and updated draft ID: {draft['id']} (thread ID: {thread_id})")
+
+            except Exception as e:
+                print(f"❌ Failed to send email for draft ID {draft['id']}: {e}")
+
+        elif decision == 'n':
+            print(f"Skipping draft ID: {draft['id']}.")
+
         else:
-            print(f"❌ Skipping and deleting draft ID {draft['id']}")
-            # Delete skipped draft
-            supabase.table("email_logs").delete().eq("id", draft["id"]).execute()
-            print(f"✅ Draft ID {draft['id']} has been deleted")
+            print("Invalid input. Skipping draft.")
 
 if __name__ == "__main__":
-    review_and_send() 
+    main() 

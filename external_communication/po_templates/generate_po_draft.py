@@ -1,25 +1,36 @@
 def generate_po_email_draft(po_context: dict) -> dict:
     po = po_context["po"]
-    vendor = po_context["vendor"]
-    requester = po_context["requester"]
+    items = po_context["items"]
 
     po_number = po["po_number"]
-    delivery_date = po["delivery_date"]
-    vendor_name = vendor["name"]
-    requester_name = requester["name"]
+    vendor_name = po["vendor_name"]
+    issue_date = po["issue_date"]
+    currency = po["currency"]
 
-    subject = f"Purchase Order {po_number}: Please confirm delivery"
+    # Calculate totals
+    total_amount = sum(item["total"] for item in items)
+    
+    # Generate items table
+    items_lines = []
+    for item in items:
+        items_lines.append(f"- {item['item_no']}: {item['description']}")
+        items_lines.append(f"  Quantity: {item['quantity']}, Unit Price: {currency} {item['unit_price']:.2f}, Total: {currency} {item['total']:.2f}")
+    items_table = "\n".join(items_lines)
+
+    subject = f"Purchase Order {po_number} from Our Company"
 
     body = f"""Dear {vendor_name},
 
-Please find the Purchase Order {po_number} issued by our team.
+We are pleased to submit our Purchase Order {po_number} dated {issue_date}.
 
-📅 Delivery date: {delivery_date}
+Order Details:
+{items_table}
 
-Please confirm the delivery schedule at your earliest convenience.
+Total Order Amount: {currency} {total_amount:.2f}
 
-Best regards,  
-{requester_name}  
+Please review the order details and confirm receipt of this purchase order. If you have any questions or concerns, please don't hesitate to contact us.
+
+Best regards,
 Procurement Team"""
 
     return {

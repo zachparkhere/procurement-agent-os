@@ -1,0 +1,91 @@
+2025-04-30 22:52:32,695 - INFO - Vendor CSV path from .env: /Users/jiyeon/Desktop/project/ShiftsAI/Procurement/Vendor_list/vendor - 시트1.csv
+2025-04-30 22:52:32,695 - INFO - Loaded 3 vendor emails: ['jiyeon@shiftsai.com', 'ddd7913@gmail.com', 'yeonip7913@gmail.com']
+2025-04-30 22:52:32,697 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-04-30 22:52:34,909 - INFO - Initializing Supabase client with URL: https://ujvbinqvvgbzgwqluian.supabase.co
+2025-04-30 22:52:34,955 - INFO - Supabase client initialized successfully
+2025-04-30 22:52:34,955 - INFO - Searching emails with query: after:2025/03/31
+2025-04-30 22:52:52,291 - INFO - Is vendor: True
+2025-04-30 22:52:55,647 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-30 22:52:55,657 - INFO - Generated email type: request submission
+2025-04-30 22:52:57,091 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/storage/v1/object/attachments-from-vendor//None "HTTP/2 400 Bad Request"
+2025-04-30 22:52:57,092 - ERROR - Error downloading attachment: {'statusCode': 409, 'error': Duplicate, 'message': The resource already exists}
+2025-04-30 22:52:57,092 - INFO - Fetching thread history for thread_id: 1965e3ccd4a098a9
+2025-04-30 22:52:57,203 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.1965e3ccd4a098a9&order=sent_at.asc "HTTP/2 200 OK"
+2025-04-30 22:52:57,210 - INFO - Found 0 emails in thread
+2025-04-30 22:53:00,560 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-30 22:53:00,562 - INFO - Parsed delivery date: None
+2025-04-30 22:53:00,562 - INFO - Attempting to save email log: [purchase request]I want to purchase some stuffs
+2025-04-30 22:53:00,613 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/2 201 Created"
+2025-04-30 22:53:00,616 - INFO - Email saved successfully: [purchase request]I want to purchase some stuffs
+2025-04-30 22:53:00,629 - INFO - Message sent to MCP server: [purchase request]I want to purchase some stuffs
+2025-04-30 22:53:00,630 - INFO - Processed email: 1965e3ccd4a098a9
+2025-04-30 22:53:00,970 - INFO - Is vendor: True
+2025-04-30 22:53:03,017 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-30 22:53:03,018 - INFO - Generated email type: purchase request
+2025-04-30 22:53:03,544 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/storage/v1/object/attachments-from-vendor//None "HTTP/2 400 Bad Request"
+2025-04-30 22:53:03,545 - ERROR - Error downloading attachment: {'statusCode': 409, 'error': Duplicate, 'message': The resource already exists}
+2025-04-30 22:53:03,545 - INFO - Fetching thread history for thread_id: 1965e3ffd06abe66
+2025-04-30 22:53:03,581 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.1965e3ffd06abe66&order=sent_at.asc "HTTP/2 200 OK"
+2025-04-30 22:53:03,583 - INFO - Found 0 emails in thread
+2025-04-30 22:53:04,386 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-30 22:53:04,392 - INFO - Parsed delivery date: None
+2025-04-30 22:53:04,393 - INFO - Attempting to save email log: purchase request
+2025-04-30 22:53:04,436 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/2 201 Created"
+2025-04-30 22:53:04,437 - INFO - Email saved successfully: purchase request
+2025-04-30 22:53:04,438 - INFO - Message sent to MCP server: purchase request
+2025-04-30 22:53:04,439 - INFO - Processed email: 1965e3ffd06abe66
+2025-04-30 22:53:05,298 - INFO - Is vendor: True
+2025-04-30 22:53:07,556 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-30 22:53:07,557 - INFO - Generated email type: order confirmation
+2025-04-30 22:53:08,035 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/storage/v1/object/attachments-from-vendor//None "HTTP/2 400 Bad Request"
+2025-04-30 22:53:08,036 - ERROR - Error downloading attachment: {'statusCode': 409, 'error': Duplicate, 'message': The resource already exists}
+2025-04-30 22:53:08,036 - INFO - Fetching thread history for thread_id: 19661e534867a709
+2025-04-30 22:53:08,078 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.19661e534867a709&order=sent_at.asc "HTTP/2 200 OK"
+2025-04-30 22:53:08,083 - INFO - Found 0 emails in thread
+2025-04-30 22:53:09,471 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-30 22:53:09,472 - INFO - Parsed delivery date: None
+2025-04-30 22:53:09,473 - INFO - Attempting to save email log: [Purchase Order Attached] Request for Supply – Shiftsai
+2025-04-30 22:53:09,510 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/2 201 Created"
+2025-04-30 22:53:09,511 - INFO - Email saved successfully: [Purchase Order Attached] Request for Supply – Shiftsai
+2025-04-30 22:53:09,512 - ERROR - Error sending message to MCP server: [Errno 54] Connection reset by peer
+2025-04-30 22:53:09,512 - INFO - Processed email: 19661e7fd594a8a4
+2025-04-30 22:53:09,879 - INFO - Is vendor: True
+2025-04-30 22:53:12,847 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-30 22:53:12,848 - INFO - Generated email type: order confirmation
+2025-04-30 22:53:12,848 - INFO - Fetching thread history for thread_id: 19661e534867a709
+2025-04-30 22:53:12,888 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.19661e534867a709&order=sent_at.asc "HTTP/2 200 OK"
+2025-04-30 22:53:12,889 - INFO - Found 1 emails in thread
+2025-04-30 22:53:13,873 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-30 22:53:13,875 - INFO - Parsed delivery date: 2025-04-30
+2025-04-30 22:53:13,875 - INFO - Attempting to save email log: Re: [Purchase Order Attached] Request for Supply – Shiftsai
+2025-04-30 22:53:13,913 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/2 201 Created"
+2025-04-30 22:53:13,914 - INFO - Email saved successfully: Re: [Purchase Order Attached] Request for Supply – Shiftsai
+2025-04-30 22:53:13,917 - INFO - Message sent to MCP server: Re: [Purchase Order Attached] Request for Supply – Shiftsai
+2025-04-30 22:53:13,918 - INFO - Processed email: 19661ecddae94e49
+2025-04-30 22:53:14,590 - INFO - Is vendor: True
+2025-04-30 22:53:17,967 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-30 22:53:17,968 - INFO - Generated email type: delivery delay
+2025-04-30 22:53:17,968 - INFO - Fetching thread history for thread_id: 19661e534867a709
+2025-04-30 22:53:18,014 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.19661e534867a709&order=sent_at.asc "HTTP/2 200 OK"
+2025-04-30 22:53:18,014 - INFO - Found 2 emails in thread
+2025-04-30 22:53:18,992 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-30 22:53:18,993 - INFO - Parsed delivery date: 2025-05-02
+2025-04-30 22:53:18,994 - INFO - Attempting to save email log: Re: [Purchase Order Attached] Request for Supply – Shiftsai
+2025-04-30 22:53:19,035 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/2 201 Created"
+2025-04-30 22:53:19,037 - INFO - Email saved successfully: Re: [Purchase Order Attached] Request for Supply – Shiftsai
+2025-04-30 22:53:19,037 - ERROR - Error sending message to MCP server: [Errno 54] Connection reset by peer
+2025-04-30 22:53:19,037 - INFO - Processed email: 196675e9f37b6406
+2025-04-30 22:53:19,401 - INFO - Is vendor: True
+2025-04-30 22:53:22,575 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-30 22:53:22,577 - INFO - Generated email type: delivery expedite
+2025-04-30 22:53:22,577 - INFO - Fetching thread history for thread_id: 19661e534867a709
+2025-04-30 22:53:22,625 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.19661e534867a709&order=sent_at.asc "HTTP/2 200 OK"
+2025-04-30 22:53:22,625 - INFO - Found 3 emails in thread
+2025-04-30 22:53:23,907 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-30 22:53:23,909 - INFO - Parsed delivery date: 2025-05-04
+2025-04-30 22:53:23,909 - INFO - Attempting to save email log: Re: [Purchase Order Attached] Request for Supply – Shiftsai
+2025-04-30 22:53:23,956 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/2 201 Created"
+2025-04-30 22:53:23,957 - INFO - Email saved successfully: Re: [Purchase Order Attached] Request for Supply – Shiftsai
+2025-04-30 22:53:23,960 - INFO - Message sent to MCP server: Re: [Purchase Order Attached] Request for Supply – Shiftsai
+2025-04-30 22:53:23,960 - INFO - Processed email: 19667636e36ec3ed
+2025-04-30 22:53:24,623 - INFO - GmailWatcher initialized

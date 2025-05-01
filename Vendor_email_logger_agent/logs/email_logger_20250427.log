@@ -1,0 +1,160 @@
+2025-04-27 00:03:04,983 - INFO - Vendor CSV path from .env: /Users/jiyeon/Desktop/project/ShiftsAI/Procurement/Vendor_list/vendor - 시트1.csv
+2025-04-27 00:03:04,984 - INFO - Loaded 3 vendor emails: ['jiyeon@shiftsai.com', 'ddd7913@gmail.com', 'yeonip7913@gmail.com']
+2025-04-27 00:03:04,986 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-04-27 00:03:05,178 - INFO - Initializing Supabase client with URL: https://ujvbinqvvgbzgwqluian.supabase.co
+2025-04-27 00:03:05,225 - INFO - Supabase client initialized successfully
+2025-04-27 00:03:05,226 - INFO - Searching emails with query: after:2025/03/27
+2025-04-27 00:03:18,470 - INFO - Checking email - From: "Zach Park님(Google Drive에서 전송) " <drive-shares-noreply@google.com>, To: jiyeon@shiftsai.com
+2025-04-27 00:03:18,471 - ERROR - Error processing message 195d671ec15ec846: name 'extract_email_addresses' is not defined
+2025-04-27 00:03:18,881 - INFO - Checking email - From: Google <no-reply@accounts.google.com>, To: jiyeon@shiftsai.com
+2025-04-27 00:03:18,881 - ERROR - Error processing message 195daeae518fecdd: name 'extract_email_addresses' is not defined
+2025-04-27 00:03:19,672 - INFO - Checking email - From: Notion Team <notify@mail.notion.so>, To: jiyeon@shiftsai.com
+2025-04-27 00:03:19,672 - ERROR - Error processing message 195daeae90f76840: name 'extract_email_addresses' is not defined
+2025-04-27 00:03:20,378 - INFO - Checking email - From: "Notion CEO 아이반(Ivan)" <ivan@mail.notion.so>, To: <jiyeon@shiftsai.com>
+2025-04-27 00:03:20,378 - ERROR - Error processing message 195dd623e7ba2b53: name 'extract_email_addresses' is not defined
+2025-04-27 00:03:20,700 - INFO - Checking email - From: Notion Team <notify@mail.notion.so>, To: jiyeon@shiftsai.com
+2025-04-27 00:03:20,700 - ERROR - Error processing message 195e4ea41453cb70: name 'extract_email_addresses' is not defined
+2025-04-27 00:03:21,009 - INFO - Checking email - From: Notion Team <notify@mail.notion.so>, To: jiyeon@shiftsai.com
+2025-04-27 00:03:21,009 - ERROR - Error processing message 195e8f69e3a9b1cb: name 'extract_email_addresses' is not defined
+2025-04-27 00:03:21,324 - INFO - Checking email - From: Notion Team <notify@mail.notion.so>, To: jiyeon@shiftsai.com
+2025-04-27 00:03:21,324 - ERROR - Error processing message 19621e0e7c0c4047: name 'extract_email_addresses' is not defined
+2025-04-27 00:03:21,632 - INFO - Checking email - From: Notion Team <notify@mail.notion.so>, To: jiyeon@shiftsai.com
+2025-04-27 00:03:21,632 - ERROR - Error processing message 19623e431247bcda: name 'extract_email_addresses' is not defined
+2025-04-27 00:03:21,937 - INFO - Checking email - From: "Notion 팀" <team@mail.notion.so>, To: <jiyeon@shiftsai.com>
+2025-04-27 00:03:21,938 - ERROR - Error processing message 19634eda2b58f9c0: name 'extract_email_addresses' is not defined
+2025-04-27 00:03:22,361 - INFO - Checking email - From: "Miro팀" <your@product.miro.com>, To: jiyeon@shiftsai.com
+2025-04-27 00:03:22,361 - ERROR - Error processing message 1963ceb01203537b: name 'extract_email_addresses' is not defined
+2025-04-27 00:03:22,770 - INFO - Checking email - From: "Miro팀" <your@product.miro.com>, To: jiyeon@shiftsai.com
+2025-04-27 00:03:22,770 - ERROR - Error processing message 1963cf041b5ffa98: name 'extract_email_addresses' is not defined
+2025-04-27 00:03:23,181 - INFO - Checking email - From: Notion Team <notify@mail.notion.so>, To: jiyeon@shiftsai.com
+2025-04-27 00:03:23,182 - ERROR - Error processing message 19640c539745c984: name 'extract_email_addresses' is not defined
+2025-04-27 00:03:23,590 - INFO - Checking email - From: "Notion 팀" <team@mail.notion.so>, To: <jiyeon@shiftsai.com>
+2025-04-27 00:03:23,590 - ERROR - Error processing message 1964461589df2bf2: name 'extract_email_addresses' is not defined
+2025-04-27 00:03:24,000 - INFO - Checking email - From: Notion Team <notify@mail.notion.so>, To: jiyeon@shiftsai.com
+2025-04-27 00:03:24,000 - ERROR - Error processing message 19645ee513d6bff6: name 'extract_email_addresses' is not defined
+2025-04-27 00:03:24,409 - INFO - Checking email - From: Supabase <welcome@supabase.com>, To: jiyeon@shiftsai.com
+2025-04-27 00:03:24,409 - ERROR - Error processing message 1964785213e795c7: name 'extract_email_addresses' is not defined
+2025-04-27 00:03:24,818 - INFO - Checking email - From: Jiyeon Park <jiyeon@shiftsai.com>, To: zach@shiftsai.com
+2025-04-27 00:03:24,818 - ERROR - Error processing message 1964825ab5c28d35: name 'extract_email_addresses' is not defined
+2025-04-27 00:03:25,229 - INFO - Checking email - From: Supabase <welcome@supabase.com>, To: jiyeon@shiftsai.com
+2025-04-27 00:03:25,229 - ERROR - Error processing message 19649b979fd40216: name 'extract_email_addresses' is not defined
+2025-04-27 00:03:25,638 - INFO - Checking email - From: Supabase <welcome@supabase.com>, To: jiyeon@shiftsai.com
+2025-04-27 00:03:25,639 - ERROR - Error processing message 19649b9a7d379bdd: name 'extract_email_addresses' is not defined
+2025-04-27 00:03:26,048 - INFO - Checking email - From: Notion Team <notify@mail.notion.so>, To: jiyeon@shiftsai.com
+2025-04-27 00:03:26,048 - ERROR - Error processing message 1965599e9295c5bf: name 'extract_email_addresses' is not defined
+2025-04-27 00:03:26,354 - INFO - Checking email - From: Michael Truell <michaelt@cursor.so>, To: jiyeon@shiftsai.com
+2025-04-27 00:03:26,354 - ERROR - Error processing message 19658577debe3a64: name 'extract_email_addresses' is not defined
+2025-04-27 00:03:26,764 - INFO - Checking email - From: Notion Team <notify@mail.notion.so>, To: jiyeon@shiftsai.com
+2025-04-27 00:03:26,764 - ERROR - Error processing message 1965aa8b3b388a9e: name 'extract_email_addresses' is not defined
+2025-04-27 00:03:27,174 - INFO - Checking email - From: Michael Truell <michaelt@cursor.so>, To: jiyeon@shiftsai.com
+2025-04-27 00:03:27,174 - ERROR - Error processing message 1965d801cc9d1b08: name 'extract_email_addresses' is not defined
+2025-04-27 00:03:27,584 - INFO - Checking email - From: Jiyeon Park <ddd7913@gmail.com>, To: "jiyeon@shiftsai.com" <jiyeon@shiftsai.com>
+2025-04-27 00:03:27,584 - ERROR - Error processing message 1965e3ccd4a098a9: name 'extract_email_addresses' is not defined
+2025-04-27 00:03:27,993 - INFO - Checking email - From: Jiyeon Park <ddd7913@gmail.com>, To: "jiyeon@shiftsai.com" <jiyeon@shiftsai.com>
+2025-04-27 00:03:27,993 - ERROR - Error processing message 1965e3ffd06abe66: name 'extract_email_addresses' is not defined
+2025-04-27 00:03:28,403 - INFO - Checking email - From: Supabase <noreply@supabase.com>, To: jiyeon@shiftsai.com
+2025-04-27 00:03:28,404 - ERROR - Error processing message 1965eb11dccf8919: name 'extract_email_addresses' is not defined
+2025-04-27 00:03:28,812 - INFO - Checking email - From: Notion Team <notify@mail.notion.so>, To: jiyeon@shiftsai.com
+2025-04-27 00:03:28,812 - ERROR - Error processing message 1965fe7da333da4b: name 'extract_email_addresses' is not defined
+2025-04-27 00:03:29,222 - INFO - Checking email - From: Jiyeon Park <jiyeon@shiftsai.com>, To: ddd7913@gmail.com
+2025-04-27 00:03:29,223 - ERROR - Error processing message 19661e7fd594a8a4: name 'extract_email_addresses' is not defined
+2025-04-27 00:03:29,632 - INFO - Checking email - From: Jiyeon Park <ddd7913@gmail.com>, To: Jiyeon Park <jiyeon@shiftsai.com>
+2025-04-27 00:03:29,632 - ERROR - Error processing message 19661ecddae94e49: name 'extract_email_addresses' is not defined
+2025-04-27 00:03:29,938 - INFO - Checking email - From: Notion Team <notify@mail.notion.so>, To: jiyeon@shiftsai.com
+2025-04-27 00:03:29,938 - ERROR - Error processing message 196651cd71e2d02d: name 'extract_email_addresses' is not defined
+2025-04-27 00:03:30,349 - INFO - Checking email - From: Jiyeon Park <ddd7913@gmail.com>, To: Jiyeon Park <jiyeon@shiftsai.com>
+2025-04-27 00:03:30,349 - ERROR - Error processing message 196675e9f37b6406: name 'extract_email_addresses' is not defined
+2025-04-27 00:03:30,668 - INFO - Checking email - From: Jiyeon Park <jiyeon@shiftsai.com>, To: Jiyeon Park <ddd7913@gmail.com>
+2025-04-27 00:03:30,668 - ERROR - Error processing message 19667636e36ec3ed: name 'extract_email_addresses' is not defined
+2025-04-27 00:03:30,668 - INFO - GmailWatcher initialized
+2025-04-27 00:06:52,886 - INFO - Vendor CSV path from .env: /Users/jiyeon/Desktop/project/ShiftsAI/Procurement/Vendor_list/vendor - 시트1.csv
+2025-04-27 00:06:52,887 - INFO - Loaded 3 vendor emails: ['jiyeon@shiftsai.com', 'ddd7913@gmail.com', 'yeonip7913@gmail.com']
+2025-04-27 00:06:52,888 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-04-27 00:06:53,064 - INFO - Initializing Supabase client with URL: https://ujvbinqvvgbzgwqluian.supabase.co
+2025-04-27 00:06:53,110 - INFO - Supabase client initialized successfully
+2025-04-27 00:06:53,111 - INFO - Searching emails with query: after:2025/03/27
+2025-04-27 00:07:16,762 - INFO - Is vendor: True
+2025-04-27 00:07:18,811 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-27 00:07:18,817 - INFO - Generated email type: document submission
+2025-04-27 00:07:20,244 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/storage/v1/object/attachments-from-vendor/None "HTTP/2 400 Bad Request"
+2025-04-27 00:07:20,245 - ERROR - Error downloading attachment: {'statusCode': 409, 'error': Duplicate, 'message': The resource already exists}
+2025-04-27 00:07:20,245 - INFO - Fetching thread history for thread_id: 1965e3ccd4a098a9
+2025-04-27 00:07:20,361 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.1965e3ccd4a098a9&order=sent_at.asc "HTTP/2 200 OK"
+2025-04-27 00:07:20,367 - INFO - Found 1 emails in thread
+2025-04-27 00:07:20,960 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-27 00:07:20,962 - INFO - Parsed delivery date: None
+2025-04-27 00:07:20,962 - INFO - Attempting to save email log: [purchase request]I want to purchase some stuffs
+2025-04-27 00:07:21,000 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/2 201 Created"
+2025-04-27 00:07:21,001 - INFO - Email saved successfully: [purchase request]I want to purchase some stuffs
+2025-04-27 00:07:21,006 - INFO - Message sent to MCP server: [purchase request]I want to purchase some stuffs
+2025-04-27 00:07:21,006 - INFO - Processed email: 1965e3ccd4a098a9
+2025-04-27 00:07:21,312 - INFO - Is vendor: True
+2025-04-27 00:07:23,112 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-27 00:07:23,114 - INFO - Generated email type: purchase request
+2025-04-27 00:07:23,601 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/storage/v1/object/attachments-from-vendor/None "HTTP/2 400 Bad Request"
+2025-04-27 00:07:23,602 - ERROR - Error downloading attachment: {'statusCode': 409, 'error': Duplicate, 'message': The resource already exists}
+2025-04-27 00:07:23,602 - INFO - Fetching thread history for thread_id: 1965e3ffd06abe66
+2025-04-27 00:07:23,639 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.1965e3ffd06abe66&order=sent_at.asc "HTTP/2 200 OK"
+2025-04-27 00:07:23,643 - INFO - Found 1 emails in thread
+2025-04-27 00:07:24,341 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-27 00:07:24,343 - INFO - Parsed delivery date: None
+2025-04-27 00:07:24,343 - INFO - Attempting to save email log: purchase request
+2025-04-27 00:07:24,381 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/2 201 Created"
+2025-04-27 00:07:24,381 - INFO - Email saved successfully: purchase request
+2025-04-27 00:07:24,384 - INFO - Message sent to MCP server: purchase request
+2025-04-27 00:07:24,384 - INFO - Processed email: 1965e3ffd06abe66
+2025-04-27 00:07:25,356 - INFO - Is vendor: True
+2025-04-27 00:07:27,310 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-27 00:07:27,311 - INFO - Generated email type: order confirmation
+2025-04-27 00:07:27,759 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/storage/v1/object/attachments-from-vendor/None "HTTP/2 400 Bad Request"
+2025-04-27 00:07:27,760 - ERROR - Error downloading attachment: {'statusCode': 409, 'error': Duplicate, 'message': The resource already exists}
+2025-04-27 00:07:27,760 - INFO - Fetching thread history for thread_id: 19661e534867a709
+2025-04-27 00:07:27,799 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.19661e534867a709&order=sent_at.asc "HTTP/2 200 OK"
+2025-04-27 00:07:27,801 - INFO - Found 4 emails in thread
+2025-04-27 00:07:28,538 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-27 00:07:28,540 - INFO - Parsed delivery date: None
+2025-04-27 00:07:28,540 - INFO - Attempting to save email log: [Purchase Order Attached] Request for Supply – Shiftsai
+2025-04-27 00:07:28,583 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/2 201 Created"
+2025-04-27 00:07:28,584 - INFO - Email saved successfully: [Purchase Order Attached] Request for Supply – Shiftsai
+2025-04-27 00:07:28,586 - INFO - Message sent to MCP server: [Purchase Order Attached] Request for Supply – Shiftsai
+2025-04-27 00:07:28,586 - INFO - Processed email: 19661e7fd594a8a4
+2025-04-27 00:07:28,961 - INFO - Is vendor: True
+2025-04-27 00:07:31,508 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-27 00:07:31,510 - INFO - Generated email type: order confirmation
+2025-04-27 00:07:31,510 - INFO - Fetching thread history for thread_id: 19661e534867a709
+2025-04-27 00:07:31,562 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.19661e534867a709&order=sent_at.asc "HTTP/2 200 OK"
+2025-04-27 00:07:31,565 - INFO - Found 5 emails in thread
+2025-04-27 00:07:34,603 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-27 00:07:34,605 - INFO - Parsed delivery date: 2025-04-30
+2025-04-27 00:07:34,605 - INFO - Attempting to save email log: Re: [Purchase Order Attached] Request for Supply – Shiftsai
+2025-04-27 00:07:34,653 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/2 201 Created"
+2025-04-27 00:07:34,654 - INFO - Email saved successfully: Re: [Purchase Order Attached] Request for Supply – Shiftsai
+2025-04-27 00:07:34,657 - INFO - Message sent to MCP server: Re: [Purchase Order Attached] Request for Supply – Shiftsai
+2025-04-27 00:07:34,657 - INFO - Processed email: 19661ecddae94e49
+2025-04-27 00:07:35,421 - INFO - Is vendor: True
+2025-04-27 00:07:38,188 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-27 00:07:38,189 - INFO - Generated email type: delivery delay
+2025-04-27 00:07:38,189 - INFO - Fetching thread history for thread_id: 19661e534867a709
+2025-04-27 00:07:38,225 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.19661e534867a709&order=sent_at.asc "HTTP/2 200 OK"
+2025-04-27 00:07:38,227 - INFO - Found 6 emails in thread
+2025-04-27 00:07:39,212 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-27 00:07:39,214 - INFO - Parsed delivery date: 2025-05-02
+2025-04-27 00:07:39,214 - INFO - Attempting to save email log: Re: [Purchase Order Attached] Request for Supply – Shiftsai
+2025-04-27 00:07:39,260 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/2 201 Created"
+2025-04-27 00:07:39,261 - INFO - Email saved successfully: Re: [Purchase Order Attached] Request for Supply – Shiftsai
+2025-04-27 00:07:39,263 - INFO - Message sent to MCP server: Re: [Purchase Order Attached] Request for Supply – Shiftsai
+2025-04-27 00:07:39,264 - INFO - Processed email: 196675e9f37b6406
+2025-04-27 00:07:39,619 - INFO - Is vendor: True
+2025-04-27 00:07:41,967 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-27 00:07:41,968 - INFO - Generated email type: delivery expedite
+2025-04-27 00:07:41,968 - INFO - Fetching thread history for thread_id: 19661e534867a709
+2025-04-27 00:07:42,013 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.19661e534867a709&order=sent_at.asc "HTTP/2 200 OK"
+2025-04-27 00:07:42,015 - INFO - Found 7 emails in thread
+2025-04-27 00:07:42,794 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-27 00:07:42,796 - INFO - Parsed delivery date: 2025-05-04
+2025-04-27 00:07:42,796 - INFO - Attempting to save email log: Re: [Purchase Order Attached] Request for Supply – Shiftsai
+2025-04-27 00:07:42,835 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/2 201 Created"
+2025-04-27 00:07:42,839 - INFO - Email saved successfully: Re: [Purchase Order Attached] Request for Supply – Shiftsai
+2025-04-27 00:07:42,843 - INFO - Message sent to MCP server: Re: [Purchase Order Attached] Request for Supply – Shiftsai
+2025-04-27 00:07:42,843 - INFO - Processed email: 19667636e36ec3ed
+2025-04-27 00:07:42,843 - INFO - GmailWatcher initialized

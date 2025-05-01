@@ -30,7 +30,7 @@ def fetch_po_to_email():
         po_id = po["id"]
         existing_draft = supabase.table("email_logs") \
             .select("id") \
-            .eq("request_form_id", po["request_form_id"]) \
+            .eq("po_number", po["po_number"]) \
             .eq("status", "draft") \
             .eq("sender_role", "system") \
             .execute().data
@@ -45,24 +45,12 @@ def fetch_po_to_email():
 def fetch_po_context(po_id):
     # Fetch PO itself
     po = supabase.table("purchase_orders").select("*").eq("id", po_id).single().execute().data
-
-    # Fetch request_form
-    form = supabase.table("request_form").select("*").eq("id", po["request_form_id"]).single().execute().data
-
-    # Fetch vendor
-    vendor = supabase.table("vendors").select("*").eq("id", form["vendor_id"]).single().execute().data
-
-    # Fetch requester
-    requester = supabase.table("users").select("*").eq("id", form["requester_id"]).single().execute().data
-
-    # Fetch request_items
-    items = supabase.table("request_items").select("*").eq("request_form_id", form["id"]).execute().data
-
+    
+    # Fetch PO items using po_number
+    items = supabase.table("po_items").select("*").eq("po_number", po["po_number"]).execute().data
+    
     return {
         "po": po,
-        "form": form,
-        "vendor": vendor,
-        "requester": requester,
         "items": items
     }
 
@@ -72,7 +60,7 @@ def create_and_save_draft(context):
     draft = generate_po_email_draft(context)
     
     # Step 3-2: Save to email_logs
-    insert_po_email_draft(supabase, context, draft["body"])
+    insert_po_email_draft(supabase, context, draft["body"], context["po"]["po_number"])
     
     return draft
 

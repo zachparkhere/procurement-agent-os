@@ -1,0 +1,55 @@
+2025-04-26 21:49:29,406 - src.services.supabase_service - INFO - Initializing Supabase client with URL: https://ujvbinqvvgbzgwqluian.supabase.co
+2025-04-26 21:49:29,437 - src.services.supabase_service - INFO - Supabase client initialized successfully
+2025-04-26 21:49:29,437 - __main__ - INFO - Vendor CSV path: /Users/jiyeon/Desktop/project/ShiftsAI/Procurement/Vendor_list/vendor - 시트1.csv
+2025-04-26 21:49:29,438 - src.gmail.message_filter - INFO - Loaded 3 vendor emails: ['jiyeon@shiftsai.com', 'yeonip7913@gmail.com', 'ddd7913@gmail.com']
+2025-04-26 21:49:29,438 - __main__ - ERROR - Error running local server: [Errno 2] No such file or directory: 'credentials.json'
+2025-04-26 21:49:29,438 - __main__ - ERROR - Failed to authenticate Gmail service
+2025-04-26 21:50:46,534 - src.services.supabase_service - INFO - Initializing Supabase client with URL: https://ujvbinqvvgbzgwqluian.supabase.co
+2025-04-26 21:50:46,566 - src.services.supabase_service - INFO - Supabase client initialized successfully
+2025-04-26 21:50:46,566 - __main__ - INFO - Vendor CSV path: /Users/jiyeon/Desktop/project/ShiftsAI/Procurement/Vendor_list/vendor - 시트1.csv
+2025-04-26 21:50:46,566 - src.gmail.message_filter - INFO - Loaded 3 vendor emails: ['ddd7913@gmail.com', 'jiyeon@shiftsai.com', 'yeonip7913@gmail.com']
+2025-04-26 21:50:46,567 - __main__ - ERROR - Credentials file not found at: /Users/jiyeon/Desktop/project/ShiftsAI/Procurement/Vendor_email_logger_agent/credentials.json
+2025-04-26 21:50:46,567 - __main__ - ERROR - Failed to authenticate Gmail service
+2025-04-26 21:52:01,531 - src.services.supabase_service - INFO - Initializing Supabase client with URL: https://ujvbinqvvgbzgwqluian.supabase.co
+2025-04-26 21:52:01,562 - src.services.supabase_service - INFO - Supabase client initialized successfully
+2025-04-26 21:52:01,562 - __main__ - INFO - Vendor CSV path: /Users/jiyeon/Desktop/project/ShiftsAI/Procurement/Vendor_list/vendor - 시트1.csv
+2025-04-26 21:52:01,563 - src.gmail.message_filter - INFO - Loaded 3 vendor emails: ['jiyeon@shiftsai.com', 'ddd7913@gmail.com', 'yeonip7913@gmail.com']
+2025-04-26 21:52:01,877 - __main__ - ERROR - Error refreshing credentials: ('invalid_scope: Bad Request', {'error': 'invalid_scope', 'error_description': 'Bad Request'})
+2025-04-26 21:52:01,879 - __main__ - ERROR - Error saving credentials: 'NoneType' object has no attribute 'to_json'
+2025-04-26 21:52:01,880 - __main__ - ERROR - Failed to authenticate Gmail service
+2025-04-26 21:52:46,554 - src.services.supabase_service - INFO - Initializing Supabase client with URL: https://ujvbinqvvgbzgwqluian.supabase.co
+2025-04-26 21:52:46,585 - src.services.supabase_service - INFO - Supabase client initialized successfully
+2025-04-26 21:52:46,585 - __main__ - INFO - Vendor CSV path: /Users/jiyeon/Desktop/project/ShiftsAI/Procurement/Vendor_list/vendor - 시트1.csv
+2025-04-26 21:52:46,586 - src.gmail.message_filter - INFO - Loaded 3 vendor emails: ['jiyeon@shiftsai.com', 'ddd7913@gmail.com', 'yeonip7913@gmail.com']
+2025-04-26 21:52:57,330 - google_auth_oauthlib.flow - INFO - "GET /?state=udtleapapdZJmbiMBII0wKFQlQtDBo&code=4/0Ab_5qllFojP3ZKHnnDB1yTivR7U0dxny3IxVqTDU2pRgrzZE1qn32nJQDPWrHveoGxUpJQ&scope=https://mail.google.com/%20https://www.googleapis.com/auth/gmail.modify HTTP/1.1" 200 65
+2025-04-26 21:52:57,616 - googleapiclient.discovery_cache - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-04-26 21:52:58,882 - __main__ - ERROR - Error processing email: 'SupabaseService' object has no attribute 'url'
+2025-04-26 21:52:59,657 - __main__ - ERROR - Error processing email: 'SupabaseService' object has no attribute 'url'
+2025-04-26 21:53:00,457 - __main__ - ERROR - Error processing email: 'SupabaseService' object has no attribute 'url'
+2025-04-26 21:53:01,326 - __main__ - ERROR - Error processing email: 'SupabaseService' object has no attribute 'url'
+2025-04-26 21:53:02,096 - __main__ - ERROR - Error processing email: 'SupabaseService' object has no attribute 'url'
+2025-04-26 21:53:02,919 - __main__ - ERROR - Error processing email: 'SupabaseService' object has no attribute 'url'
+2025-04-26 21:53:03,649 - __main__ - ERROR - Error processing email: 'SupabaseService' object has no attribute 'url'
+2025-04-26 21:53:04,962 - __main__ - ERROR - Error processing email: 'SupabaseService' object has no attribute 'url'
+2025-04-26 21:53:05,900 - __main__ - ERROR - Error processing email: 'SupabaseService' object has no attribute 'url'
+2025-04-26 21:53:06,805 - __main__ - ERROR - Error processing email: 'SupabaseService' object has no attribute 'url'
+2025-04-26 21:53:07,883 - __main__ - ERROR - Error processing email: 'SupabaseService' object has no attribute 'url'
+2025-04-26 21:53:08,647 - __main__ - ERROR - Error processing email: 'SupabaseService' object has no attribute 'url'
+2025-04-26 21:53:09,409 - __main__ - ERROR - Error processing email: 'SupabaseService' object has no attribute 'url'
+2025-04-26 21:53:10,618 - __main__ - ERROR - Error processing email: 'SupabaseService' object has no attribute 'url'
+2025-04-26 21:53:11,328 - __main__ - ERROR - Error processing email: 'SupabaseService' object has no attribute 'url'
+2025-04-26 21:53:12,539 - __main__ - ERROR - Error processing email: 'SupabaseService' object has no attribute 'url'
+2025-04-26 21:53:13,256 - __main__ - ERROR - Error processing email: 'SupabaseService' object has no attribute 'url'
+2025-04-26 21:53:14,075 - __main__ - ERROR - Error processing email: 'SupabaseService' object has no attribute 'url'
+2025-04-26 21:53:14,816 - __main__ - ERROR - Error processing email: 'SupabaseService' object has no attribute 'url'
+2025-04-26 21:53:15,610 - __main__ - ERROR - Error processing email: 'SupabaseService' object has no attribute 'url'
+2025-04-26 21:53:16,664 - __main__ - ERROR - Error processing email: 'SupabaseService' object has no attribute 'url'
+2025-04-26 21:53:17,461 - __main__ - ERROR - Error processing email: 'SupabaseService' object has no attribute 'url'
+2025-04-26 21:53:18,172 - __main__ - ERROR - Error processing email: 'SupabaseService' object has no attribute 'url'
+2025-04-26 21:53:18,909 - __main__ - ERROR - Error processing email: 'SupabaseService' object has no attribute 'url'
+2025-04-26 21:53:19,729 - __main__ - ERROR - Error processing email: 'SupabaseService' object has no attribute 'url'
+2025-04-26 21:53:20,628 - __main__ - ERROR - Error processing email: 'SupabaseService' object has no attribute 'url'
+2025-04-26 21:53:21,346 - __main__ - ERROR - Error processing email: 'SupabaseService' object has no attribute 'url'
+2025-04-26 21:53:22,165 - __main__ - ERROR - Error processing email: 'SupabaseService' object has no attribute 'url'
+2025-04-26 21:53:22,855 - __main__ - INFO - No new emails found
+2025-04-26 21:54:23,169 - __main__ - INFO - No new emails found

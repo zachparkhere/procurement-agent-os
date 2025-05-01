@@ -25,8 +25,8 @@ def get_stale_pos(days_threshold=3):
 
     po_result = supabase.table("purchase_orders") \
         .select("*, request_form_id(id, vendor_id(*))") \
-        .not_.is_("email_sent_to_vendor_at", "null") \
-        .lt("email_sent_to_vendor_at", cutoff_date) \
+        .not_.is_("submitted_at", "null") \
+        .lt("submitted_at", cutoff_date) \
         .execute()
     
     print(f"🔍 Found {len(po_result.data)} POs sent before {cutoff_date}")
@@ -183,7 +183,7 @@ def generate_eta_request_draft(po: dict, vendor_name: str, vendor_email: str) ->
         print(f"⏭️ Skipping draft: Already pending for PO {po_number}, type: follow_up_eta_missing")
         return False
 
-    issue_date = po.get("email_sent_to_vendor_at", datetime.utcnow().isoformat())
+    issue_date = po.get("submitted_at", datetime.utcnow().isoformat())
     
     try:
         formatted_date = datetime.fromisoformat(issue_date.replace('Z', '')).strftime('%B %d, %Y')

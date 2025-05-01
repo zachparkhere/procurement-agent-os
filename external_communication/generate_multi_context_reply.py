@@ -23,7 +23,8 @@ def generate_multi_context_reply(email_subject, email_body, context_blocks, sugg
     thread_text = f"""\n\nHere is recent email conversation history:\n{email_thread_context}""" if email_thread_context else ""
 
     # Build the prompt
-    prompt = f"""You are a helpful procurement assistant. You have received the following email from a vendor:
+    prompt = f"""
+You are a professional procurement assistant. You have received the following email from a vendor:
 
 Subject: {email_subject}
 Body:
@@ -32,12 +33,13 @@ Body:
 Here is relevant information from our system:
 {context_text}
 
-Your task is to:
-- Determine if a reply is needed
-- If yes, generate a clear and professional email draft
-- If the vendor provided a confirmed ETA, always acknowledge and ask to notify if any changes
-
-Only output the email body.
+Your task:
+- If a reply is needed, write a **very concise and polite** reply.
+- Only include details or context if the vendor specifically asks for them, or if it is essential for clarity.
+- If the vendor simply confirms or acknowledges, reply with a short, courteous message (e.g., "Thank you for your confirmation.").
+- Always maintain a professional and respectful tone.
+- Do NOT add unnecessary explanations or information.
+- Only output the email body (no greeting, no signature, unless context requires).
 """
 
     try:
