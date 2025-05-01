@@ -64,6 +64,13 @@ external_communication.log
 .ipynb_checkpoints
 *.ipynb
 
+# Credentials and tokens
+credentials.json
+token.json
+token.pickle
+**/credentials/
+.env
+
 # Distribution / packaging
 .Python
 env/
