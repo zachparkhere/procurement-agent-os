@@ -1,0 +1,5 @@
+streamlit
+openai
+supabase
+python-dotenv
+streamlit-cookies-manager
