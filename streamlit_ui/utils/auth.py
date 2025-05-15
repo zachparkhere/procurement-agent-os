@@ -1,29 +1,20 @@
 import streamlit as st
 import base64
 import json
-from streamlit_cookies_manager import EncryptedCookieManager
 
-# 쿠키 매니저 초기화 (각 페이지에서 한 번만)
-cookies = EncryptedCookieManager(
-    prefix="myapp_",  # 원하는 prefix
-    password="your-very-secret-password"  # 환경변수로 관리 권장
-)
+# 세션에 사용자 정보 저장
 
 def store_user_session(user_dict):
-    if not cookies.ready():
-        return
     user_json = json.dumps(user_dict)
     encoded = base64.b64encode(user_json.encode()).decode()
     st.session_state.user = user_dict
-    cookies["auth"] = encoded
-    cookies.save()
+    st.session_state.auth = encoded
+
 
 def restore_user_session():
-    if not cookies.ready():
-        return None
-    if "auth" in cookies and cookies["auth"]:
+    if "auth" in st.session_state and st.session_state.auth:
         try:
-            decoded = base64.b64decode(cookies["auth"]).decode()
+            decoded = base64.b64decode(st.session_state.auth).decode()
             user_dict = json.loads(decoded)
             st.session_state.user = user_dict
             return user_dict
@@ -32,9 +23,7 @@ def restore_user_session():
             return None
     return None
 
+
 def clear_user_session():
-    if not cookies.ready():
-        return
     st.session_state.user = None
-    cookies["auth"] = ""
-    cookies.save()
+    st.session_state.auth = ""
