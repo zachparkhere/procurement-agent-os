@@ -2,6 +2,16 @@
 import re, csv, os, logging
 from typing import Dict, List, Set
 from pathlib import Path
+from supabase import create_client
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
+SUPABASE_URL = os.getenv("SUPABASE_URL")
+SUPABASE_KEY = os.getenv("SUPABASE_KEY")
+
+# Initialize Supabase client
+supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
 
 # 로깅 설정
 logger = logging.getLogger(__name__)
@@ -53,10 +63,30 @@ PURCHASE_KEYWORDS = {
 class VendorEmailManager:
     def __init__(self, csv_path: str = None):
         self.vendor_emails: Set[str] = set()
+        self.load_from_database()
         if csv_path:
-            self.load_vendor_emails(csv_path)
+            self.load_from_csv(csv_path)
     
-    def load_vendor_emails(self, csv_path: str):
+    def load_from_database(self):
+        """데이터베이스에서 벤더 이메일 로드"""
+        try:
+            # purchase_orders 테이블에서 vendor_email이 있는 레코드 조회
+            response = supabase.table("purchase_orders").select("vendor_email").not_.is_("vendor_email", "null").execute()
+            
+            for row in response.data:
+                email = row.get("vendor_email", "").strip().lower()
+                if email and '@' in email:
+                    self.vendor_emails.add(email)
+                    
+            logger.info(f"Loaded {len(self.vendor_emails)} vendor emails from database")
+            
+        except Exception as e:
+            logger.error(f"Error loading vendor emails from database: {e}")
+            logger.error(f"Error type: {type(e).__name__}")
+            import traceback
+            logger.error(f"Traceback: {traceback.format_exc()}")
+    
+    def load_from_csv(self, csv_path: str):
         """CSV 파일에서 벤더 이메일 로드"""
         try:
             if not os.path.exists(csv_path):
@@ -64,13 +94,8 @@ class VendorEmailManager:
                 return
                 
             with open(csv_path, 'r', encoding='utf-8') as f:
-                # CSV 파일 내용 확인
-                content = f.read()
-                
-                # 파일 포인터를 다시 처음으로
-                f.seek(0)
-                
                 reader = csv.DictReader(f)
+                initial_count = len(self.vendor_emails)
                 
                 for row in reader:
                     email = row.get('vendor_email', '').strip().lower()
@@ -79,10 +104,12 @@ class VendorEmailManager:
                     else:
                         logger.warning(f"Invalid email in row: {row}")
                         
-            logger.info(f"Loaded {len(self.vendor_emails)} vendor emails: {list(self.vendor_emails)}")
+            new_count = len(self.vendor_emails) - initial_count
+            logger.info(f"Loaded {new_count} additional vendor emails from CSV")
+            logger.info(f"Total unique vendor emails: {len(self.vendor_emails)}")
             
         except Exception as e:
-            logger.error(f"Error loading vendor emails: {e}")
+            logger.error(f"Error loading vendor emails from CSV: {e}")
             logger.error(f"Error type: {type(e).__name__}")
             import traceback
             logger.error(f"Traceback: {traceback.format_exc()}")
@@ -95,9 +122,6 @@ class VendorEmailManager:
             logger.info(f"Is vendor: {is_vendor}")
         return is_vendor
 
-# 전역 인스턴스 생성
-vendor_manager = VendorEmailManager()
-
 def extract_email_address(email_header: str) -> str:
     """이메일 헤더에서 이메일 주소 추출"""
     email_match = re.search(r'<([^>]+)>', email_header)
@@ -105,7 +129,7 @@ def extract_email_address(email_header: str) -> str:
         return email_match.group(1)
     return email_header.strip()
 
-def is_vendor_email(email_data: Dict) -> bool:
+def is_vendor_email(email_data: Dict, vendor_manager) -> bool:
     """
     이메일이 벤더 이메일인지 확인 (보낸 이메일과 받은 이메일 모두 처리)
     """
@@ -125,15 +149,11 @@ def is_vendor_email(email_data: Dict) -> bool:
         if is_outbound:
             # 보낸 이메일인 경우, 수신자가 벤더인지 확인
             if vendor_manager.is_vendor_email(to_email):
-                # logger.info(f"Found outbound email to vendor: {to_email}")
                 return True
         else:
             # 받은 이메일인 경우, 발신자가 벤더인지 확인
             if vendor_manager.is_vendor_email(from_email):
-                # logger.info(f"Found inbound email from vendor: {from_email}")
                 return True
-            
-        # logger.info(f"Non-vendor email skipped: from={from_email}, to={to_email}, is_outbound={is_outbound}")
         return False
         
     except Exception as e:

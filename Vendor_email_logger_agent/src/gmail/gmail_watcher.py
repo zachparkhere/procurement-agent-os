@@ -6,8 +6,9 @@ from datetime import datetime, timedelta
 from .message_filter import is_vendor_email
 
 class GmailWatcher:
-    def __init__(self, service):
+    def __init__(self, service, vendor_manager):
         self.service = service
+        self.vendor_manager = vendor_manager
         self.last_check_time = datetime.utcnow()
         self.processed_message_ids = set()
 
@@ -45,7 +46,7 @@ class GmailWatcher:
                 ).execute()
                 
                 # 벤더 이메일 필터링
-                if is_vendor_email(message):
+                if is_vendor_email(message, self.vendor_manager):
                     new_messages.append(message)
                     self.processed_message_ids.add(msg_id)
                     

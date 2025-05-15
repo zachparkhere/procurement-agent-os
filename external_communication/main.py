@@ -9,9 +9,7 @@ import json
 from supabase import create_client, Client
 
 from handle_general_vendor_email import handle_general_vendor_email
-from po_issued_vendor_email import send_po_issued_email
 from follow_up_vendor_email import send_follow_up_emails
-from send_po_email_and_update_thread import send_po_emails_and_update_threads
 from email_draft_confirm import confirm_and_send_drafts
 
 # Load environment variables
@@ -113,7 +111,6 @@ class EmailProcessor:
                 response = supabase.table("email_logs") \
                     .select("*") \
                     .eq("status", "draft") \
-                    .eq("auto_approve", True) \
                     .execute()
                 
                 if response.data:
@@ -252,11 +249,11 @@ async def main():
                 if result:
                     print(f"✅ {len(result)} 개의 드래프트 생성됨")
             elif args.action == 'send_po':
-                await send_po_issued_email()
+                pass
             elif args.action == 'follow_up':
                 await send_follow_up_emails()
             elif args.action == 'update_threads':
-                send_po_emails_and_update_threads()
+                pass
             elif args.action == 'confirm_drafts':
                 await confirm_and_send_drafts()
             

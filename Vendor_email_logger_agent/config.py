@@ -2,9 +2,10 @@ from pydantic_settings import BaseSettings
 from typing import List, ClassVar
 import os
 from dotenv import load_dotenv
+from supabase import create_client
 
-# .env 파일 로드
-load_dotenv()
+# .env 파일을 프로젝트 루트에서 명시적으로 로드
+load_dotenv(os.path.join(os.path.dirname(os.path.dirname(__file__)), ".env"))
 
 class AgentSettings(BaseSettings):
     # Gmail API 설정
@@ -44,4 +45,5 @@ class AgentSettings(BaseSettings):
         env_file_encoding = 'utf-8'
         case_sensitive = True
 
-settings = AgentSettings() 
+settings = AgentSettings()
+supabase = create_client(settings.SUPABASE_URL, settings.SUPABASE_KEY) 

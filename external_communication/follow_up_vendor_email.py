@@ -52,7 +52,7 @@ def get_vendor_name(vendor_id):
 def get_pos_with_vendor_reply_but_no_eta():
     """Extract POs that have vendor replies but no ETA"""
     response = supabase.table("email_logs") \
-        .select("id, request_form_id, created_at") \
+        .select("id, po_number, created_at") \
         .eq("sender_role", "vendor") \
         .order("created_at", desc=True) \
         .execute()
@@ -60,40 +60,27 @@ def get_pos_with_vendor_reply_but_no_eta():
     pos = []
     seen = set()
     for row in response.data:
-        rf_id = row["request_form_id"]
-        if rf_id in seen:
+        po_number = row["po_number"]
+        if po_number in seen:
             continue
-        
-        # Check if rf_id is None (Python None) or the string "None"
-        if rf_id is None or rf_id == "None":
+        if not po_number or po_number == "None":
             log_id = row.get("id", "unknown")
-            print(f"⚠️ Skipping email_log ID {log_id} because request_form_id is invalid (None or 'None').")
+            print(f"⚠️ Skipping email_log ID {log_id} because po_number is invalid (None or 'None').")
             continue
-            
-        seen.add(rf_id)
-
-        # Attempt to query purchase_orders only if rf_id is a valid integer
+        seen.add(po_number)
         try:
             po = supabase.table("purchase_orders") \
-                .select("*, request_form_id(id, vendor_id(*))") \
-                .eq("request_form_id", int(rf_id)) \
+                .select("*") \
+                .eq("po_number", po_number) \
                 .is_("eta", "null") \
                 .single() \
                 .execute()
-        except ValueError:
-            # Handle cases where rf_id might be something else that cannot be converted to int
-            log_id = row.get("id", "unknown")
-            print(f"⚠️ Skipping email_log ID {log_id} because request_form_id '{rf_id}' is not a valid integer.")
-            continue
         except Exception as e:
-            # Handle other potential errors during the query
             log_id = row.get("id", "unknown")
-            print(f"❌ Error querying purchase_orders for email_log ID {log_id} with rf_id {rf_id}: {e}")
+            print(f"❌ Error querying purchase_orders for email_log ID {log_id} with po_number {po_number}: {e}")
             continue
-        
         if po.data:
             pos.append(po.data)
-
     print(f"📌 [ETA Request] POs with vendor reply but no ETA: {len(pos)} found")
     return pos
 
@@ -161,51 +148,34 @@ Instructions:
         print(f"❌ Error generating initial draft for PO {po_number}: {e}")
         return None
 
-def has_pending_draft(po_id: int, email_type: str) -> bool:
+def has_pending_draft(po_number: str, email_type: str) -> bool:
     """Check if there's already a pending draft for this PO and email type"""
     result = supabase.table("email_logs") \
         .select("id") \
-        .eq("request_form_id", po_id) \
+        .eq("po_number", po_number) \
         .eq("email_type", email_type) \
         .eq("status", "draft") \
         .is_("sent_at", "null") \
         .execute()
-    
     return bool(result.data)
 
 def generate_eta_request_draft(po: dict, vendor_name: str, vendor_email: str) -> bool:
     """Generate ETA request draft when vendor replied but no ETA provided"""
     po_number = po["po_number"]
-    request_form_id = po["request_form_id"]["id"]
-
     # Check for existing draft
-    if has_pending_draft(request_form_id, "follow_up_eta_missing"):
+    if has_pending_draft(po_number, "follow_up_eta_missing"):
         print(f"⏭️ Skipping draft: Already pending for PO {po_number}, type: follow_up_eta_missing")
         return False
-
     issue_date = po.get("submitted_at", datetime.utcnow().isoformat())
-    
     try:
         formatted_date = datetime.fromisoformat(issue_date.replace('Z', '')).strftime('%B %d, %Y')
     except:
         formatted_date = issue_date
-
     subject = f"Follow-up on PO {po_number} — Awaiting ETA"
-    body = f"""Dear {vendor_name},
-
-Thank you for your recent communication regarding Purchase Order {po_number} (sent on {formatted_date}).
-
-We would greatly appreciate if you could provide us with the estimated delivery date (ETA) for this order.
-
-Thank you for your cooperation.
-
-Best regards,
-{SENDER_NAME}
-Procurement Team"""
-
+    body = f"""Dear {vendor_name},\n\nThank you for your recent communication regarding Purchase Order {po_number} (sent on {formatted_date}).\n\nWe would greatly appreciate if you could provide us with the estimated delivery date (ETA) for this order.\n\nThank you for your cooperation.\n\nBest regards,\n{SENDER_NAME}\nProcurement Team"""
     try:
         supabase.table("email_logs").insert({
-            "request_form_id": request_form_id,
+            "po_number": po_number,
             "subject": subject,
             "draft_body": body,
             "recipient_email": vendor_email,
@@ -221,74 +191,62 @@ Procurement Team"""
         print(f"❌ Error creating ETA request draft for PO {po_number}: {e}")
         return False
 
-def generate_eta_reconfirmation_draft(po: dict, vendor_name: str, vendor_email: str) -> bool:
-    """Generate ETA reconfirmation draft when ETA exists but needs update"""
+def generate_eta_reconfirmation_draft(po, vendor_name, vendor_email, thread_id=None):
     po_number = po["po_number"]
-    request_form_id = po["request_form_id"]["id"]
-
-    # Check for existing draft
-    if has_pending_draft(request_form_id, "follow_up_eta_reconfirm"):
-        print(f"⏭️ Skipping draft: Already pending for PO {po_number}, type: follow_up_eta_reconfirm")
-        return False
-
-    eta = po.get("eta", "previously provided")
-
-    subject = f"Follow-up on PO {po_number} — ETA Reconfirmation"
+    eta = po["eta"]
+    
+    subject = f"Re: PO {po_number} - ETA Reconfirmation"
     body = f"""Dear {vendor_name},
 
-Regarding Purchase Order {po_number}, we have noted the previously provided ETA of {eta}.
+We are writing to reconfirm the ETA for PO {po_number}.
+According to our records, the current ETA is {eta}.
 
-Could you please reconfirm if this estimated delivery date is still accurate, or provide an updated ETA if it has changed?
+Please let us know if there are any changes to this delivery date.
 
-Thank you for your attention to this matter.
+Thank you for your cooperation.
 
 Best regards,
 {SENDER_NAME}
 Procurement Team"""
 
-    try:
-        supabase.table("email_logs").insert({
-            "request_form_id": request_form_id,
-            "subject": subject,
-            "draft_body": body,
-            "recipient_email": vendor_email,
-            "status": "draft",
-            "trigger_reason": "eta_reconfirmation_needed",
-            "email_type": "follow_up_eta_reconfirm",
-            "sender_role": "system",
-            "direction": "outgoing"
-        }).execute()
-        print(f"📩 ETA reconfirmation draft created for PO: {po_number}")
-        return True
-    except Exception as e:
-        print(f"❌ Error creating ETA reconfirmation draft for PO {po_number}: {e}")
-        return False
+    # draft 저장 시 thread_id도 함께 저장
+    supabase.table("email_logs").insert({
+        "po_number": po["po_number"],
+        "recipient_email": vendor_email,
+        "subject": subject,
+        "draft_body": body,
+        "status": "draft",
+        "email_type": "follow_up_eta_present",
+        "thread_id": thread_id
+    }).execute()
 
-# --- Main Logic ---
-print("🚀 Starting follow-up process...")
+    print(f"[✅ DRAFT] Created ETA reconfirmation draft for PO {po_number}")
 
-# --- Generate ETA Request Emails ---
-print("\n📬 [Phase A] Generating emails for POs with vendor reply but no ETA...")
-eta_missing_replied_pos = get_pos_with_vendor_reply_but_no_eta()
-for po in eta_missing_replied_pos:
-    vendor_data = po["request_form_id"]["vendor_id"]
-    vendor_name = vendor_data.get("name") or get_vendor_name(vendor_data["id"])
-    vendor_email = vendor_data.get("email")
-    if vendor_email:
-        generate_eta_request_draft(po, vendor_name, vendor_email)
-    else:
-        print(f"⚠️ Skipping PO {po['po_number']}: Vendor email is missing")
+def send_follow_up_emails():
+    print("🚀 Starting follow-up process...")
 
-# --- Generate ETA Reminder Emails ---
-print("\n📬 [Phase B] Generating emails for POs needing ETA reconfirmation...")
-eta_confirmed_pos = get_eta_reconfirmation_pos()
-for po in eta_confirmed_pos:
-    vendor_data = po["request_form_id"]["vendor_id"]
-    vendor_name = vendor_data.get("name") or get_vendor_name(vendor_data["id"])
-    vendor_email = vendor_data.get("email")
-    if vendor_email:
-        generate_eta_reconfirmation_draft(po, vendor_name, vendor_email)
-    else:
-        print(f"⚠️ Skipping PO {po['po_number']}: Vendor email is missing")
+    # --- Generate ETA Request Emails ---
+    print("\n📬 [Phase A] Generating emails for POs with vendor reply but no ETA...")
+    eta_missing_replied_pos = get_pos_with_vendor_reply_but_no_eta()
+    for po in eta_missing_replied_pos:
+        vendor_data = po["request_form_id"]["vendor_id"]
+        vendor_name = vendor_data.get("name") or get_vendor_name(vendor_data["id"])
+        vendor_email = vendor_data.get("email")
+        if vendor_email:
+            generate_eta_request_draft(po, vendor_name, vendor_email)
+        else:
+            print(f"⚠️ Skipping PO {po['po_number']}: Vendor email is missing")
 
-print("\n🎉 Follow-up process complete!") 
+    # --- Generate ETA Reminder Emails ---
+    print("\n📬 [Phase B] Generating emails for POs needing ETA reconfirmation...")
+    eta_confirmed_pos = get_eta_reconfirmation_pos()
+    for po in eta_confirmed_pos:
+        vendor_data = po["request_form_id"]["vendor_id"]
+        vendor_name = vendor_data.get("name") or get_vendor_name(vendor_data["id"])
+        vendor_email = vendor_data.get("email")
+        if vendor_email:
+            generate_eta_reconfirmation_draft(po, vendor_name, vendor_email)
+        else:
+            print(f"⚠️ Skipping PO {po['po_number']}: Vendor email is missing")
+
+    print("\n🎉 Follow-up process complete!") 
