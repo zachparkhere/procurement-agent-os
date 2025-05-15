@@ -2,7 +2,7 @@ import os
 import base64
 import tempfile
 import logging
-from datetime import datetime
+from datetime import datetime, timezone
 import PyPDF2
 import docx
 import pandas as pd
@@ -10,6 +10,7 @@ from ..utils.text_processor import TextProcessor
 from ..gmail.message_filter import get_email_type
 from typing import Dict, List
 from supabase import create_client
+import re
 
 logger = logging.getLogger(__name__)
 
@@ -19,6 +20,7 @@ class EmailProcessor:
         self.text_processor = text_processor
         self.supabase = supabase_client
         self.temp_dir = tempfile.mkdtemp(prefix='email_attachments_')
+        self.thread_po_cache = {}  # 스레드 ID를 키로 하는 PO 번호 캐시
 
     def get_message_content(self, msg_id):
         """
@@ -78,22 +80,6 @@ class EmailProcessor:
             return {"body_text": "", "attachments": []}
 
     def download_attachment(self, message_id, attachment_id):
-        # """첨부파일 다운로드, 텍스트 추출(pdf, word, excel) 등, 임베딩 생성"""
-        # try:
-        #     attachment = self.service.users().messages().attachments().get(
-        #         userId='me',
-        #         messageId=message_id,
-        #         id=attachment_id
-        #     ).execute()
-            
-        #     if 'data' in attachment:
-        #         file_data = base64.urlsafe_b64decode(attachment['data'].encode('UTF-8'))
-                
-        #         # 랴ㅣㄷreturn file_data
-        #     return None
-        # except Exception as e:
-        #     logger.error(f"Error downloading attachment: {e}")
-        #     return None
         """첨부파일 다운로드, Supabase Storage에 업로드"""
         try:
             attachment = self.service.users().messages().attachments().get(
@@ -217,13 +203,27 @@ class EmailProcessor:
         try:
             now = datetime.utcnow()
             
+            # 저장 전 중복 체크
+            existing = self.supabase.client.from_("email_logs").select("id").eq("message_id", message_data["message_id"]).execute().data
+            if existing:
+                logger.info(f"Duplicate message_id {message_data['message_id']} detected, skipping save.")
+                return None
+
+            # PO 번호 추출 (정규식+LLM)
+            po_number = message_data.get("po_number")
+            attachments = message_data.get("attachments", [])
+            if not po_number:
+                po_number = self.text_processor.extract_po_number(
+                    message_data.get("subject", "") + "\n" + message_data.get("body_text", ""),
+                    attachments=attachments
+                )
+                message_data["po_number"] = po_number
+
             # 이메일 내용 처리
             summary, email_type = self.text_processor.process_email_content(message_data)
-            # logger.info(f"Generated summary length: {len(summary) if summary else 0}")
             logger.info(f"Generated email type: {email_type}")
             
             # 첨부파일 처리
-            attachments = message_data.get("attachments", [])
             has_attachment = len(attachments) > 0
             attachment_types = [att["mime_type"] for att in attachments]
             filenames = [att["filename"] for att in attachments]
@@ -268,6 +268,7 @@ class EmailProcessor:
             # 이메일 로그 데이터 준비
             email_log_data = {
                 "thread_id": message_data.get("thread_id"),
+                "po_number": po_number,
                 "direction": direction,
                 "sender_email": message_data.get("from"),
                 "recipient_email": message_data.get("to"),
@@ -286,10 +287,11 @@ class EmailProcessor:
                 "sender_role": sender_role,  # outbound면 "admin", inbound면 "vendor"
                 "parsed_delivery_date": delivery_date,
                 "trigger_reason": None,
-                "body": message_data.get("body_text")
+                "body": message_data.get("body_text"),
+                "message_id": message_data.get("message_id")  # ✅ message_id도 항상 저장
             }
             
-            # Supabase에 저장
+            # Supabase에 저장 (중복 체크/업데이트 기준은 thread_id)
             response = await self.supabase.save_email_log(email_log_data, summary)
             if not response:
                 logger.error("Failed to save email log to Supabase")
@@ -302,8 +304,6 @@ class EmailProcessor:
                         "email_log_id": response.data[0]['id'],
                         "filename": attachment['filename'],
                         "mime_type": attachment['mime_type'],
-                        # "content": attachment['text'] #
-                        # "po_number": attachment['po_number'] <- 나중에 Po 넘버 트래킹되면 여기에 Po_num 넣을 수 있게끔!
                     }
                     await self.supabase.save_attachment(response.data[0]['id'], attachment_data)
             
@@ -371,99 +371,110 @@ class EmailProcessor:
             logger.error(f"Error checking new thread: {e}")
             return True
 
-#     async def generate_response_draft(self, thread_id: str, current_email: Dict) -> str:
-#         """
-#         답장 초안 생성
+    def clean_date_str(self, date_str):
+        # 1. +0000 (UTC) → +0000
+        date_str = re.sub(r"([+-][0-9]{4}) ?\([^)]+\)", r"\1", date_str)
+        # 2. +0000 +0000 → 마지막만 남기기
+        date_str = re.sub(r"([+-][0-9]{4}) ?([+-][0-9]{4})", r"\2", date_str)
+        # 3. 남은 괄호 및 앞 공백 제거
+        date_str = re.sub(r" ?\([^)]+\)", "", date_str)
+        # 4. 여러 공백 정리
+        date_str = re.sub(r" +", " ", date_str).strip()
+        logger.debug(f"[clean_date_str] after clean: '{date_str}'")
+        return date_str
+
+    def parse_email_date(self, date_str):
+        date_str = self.clean_date_str(date_str)
+        logger.debug(f"[parse_email_date] final date_str: '{date_str}'")
+        try:
+            dt = datetime.strptime(date_str, "%a, %d %b %Y %H:%M:%S %z")
+        except ValueError:
+            try:
+                dt = datetime.strptime(date_str, "%a, %d %b %Y %H:%M:%S")
+                dt = dt.replace(tzinfo=timezone.utc)
+            except Exception:
+                return datetime.max.replace(tzinfo=timezone.utc)
+        return dt.astimezone(timezone.utc)
+
+    def is_already_logged(self, message_id: str) -> bool:
+        try:
+            existing = self.supabase.client.from_("email_logs").select("id").eq("message_id", message_id).execute().data
+            return bool(existing)
+        except Exception as e:
+            logger.error(f"Error checking duplicate message_id: {e}")
+            return False
+
+    async def process_email(self, message_id: str, thread_id: str, subject: str, body: str, 
+                          attachments: List[Dict], from_email: str, to_email: str, 
+                          sent_at: str, direction: str) -> Dict:
+        """
+        Process email and extract necessary information.
         
-#         Args:
-#             thread_id: 스레드 ID
-#             current_email: 현재 이메일 데이터
+        Args:
+            message_id (str): Email message ID
+            thread_id (str): Email thread ID
+            subject (str): Email subject
+            body (str): Email body
+            attachments (List[Dict]): List of attachment information
+            from_email (str): Sender email
+            to_email (str): Recipient email
+            sent_at (str): Sent time
+            direction (str): Email direction (inbound/outbound)
             
-#         Returns:
-#             str: 생성된 답장 초안
-#         """
-#         try:
-#             # 스레드 히스토리 조회
-#             thread_history = await self.supabase.get_thread_history(thread_id)
-#             if not thread_history:
-#                 return ""
-                
-#             # 스레드 컨텍스트 구성
-#             context = []
-#             for email in thread_history:
-#                 context.append(f"From: {email['sender_email']}")
-#                 context.append(f"Subject: {email['subject']}")
-#                 context.append(f"Date: {email['sent_at']}")
-#                 context.append(f"Content: {email['body']}")
-#                 context.append("---")
-                
-#             # 현재 이메일 정보
-#             current_context = f"""
-# Current Email:
-# From: {current_email['from']}
-# Subject: {current_email['subject']}
-# Content: {current_email['body_text']}
-# """
-            
-#             # LLM을 사용하여 답장 초안 생성
-#             prompt = f"""You are a procurement expert. Based on the following email thread history and current email, generate a professional response draft.
+        Returns:
+            Dict: Processed email information
+        """
+        # Find PO number using thread cache
+        po_number = self.text_processor.find_po_number(
+            subject=subject,
+            body=body,
+            attachments=attachments,
+            thread_id=thread_id,
+            thread_po_cache=self.thread_po_cache
+        )
 
-# Thread History:
-# {chr(10).join(context)}
+        processed_email = {
+            "message_id": message_id,
+            "thread_id": thread_id,
+            "subject": subject,
+            "body": body,
+            "attachments": attachments,
+            "from_email": from_email,
+            "to_email": to_email,
+            "sent_at": sent_at,
+            "direction": direction,
+            "po_number": po_number
+        }
 
-# {current_context}
+        # Save to Supabase
+        if self.supabase:
+            await self.save_to_supabase(processed_email)
 
-# Please generate a response that:
-# 1. Addresses all points in the current email
-# 2. Maintains a professional tone
-# 3. Includes necessary details from the thread history
-# 4. Suggests next steps if needed
+        return processed_email
 
-# Response Draft:"""
-            
-#             response = self.text_processor.client.chat.completions.create(
-#                 model="gpt-3.5-turbo",
-#                 messages=[
-#                     {"role": "system", "content": "You are a procurement expert helping to draft email responses."},
-#                     {"role": "user", "content": prompt}
-#                 ],
-#                 max_tokens=1000,
-#                 temperature=0.7
-#             )
-            
-#             return response.choices[0].message.content.strip()
-            
-#         except Exception as e:
-#             logger.error(f"Error generating response draft: {e}")
-#             return ""
-
-#     async def process_email(self, message_data: Dict) -> Dict:
-#         """
-#         이메일 처리 및 스레드 분석
+    async def save_to_supabase(self, email_data: Dict):
+        """
+        이메일 데이터를 Supabase에 저장합니다.
         
-#         Args:
-#             message_data: 이메일 데이터
+        Args:
+            email_data (Dict): 저장할 이메일 데이터
+        """
+        try:
+            data = {
+                "message_id": email_data["message_id"],
+                "thread_id": email_data["thread_id"],
+                "subject": email_data["subject"],
+                "body": email_data["body"],
+                "from_email": email_data["from_email"],
+                "to_email": email_data["to_email"],
+                "sent_at": email_data["sent_at"],
+                "direction": email_data["direction"],
+                "po_number": email_data["po_number"],
+                "attachments": email_data["attachments"]
+            }
             
-#         Returns:
-#             Dict: 처리된 이메일 데이터
-#         """
-#         try:
-#             # 새로운 스레드인지 확인
-#             is_new = self.is_new_thread(message_data['subject'], message_data['thread_id'])
-#             message_data['is_new_thread'] = is_new
-            
-#             # 스레드 히스토리 조회
-#             if not is_new:
-#                 thread_history = await self.get_thread_history(message_data['thread_id'])
-#                 message_data['thread_history'] = thread_history
-                
-#                 # 답장 초안 생성
-#                 if message_data['direction'] == 'inbound':
-#                     response_draft = await self.generate_response_draft(message_data['thread_id'], message_data)
-#                     message_data['response_draft'] = response_draft
-            
-#             return message_data
-            
-#         except Exception as e:
-#             logger.error(f"Error processing email: {e}")
-#             return message_data 
+            result = self.supabase.table("email_logs").insert(data).execute()
+            return result
+        except Exception as e:
+            logger.error(f"Error saving email to Supabase: {e}")
+            raise 

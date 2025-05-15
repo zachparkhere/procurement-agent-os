@@ -17,8 +17,9 @@ def fetch_po_to_email():
     # Step 1: Find all POs that are confirmed and not sent yet
     pending_pos = supabase.table("purchase_orders") \
         .select("*") \
+        .eq("update_status", "issued") \
         .eq("human_confirmed", True) \
-        .is_("email_sent_to_vendor_at", "null") \
+        .is_("submitted_at", "null") \
         .execute().data
 
     if not pending_pos:

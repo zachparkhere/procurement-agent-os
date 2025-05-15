@@ -57,7 +57,7 @@ def send_email(service, to_email, subject, body):
     sent_message = service.users().messages().send(userId="me", body=message).execute()
     return sent_message.get("threadId")
 
-def main():
+def confirm_and_send_drafts():
     """Display drafts for human confirmation and send emails upon approval."""
     service = authenticate_gmail()
 
@@ -114,4 +114,4 @@ def main():
             print("Invalid input. Skipping draft.")
 
 if __name__ == "__main__":
-    main() 
+    confirm_and_send_drafts() 

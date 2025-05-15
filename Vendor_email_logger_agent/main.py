@@ -1,6 +1,7 @@
 import os
 import asyncio
 import logging
+import sys
 from datetime import datetime, timedelta
 from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
@@ -15,7 +16,7 @@ from src.processors.email_processor import EmailProcessor
 from src.processors.attachment_processor import AttachmentProcessor
 from src.services.mcp_service import MCPService
 from src.services.supabase_service import SupabaseService
-from src.gmail.message_filter import vendor_manager, is_vendor_email
+from src.gmail.message_filter import VendorEmailManager, is_vendor_email
 
 # Load settings
 settings = AgentSettings()
@@ -34,7 +35,7 @@ logging.basicConfig(
     format='%(asctime)s - %(levelname)s - %(message)s',
     handlers=[
         logging.FileHandler(log_file),
-        logging.StreamHandler()
+        logging.StreamHandler(sys.stdout)
     ]
 )
 logger = logging.getLogger(__name__)
@@ -60,52 +61,42 @@ def authenticate_gmail():
             token.write(creds.to_json())
     return build('gmail', 'v1', credentials=creds)
 
-async def process_email(service, msg, email_processor: EmailProcessor, mcp_service: MCPService):
+async def process_email(service, msg, email_processor: EmailProcessor, mcp_service: MCPService, vendor_manager: VendorEmailManager):
     """이메일 처리"""
     try:
         msg_id = msg['id']
         message = service.users().messages().get(
-            userId='me', 
-            id=msg_id, 
-            format='metadata', 
+            userId='me',
+            id=msg_id,
+            format='metadata',
             metadataHeaders=['Subject', 'From', 'Date', 'To']
         ).execute()
-        
         headers = message.get("payload", {}).get("headers", [])
         subject = next((h['value'] for h in headers if h['name'] == 'Subject'), '')
         from_email = next((h['value'] for h in headers if h['name'] == 'From'), '')
         to_email = next((h['value'] for h in headers if h['name'] == 'To'), '')
         sent_at = next((h['value'] for h in headers if h['name'] == 'Date'), '')
-        
-        # 이메일 방향 판단 (Gmail API의 SENT 라벨 확인)
         direction = "outbound" if 'SENT' in message.get('labelIds', []) else "inbound"
-        
-        # 메시지 내용과 첨부파일 정보 가져오기
+        logger.info(f"[DB저장전] direction: {direction}, msg_id: {msg_id}, from: {from_email}, to: {to_email}")
         content = email_processor.get_message_content(msg_id)
-        
         parsed_message = {
-            "message_id": msg_id,
             "thread_id": message.get("threadId"),
+            "message_id": msg_id,
             "subject": subject,
             "from": from_email,
             "to": to_email,
-            "sent_at": sent_at,  # 이메일 발송 시간
+            "sent_at": sent_at,
             "body_text": content["body_text"],
-            "direction": direction,  # 이메일 방향
+            "direction": direction,
             "attachments": content["attachments"]
         }
-
-        # 이메일 처리 및 저장
         await email_processor.save_email_log(parsed_message)
-        
-        # MCP로 전송
         await mcp_service.send_message(parsed_message)
-        
     except Exception as e:
         logger.error(f"Error processing email {msg['id']}: {str(e)}")
         raise
 
-async def collect_historical_emails(service, email_processor: EmailProcessor, mcp_service: MCPService, months_back=3):
+async def collect_historical_emails(service, email_processor: EmailProcessor, mcp_service: MCPService, vendor_manager: VendorEmailManager, months_back=3):
     """과거 이메일 수집"""
     try:
         # 검색 쿼리 생성 (보낸 이메일과 받은 이메일 모두 포함)
@@ -121,7 +112,9 @@ async def collect_historical_emails(service, email_processor: EmailProcessor, mc
         ).execute()
         
         messages = results.get('messages', [])
-        # logger.info(f"Found {len(messages)} received messages")
+        logger.info(f"INBOX에서 가져온 메시지 수: {len(messages)}")
+        for msg in messages:
+            logger.info(f"INBOX 메시지 ID: {msg['id']}")
         
         # 보낸 이메일 검색
         sent_results = service.users().messages().list(
@@ -186,27 +179,81 @@ async def collect_historical_emails(service, email_processor: EmailProcessor, mc
 
         for msg in all_messages:
             try:
-                # 이메일 메타데이터 가져오기
                 message = service.users().messages().get(
                     userId='me',
                     id=msg['id'],
-                    format='metadata',  # 메타데이터만 가져오기
+                    format='metadata',
                     metadataHeaders=['Subject', 'From', 'Date', 'To']
                 ).execute()
-                
-                # 벤더 이메일 필터링
-                if is_vendor_email(message):
-                    await process_email(service, msg, email_processor, mcp_service)
-                    logger.info(f"Processed email: {message.get('id')}")
-                # else:
-                #     logger.info(f"Skipped non-vendor email: {message.get('id')}")
-                    
+                # 필터 전 정보 출력
+                headers = message.get("payload", {}).get("headers", [])
+                subject = next((h['value'] for h in headers if h['name'] == 'Subject'), '')
+                from_email = next((h['value'] for h in headers if h['name'] == 'From'), '')
+                to_email = next((h['value'] for h in headers if h['name'] == 'To'), '')
+                logger.info(f"Processing message: {msg['id']}, from: {from_email}, to: {to_email}")
+                logger.info(f"벤더 이메일 리스트: {vendor_manager.vendor_emails}")
+                result = is_vendor_email(message, vendor_manager)
+                logger.info(f"is_vendor_email 결과: {result}")
+                if result:
+                    await process_email(service, msg, email_processor, mcp_service, vendor_manager)
             except Exception as e:
                 logger.error(f"Error processing message {msg['id']}: {e}")
                 continue
             
     except Exception as e:
         logger.error(f"Error collecting historical emails: {e}")
+
+async def watch_new_vendor_emails(service, email_processor, mcp_service, vendor_manager):
+    """10분마다 purchase_orders 테이블에서 vendor_email을 조회해 새로운 이메일이 있으면 히스토리 수집 트리거"""
+    supabase_service = SupabaseService()
+    while True:
+        try:
+            # DB에서 vendor_email 목록 재조회
+            result = supabase_service.client.from_("purchase_orders").select("vendor_email").not_.is_("vendor_email", "null").execute()
+            db_emails = set(row["vendor_email"].strip().lower() for row in result.data if row.get("vendor_email"))
+            # 새로 발견된 이메일
+            new_emails = db_emails - vendor_manager.vendor_emails
+            if new_emails:
+                for email in new_emails:
+                    print(f"[NEW VENDOR EMAIL] {email} 발견! 히스토리 수집 시작...")
+                    # 벤더 이메일 set에 추가
+                    vendor_manager.vendor_emails.add(email)
+                    # 해당 이메일에 대한 히스토리 수집 트리거
+                    # (collect_historical_emails는 전체를 도는 구조라면, 이메일 필터링 추가 필요)
+                    # 아래는 예시: 해당 이메일만 대상으로 수집
+                    await collect_historical_emails_for_vendor(service, email_processor, mcp_service, vendor_manager, email)
+            await asyncio.sleep(600)  # 10분마다 반복
+        except Exception as e:
+            print(f"[watch_new_vendor_emails] Error: {e}")
+            await asyncio.sleep(60)
+
+async def collect_historical_emails_for_vendor(service, email_processor, mcp_service, vendor_manager, vendor_email):
+    """특정 벤더 이메일에 대한 과거 이메일만 수집"""
+    # Gmail API에서 해당 벤더 이메일과 관련된 과거 이메일만 검색
+    # (예시: from:vendor_email OR to:vendor_email)
+    query = f'from:{vendor_email} OR to:{vendor_email}'
+    print(f"[HISTORY] {vendor_email} 과거 이메일 수집 쿼리: {query}")
+    try:
+        results = service.users().messages().list(
+            userId='me',
+            q=query,
+            maxResults=300
+        ).execute()
+        messages = results.get('messages', [])
+        for msg in messages:
+            try:
+                message = service.users().messages().get(
+                    userId='me',
+                    id=msg['id'],
+                    format='metadata',
+                    metadataHeaders=['Subject', 'From', 'Date', 'To']
+                ).execute()
+                if is_vendor_email(message, vendor_manager):
+                    await process_email(service, msg, email_processor, mcp_service, vendor_manager)
+            except Exception as e:
+                print(f"[HISTORY] Error processing message for {vendor_email}: {e}")
+    except Exception as e:
+        print(f"[HISTORY] Error collecting historical emails for {vendor_email}: {e}")
 
 async def main():
     """메인 함수"""
@@ -223,7 +270,8 @@ async def main():
             logger.error(f"Vendor email CSV file not found at {vendor_csv_path}")
             return
             
-        vendor_manager.load_vendor_emails(vendor_csv_path)
+        # VendorEmailManager 인스턴스 생성 (DB + CSV)
+        vendor_manager = VendorEmailManager(csv_path=settings.VENDOR_CSV_PATH)
         
         # Gmail 서비스 인증
         service = authenticate_gmail()
@@ -237,13 +285,17 @@ async def main():
         supabase_service = SupabaseService()
         email_processor = EmailProcessor(service, text_processor, supabase_client=supabase_service)
         
-        # 과거 이메일 수집
-        await collect_historical_emails(service, email_processor, mcp_service, months_back=1)
-        
         # 실시간 이메일 감시 시작
-        watcher = GmailWatcher(service)
+        watcher = GmailWatcher(service, vendor_manager)
         logger.info("GmailWatcher initialized")
-        watcher.watch(lambda email: asyncio.create_task(process_email(service, email, email_processor, mcp_service)))
+        
+        # 기존 서비스 초기화 및 워커 실행
+        await asyncio.gather(
+            collect_historical_emails(service, email_processor, mcp_service, vendor_manager, months_back=1),
+            watch_new_vendor_emails(service, email_processor, mcp_service, vendor_manager),
+            # 실시간 이메일 감시
+            asyncio.to_thread(watcher.watch, lambda email: asyncio.create_task(process_email(service, email, email_processor, mcp_service, vendor_manager)))
+        )
         
     except Exception as e:
         logger.error(f"Error in main: {e}")

@@ -10,11 +10,36 @@ SUPABASE_URL = os.getenv("SUPABASE_URL")
 SUPABASE_KEY = os.getenv("SUPABASE_KEY")
 supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
 
+def strip_quoted_text(email_body: str) -> str:
+    """
+    Remove quoted previous emails (lines starting with '>' or common reply markers).
+    """
+    lines = email_body.splitlines()
+    clean_lines = []
+    for line in lines:
+        if line.strip().startswith(">"):
+            continue
+        if line.strip().lower().startswith("on ") and "wrote:" in line.lower():
+            break
+        clean_lines.append(line)
+    return "\n".join(clean_lines).strip()
+
+def analyze_email_content(subject: str, body: str, po_number: str = None) -> dict:
+    """
+    Lightweight callable used by agents to analyze a single email via LLM.
+    Applies body cleanup to avoid misclassification.
+    """
+    cleaned_body = strip_quoted_text(body)
+    if not cleaned_body or len(cleaned_body) < 10:
+        print("⚠️ Body seems empty or too short after cleanup.")
+    result_json_str = llm_extract_info_needs(subject, cleaned_body)
+    return json.loads(result_json_str)
+
 def analyze_unprocessed_vendor_emails():
     print("🔍 Fetching unprocessed vendor emails...")
 
     response = supabase.table("email_logs") \
-        .select("id, subject, draft_body, direction, sender_role") \
+        .select("id, subject, body, direction, sender_role") \
         .eq("direction", "inbound") \
         .eq("sender_role", "vendor") \
         .eq("status", "received") \
@@ -29,14 +54,13 @@ def analyze_unprocessed_vendor_emails():
     for row in rows:
         email_id = row["id"]
         subject = row.get("subject") or "(no subject)"
-        body = row.get("draft_body") or ""
+        body = row.get("body") or ""
 
         try:
-            result_json_str = llm_extract_info_needs(subject, body)
-            result = json.loads(result_json_str)
+            result = analyze_email_content(subject, body)
 
             supabase.table("email_logs").update({
-                "llm_analysis_result": result_json_str,
+                "llm_analysis_result": json.dumps(result),
                 "llm_intent": result.get("intent"),
                 "suggested_reply_type": result.get("suggested_reply_type"),
                 "reply_needed": result.get("reply_needed")
@@ -48,4 +72,4 @@ def analyze_unprocessed_vendor_emails():
             print(f"❌ Error processing email ID {email_id}: {e}")
 
 if __name__ == "__main__":
-    analyze_unprocessed_vendor_emails() 
+    analyze_unprocessed_vendor_emails()

@@ -6,7 +6,7 @@ from datetime import datetime
 from gmail.gmail_watcher import poll_emails
 from gmail.message_filter import is_vendor_email
 from services.mcp_service import MCPService
-from utils.llm_extractor import LLMExtractor
+from utils.text_processor import TextProcessor
 
 class VendorEmailLoggerAgent:
     def __init__(self):
@@ -14,7 +14,7 @@ class VendorEmailLoggerAgent:
         self.email_threads = {}   # thread_id -> email list mapping
         self.status_history = {}  # vendor_id -> status history mapping
         self.mcp_service = MCPService()
-        self.llm_extractor = LLMExtractor()
+        self.text_processor = TextProcessor()
 
     def get_thread_context(self, thread_id: str) -> List[Dict]:
         """
@@ -38,11 +38,10 @@ class VendorEmailLoggerAgent:
             if email.get('po_number'):
                 return email['po_number']
         
-        # 2. LLM으로 PO 번호 추출 시도
-        po_number = self.llm_extractor.extract_po_number(
-            subject=subject,
-            body=body,
-            thread_context=thread_context
+        # 2. text_processor로 PO 번호 추출 시도
+        po_number = self.text_processor.extract_po_number(
+            email_content=body,
+            attachments=email_data.get('attachments', None)
         )
         
         if po_number:

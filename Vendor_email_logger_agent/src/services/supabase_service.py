@@ -19,26 +19,33 @@ class SupabaseService:
             raise
 
     async def save_email_log(self, email_data, summary=None):
-        """이메일 로그 저장"""
+        """이메일 로그 저장 (중복 방지: thread_id + message_id 조합)"""
         try:
             now = datetime.utcnow()
-            
-            # sent_at 처리 (이메일 발송 시간)
-            sent_at = email_data.get("sent_at")
-            # if not sent_at:
-            #     # sent_at이 없는 경우 현재 시간 사용
-            #     sent_at = now.isoformat()
-            
+            thread_id = email_data.get("thread_id")
+            message_id = email_data.get("message_id")
+
+            # 1. (thread_id, message_id) 조합이 이미 있는지 확인
+            exists = self.client.from_("email_logs") \
+                .select("id") \
+                .eq("thread_id", thread_id) \
+                .eq("message_id", message_id) \
+                .execute().data
+            if exists:
+                logger.info(f"Skip: Already exists for thread_id={thread_id}, message_id={message_id}")
+                return None
+
+            # 2. 없으면 insert
             email_log_data = {
-                "thread_id": email_data.get("thread_id"),
+                "thread_id": thread_id,
                 "direction": email_data.get("direction", "inbound"),
                 "sender_email": email_data.get("sender_email"),
                 "recipient_email": email_data.get("recipient_email"),
                 "subject": email_data.get("subject"),
-                "sent_at": sent_at,  # 이메일 발송 시간
-                "created_at": now.isoformat(),  # DB에 저장된 시간
-                "updated_at": now.isoformat(),  # DB 업데이트 시간
-                "received_at": email_data.get("received_at"),  # 이메일 수신 시간
+                "sent_at": email_data.get("sent_at"),
+                "created_at": now.isoformat(),
+                "updated_at": now.isoformat(),
+                "received_at": email_data.get("received_at"),
                 "draft_body": email_data.get("draft_body"),
                 "status": email_data.get("status"),
                 "email_type": email_data.get("email_type"),
@@ -49,16 +56,12 @@ class SupabaseService:
                 "sender_role": email_data.get("sender_role"),
                 "parsed_delivery_date": email_data.get("parsed_delivery_date"),
                 "trigger_reason": email_data.get("trigger_reason"),
-                "body": email_data.get("body")
+                "body": email_data.get("body"),
+                "message_id": message_id
             }
-            
-            logger.info(f"Attempting to save email log: {email_data.get('subject')}")
-            logger.debug(f"Email log data: {email_log_data}")
-            
+            logger.info(f"Insert: New email log for thread_id={thread_id}, message_id={message_id}")
             response = self.client.from_("email_logs").insert(email_log_data).execute()
-            logger.info(f"Email saved successfully: {email_data.get('subject')}")
             return response
-            
         except Exception as e:
             logger.error(f"Supabase insert error: {str(e)}")
             logger.error(f"Error type: {type(e).__name__}")

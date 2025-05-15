@@ -7,6 +7,8 @@ import docx
 import pandas as pd
 from supabase import create_client, Client
 from ..utils.text_processor import TextProcessor
+from datetime import datetime
+from typing import Optional
 
 logger = logging.getLogger(__name__)
 
@@ -20,22 +22,66 @@ class AttachmentProcessor:
         self.supabase: Client = create_client(supabase_url, supabase_key)
         self.bucket_name = "your-bucket-name"  # 여기서 버킷 이름을 지정
 
-    def download_attachment(self, message_id, attachment_id):
-        """첨부파일 다운로드"""
+    async def download_attachment(self, message_id: str, attachment_id: str, filename: str) -> Optional[str]:
+        """
+        Download attachment from Gmail and save to Supabase storage
+        
+        Args:
+            message_id (str): Gmail message ID
+            attachment_id (str): Gmail attachment ID
+            filename (str): Original filename
+            
+        Returns:
+            Optional[str]: Path to downloaded file or None if failed
+        """
         try:
+            # Generate unique filename
+            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+            unique_filename = f"{timestamp}_{filename}"
+            
+            # Download attachment
             attachment = self.service.users().messages().attachments().get(
                 userId='me',
                 messageId=message_id,
                 id=attachment_id
             ).execute()
             
-            if 'data' in attachment:
-                file_data = base64.urlsafe_b64decode(attachment['data'].encode('UTF-8'))
-                return file_data
-            return None
+            if not attachment:
+                logger.error(f"Failed to get attachment {attachment_id} from message {message_id}")
+                return None
+                
+            # Decode attachment data
+            data = attachment['data']
+            file_data = base64.urlsafe_b64decode(data)
+            
+            # Save to temporary file
+            temp_path = os.path.join(self.temp_dir, unique_filename)
+            with open(temp_path, 'wb') as f:
+                f.write(file_data)
+                
+            # Upload to Supabase storage
+            try:
+                with open(temp_path, 'rb') as f:
+                    self.supabase.storage.from_('attachments-from-vendor').upload(
+                        unique_filename,
+                        f
+                    )
+            except Exception as e:
+                if 'Duplicate' in str(e):
+                    logger.info(f"File {unique_filename} already exists in storage")
+                    return unique_filename
+                else:
+                    raise
+                    
+            return unique_filename
+            
         except Exception as e:
             logger.error(f"Error downloading attachment: {e}")
             return None
+        finally:
+            # Clean up temporary file
+            if 'temp_path' in locals() and os.path.exists(temp_path):
+                os.remove(temp_path)
 
     def extract_text_from_file(self, file_path, mime_type):
         """파일에서 텍스트 추출"""
@@ -71,7 +117,7 @@ class AttachmentProcessor:
     async def process_attachment(self, message_id, attachment):
         """첨부파일 처리"""
         try:
-            file_data = self.download_attachment(message_id, attachment['attachment_id'])
+            file_data = self.download_attachment(message_id, attachment['attachment_id'], attachment['filename'])
             if not file_data:
                 return None
                 
