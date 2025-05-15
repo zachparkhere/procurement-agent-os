@@ -63,7 +63,7 @@ Only use column names from the input. If no suitable match, return null for that
 
     # --- Step 4: Insert into Supabase ---
     if st.button("💾 Insert into Database"):
-        user_id = st.session_state.user["id"]
+        user_id = st.session_state.user.id
         inserted = 0
 
         for _, row in df.iterrows():

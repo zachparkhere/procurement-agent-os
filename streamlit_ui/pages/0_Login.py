@@ -7,12 +7,12 @@ st.title("🔐 Login (Supabase Auth)")
 
 # 로그아웃 처리
 if st.session_state.get("user"):
-    st.success(f"✅ Logged in as {st.session_state.user['email']}")
+    st.success(f"✅ Logged in as {st.session_state.user.email}")
     if st.button("Logout"):
         supabase.auth.sign_out()
         st.session_state.user = None
         st.session_state.access_token = None
-        st.experimental_rerun()
+        st.rerun()
 else:
     tab1, tab2 = st.tabs(["Login", "Sign Up"])
     with tab1:
@@ -21,12 +21,10 @@ else:
         if st.button("Login"):
             try:
                 res = supabase.auth.sign_in_with_password({"email": email, "password": password})
-                user = res.user
-                access_token = res.session.access_token
-                st.session_state.user = user
-                st.session_state.access_token = access_token
+                st.session_state["user"] = res.user
+                st.session_state["access_token"] = res.session.access_token
                 st.success("✅ Login successful!")
-                st.experimental_rerun()
+                st.rerun()
             except Exception as e:
                 st.error(f"❌ Login failed: {e}")
     with tab2:
