@@ -23,8 +23,8 @@ from config import supabase
 SCOPES = ['https://www.googleapis.com/auth/gmail.send', 'https://www.googleapis.com/auth/gmail.modify']
 
 # credentials.json, token.json 경로를 po_agent_os 폴더 기준으로 설정
-CREDENTIALS_PATH = os.path.join(BASE_DIR, 'credentials.json')
-TOKEN_PATH = os.path.join(BASE_DIR, 'token.json')
+CREDENTIALS_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'credentials.json')
+TOKEN_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'token.json')
 
 def confirm_and_send_drafts():
     """Display drafts for human confirmation and send emails upon approval."""
@@ -86,6 +86,12 @@ def confirm_and_send_drafts():
 
         else:
             print("Invalid input. Skipping draft.")
+
+def authenticate_gmail():
+    creds = None
+    credentials_path = CREDENTIALS_PATH
+    token_path = TOKEN_PATH
+    # ... 기존 코드 ...
 
 if __name__ == "__main__":
     confirm_and_send_drafts() 

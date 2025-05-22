@@ -2,7 +2,7 @@ import os
 import json
 from openai import OpenAI
 from dotenv import load_dotenv
-from vendor_email_logger_agent.config import supabase
+from po_agent_os.Vendor_email_logger_agent.config import supabase
 from datetime import datetime, timedelta
 import dateparser
 
@@ -43,6 +43,8 @@ def enrich_email_with_llm(subject: str, body: str, po_number: str = None) -> dic
         )
         content = response.choices[0].message.content
         parsed = json.loads(content)
+        if "delivery_date" not in parsed:
+            parsed["delivery_date"] = None
     except Exception as e:
         print("❌ LLM parsing failed:", e)
         parsed = {

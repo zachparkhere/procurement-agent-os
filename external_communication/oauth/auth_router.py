@@ -10,7 +10,7 @@ from po_agent_os.supabase_client import supabase
 router = APIRouter()
 
 BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
-CREDENTIALS_PATH = os.path.join(BASE_DIR, "credentials.json")
+CREDENTIALS_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'credentials.json')
 REDIRECT_URI = "http://localhost:8000/auth/callback/google"
 SCOPES = ["https://mail.google.com/", "https://www.googleapis.com/auth/userinfo.email", "openid"]
 

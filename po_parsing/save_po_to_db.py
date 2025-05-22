@@ -1,5 +1,6 @@
 import os
-from supabase import create_client, Client
+from po_agent_os.supabase_client import supabase
+from supabase import Client
 from dotenv import load_dotenv
 from datetime import datetime
 
@@ -7,8 +8,8 @@ load_dotenv()
 
 # supabase
 supabase_url = os.getenv("SUPABASE_URL")
-supabase_key = os.getenv("SUPABASE_KEY")
-supabase: Client = create_client(supabase_url, supabase_key)
+supabase_anon_key = os.getenv("SUPABASE_ANON_KEY")
+supabase: Client = supabase
 
 def save_po_to_supabase(json_data):
     # insert to purchase_orders table

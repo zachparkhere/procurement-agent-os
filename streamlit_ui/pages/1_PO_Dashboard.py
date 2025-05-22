@@ -1,6 +1,4 @@
 import streamlit as st
-st.set_page_config(page_title="PO Dashboard", layout="wide")
-
 import sys
 import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")))
@@ -18,17 +16,23 @@ if "user" not in st.session_state:
     st.warning("Please log in to continue.")
     st.stop()
 
+# 디버깅: 세션 상태, user 객체 정보만 출력
+# st.write("[DEBUG] session_state:", dict(st.session_state))
+# st.write("[DEBUG] user:", st.session_state.get("user"))
+
+# 토큰을 session_state에서 직접 꺼내서 사용
+access_token = st.session_state.get("access_token")
+refresh_token = st.session_state.get("refresh_token")
+if not access_token or not refresh_token:
+    st.error("Missing tokens. Please log in again.")
+    st.stop()
+
 # ✅ Set Supabase auth session
 try:
-    user = st.session_state.get("user", {})
-    access_token = user.get("access_token") if isinstance(user, dict) else getattr(user, "access_token", None)
-    refresh_token = user.get("refresh_token") if isinstance(user, dict) else getattr(user, "refresh_token", None)
-
-    if not access_token or not refresh_token:
-        raise ValueError("Missing tokens in session.")
-
-    supabase.auth.set_session(access_token, refresh_token)
-
+    supabase.auth.set_session(
+        access_token,
+        refresh_token
+    )
 except Exception as e:
     st.error("Authentication failed. Please log in again.")
     st.exception(e)
@@ -41,9 +45,9 @@ user_row = supabase.table("users").select("id").eq("email", user_email).single()
 user_id = user_row["id"]
 
 # Debugging output
-st.write("[DEBUG] user:", st.session_state.get("user"))
-st.write("[DEBUG] access_token:", getattr(st.session_state.user, "access_token", None))
-st.write("[DEBUG] refresh_token:", getattr(st.session_state.user, "refresh_token", None))
+# st.write("[DEBUG] user:", st.session_state.get("user"))
+# st.write("[DEBUG] access_token:", getattr(st.session_state.user, "access_token", None))
+# st.write("[DEBUG] refresh_token:", getattr(st.session_state.user, "refresh_token", None))
 
 po_list = fetch_user_pos(user_id=user_id)
 
@@ -62,7 +66,7 @@ else:
         cols = st.columns(cols_per_row)
         for j, po in enumerate(visible_pos[i:i + cols_per_row]):
             with cols[j]:
-                po_id = po.get("id")
+                po_id = po.get("po_id")
                 po_number = po.get("po_number", "Unknown")
                 vendor_name = po.get("vendor_name", "Unknown")
                 expected_str = po.get("expected_delivery_date")
@@ -112,10 +116,15 @@ else:
                     new_eta = st.text_input("📦 ETA", eta_str or "", key=f"eta-{po_id}")
                     new_expected = st.text_input("📅 Expected Delivery Date", expected_str or "", key=f"expdate-{po_id}")
                     if st.button("💾 Save Changes", key=save_key):
-                        po["status"] = new_status
-                        po["eta"] = new_eta
-                        po["expected_delivery_date"] = new_expected
-                        st.rerun()
+                        if not po_id:
+                            st.error("po_id가 None입니다. DB 업데이트를 건너뜁니다.")
+                        else:
+                            supabase.table("purchase_orders").update({
+                                "status": new_status,
+                                "eta": new_eta,
+                                "expected_delivery_date": new_expected
+                            }).eq("po_id", po_id).execute()
+                            st.rerun()
 
                 summary, summary_date = fetch_latest_email_summary(po_number)
                 if summary:

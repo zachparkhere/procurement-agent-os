@@ -1,5 +1,4 @@
 import streamlit as st
-st.set_page_config(page_title="Login", layout="wide")
 import sys
 import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")))
@@ -24,6 +23,7 @@ else:
                 res = supabase.auth.sign_in_with_password({"email": email, "password": password})
                 st.session_state["user"] = res.user
                 st.session_state["access_token"] = res.session.access_token
+                st.session_state["refresh_token"] = res.session.refresh_token
                 st.success("✅ Login successful!")
                 st.rerun()
             except Exception as e:

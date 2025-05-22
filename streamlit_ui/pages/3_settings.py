@@ -1,5 +1,4 @@
 import streamlit as st
-st.set_page_config(page_title="Settings", layout="wide")
 import sys
 import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")))
@@ -14,7 +13,8 @@ if "user" not in st.session_state:
     st.stop()
 
 user_email = st.session_state.user.email
-user_id = st.session_state.user.id
+user_row = supabase.table("users").select("id").eq("email", user_email).single().execute().data
+user_id = user_row["id"]
 
 st.sidebar.markdown(f"**Logged in as:** {user_email}")
 
@@ -29,6 +29,24 @@ user_data = user_res.data[0] if user_res.data else {}
 current_interval = user_data.get("eta_followup_interval_days", 3)
 current_provider = user_data.get("email_provider", None)
 linked_email = user_data.get("email_address", None)
+
+# 토큰을 session_state에서 직접 꺼내서 사용
+access_token = st.session_state.get("access_token")
+refresh_token = st.session_state.get("refresh_token")
+if not access_token or not refresh_token:
+    st.error("Missing tokens. Please log in again.")
+    st.stop()
+
+# ✅ Set Supabase auth session
+try:
+    supabase.auth.set_session(
+        access_token,
+        refresh_token
+    )
+except Exception as e:
+    st.error("Authentication failed. Please log in again.")
+    st.exception(e)
+    st.stop()
 
 # -----------------------
 # 🔑 Password Section
@@ -51,7 +69,6 @@ if st.button("✅ Update Password"):
         result = supabase.table("users").update(
             {"password_hash": hashed_pw}
         ).eq("id", user_id).execute()
-
         if result.data:
             st.success("🎉 Password successfully updated!")
         else:
@@ -70,7 +87,6 @@ if st.button("✅ Save Interval"):
     result = supabase.table("users").update(
         {"eta_followup_interval_days": new_interval}
     ).eq("id", user_id).execute()
-
     if result.data:
         st.success(f"Interval updated to {new_interval} days.")
     else:
