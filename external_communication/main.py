@@ -1,267 +1,148 @@
-import argparse
-import asyncio
-from datetime import datetime
+import sys
 import os
-import logging
-from typing import Optional, Dict, List
-from dotenv import load_dotenv
-import json
-from supabase import create_client, Client
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")))
+import asyncio
+import requests
+from typing import Dict, List
+import threading
+from po_agent_os.external_communication.utils.email_utils import send_approved_drafts
 
-from handle_general_vendor_email import handle_general_vendor_email
-from follow_up_vendor_email import send_follow_up_emails
-from email_draft_confirm import confirm_and_send_drafts
+# === PATH SETUP ===
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # po_agent_os/
+sys.path.append(BASE_DIR)
+sys.path.append(os.path.join(BASE_DIR, "external_communication"))
+sys.path.append(os.path.join(BASE_DIR, "Vendor_email_logger_agent"))
 
-# Load environment variables
-load_dotenv()
+# === IMPORTS ===
+from po_agent_os.external_communication.agents.po_agent import handle_po_message
+from po_agent_os.external_communication.agents.followup_agent import handle_followup_message
+from po_agent_os.external_communication.agents.vendor_reply_agent import handle_vendor_reply_message
+from po_agent_os.external_communication.agents.draft_sender_agent import handle_draft_send_message
+from po_agent_os.external_communication.utils.eta_updater import process_eta_updates
+from po_agent_os.external_communication.utils.po_status_updater import analyze_po_status
+from po_agent_os.external_communication.config import supabase
 
-# Initialize Supabase client
-supabase: Client = create_client(
-    os.getenv("SUPABASE_URL"),
-    os.getenv("SUPABASE_KEY")
-)
+# === MCP AGENT ID ===
+AGENT_ID = "external_comm_hub"
+MCP_URL = "http://localhost:8000"
 
-# Configure logging
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s [%(levelname)s] %(message)s',
-    handlers=[
-        logging.FileHandler('external_communication.log'),
-        logging.StreamHandler()
-    ]
-)
-logger = logging.getLogger(__name__)
-
-class MonitoringStats:
-    def __init__(self):
-        self.reset()
-    
-    def reset(self):
-        self.vendor_emails_processed = 0
-        self.drafts_created = 0
-        self.drafts_sent = 0
-        self.pos_sent = 0
-        self.follow_ups_sent = 0
-        self.errors = []
-        
-    def add_error(self, task: str, error: Exception):
-        self.errors.append({
-            'task': task,
-            'error': str(error),
-            'timestamp': datetime.now().isoformat()
+def send_to_mcp(sender: str, receiver: str, msg_type: str, payload: dict):
+    """MCP 서버로 메시지 전송"""
+    try:
+        response = requests.post(f"{MCP_URL}/send", json={
+            "sender": sender,
+            "receiver": receiver,
+            "content": "",
+            "type": msg_type,
+            "payload": payload
         })
+        response.raise_for_status()
+        return response.json()
+    except Exception as e:
+        print(f"[❌ MCP transmission error] {e}")
+        return None
 
-class EmailProcessor:
-    def __init__(self):
-        self.last_po_check = datetime.now()
-        self.last_follow_up_check = datetime.now()
-        self.stats = MonitoringStats()
+def receive_from_mcp(agent_id: str) -> List[Dict]:
+    """MCP 서버에서 메시지 수신"""
+    try:
+        response = requests.get(f"{MCP_URL}/receive/{agent_id}")
+        response.raise_for_status()
+        return response.json().get("messages", [])
+    except Exception as e:
+        print(f"[❌ MCP reception error] {e}")
+        return []
 
-    async def watch_new_pos(self):
-        """
-        새로운 PO 생성을 실시간으로 감지하고 처리
-        """
-        while True:
-            try:
-                current_time = datetime.now()
-                
-                # 새로 생성된 PO 확인
-                response = supabase.table("purchase_orders") \
-                    .select("*") \
-                    .gt("created_at", self.last_po_check.isoformat()) \
-                    .is_("submitted_at", "null") \
-                    .execute()
-                
-                if response.data:
-                    logger.info(f"새로운 PO {len(response.data)}건 감지됨")
-                    await self.process_po_emails(response.data)
-                
-                self.last_po_check = current_time
-                await asyncio.sleep(10)  # 10초마다 체크
-                
-            except Exception as e:
-                logger.error(f"PO 감지 중 오류: {e}")
-                await asyncio.sleep(30)
-
-    async def watch_vendor_emails(self):
-        """
-        새로운 벤더 이메일을 실시간으로 감지하고 처리
-        """
-        while True:
-            try:
-                result = handle_general_vendor_email()
-                if result:
-                    self.stats.vendor_emails_processed = len(result)
-                    self.stats.drafts_created = len([r for r in result if r.get('draft_body')])
-                    logger.info(f"✅ {self.stats.drafts_created} 개의 드래프트 생성됨")
-                
-                await asyncio.sleep(30)  # 30초마다 체크
-                
-            except Exception as e:
-                logger.error(f"벤더 이메일 처리 중 오류: {e}")
-                await asyncio.sleep(30)
-
-    async def watch_drafts(self):
-        """
-        생성된 드래프트를 실시간으로 감지하고 처리
-        """
-        while True:
-            try:
-                # 자동 승인이 필요한 드래프트 확인
-                response = supabase.table("email_logs") \
-                    .select("*") \
-                    .eq("status", "draft") \
-                    .execute()
-                
-                if response.data:
-                    logger.info(f"자동 승인 대상 드래프트 {len(response.data)}건 감지됨")
-                    await confirm_and_send_drafts()
-                
-                await asyncio.sleep(10)  # 10초마다 체크
-                
-            except Exception as e:
-                logger.error(f"드래프트 처리 중 오류: {e}")
-                await asyncio.sleep(30)
-
-    async def check_follow_ups(self):
-        """
-        후속 조치가 필요한 건들을 주기적으로 확인
-        """
-        while True:
-            try:
-                current_time = datetime.now()
-                
-                # 후속 조치 필요 여부 확인 (1시간마다)
-                if (current_time - self.last_follow_up_check).total_seconds() >= 3600:
-                    await send_follow_up_emails()
-                    self.last_follow_up_check = current_time
-                
-                await asyncio.sleep(600)  # 10분마다 체크
-                
-            except Exception as e:
-                logger.error(f"후속 조치 확인 중 오류: {e}")
-                await asyncio.sleep(300)
-
-    async def start(self):
-        """
-        모든 워커를 동시에 시작
-        """
-        await asyncio.gather(
-            self.watch_new_pos(),
-            self.watch_vendor_emails(),
-            self.watch_drafts(),
-            self.check_follow_ups()
-        )
-
-def print_monitoring_summary(stats: MonitoringStats):
-    """모니터링 결과 요약 출력"""
-    print(f"\n{'='*50}")
-    print("모니터링 결과 요약")
-    print(f"{'='*50}")
-    print(f"- 처리된 벤더 이메일: {stats.vendor_emails_processed}")
-    print(f"- 생성된 드래프트: {stats.drafts_created}")
-    print(f"- 발송된 드래프트: {stats.drafts_sent}")
-    print(f"- 발송된 PO 이메일: {stats.pos_sent}")
-    print(f"- 발송된 후속 조치: {stats.follow_ups_sent}")
-    
-    if stats.errors:
-        print("\n⚠️ 발생한 오류:")
-        for error in stats.errors:
-            print(f"- [{error['timestamp']}] {error['task']}: {error['error']}")
-    print(f"{'='*50}\n")
-
-async def monitor_all(interval: int):
-    """
-    모든 이메일 관련 작업을 주기적으로 모니터링합니다.
-    
-    Args:
-        interval: 모니터링 간격(초)
-    """
-    stats = MonitoringStats()
-    
+# === POLL NEW POs (status = 'issued', human_confirmed = True, submitted_at is null) ===
+async def poll_new_pos():
     while True:
         try:
-            start_time = datetime.now()
-            logger.info(f"작업 시작: {start_time.strftime('%Y-%m-%d %H:%M:%S')}")
-            
-            # 통계 초기화
-            stats.reset()
-            
-            # 1. 벤더 이메일 처리
-            await process_vendor_emails(stats)
-            
-            # 2. 드래프트 확인 및 발송
-            await process_drafts(stats)
-            
-            # 3. PO 이메일 발송
-            await process_po_emails(stats)
-            
-            # 4. 후속 조치 이메일
-            await process_follow_ups(stats)
-            
-            # 결과 요약 출력
-            print_monitoring_summary(stats)
-            
-            # 다음 실행까지 대기
-            end_time = datetime.now()
-            execution_time = (end_time - start_time).total_seconds()
-            wait_time = max(0, interval - execution_time)
-            
-            logger.info(f"작업 완료. 실행 시간: {execution_time:.1f}초")
-            logger.info(f"다음 실행까지 {wait_time:.1f}초 대기")
-            
-            await asyncio.sleep(wait_time)
-            
+            result = supabase.table("purchase_orders").select("po_number", "submitted_at") \
+                .eq("human_confirmed", True) \
+                .is_("submitted_at", "null") \
+                .execute()
+
+            if result.data:
+                print(f"[🔔 POLL: PO] {len(result.data)} new POs found")
+                for po in result.data:
+                    await handle_po_message({"po_number": po["po_number"]})
         except Exception as e:
-            logger.error(f"모니터링 중 오류 발생: {e}")
-            stats.add_error('monitoring', e)
-            print_monitoring_summary(stats)
-            await asyncio.sleep(60)  # 오류 발생 시 1분 후 재시도
+            print(f"[❌ poll_new_pos ERROR] {e}")
+        await asyncio.sleep(10)
 
-def setup_argparse():
-    parser = argparse.ArgumentParser(description='PO Agent External Communication Manager')
-    parser.add_argument('action', choices=[
-        'handle_vendor_email',     # 벤더 이메일 처리
-        'send_po',                 # PO 발행 이메일 발송
-        'follow_up',              # 후속 조치 이메일 발송
-        'update_threads',         # 이메일 스레드 업데이트
-        'confirm_drafts',         # 드래프트 확인 및 발송
-        'monitor'                 # 모든 기능 모니터링
-    ], help='실행할 작업을 선택하세요')
-    
-    parser.add_argument('--interval', type=int, default=300,
-                      help='모니터링 간격(초), 기본값: 300초')
-    
-    return parser.parse_args()
+# === POLL VENDOR EMAILS (latest inbound by thread_id, unprocessed only) ===
+async def poll_vendor_emails():
+    while True:
+        try:
+            print("[📬 POLL: Vendor Email] Checking latest inbound vendor replies...")
+            await handle_vendor_reply_message({})
+            # 벤더 이메일 처리 후 ETA 업데이트 실행
+            print("[📅 ETA Update] Checking for ETA updates from new vendor emails...")
+            process_eta_updates()
+            # 벤더 이메일 처리 후 PO 상태 업데이트
+            print("[🔄 PO Status] Updating PO statuses based on latest email...")
+            for po in supabase.table("purchase_orders").select("po_number").execute().data:
+                analyze_po_status(po["po_number"])
+        except Exception as e:
+            print(f"[❌ poll_vendor_emails ERROR] {e}")
+        await asyncio.sleep(30)
 
-async def main():
-    args = setup_argparse()
-    processor = EmailProcessor()
-    
-    try:
-        if args.action == 'monitor':
-            logger.info("이벤트 기반 모니터링 시작")
-            await processor.start()
-        else:
-            # 기존의 단일 작업 실행 로직 유지
-            if args.action == 'handle_vendor_email':
-                result = handle_general_vendor_email()
-                if result:
-                    print(f"✅ {len(result)} 개의 드래프트 생성됨")
-            elif args.action == 'send_po':
-                pass
-            elif args.action == 'follow_up':
-                await send_follow_up_emails()
-            elif args.action == 'update_threads':
-                pass
-            elif args.action == 'confirm_drafts':
-                await confirm_and_send_drafts()
-            
-    except KeyboardInterrupt:
-        logger.warning("\n⚠️ 프로그램이 사용자에 의해 중단되었습니다.")
-    except Exception as e:
-        logger.error(f"\n❌ 오류 발생: {e}")
-        raise
+# === POLL FOLLOW-UPS (check POs with ETA for 2-day reminders) ===
+async def poll_followups():
+    while True:
+        try:
+            print("[🔁 POLL: Follow-up] Triggering ETA reminder logic...")
+            await handle_followup_message({})
+        except Exception as e:
+            print(f"[❌ poll_followups ERROR] {e}")
+        await asyncio.sleep(3600)  # every 1 hour
 
+# === MCP DISPATCH LOOP (fallback for push-based message trigger) ===
+async def mcp_dispatch_loop():
+    while True:
+        try:
+            messages = receive_from_mcp(AGENT_ID)
+            for msg in messages:
+                msg_type = msg["type"]
+                payload = msg["payload"]
+                if msg_type == "new_po":
+                    await handle_po_message(payload)
+                elif msg_type == "follow_up_check":
+                    await handle_followup_message(payload)
+                elif msg_type == "vendor_reply":
+                    await handle_vendor_reply_message(payload)
+                    # 벤더 회신 처리 후 ETA 업데이트 실행
+                    print("[📅 ETA Update] Checking for ETA updates from new vendor reply...")
+                    process_eta_updates()
+                    # 벤더 회신 처리 후 PO 상태 업데이트
+                    if "po_number" in payload:
+                        print(f"[🔄 PO Status] Updating status for PO {payload['po_number']}...")
+                        analyze_po_status(payload["po_number"])
+                elif msg_type == "send_draft_email":
+                    await handle_draft_send_message(payload)
+                else:
+                    print(f"[⚠️ Unknown Type] {msg_type}")
+        except Exception as e:
+            print(f"[❌ MCP Dispatch Error] {e}")
+        await asyncio.sleep(5)
+
+def start_send_approved_worker():
+    def worker():
+        print("[워커] send_approved_drafts 5초마다 실행 시작")
+        while True:
+            send_approved_drafts()
+            import time; time.sleep(5)
+    t = threading.Thread(target=worker, daemon=True)
+    t.start()
+
+# === MAIN EVENT LOOP ===
 if __name__ == "__main__":
-    asyncio.run(main()) 
+    start_send_approved_worker()
+    async def main():
+        await asyncio.gather(
+            mcp_dispatch_loop(),
+            poll_new_pos(),
+            poll_vendor_emails(),
+            poll_followups()
+            # poll_eta_updates() 제거 - 더 이상 주기적 실행이 필요 없음
+        )
+    asyncio.run(main())

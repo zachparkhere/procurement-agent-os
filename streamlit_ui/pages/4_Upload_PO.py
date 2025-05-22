@@ -1,11 +1,11 @@
 import streamlit as st
-import pandas as pd
-from api.supabase import supabase
-from openai import OpenAI
+st.set_page_config(page_title="Upload PO", layout="wide")
+import sys
 import os
-
-st.set_page_config(page_title="Smart PO Upload", layout="wide")
-st.title("📥 Smart PO Upload with Column Mapping")
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")))
+import pandas as pd
+from po_agent_os.supabase_client_anon import supabase
+from openai import OpenAI
 
 uploaded_file = st.file_uploader("Upload your ERP-exported Excel file", type=["xlsx"])
 

@@ -1,18 +1,17 @@
 import os
 from datetime import datetime
 from dotenv import load_dotenv
-from supabase import create_client
+from po_agent_os.supabase_client import supabase
 from openai import OpenAI
 from textwrap import wrap
 
 # Load environment variables
 load_dotenv()
 SUPABASE_URL = os.getenv("SUPABASE_URL")
-SUPABASE_KEY = os.getenv("SUPABASE_KEY")
+SUPABASE_ANON_KEY = os.getenv("SUPABASE_ANON_KEY")
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
 # Initialize clients
-supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
 client = OpenAI(api_key=OPENAI_API_KEY)
 
 

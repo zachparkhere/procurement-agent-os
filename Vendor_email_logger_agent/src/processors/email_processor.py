@@ -9,7 +9,7 @@ import pandas as pd
 from ..utils.text_processor import TextProcessor
 from ..gmail.message_filter import get_email_type
 from typing import Dict, List
-from supabase import create_client
+from po_agent_os.supabase_client import supabase
 import re
 
 logger = logging.getLogger(__name__)
@@ -204,7 +204,7 @@ class EmailProcessor:
             now = datetime.utcnow()
             
             # 저장 전 중복 체크
-            existing = self.supabase.client.from_("email_logs").select("id").eq("message_id", message_data["message_id"]).execute().data
+            existing = self.supabase.client.from_("email_logs").select("message_id").eq("message_id", message_data["message_id"]).execute().data
             if existing:
                 logger.info(f"Duplicate message_id {message_data['message_id']} detected, skipping save.")
                 return None
@@ -218,6 +218,7 @@ class EmailProcessor:
                     attachments=attachments
                 )
                 message_data["po_number"] = po_number
+            print(f"[DEBUG] 추출된 PO 번호: {po_number}")
 
             # 이메일 내용 처리
             summary, email_type = self.text_processor.process_email_content(message_data)
@@ -277,7 +278,6 @@ class EmailProcessor:
                 "created_at": now.isoformat(),  # DB에 저장된 시간
                 "updated_at": now.isoformat(),  # DB 업데이트 시간
                 "received_at": received_at,  # inbound인 경우에만 설정, 받은 시간
-                "draft_body": None,  # 기본값으로 빈 문자열 설정
                 "status": status,  # outbound면 "sent", inbound면 "received"
                 "email_type": email_type,
                 "has_attachment": has_attachment,
@@ -286,7 +286,6 @@ class EmailProcessor:
                 "summary": summary if summary else "",
                 "sender_role": sender_role,  # outbound면 "admin", inbound면 "vendor"
                 "parsed_delivery_date": delivery_date,
-                "trigger_reason": None,
                 "body": message_data.get("body_text"),
                 "message_id": message_data.get("message_id")  # ✅ message_id도 항상 저장
             }
@@ -387,18 +386,30 @@ class EmailProcessor:
         date_str = self.clean_date_str(date_str)
         logger.debug(f"[parse_email_date] final date_str: '{date_str}'")
         try:
+            # Try format with timezone
             dt = datetime.strptime(date_str, "%a, %d %b %Y %H:%M:%S %z")
         except ValueError:
             try:
+                # Try format without timezone
                 dt = datetime.strptime(date_str, "%a, %d %b %Y %H:%M:%S")
                 dt = dt.replace(tzinfo=timezone.utc)
-            except Exception:
-                return datetime.max.replace(tzinfo=timezone.utc)
+            except ValueError:
+                try:
+                    # Try format without day name
+                    dt = datetime.strptime(date_str, "%d %b %Y %H:%M:%S %z")
+                except ValueError:
+                    try:
+                        # Try format without day name and timezone
+                        dt = datetime.strptime(date_str, "%d %b %Y %H:%M:%S")
+                        dt = dt.replace(tzinfo=timezone.utc)
+                    except Exception:
+                        logger.warning(f"Failed to parse date: {date_str}")
+                        return datetime.max.replace(tzinfo=timezone.utc)
         return dt.astimezone(timezone.utc)
 
     def is_already_logged(self, message_id: str) -> bool:
         try:
-            existing = self.supabase.client.from_("email_logs").select("id").eq("message_id", message_id).execute().data
+            existing = self.supabase.client.from_("email_logs").select("message_id").eq("message_id", message_id).execute().data
             return bool(existing)
         except Exception as e:
             logger.error(f"Error checking duplicate message_id: {e}")

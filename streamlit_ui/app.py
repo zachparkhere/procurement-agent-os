@@ -1,7 +1,12 @@
 import streamlit as st
 
-st.set_page_config(page_title="Shifts Procurement", layout="wide")
+def render():
+    st.set_page_config(page_title="Shifts Procurement", layout="wide")
+    st.title("📦 Shifts Procurement Agent")
+    st.markdown("Select a page from the left sidebar.")
 
-# Streamlit이 자동으로 pages 디렉토리의 파일을 탭으로 인식
-st.title("📦 Shifts Procurement Agent")
-st.markdown("Select a page from the left sidebar.")
+if __name__ == "__main__":
+    try:
+        render()
+    except Exception as e:
+        st.error(f"❌ Unexpected error: {e}")

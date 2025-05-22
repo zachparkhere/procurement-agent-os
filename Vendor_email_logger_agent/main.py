@@ -1,22 +1,25 @@
+import sys
 import os
+sys.path.append(os.path.abspath(os.path.dirname(os.path.dirname(__file__))))
 import asyncio
 import logging
-import sys
 from datetime import datetime, timedelta
 from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
-from config import settings, AgentSettings
+from po_agent_os.Vendor_email_logger_agent.config import settings, AgentSettings
 import openai
 
-from src.gmail.gmail_watcher import GmailWatcher
-from src.gmail.email_collector import EmailCollector
-from src.utils.text_processor import TextProcessor
-from src.processors.email_processor import EmailProcessor
-from src.processors.attachment_processor import AttachmentProcessor
-from src.services.mcp_service import MCPService
-from src.services.supabase_service import SupabaseService
-from src.gmail.message_filter import VendorEmailManager, is_vendor_email
+from po_agent_os.Vendor_email_logger_agent.src.gmail.gmail_watcher import GmailWatcher
+from po_agent_os.Vendor_email_logger_agent.src.gmail.email_collector import EmailCollector
+from po_agent_os.Vendor_email_logger_agent.src.utils.text_processor import TextProcessor
+from po_agent_os.Vendor_email_logger_agent.src.processors.email_processor import EmailProcessor
+from po_agent_os.Vendor_email_logger_agent.src.processors.attachment_processor import AttachmentProcessor
+from po_agent_os.Vendor_email_logger_agent.src.services.mcp_service import MCPService
+from po_agent_os.Vendor_email_logger_agent.src.services.supabase_service import SupabaseService
+from po_agent_os.Vendor_email_logger_agent.src.gmail.message_filter import VendorEmailManager, is_vendor_email
+from po_agent_os.external_communication.utils.email_utils import get_gmail_service
+from po_agent_os.Vendor_email_logger_agent.config import supabase
 
 # Load settings
 settings = AgentSettings()
@@ -96,7 +99,7 @@ async def process_email(service, msg, email_processor: EmailProcessor, mcp_servi
         logger.error(f"Error processing email {msg['id']}: {str(e)}")
         raise
 
-async def collect_historical_emails(service, email_processor: EmailProcessor, mcp_service: MCPService, vendor_manager: VendorEmailManager, months_back=3):
+async def collect_historical_emails(service, email_processor: EmailProcessor, mcp_service: MCPService, vendor_manager: VendorEmailManager, months_back=1):
     """과거 이메일 수집"""
     try:
         # 검색 쿼리 생성 (보낸 이메일과 받은 이메일 모두 포함)
@@ -108,7 +111,7 @@ async def collect_historical_emails(service, email_processor: EmailProcessor, mc
             userId='me',
             labelIds=['INBOX'],
             q=query,
-            maxResults=100
+            maxResults=700
         ).execute()
         
         messages = results.get('messages', [])
@@ -121,7 +124,7 @@ async def collect_historical_emails(service, email_processor: EmailProcessor, mc
             userId='me',
             labelIds=['SENT'],
             q=query,
-            maxResults=100
+            maxResults=700
         ).execute()
         
         sent_messages = sent_results.get('messages', [])
@@ -163,11 +166,18 @@ async def collect_historical_emails(service, email_processor: EmailProcessor, mc
                         dt = datetime.strptime(date_str, "%a, %d %b %Y %H:%M:%S")
                         from datetime import timezone
                         dt = dt.replace(tzinfo=timezone.utc)
-                    except Exception as e:
-                        logger.warning(f"Failed to parse date for msg {msg['id']}: {e}")
-                        # 항상 timezone-aware로 반환
-                        from datetime import timezone
-                        return datetime.max.replace(tzinfo=timezone.utc)
+                    except ValueError:
+                        try:
+                            dt = datetime.strptime(date_str, "%d %b %Y %H:%M:%S %z")
+                        except ValueError:
+                            try:
+                                dt = datetime.strptime(date_str, "%d %b %Y %H:%M:%S")
+                                from datetime import timezone
+                                dt = dt.replace(tzinfo=timezone.utc)
+                            except Exception as e:
+                                logger.warning(f"Failed to parse date for msg {msg['id']}: {e}")
+                                from datetime import timezone
+                                return datetime.max.replace(tzinfo=timezone.utc)
                 dt = dt.astimezone(__import__('datetime').timezone.utc)
                 return dt
             except Exception as e:
@@ -255,53 +265,70 @@ async def collect_historical_emails_for_vendor(service, email_processor, mcp_ser
     except Exception as e:
         print(f"[HISTORY] Error collecting historical emails for {vendor_email}: {e}")
 
-async def main():
-    """메인 함수"""
+async def fetch_and_save_user_inbox(user_row, email_processor):
     try:
-        # 벤더 이메일 CSV 파일 로드
-        vendor_csv_path = settings.VENDOR_CSV_PATH
-        logger.info(f"Vendor CSV path from .env: {vendor_csv_path}")
-        
-        if not vendor_csv_path:
-            logger.error("VENDOR_CSV_PATH not set in .env file")
+        service = get_gmail_service(user_row)
+        results = service.users().messages().list(userId='me', labelIds=['INBOX'], maxResults=100).execute()
+        messages = results.get('messages', [])
+        for msg in messages:
+            try:
+                message = service.users().messages().get(userId='me', id=msg['id'], format='metadata', metadataHeaders=['Subject', 'From', 'Date', 'To']).execute()
+                headers = message.get("payload", {}).get("headers", [])
+                subject = next((h['value'] for h in headers if h['name'] == 'Subject'), '')
+                from_email = next((h['value'] for h in headers if h['name'] == 'From'), '')
+                to_email = next((h['value'] for h in headers if h['name'] == 'To'), '')
+                sent_at = next((h['value'] for h in headers if h['name'] == 'Date'), '')
+                direction = "inbound"
+                content = email_processor.get_message_content(msg['id'])
+                parsed_message = {
+                    "thread_id": message.get("threadId"),
+                    "message_id": msg['id'],
+                    "subject": subject,
+                    "from": from_email,
+                    "to": to_email,
+                    "sent_at": sent_at,
+                    "body_text": content["body_text"],
+                    "direction": direction,
+                    "attachments": content["attachments"]
+                }
+                await email_processor.save_email_log(parsed_message)
+            except Exception as e:
+                logger.error(f"[{user_row['email']}] Error processing message {msg['id']}: {e}", exc_info=True)
+    except Exception as e:
+        logger.error(f"[{user_row['email']}] Gmail token invalid or expired: {e}", exc_info=True)
+
+async def run_for_user(user_row):
+    try:
+        # 1. Gmail 인증
+        service = get_gmail_service(user_row)
+        if service is None:
+            logger.error(f"[{user_row['email']}] Gmail service 생성 실패 (None 반환). 토큰/인증 정보 확인 필요.")
             return
-            
-        if not os.path.exists(vendor_csv_path):
-            logger.error(f"Vendor email CSV file not found at {vendor_csv_path}")
-            return
-            
-        # VendorEmailManager 인스턴스 생성 (DB + CSV)
-        vendor_manager = VendorEmailManager(csv_path=settings.VENDOR_CSV_PATH)
-        
-        # Gmail 서비스 인증
-        service = authenticate_gmail()
-        if not service:
-            logger.error("Failed to authenticate Gmail service")
-            return
-        
-        # 서비스 초기화
+
+        # 2. 벤더 이메일 매니저 (DB 기반)
+        vendor_manager = VendorEmailManager(csv_path=None)  # DB만 사용
+        # 3. 서비스/프로세서 초기화
         text_processor = TextProcessor()
         mcp_service = MCPService()
         supabase_service = SupabaseService()
         email_processor = EmailProcessor(service, text_processor, supabase_client=supabase_service)
-        
-        # 실시간 이메일 감시 시작
+        # 4. 실시간 감시자
         watcher = GmailWatcher(service, vendor_manager)
-        logger.info("GmailWatcher initialized")
-        
-        # 기존 서비스 초기화 및 워커 실행
+        logger.info(f"[{user_row['email']}] GmailWatcher initialized")
+        # 5. 벤더 이메일 실시간 감시 및 히스토리 수집 동시 실행
         await asyncio.gather(
             collect_historical_emails(service, email_processor, mcp_service, vendor_manager, months_back=1),
             watch_new_vendor_emails(service, email_processor, mcp_service, vendor_manager),
-            # 실시간 이메일 감시
             asyncio.to_thread(watcher.watch, lambda email: asyncio.create_task(process_email(service, email, email_processor, mcp_service, vendor_manager)))
         )
-        
     except Exception as e:
-        logger.error(f"Error in main: {e}")
-    finally:
-        if 'email_processor' in locals():
-            email_processor.cleanup()
+        logger.error(f"[{user_row.get('email', 'unknown')}] Error in run_for_user: {e}")
 
-if __name__ == '__main__':
+async def main():
+    # Supabase에서 email_access_token이 있는 모든 유저 조회
+    users = supabase.table("users").select("*").not_.is_("email_access_token", "null").execute().data
+    tasks = [run_for_user(user) for user in users]
+    await asyncio.gather(*tasks)
+
+if __name__ == "__main__":
     asyncio.run(main())

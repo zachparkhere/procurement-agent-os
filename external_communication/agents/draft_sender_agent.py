@@ -6,7 +6,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.append(BASE_DIR)
 
 from config import settings, supabase
-from email_draft_confirm import authenticate_gmail, send_email
+from email_draft_confirm import get_gmail_service, send_email_reply
 
 AUTO_SEND_ENABLED = False  # safe mode
 
@@ -14,9 +14,10 @@ async def handle_draft_send_message(payload: dict):
     print("[📨 DRAFT AGENT] Checking for auto-approved drafts...")
 
     try:
-        response = supabase.table("email_logs").select("*") \
+        response = supabase.table("email_logs") \
+            .select("*, llm_draft(*)") \
             .eq("status", "draft") \
-            .eq("auto_approve", True) \
+            .eq("llm_draft.auto_approve", True) \
             .eq("email_type", "follow_up_eta_present") \
             .is_("sent_at", "null") \
             .execute()
@@ -30,14 +31,16 @@ async def handle_draft_send_message(payload: dict):
             print(f"[🛑 DRAFT AGENT] AUTO_SEND_ENABLED = False → Skipping {len(drafts)} draft(s)")
             return
 
-        service = authenticate_gmail()
-
         for draft in drafts:
             to_email = draft["recipient_email"]
             subject = draft["subject"]
-            body = draft["draft_body"]
+            body = draft["llm_draft"]["draft_body"]
 
-            thread_id = send_email(service, to_email, subject, body)
+            # (예시) user_row = supabase.table("users").select("*").eq("email", to_email).single().execute().data
+            # service = get_gmail_service(user_row)
+            # thread_id = send_email_reply(service, to_email, subject, body, thread_id)
+
+            thread_id = send_email_reply(to_email, subject, body)
             now = datetime.utcnow().isoformat()
 
             supabase.table("email_logs").update({

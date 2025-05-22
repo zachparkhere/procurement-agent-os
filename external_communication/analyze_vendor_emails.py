@@ -1,14 +1,14 @@
 import os
 import json
 from dotenv import load_dotenv
-from supabase import create_client
-from llm_extract_info_needs import llm_extract_info_needs
+from po_agent_os.supabase_client import supabase
+from po_agent_os.llm_extract_info_needs import enrich_email_with_llm
 
 # Load environment variables
 load_dotenv()
 SUPABASE_URL = os.getenv("SUPABASE_URL")
-SUPABASE_KEY = os.getenv("SUPABASE_KEY")
-supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
+SUPABASE_ANON_KEY = os.getenv("SUPABASE_ANON_KEY")
+supabase = supabase
 
 def strip_quoted_text(email_body: str) -> str:
     """
@@ -32,7 +32,7 @@ def analyze_email_content(subject: str, body: str, po_number: str = None) -> dic
     cleaned_body = strip_quoted_text(body)
     if not cleaned_body or len(cleaned_body) < 10:
         print("⚠️ Body seems empty or too short after cleanup.")
-    result_json_str = llm_extract_info_needs(subject, cleaned_body)
+    result_json_str = enrich_email_with_llm(subject, cleaned_body)
     return json.loads(result_json_str)
 
 def analyze_unprocessed_vendor_emails():

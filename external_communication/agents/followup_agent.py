@@ -10,7 +10,7 @@ sys.path.append(BASE_DIR)
 
 from config import supabase
 from utils.email_thread_utils import get_latest_thread_id_for_po
-from follow_up_vendor_email import generate_eta_reconfirmation_draft
+from follow_up_vendor_email import generate_eta_reconfirmation_draft, send_follow_up_emails
 
 def get_last_reminder_sent_at_from_tracking(po_number: str) -> Optional[datetime]:
     response = supabase.table("po_tracking").select("last_reminder_sent_at") \
@@ -59,5 +59,8 @@ async def handle_followup_message(payload: dict = None):
         process_single_eta_followup(po_number)
     else:
         print("[🔁 FOLLOW-UP AGENT] Checking POs for ETA follow-ups (full scan)...")
-        from follow_up_vendor_email import process_all_eta_followups
-        process_all_eta_followups()
+        send_follow_up_emails()
+
+async def poll_followups():
+    print("[🔁 FOLLOW-UP AGENT] Checking POs for ETA follow-ups (full scan)...")
+    send_follow_up_emails()

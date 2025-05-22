@@ -1,7 +1,7 @@
 import os
 import sys
 from datetime import datetime
-from supabase import create_client
+from po_agent_os.supabase_client import supabase
 from dotenv import load_dotenv
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -16,8 +16,7 @@ from utils.email_thread_utils import get_latest_thread_id_for_po
 # Load Supabase
 load_dotenv()
 SUPABASE_URL = os.getenv("SUPABASE_URL")
-SUPABASE_KEY = os.getenv("SUPABASE_KEY")
-supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
+SUPABASE_ANON_KEY = os.getenv("SUPABASE_ANON_KEY")
 
 def handle_general_vendor_email():
     print("[📬 VENDOR AGENT] Scanning vendor replies...")
@@ -94,20 +93,21 @@ def handle_general_vendor_email():
             )
 
             subject = f"Re: {email_subject}" if email_subject else "Regarding your recent update"
-            supabase.table("email_logs").insert({
-                "po_number": po_number,
-                "thread_id": thread_id,
-                "direction": "outbound",
-                "status": "drafted",
-                "draft_body": draft_body,
-                "subject": subject,
-                "sender_role": "system",
-                "sender_email": None,
+            
+            # llm_draft에 초안 정보 저장
+            supabase.table("llm_draft").insert({
+                "email_log_id": email["id"],
+                "draft_subject": subject,
                 "recipient_email": vendor_email,
-                "created_at": datetime.utcnow().isoformat()
+                "draft_body": draft_body,
+                "auto_approve": False,
+                "llm_analysis_result": None,
+                "info_needed_to_reply": None,
+                "suggested_reply_type": "general_reply",
+                "reply_needed": True
             }).execute()
 
-            # Step 4: 해당 이메일 status를 processed로 업데이트
+            # 해당 이메일 status를 processed로 업데이트
             supabase.table("email_logs").update({"status": "processed"}).eq("id", email["id"]).execute()
 
             print(f"[✅ VENDOR AGENT] Draft created and saved for PO {po_number}")
