@@ -14,7 +14,7 @@ load_dotenv(os.path.join(os.path.dirname(os.path.dirname(__file__)), ".env"))
 
 class AgentSettings(BaseSettings):
     # Gmail
-    GMAIL_CREDENTIALS_FILE: str = 'credentials.json'
+    GMAIL_CREDENTIALS_FILE: str = '../credentials.json'
     GMAIL_TOKEN_FILE: str = 'token.json'
     GMAIL_SCOPES: ClassVar[List[str]] = [
         'https://www.googleapis.com/auth/gmail.send',

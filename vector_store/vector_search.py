@@ -4,14 +4,14 @@ from supabase import create_client
 from openai import OpenAI
 import numpy as np
 import logging
-from .config import settings
+from po_agent_os.vector_store.config import settings
 
 # 로깅 설정
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 # 클라이언트 초기화
-supabase = create_client(settings.SUPABASE_URL, settings.SUPABASE_KEY)
+supabase = create_client(settings.SUPABASE_URL, settings.SUPABASE_ANON_KEY)
 client = OpenAI(api_key=settings.OPENAI_API_KEY)
 
 class VectorSearch:

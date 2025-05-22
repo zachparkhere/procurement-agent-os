@@ -63,7 +63,6 @@ def insert_test_po(po_number):
         "po_number": po_number,
         "issue_date": "2025-05-01",
         "currency": "USD",
-        "update_status": "approved",
         "human_confirmed": True,
         "vendor_email": "mario904@snu.ac.kr",
         "vendor_name": "Test Vendor",

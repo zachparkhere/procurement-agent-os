@@ -51,7 +51,7 @@ cp credentials.template credentials.json
 # .env 파일 수정
 # 필요한 값들을 실제 값으로 교체:
 # - SUPABASE_URL
-# - SUPABASE_KEY
+# - SUPABASE_ANON_KEY
 # - OPENAI_API_KEY
 # - 기타 설정값들
 ```

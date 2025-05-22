@@ -8,10 +8,12 @@ SCOPES = ['https://www.googleapis.com/auth/gmail.readonly']
 
 os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
 
+CREDENTIALS_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), 'credentials.json')
+
 def get_gmail_service():
     creds = None
     flow = InstalledAppFlow.from_client_secrets_file(
-        'credentials.json', SCOPES)
+        CREDENTIALS_PATH, SCOPES)
     creds = flow.run_local_server(port=8000)
     service = build('gmail', 'v1', credentials=creds)
     return service

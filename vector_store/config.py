@@ -9,7 +9,7 @@ class VectorStoreSettings(BaseSettings):
 
     # Supabase 설정
     SUPABASE_URL: str
-    SUPABASE_KEY: str
+    SUPABASE_ANON_KEY: str
 
     # OpenAI 설정
     OPENAI_API_KEY: str
