@@ -2,7 +2,7 @@
 
 import os
 from datetime import datetime, timedelta
-from supabase import create_client
+from po_agent_os.supabase_client import supabase
 from dotenv import load_dotenv
 from utils.vector_search import find_latest_vendor_reply, find_last_eta_reply
 from openai import OpenAI
@@ -10,13 +10,13 @@ from openai import OpenAI
 # Load env
 load_dotenv()
 SUPABASE_URL = os.getenv("SUPABASE_URL")
-SUPABASE_KEY = os.getenv("SUPABASE_KEY")
+SUPABASE_ANON_KEY = os.getenv("SUPABASE_ANON_KEY")
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 SENDER_NAME = os.getenv("SENDER_NAME", "Procurement Team")
 SENDER_EMAIL = os.getenv("SENDER_EMAIL", "noreply@yourcompany.com")
 SENDER_COMPANY = os.getenv("SENDER_COMPANY", "Our Company")
 
-supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
+supabase = supabase
 openai_client = OpenAI(api_key=OPENAI_API_KEY)
 
 def get_stale_pos(days_threshold=3):
@@ -24,7 +24,7 @@ def get_stale_pos(days_threshold=3):
     cutoff_date = (datetime.utcnow() - timedelta(days=days_threshold)).isoformat()
 
     po_result = supabase.table("purchase_orders") \
-        .select("*, request_form_id(id, vendor_id(*))") \
+        .select("*, vendors(*)") \
         .not_.is_("submitted_at", "null") \
         .lt("submitted_at", cutoff_date) \
         .execute()
@@ -70,7 +70,7 @@ def get_pos_with_vendor_reply_but_no_eta():
         seen.add(po_number)
         try:
             po = supabase.table("purchase_orders") \
-                .select("*") \
+                .select("*, vendors(*)") \
                 .eq("po_number", po_number) \
                 .is_("eta", "null") \
                 .single() \
@@ -91,17 +91,15 @@ def get_eta_reconfirmation_pos(days_since_eta_reply=2):
 
     # Find POs with existing ETA
     po_result = supabase.table("purchase_orders") \
-        .select("*, request_form_id(id, vendor_id(*))") \
+        .select("*, vendors(*)") \
         .not_.is_("eta", "null") \
         .execute()
 
     for po in po_result.data:
-        rf_id = po["request_form_id"]["id"]
-
-        # Find vendor responses with ETA mentions for this request_form_id
+        # Find vendor responses with ETA mentions for this PO
         logs = supabase.table("email_logs") \
             .select("created_at, summary") \
-            .eq("request_form_id", rf_id) \
+            .eq("po_number", po["po_number"]) \
             .eq("sender_role", "vendor") \
             .order("created_at", desc=True) \
             .execute()
@@ -174,16 +172,17 @@ def generate_eta_request_draft(po: dict, vendor_name: str, vendor_email: str) ->
     subject = f"Follow-up on PO {po_number} — Awaiting ETA"
     body = f"""Dear {vendor_name},\n\nThank you for your recent communication regarding Purchase Order {po_number} (sent on {formatted_date}).\n\nWe would greatly appreciate if you could provide us with the estimated delivery date (ETA) for this order.\n\nThank you for your cooperation.\n\nBest regards,\n{SENDER_NAME}\nProcurement Team"""
     try:
-        supabase.table("email_logs").insert({
-            "po_number": po_number,
-            "subject": subject,
-            "draft_body": body,
+        # llm_draft에 초안 정보 저장
+        supabase.table("llm_draft").insert({
+            "email_log_id": po["email_log_id"],
+            "draft_subject": subject,
             "recipient_email": vendor_email,
-            "status": "draft",
-            "trigger_reason": "eta_missing",
-            "email_type": "follow_up_eta_missing",
-            "sender_role": "system",
-            "direction": "outgoing"
+            "draft_body": body,
+            "auto_approve": False,
+            "llm_analysis_result": None,
+            "info_needed_to_reply": None,
+            "suggested_reply_type": "follow_up_eta_missing",
+            "reply_needed": True
         }).execute()
         print(f"📩 ETA request draft created for PO: {po_number}")
         return True
@@ -209,27 +208,79 @@ Best regards,
 {SENDER_NAME}
 Procurement Team"""
 
-    # draft 저장 시 thread_id도 함께 저장
-    supabase.table("email_logs").insert({
-        "po_number": po["po_number"],
-        "recipient_email": vendor_email,
-        "subject": subject,
-        "draft_body": body,
-        "status": "draft",
-        "email_type": "follow_up_eta_present",
-        "thread_id": thread_id
-    }).execute()
+    try:
+        # llm_draft에 초안 정보 저장
+        supabase.table("llm_draft").insert({
+            "email_log_id": po["email_log_id"],
+            "draft_subject": subject,
+            "recipient_email": vendor_email,
+            "draft_body": body,
+            "auto_approve": False,
+            "llm_analysis_result": None,
+            "info_needed_to_reply": None,
+            "suggested_reply_type": "follow_up_eta_present",
+            "reply_needed": True
+        }).execute()
+        print(f"[✅ DRAFT] Created ETA reconfirmation draft for PO {po_number}")
+    except Exception as e:
+        print(f"❌ Error creating ETA reconfirmation draft for PO {po_number}: {e}")
 
-    print(f"[✅ DRAFT] Created ETA reconfirmation draft for PO {po_number}")
+def get_pos_needing_eta_request():
+    """ETA가 필요한 PO 목록을 가져옵니다 (status가 eta_pending인 경우)"""
+    try:
+        pos = supabase.table("purchase_orders") \
+            .select("*, vendors(*)") \
+            .eq("status", "eta_pending") \
+            .execute()
+        
+        print(f"📌 [ETA Request] POs with eta_pending status: {len(pos.data)} found")
+        return pos.data
+    except Exception as e:
+        print(f"❌ Error fetching eta_pending POs: {e}")
+        return []
+
+def get_pos_needing_eta_reconfirmation(days_threshold=2):
+    """ETA 재확인이 필요한 PO 목록을 가져옵니다 (status가 scheduled, in_transit, delayed이고 마지막 이메일이 n일 이상 지난 경우)"""
+    try:
+        now = datetime.utcnow()
+        cutoff_date = (now - timedelta(days=days_threshold)).isoformat()
+        
+        # 1. 해당 상태의 PO들을 가져옴
+        pos = supabase.table("purchase_orders") \
+            .select("*, vendors(*)") \
+            .in_("status", ["scheduled", "in_transit", "delayed"]) \
+            .execute()
+        
+        # 2. 각 PO에 대해 마지막 이메일 날짜 확인
+        pos_needing_reconfirmation = []
+        for po in pos.data:
+            # 해당 PO의 가장 최근 이메일 로그 확인
+            latest_email = supabase.table("email_logs") \
+                .select("created_at") \
+                .eq("po_number", po["po_number"]) \
+                .order("created_at", desc=True) \
+                .limit(1) \
+                .execute()
+            
+            if latest_email.data:
+                last_email_date = datetime.fromisoformat(latest_email.data[0]["created_at"].replace("Z", ""))
+                if (now - last_email_date).days >= days_threshold:
+                    pos_needing_reconfirmation.append(po)
+        
+        print(f"📌 [ETA Reconfirmation] POs needing reconfirmation: {len(pos_needing_reconfirmation)} found")
+        return pos_needing_reconfirmation
+    except Exception as e:
+        print(f"❌ Error fetching POs needing reconfirmation: {e}")
+        return []
 
 def send_follow_up_emails():
     print("🚀 Starting follow-up process...")
 
     # --- Generate ETA Request Emails ---
-    print("\n📬 [Phase A] Generating emails for POs with vendor reply but no ETA...")
-    eta_missing_replied_pos = get_pos_with_vendor_reply_but_no_eta()
-    for po in eta_missing_replied_pos:
-        vendor_data = po["request_form_id"]["vendor_id"]
+    print("\n📬 [Phase A] Generating emails for POs with eta_pending status...")
+    eta_pending_pos = get_pos_needing_eta_request()
+    for po in eta_pending_pos:
+        vendor_data = po["vendors"]
         vendor_name = vendor_data.get("name") or get_vendor_name(vendor_data["id"])
         vendor_email = vendor_data.get("email")
         if vendor_email:
@@ -237,11 +288,11 @@ def send_follow_up_emails():
         else:
             print(f"⚠️ Skipping PO {po['po_number']}: Vendor email is missing")
 
-    # --- Generate ETA Reminder Emails ---
+    # --- Generate ETA Reconfirmation Emails ---
     print("\n📬 [Phase B] Generating emails for POs needing ETA reconfirmation...")
-    eta_confirmed_pos = get_eta_reconfirmation_pos()
-    for po in eta_confirmed_pos:
-        vendor_data = po["request_form_id"]["vendor_id"]
+    eta_reconfirmation_pos = get_pos_needing_eta_reconfirmation()
+    for po in eta_reconfirmation_pos:
+        vendor_data = po["vendors"]
         vendor_name = vendor_data.get("name") or get_vendor_name(vendor_data["id"])
         vendor_email = vendor_data.get("email")
         if vendor_email:

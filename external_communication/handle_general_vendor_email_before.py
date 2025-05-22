@@ -5,19 +5,18 @@ import os
 import re
 from datetime import datetime
 from dotenv import load_dotenv
-from supabase import create_client
-from llm_extract_info_needs import llm_extract_info_needs
+from po_agent_os.supabase_client import supabase
+from po_agent_os.llm_extract_info_needs import enrich_email_with_llm
 from aggregate_context_blocks import aggregate_context_blocks
 from generate_multi_context_reply import generate_multi_context_reply
 from email_context_utils import get_last_conversation_by_request_form
 from utils.summary_utils import summarize_text
-import supabase
 
 # Load environment variables and initialize Supabase client
 load_dotenv()
 SUPABASE_URL = os.getenv("SUPABASE_URL")
-SUPABASE_KEY = os.getenv("SUPABASE_KEY")
-supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
+SUPABASE_ANON_KEY = os.getenv("SUPABASE_ANON_KEY")
+supabase = supabase
 
 # # Predefined simple acknowledgment body (Removed)
 # SIMPLE_ACK_BODY = "Thank you for the update. We appreciate the confirmation."
@@ -186,7 +185,7 @@ def handle_general_vendor_email():
         print(f"Body: {email_body[:200]}...")
 
         try:
-            raw = llm_extract_info_needs(email_subject, email_body)
+            raw = enrich_email_with_llm(email_subject, email_body)
             print(f"Raw LLM response for info needs:\n{raw}")
             
             try:
@@ -201,7 +200,7 @@ def handle_general_vendor_email():
                 continue
 
         except Exception as e:
-            print(f"❌ Error calling llm_extract_info_needs: {e}")
+            print(f"❌ Error calling enrich_email_with_llm: {e}")
             continue
 
         # Check if reply is needed
@@ -299,100 +298,49 @@ def demo():
             print(f"  [{i+1}] From {table} (ID: {schema_id}): {desc[:100]}...") # Print first 100 chars
 
 def save_draft_to_email_logs(result):
-    """Save the generated draft to email_logs table"""
-    if not result:
-        print("❌ No result to save")
-        return False
-
-    original_email = result["email"]
-    thread_id = original_email.get("thread_id", "")
-    
-    # 1. Thread ID에 매핑된 PO 번호 확인
-    po_number = None
-    if thread_id:
-        po_number = get_thread_po_mapping(thread_id)
-    
-    # 2. 매핑된 PO 번호가 없는 경우
-    if not po_number:
-        # 원본 이메일의 PO 번호 확인
-        po_number = original_email.get("po_number")
-        
-        # PO 번호가 없으면 추출 시도
-        if not po_number:
-            extracted_po = extract_po_number(original_email["subject"], original_email["body"])
-            if extracted_po and verify_po_number(extracted_po):
-                po_number = extracted_po
-                print(f"📝 Using extracted PO number: {po_number}")
-    
-    # Extract actual email body from the draft
-    draft_body = result["draft_body"]
-    if "---" in draft_body:
-        draft_body = draft_body.split("---")[-1].strip()
-    
-    if draft_body.startswith("Body:"):
-        draft_body = draft_body[5:].strip()
-    
-    summary = summarize_text(draft_body)
-    
-    # Get vendor email
-    vendor_email = original_email.get("sender_email")
-    if not vendor_email and po_number:
-        try:
-            request_form = supabase.table("request_form") \
-                .select("vendor_id(email)") \
-                .eq("id", po_number) \
-                .single() \
-                .execute()
-            if request_form.data and request_form.data["vendor_id"]:
-                vendor_email = request_form.data["vendor_id"]["email"]
-        except Exception as e:
-            print(f"❌ Error fetching vendor email: {e}")
-            return False
-
-    if not vendor_email:
-        print("❌ Could not find vendor email address")
-        return False
-
+    """Save the generated draft to email_logs and llm_draft tables"""
     current_time = datetime.utcnow().isoformat()
 
     try:
-        draft_data = {
-            "po_number": po_number,
-            "subject": original_email['subject'],
-            "draft_body": draft_body,
-            "summary": summary,
+        # 1. email_logs에 기본 정보 저장
+        email_log = supabase.table("email_logs").insert({
+            "po_number": result["email"].get("po_number"),
+            "subject": result["email"]["subject"],
             "body": None,
-            "recipient_email": vendor_email,
+            "recipient_email": result["email"]["recipient_email"],
             "sender_email": "system@purchaseorder.com",
             "status": "draft",
-            "trigger_reason": "vendor_reply",
             "email_type": result.get("suggested_reply_type", "general_reply"),
             "sender_role": "admin",
             "direction": "outgoing",
-            "thread_id": thread_id,
+            "thread_id": result["email"].get("thread_id"),
             "has_attachment": None,
             "attachment_types": [],
-            "created_at": current_time,
-            "llm_analysis_result": json.dumps(result.get("intent", {})),
-            "info_needed_to_reply": json.dumps(result.get("info_needed", [])),
-            "suggested_reply_type": result.get("suggested_reply_type", "general_reply"),
-            "reply_needed": True
-        }
+            "created_at": current_time
+        }).execute()
         
-        print("\n📝 Attempting to save draft with data:")
-        print(draft_data)
-        
-        response = supabase.table("email_logs").insert(draft_data).execute()
-        
-        if response.data:
-            print("\n✅ Draft saved to email_logs! You can now review and send it using email_draft_confirm.py")
+        # 2. llm_draft에 초안 정보 저장
+        if email_log.data:
+            supabase.table("llm_draft").insert({
+                "email_log_id": result["email"]["id"],
+                "draft_subject": result["email"]["subject"],
+                "recipient_email": result["email"]["recipient_email"],
+                "draft_body": result["draft_body"],
+                "auto_approve": False,
+                "llm_analysis_result": None,
+                "info_needed_to_reply": None,
+                "suggested_reply_type": "general_reply",
+                "reply_needed": True
+            }).execute()
+            
+            print("\n✅ Draft saved successfully!")
             return True
         else:
             print("\n❌ No data returned from insert operation")
             return False
             
     except Exception as e:
-        print(f"\n❌ Error saving draft to email_logs: {e}")
+        print(f"\n❌ Error saving draft: {e}")
         return False
 
 if __name__ == "__main__":

@@ -1,9 +1,10 @@
 import streamlit as st
-st.set_page_config(page_title="Login", layout="centered")
+st.set_page_config(page_title="Login", layout="wide")
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")))
 
-from api.supabase import supabase
-
-st.title("🔐 Login (Supabase Auth)")
+from streamlit_ui.api.supabase import supabase
 
 # 로그아웃 처리
 if st.session_state.get("user"):

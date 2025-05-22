@@ -107,4 +107,18 @@ coverage.xml
 
 # Local development settings
 local_settings.py
-db.sqlite3 
+db.sqlite3
+
+# Streamlit secrets
+secrets.toml
+
+# Streamlit/Cache
+.streamlit/
+.cache/
+
+# Temp files
+tempCodeRunnerFile.py
+
+# 기타 대용량/임시 파일
+bfg-1.15.0.jar
+mock_vendor_emails.csv 

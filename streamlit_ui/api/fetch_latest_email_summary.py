@@ -1,4 +1,4 @@
-from api.supabase import supabase
+from streamlit_ui.api.supabase import supabase
 
 def fetch_latest_email_summary(po_number: str, user_id=None):
     query = (

@@ -1,48 +1,40 @@
-from fastapi import FastAPI, HTTPException
-from pydantic import BaseModel
-from typing import Dict, List
-from datetime import datetime
+import sys, os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..")))
+
+from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 
+# ✅ 라우터 import는 꼭 이 위치에서!
+from external_communication.oauth.auth_router import router as auth_router
+
 app = FastAPI()
 
-# CORS 설정
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
+    allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
-    allow_credentials=True,
 )
 
-# 메시지 큐 (agent_id 기준)
-message_queues: Dict[str, List[Dict]] = {}
+# ✅ 라우터 등록
+print("✅ Registering /auth router")
+app.include_router(auth_router, prefix="/auth")
 
-class MCPMessage(BaseModel):
-    sender: str
-    receiver: str
-    content: str
-    type: str
-    payload: dict
+@app.get("/")
+def root():
+    return {"status": "MCP server alive"}
 
-@app.post("/send")
-def send_message(msg: MCPMessage):
-    if msg.receiver not in message_queues:
-        message_queues[msg.receiver] = []
-    message_queues[msg.receiver].append({
-        "sender": msg.sender,
-        "type": msg.type,
-        "payload": msg.payload,
-        "timestamp": datetime.utcnow().isoformat()
-    })
-    return {"status": "message queued", "to": msg.receiver}
+@app.post("/receive/external_comm_hub")
+async def receive_external_comm_hub(request: Request):
+    data = await request.json()
+    print("[MCP] Received data at /receive/external_comm_hub:", data)
+    return {"status": "received", "data": data}
 
-@app.get("/receive/{agent_id}")
-def receive_messages(agent_id: str):
-    messages = message_queues.get(agent_id, [])
-    message_queues[agent_id] = []  # 메시지 수신 후 큐 비우기
-    return {"messages": messages}
+@app.get("/receive/external_comm_hub")
+async def receive_external_comm_hub_get():
+    return {"status": "ok"}
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="127.0.0.1", port=8000)
+    uvicorn.run("mcp_server.main:app", host="127.0.0.1", port=8000, reload=True)

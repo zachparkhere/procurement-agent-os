@@ -1,10 +1,10 @@
 import os
-from supabase import create_client
+from po_agent_os.supabase_client import supabase
 from dotenv import load_dotenv
 
 # Load env vars
 load_dotenv()
-supabase = create_client(os.getenv("SUPABASE_URL"), os.getenv("SUPABASE_KEY")) 
+supabase = supabase
 
 def fetch_request_data(request_form_id: int):
     # 1. Fetch the request_form

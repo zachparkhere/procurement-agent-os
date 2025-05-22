@@ -1,13 +1,13 @@
-from supabase import create_client
+from po_agent_os.supabase_client import supabase
 import os
 from dotenv import load_dotenv
 from datetime import datetime
 
 load_dotenv()
 SUPABASE_URL = os.getenv("SUPABASE_URL")
-SUPABASE_KEY = os.getenv("SUPABASE_KEY")
+SUPABASE_ANON_KEY = os.getenv("SUPABASE_ANON_KEY")
 
-supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
+supabase = supabase
 
 def get_last_conversation_by_request_form(request_form_id, n=3):
     """Get the last n sent/received emails with non-null body for a request form, ordered by created_at desc."""

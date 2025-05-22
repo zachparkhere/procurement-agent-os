@@ -2,16 +2,16 @@
 import re, csv, os, logging
 from typing import Dict, List, Set
 from pathlib import Path
-from supabase import create_client
+from po_agent_os.supabase_client import supabase
 from dotenv import load_dotenv
+from po_agent_os.Vendor_email_logger_agent.config import settings
 
 # Load environment variables
 load_dotenv()
-SUPABASE_URL = os.getenv("SUPABASE_URL")
-SUPABASE_KEY = os.getenv("SUPABASE_KEY")
-
-# Initialize Supabase client
-supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
+# SUPABASE_URL = os.getenv("SUPABASE_URL")
+# SUPABASE_KEY = os.getenv("SUPABASE_KEY")
+# supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
+supabase = supabase
 
 # 로깅 설정
 logger = logging.getLogger(__name__)

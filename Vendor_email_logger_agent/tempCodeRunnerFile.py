@@ -8,14 +8,14 @@ from googleapiclient.discovery import build
 from config import settings, AgentSettings
 import openai
 
-from src.gmail.gmail_watcher import GmailWatcher
-from src.gmail.email_collector import EmailCollector
-from src.utils.text_processor import TextProcessor
-from src.processors.email_processor import EmailProcessor
-from src.processors.attachment_processor import AttachmentProcessor
-from src.services.mcp_service import MCPService
-from src.services.supabase_service import SupabaseService
-from src.gmail.message_filter import vendor_manager, is_vendor_email
+from po_agent_os.Vendor_email_logger_agent.src.gmail.gmail_watcher import GmailWatcher
+from po_agent_os.Vendor_email_logger_agent.src.gmail.email_collector import EmailCollector
+from po_agent_os.Vendor_email_logger_agent.src.utils.text_processor import TextProcessor
+from po_agent_os.Vendor_email_logger_agent.src.processors.email_processor import EmailProcessor
+from po_agent_os.Vendor_email_logger_agent.src.processors.attachment_processor import AttachmentProcessor
+from po_agent_os.Vendor_email_logger_agent.src.services.mcp_service import MCPService
+from po_agent_os.Vendor_email_logger_agent.src.services.supabase_service import SupabaseService
+from po_agent_os.Vendor_email_logger_agent.src.gmail.message_filter import vendor_manager, is_vendor_email
 
 # Load settings
 settings = AgentSettings()

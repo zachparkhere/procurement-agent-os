@@ -1,7 +1,8 @@
 import logging
 from datetime import datetime
-from supabase import create_client, Client
-from config import settings
+from po_agent_os.supabase_client import supabase
+from supabase import Client
+from po_agent_os.Vendor_email_logger_agent.config import settings
 from storage3.utils import StorageException
 
 logger = logging.getLogger(__name__)
@@ -10,7 +11,7 @@ class SupabaseService:
     def __init__(self):
         try:
             logger.info(f"Initializing Supabase client with URL: {settings.SUPABASE_URL}")
-            self.client: Client = create_client(settings.SUPABASE_URL, settings.SUPABASE_KEY)
+            self.client: Client = supabase
             self.storage = self.client.storage
             logger.info("Supabase client initialized successfully")
         except Exception as e:
@@ -27,7 +28,7 @@ class SupabaseService:
 
             # 1. (thread_id, message_id) 조합이 이미 있는지 확인
             exists = self.client.from_("email_logs") \
-                .select("id") \
+                .select("message_id") \
                 .eq("thread_id", thread_id) \
                 .eq("message_id", message_id) \
                 .execute().data
@@ -46,7 +47,6 @@ class SupabaseService:
                 "created_at": now.isoformat(),
                 "updated_at": now.isoformat(),
                 "received_at": email_data.get("received_at"),
-                "draft_body": email_data.get("draft_body"),
                 "status": email_data.get("status"),
                 "email_type": email_data.get("email_type"),
                 "has_attachment": email_data.get("has_attachment", False),
@@ -55,12 +55,13 @@ class SupabaseService:
                 "summary": summary if summary else "",
                 "sender_role": email_data.get("sender_role"),
                 "parsed_delivery_date": email_data.get("parsed_delivery_date"),
-                "trigger_reason": email_data.get("trigger_reason"),
                 "body": email_data.get("body"),
-                "message_id": message_id
+                "message_id": message_id,
+                "po_number": email_data.get("po_number")
             }
-            logger.info(f"Insert: New email log for thread_id={thread_id}, message_id={message_id}")
+            logger.info(f"[INSERT-DEBUG] email_log_data to insert: {email_log_data}")
             response = self.client.from_("email_logs").insert(email_log_data).execute()
+            logger.info(f"[INSERT-DEBUG] insert response: {response}")
             return response
         except Exception as e:
             logger.error(f"Supabase insert error: {str(e)}")
@@ -104,7 +105,7 @@ class SupabaseService:
             response = self.client.from_("email_logs").update({
                 "parsed_delivery_date": new_date,
                 "updated_at": datetime.utcnow().isoformat()
-            }).eq("id", email_log_id).execute()
+            }).eq("message_id", email_log_id).execute()
             
             logger.info(f"Delivery date updated successfully for email {email_log_id}")
             return response

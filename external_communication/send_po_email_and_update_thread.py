@@ -56,48 +56,39 @@ def send_email(service, to_email, subject, body):
     sent_message = service.users().messages().send(userId="me", body=message).execute()
     return sent_message.get("threadId")
 
-def send_po_emails_and_update_threads():
-    """draft 상태의 이메일들을 실제 발송하고, thread_id를 업데이트"""
-    # draft 상태인 이메일들 불러오기
-    drafts_response = supabase.table("email_logs").select("*").eq("status", "draft").execute()
-    drafts = drafts_response.data
-
-    if not drafts:
-        print("No drafts to send.")
-        return
-
-    # Gmail 서비스 인증
+def send_po_email_and_update_thread(po_number):
+    # llm_draft에서 초안 가져오기
+    draft = supabase.table("llm_draft") \
+        .select("*") \
+        .eq("po_number", po_number) \
+        .eq("suggested_reply_type", "po_confirmation") \
+        .order("created_at", desc=True) \
+        .limit(1) \
+        .execute()
+    
+    if not draft.data:
+        print(f"❌ No draft found for PO {po_number}")
+        return None
+    
+    draft = draft.data[0]
+    
+    # 이메일 전송
     service = authenticate_gmail()
-
-    for draft in drafts:
-        try:
-            print(f"\nSending email for draft ID: {draft['id']}, subject: {draft['subject']}")
-
-            # 이메일 발송
-            thread_id = send_email(
-                service,
-                to_email=draft["recipient_email"],
-                subject=draft["subject"],
-                body=draft["draft_body"]
-            )
-
-            # email_logs 업데이트
-            supabase.table("email_logs").update({
-                "thread_id": thread_id,
-                "status": "sent",
-                "sent_at": datetime.utcnow().isoformat()
-            }).eq("id", draft["id"]).execute()
-
-            # purchase_orders도 업데이트 (submitted_at)
-            if draft.get("po_number"):
-                supabase.table("purchase_orders").update({
-                    "submitted_at": datetime.utcnow().isoformat()
-                }).eq("po_number", draft["po_number"]).execute()
-
-            print(f"✅ Successfully sent and updated draft ID {draft['id']} (thread_id: {thread_id})")
-
-        except Exception as e:
-            print(f"❌ Error sending email for draft ID {draft['id']}: {e}")
+    thread_id = send_email(
+        service,
+        to_email=draft["recipient_email"],
+        subject=draft["subject"],
+        body=draft["draft_body"]
+    )
+    
+    # PO 업데이트
+    now = datetime.utcnow().isoformat()
+    supabase.table("purchase_orders").update({
+        "submitted_at": now
+    }).eq("po_number", po_number).execute()
+    
+    print(f"✅ Email sent for PO {po_number} (thread ID: {thread_id})")
+    return thread_id
 
 if __name__ == "__main__":
     send_po_emails_and_update_threads() 

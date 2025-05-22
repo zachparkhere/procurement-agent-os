@@ -13,13 +13,13 @@ from typing import Optional
 logger = logging.getLogger(__name__)
 
 class AttachmentProcessor:
-    def __init__(self, service, text_processor: TextProcessor, supabase_url: str, supabase_key: str):
+    def __init__(self, service, text_processor: TextProcessor, supabase_url: str, supabase_anon_key: str):
         self.service = service
         self.text_processor = text_processor
         self.temp_dir = tempfile.mkdtemp(prefix='email_attachments_')
 
         # Supabase 클라이언트 초기화
-        self.supabase: Client = create_client(supabase_url, supabase_key)
+        self.supabase: Client = create_client(supabase_url, supabase_anon_key)
         self.bucket_name = "your-bucket-name"  # 여기서 버킷 이름을 지정
 
     async def download_attachment(self, message_id: str, attachment_id: str, filename: str) -> Optional[str]:

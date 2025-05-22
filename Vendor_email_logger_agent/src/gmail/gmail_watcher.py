@@ -4,6 +4,7 @@ from typing import Dict, List, Optional
 import time
 from datetime import datetime, timedelta
 from .message_filter import is_vendor_email
+import traceback
 
 class GmailWatcher:
     def __init__(self, service, vendor_manager):
@@ -67,15 +68,25 @@ class GmailWatcher:
         """
         실시간 이메일 감시
         """
+        print("[Watcher] 실시간 감시 루프 시작")
         while True:
             try:
+                print("[Watcher] 새 메일 체크")
                 new_emails = self.get_new_emails()
                 if new_emails:
+                    print(f"[Watcher] {len(new_emails)}건의 새 메일 발견")
                     for email in new_emails:
-                        callback(email)
-                
+                        try:
+                            print(f"[Watcher] 콜백 호출: {email.get('id')}")
+                            callback(email)
+                        except Exception as e:
+                            print(f"[Watcher] 콜백 예외: {e}")
+                            print(traceback.format_exc())
+                else:
+                    print("[Watcher] 새 메일 없음")
+                print("[Watcher] I'm alive")
                 time.sleep(60)  # 60초마다 체크
-                
             except Exception as e:
-                print(f"Error in watch loop: {e}")
-                time.sleep(30)  # 에러 발생시 30초 대기
+                print(f"[Watcher] 루프 예외 발생: {e}")
+                print(traceback.format_exc())
+                time.sleep(10)  # 예외 발생 시 잠시 대기 후 재시작

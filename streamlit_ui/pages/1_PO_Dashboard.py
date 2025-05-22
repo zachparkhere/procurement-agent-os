@@ -1,33 +1,51 @@
 import streamlit as st
 st.set_page_config(page_title="PO Dashboard", layout="wide")
 
-from datetime import datetime
-from api.fetch_po import get_po_list
-from api.fetch_po_items import fetch_po_items
-from api.fetch_latest_email_summary import fetch_latest_email_summary
-from utils.session_guard import require_login
-from supabase import create_client
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")))
 
-# 로그인 체크 (MVP용)
+from datetime import datetime
+from po_agent_os.supabase_client_anon import supabase
+from streamlit_ui.api.fetch_po import fetch_user_pos
+from streamlit_ui.api.fetch_po_items import fetch_po_items
+from streamlit_ui.api.fetch_latest_email_summary import fetch_latest_email_summary
+from streamlit_ui.utils.session_guard import require_login
+import pandas as pd
+
+# 🔐 Login check
 if "user" not in st.session_state:
     st.warning("Please log in to continue.")
     st.stop()
 
+# ✅ Set Supabase auth session
+try:
+    user = st.session_state.get("user", {})
+    access_token = user.get("access_token") if isinstance(user, dict) else getattr(user, "access_token", None)
+    refresh_token = user.get("refresh_token") if isinstance(user, dict) else getattr(user, "refresh_token", None)
+
+    if not access_token or not refresh_token:
+        raise ValueError("Missing tokens in session.")
+
+    supabase.auth.set_session(access_token, refresh_token)
+
+except Exception as e:
+    st.error("Authentication failed. Please log in again.")
+    st.exception(e)
+    st.stop()
 st.sidebar.markdown(f"**Logged in as:** {st.session_state.user.email}")
 
-st.title("📦 Purchase Orders Dashboard")
-
-# ✅ 로그인 유저 체크
-if st.session_state.user is None:
-    st.warning("Please log in to view your purchase orders.")
-    st.stop()
-
-# ✅ 로그인된 유저 기준으로 PO 리스트 가져오기
+# Supabase user ID
 user_email = st.session_state.user.email
-supabase = create_client(st.secrets["supabase_url"], st.secrets["supabase_anon_key"])
 user_row = supabase.table("users").select("id").eq("email", user_email).single().execute().data
 user_id = user_row["id"]
-po_list = get_po_list(user_id=user_id)
+
+# Debugging output
+st.write("[DEBUG] user:", st.session_state.get("user"))
+st.write("[DEBUG] access_token:", getattr(st.session_state.user, "access_token", None))
+st.write("[DEBUG] refresh_token:", getattr(st.session_state.user, "refresh_token", None))
+
+po_list = fetch_user_pos(user_id=user_id)
 
 if not po_list:
     st.info("No purchase orders found.")
@@ -44,92 +62,92 @@ else:
         cols = st.columns(cols_per_row)
         for j, po in enumerate(visible_pos[i:i + cols_per_row]):
             with cols[j]:
-                with st.container():
-                    po_id = po.get("id")
-                    po_number = po.get("po_number", "Unknown")
-                    vendor_name = (po.get("vendors") or {}).get("name", "Unknown")
-                    expected_str = po.get("expected_delivery_date")
-                    eta_str = po.get("eta")
-                    ai_status = po.get("ai_status", "None")
-                    status_text = str(po.get("status") or "None")
-                    status_text_lower = status_text.lower()
+                po_id = po.get("id")
+                po_number = po.get("po_number", "Unknown")
+                vendor_name = po.get("vendor_name", "Unknown")
+                expected_str = po.get("expected_delivery_date")
+                eta_str = po.get("eta")
+                status_text = str(po.get("status") or "None")
+                status_text_lower = status_text.lower()
 
-                    detail_key = f"detail-{po_id}"
-                    edit_key = f"edit-{po_id}"
-                    save_key = f"save-{po_id}"
+                detail_key = f"detail-{po_id}"
+                edit_key = f"edit-{po_id}"
+                save_key = f"save-{po_id}"
 
-                    border_color = "red" if status_text_lower in ["delayed", "cancelled"] else "#ddd"
-                    card_style = f"border: 2px solid {border_color}; border-radius: 10px; padding: 20px; margin-bottom: 10px"
+                border_color = (
+                    "red" if status_text_lower in ["delayed", "cancelled"]
+                    else "#ccc"
+                )
 
-                    st.markdown(f"<div style='{card_style}'>", unsafe_allow_html=True)
+                card_style = f"""
+                    background-color: #fff;
+                    border: 2px solid {border_color};
+                    border-radius: 16px;
+                    padding: 20px;
+                    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+                    margin-bottom: 24px;
+                """
 
-                    top_cols = st.columns([0.85, 0.15])
-                    with top_cols[0]:
-                        st.markdown(f"### 🆔 {po_number}")
-                    with top_cols[1]:
-                        st.toggle("", key=edit_key)
-                        st.caption("✏️ Edit")
+                st.markdown(f"<div style='{card_style}'>", unsafe_allow_html=True)
 
-                    edit_mode = st.session_state.get(edit_key, False)
+                st.markdown(f"<div style='font-size:1.1em; font-weight:bold;'>🆔 {po_number}</div>", unsafe_allow_html=True)
+                st.markdown(f"<div style='color:gray; margin-bottom:12px;'>Vendor: {vendor_name}</div>", unsafe_allow_html=True)
 
-                    st.write(f"**Vendor**: {vendor_name}")
-                    st.write(f"**Expected Delivery Date**: {expected_str or 'None'}")
-                    st.write(f"📦 **ETA**: {eta_str or 'Not set'}")
+                st.markdown(f"**📅 Expected Delivery Date**: {expected_str or 'None'}")
+                st.markdown(f"**📦 ETA**: {eta_str or 'Not set'}")
 
-                    if not edit_mode:
-                        color = (
-                            "red" if status_text_lower in ["delayed", "cancelled"]
-                            else "green" if status_text_lower == "done"
-                            else "black"
-                        )
-                        st.markdown(f"**Status**: <span style='color:{color}'>{status_text}</span>", unsafe_allow_html=True)
+                if not st.toggle("✏️ Edit", key=edit_key):
+                    color = (
+                        "red" if status_text_lower in ["delayed", "cancelled"]
+                        else "green" if status_text_lower == "done"
+                        else "black"
+                    )
+                    st.markdown(f"**📌 Status**: <span style='color:{color}'>{status_text}</span>", unsafe_allow_html=True)
+                else:
+                    status_options = ["None", "In Progress", "Delayed", "Cancelled", "Done"]
+                    safe_status = status_text if status_text in status_options else "None"
+                    new_status = st.selectbox("📌 Status", status_options,
+                                              index=status_options.index(safe_status),
+                                              key=f"status-{po_id}")
+                    new_eta = st.text_input("📦 ETA", eta_str or "", key=f"eta-{po_id}")
+                    new_expected = st.text_input("📅 Expected Delivery Date", expected_str or "", key=f"expdate-{po_id}")
+                    if st.button("💾 Save Changes", key=save_key):
+                        po["status"] = new_status
+                        po["eta"] = new_eta
+                        po["expected_delivery_date"] = new_expected
+                        st.rerun()
+
+                summary, summary_date = fetch_latest_email_summary(po_number)
+                if summary:
+                    st.markdown(f"📄 **Last Email Summary** ({summary_date[:10]}):")
+                    st.markdown(f"> {summary[:200]}{'...' if len(summary) > 200 else ''}")
+                else:
+                    st.markdown("📄 _No email summary available._")
+
+                items = fetch_po_items(po_number)
+                categories = list(set(item.get('category', '') for item in items if item.get('category')))
+                st.markdown(f"**📂 Item Categories**: {', '.join(categories) if categories else '(TBD)'}")
+
+                btn_cols = st.columns([0.5, 0.5])
+                with btn_cols[0]:
+                    st.button("📨 Generate Follow-up", key=f"followup-{po_id}")
+                with btn_cols[1]:
+                    st.toggle("🔍 View Details", key=detail_key)
+
+                if st.session_state.get(detail_key, False):
+                    st.markdown("---")
+                    st.markdown("### 📑 PO Details")
+                    st.markdown(f"**PO Number**: {po_number}")
+                    st.markdown(f"**Vendor**: {vendor_name}")
+                    st.markdown(f"**Expected Delivery Date**: {expected_str or 'None'}")
+
+                    if items:
+                        df = pd.DataFrame(items)
+                        df = df[["item_no", "description", "quantity", "unit", "unit_price", "subtotal", "tax", "total", "category"]]
+                        df.columns = ["Item No", "Description", "Qty", "Unit", "Unit Price", "Subtotal", "Tax", "Total", "Category"]
+                        st.dataframe(df.reset_index(drop=True), use_container_width=True)
+                        st.markdown(f"**📦 Total Sum**: {df['Total'].sum():,.0f}")
                     else:
-                        status_options = ["None", "In Progress", "Delayed", "Cancelled", "Done"]
-                        safe_status = status_text if status_text in status_options else "None"
-                        new_status = st.selectbox("📌 Status", status_options,
-                                                  index=status_options.index(safe_status),
-                                                  key=f"status-{po_id}")
-                        new_eta = st.text_input("📦 ETA", eta_str or "", key=f"eta-{po_id}")
-                        new_expected = st.text_input("📅 Expected Delivery Date", expected_str or "", key=f"expdate-{po_id}")
-                        if st.button("💾 Save Changes", key=save_key):
-                            po["status"] = new_status
-                            po["eta"] = new_eta
-                            po["expected_delivery_date"] = new_expected
-                            st.rerun()
+                        st.write("No item data found.")
 
-                    st.write(f"**AI Status**: {ai_status}")
-
-                    summary, summary_date = fetch_latest_email_summary(po_number)
-                    if summary:
-                        st.markdown(f"📄 **Last Email Summary** ({summary_date[:10]}):")
-                        st.markdown(f"> {summary[:200]}{'...' if len(summary) > 200 else ''}")
-                    else:
-                        st.markdown("📄 _No email summary available._")
-
-                    st.write(f"**Item Categories**: {', '.join(po.get('item_categories', [])) if po.get('item_categories') else '(TBD)'}")
-
-                    btn_cols = st.columns([0.5, 0.5])
-                    with btn_cols[0]:
-                        st.button(" Generate Follow-up", key=f"followup-{po_id}")
-                    with btn_cols[1]:
-                        st.toggle("🔍 View Details", key=detail_key)
-
-                    if st.session_state.get(detail_key, False):
-                        st.markdown("---")
-                        st.markdown("### 📑 PO Details")
-                        st.write(f"**PO Number**: {po_number}")
-                        st.write(f"**Vendor**: {vendor_name}")
-                        st.write(f"**Expected Delivery Date**: {expected_str or 'None'}")
-
-                        items = fetch_po_items(po_number)
-                        if items:
-                            import pandas as pd
-                            df = pd.DataFrame(items)
-                            df = df[["item_no", "description", "quantity", "unit", "unit_price", "subtotal", "tax", "total", "category"]]
-                            df.columns = ["Item No", "Description", "Qty", "Unit", "Unit Price", "Subtotal", "Tax", "Total", "Category"]
-                            st.dataframe(df, use_container_width=True)
-                            st.markdown(f"**📦 Total Sum**: {df['Total'].sum():,.0f}")
-                        else:
-                            st.write("No item data found.")
-
-                    st.markdown("</div>", unsafe_allow_html=True)
+                st.markdown("</div>", unsafe_allow_html=True)

@@ -1,14 +1,12 @@
-from api.supabase import supabase
+from streamlit_ui.api.supabase import supabase
 
-def fetch_po_items(po_number: str, user_id=None):
-    query = (
+def fetch_po_items(po_number: str):
+    return (
         supabase
         .table("po_items")
         .select("*")
         .eq("po_number", po_number)
-        .order("item_no", desc=False)
+        .order("item_no")
+        .execute()
+        .data
     )
-    if user_id:
-        query = query.eq("user_id", user_id)
-    result = query.execute()
-    return result.data if result.data else []
