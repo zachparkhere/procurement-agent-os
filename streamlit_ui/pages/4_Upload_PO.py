@@ -2,82 +2,37 @@ import sys
 import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")))
 import streamlit as st
-import pandas as pd
-from po_agent_os.supabase_client_anon import supabase
-from openai import OpenAI
+import datetime
+from supabase import create_client
 
-uploaded_file = st.file_uploader("Upload your ERP-exported Excel file", type=["xlsx"])
+# 환경변수 또는 config에서 가져오기
+SUPABASE_URL = os.getenv("SUPABASE_URL")
+SUPABASE_KEY = os.getenv("SUPABASE_SERVICE_ROLE_KEY")
+supabase_storage = create_client(SUPABASE_URL, SUPABASE_KEY)
 
-if uploaded_file:
-    df = pd.read_excel(uploaded_file)
-    st.success("✅ File loaded successfully.")
-    st.dataframe(df.head(10), use_container_width=True)
+# 여러 파일 업로드 지원
+uploaded_files = st.file_uploader(
+    "Upload your ERP-exported Excel files",
+    type=["xlsx"],
+    accept_multiple_files=True
+)
 
-    # --- Step 1: Extract headers ---
-    columns = df.columns.tolist()
-
-    # --- Step 2: Ask GPT to map columns ---
-    with st.spinner("🔍 Letting AI analyze your columns..."):
-        import openai
-        openai.api_key = os.getenv("OPENAI_API_KEY")
-
-        system_prompt = """You are a helpful assistant for data onboarding.
-Given a list of Excel column headers from an ERP system, your job is to map which column represents each of the following:
-
-- PO Number
-- Vendor Code
-- Vendor Name
-- Delivery Date
-- Item Description
-- Quantity
-- Unit Price
-- Vendor Email
-
-Return a JSON object with keys as the above items and values as the matched column names from the list.
-Only use column names from the input. If no suitable match, return null for that key."""
-
-        user_prompt = f"Excel columns: {columns}"
-
-        response = openai.ChatCompletion.create(
-            model="gpt-4",
-            messages=[
-                {"role": "system", "content": system_prompt},
-                {"role": "user", "content": user_prompt}
-            ]
+if uploaded_files:
+    for uploaded_file in uploaded_files:
+        st.success(f"✅ File '{uploaded_file.name}' loaded successfully.")
+        # Supabase Storage 업로드 (이메일별 폴더)
+        # 예시: user_email = st.session_state.user.email (실제 로그인 세션에서 가져와야 함)
+        user_email = getattr(getattr(st.session_state, 'user', None), 'email', 'anonymous')
+        file_bytes = uploaded_file.getvalue()
+        file_name = uploaded_file.name
+        timestamp = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
+        storage_path = f"{user_email}/{timestamp}_{file_name}"
+        res = supabase_storage.storage.from_("po-uploads").upload(
+            storage_path,
+            file_bytes,
+            {"content-type": uploaded_file.type}
         )
-
-        import json
-        suggestions = json.loads(response["choices"][0]["message"]["content"])
-
-    st.subheader("🧠 Suggested Column Mapping (editable)")
-    final_mapping = {}
-    for key, suggestion in suggestions.items():
-        default_index = columns.index(suggestion) if suggestion in columns else 0
-        final_mapping[key] = st.selectbox(f"{key}", options=columns, index=default_index)
-
-    # --- Step 3: Vendor Email Check ---
-    missing_emails = df[final_mapping["Vendor Email"]].isna().sum()
-    if missing_emails > 0:
-        st.warning(f"⚠️ {missing_emails} rows are missing vendor emails. Please fix them before continuing.")
-
-    # --- Step 4: Insert into Supabase ---
-    if st.button("💾 Insert into Database"):
-        user_id = st.session_state.user.id
-        inserted = 0
-
-        for _, row in df.iterrows():
-            try:
-                po_data = {
-                    "po_number": str(row[final_mapping["PO Number"]]),
-                    "vendor_code": str(row[final_mapping["Vendor Code"]]),
-                    "vendor_name": str(row[final_mapping["Vendor Name"]]),
-                    "expected_delivery_date": str(row[final_mapping["Delivery Date"]]),
-                    "vendor_email": str(row[final_mapping["Vendor Email"]]),
-                    "user_id": user_id
-                }
-                supabase.table("purchase_orders").insert(po_data).execute()
-                inserted += 1
-            except Exception as e:
-                st.error(f"❌ Row insert failed: {e}")
-
-        st.success(f"✅ {inserted} purchase orders inserted.")
+        if res.error is None:
+            st.success("📦 File uploaded successfully!")
+        else:
+            st.error(f"Storage upload failed for '{file_name}': {res.error.message}")

@@ -1,0 +1,1444 @@
+2025-05-02 17:03:31,665 - INFO - Vendor CSV path from .env: C:\Users\USER\po_agent_os\mock_vendor_emails.csv
+2025-05-02 17:03:32,639 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/purchase_orders?select=vendor_email&vendor_email=not.is.null "HTTP/1.1 200 OK"
+2025-05-02 17:03:32,642 - INFO - Loaded 2 vendor emails from database
+2025-05-02 17:03:32,648 - INFO - Loaded 0 additional vendor emails from CSV
+2025-05-02 17:03:32,649 - INFO - Total unique vendor emails: 2
+2025-05-02 17:03:32,668 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-05-02 17:03:32,924 - INFO - Initializing Supabase client with URL: https://ujvbinqvvgbzgwqluian.supabase.co
+2025-05-02 17:03:32,951 - INFO - Supabase client initialized successfully
+2025-05-02 17:03:32,951 - INFO - Searching emails with query: after:2025/04/02
+2025-05-02 17:04:09,539 - INFO - Is vendor: True
+2025-05-02 17:04:11,047 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 17:04:11,051 - INFO - Generated email type: purchase order review
+2025-05-02 17:04:11,496 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/storage/v1/object/attachments-from-vendor//None "HTTP/1.1 400 Bad Request"
+2025-05-02 17:04:11,498 - ERROR - Error downloading attachment: {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-05-02 17:04:11,498 - INFO - Fetching thread history for thread_id: 1967aac700cf1999
+2025-05-02 17:04:11,611 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.1967aac700cf1999&order=sent_at "HTTP/1.1 200 OK"
+2025-05-02 17:04:11,616 - INFO - Found 0 emails in thread
+2025-05-02 17:04:12,637 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 17:04:12,640 - INFO - Parsed delivery date: None
+2025-05-02 17:04:12,686 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&thread_id=eq.1967aac700cf1999&message_id=eq.None "HTTP/1.1 200 OK"
+2025-05-02 17:04:12,687 - INFO - Insert: New email log for thread_id=1967aac700cf1999, message_id=None
+2025-05-02 17:04:12,734 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-02 17:04:13,028 - INFO - Message sent to MCP server: new po
+2025-05-02 17:04:13,030 - INFO - Processed email: 1967aac700cf1999
+2025-05-02 17:04:13,264 - INFO - Is vendor: True
+2025-05-02 17:04:15,266 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 17:04:15,269 - INFO - Generated email type: delivery delay
+2025-05-02 17:04:15,270 - INFO - Fetching thread history for thread_id: 1967ab19c3293811
+2025-05-02 17:04:15,329 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.1967ab19c3293811&order=sent_at "HTTP/1.1 200 OK"
+2025-05-02 17:04:15,332 - INFO - Found 0 emails in thread
+2025-05-02 17:04:15,983 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 17:04:15,990 - INFO - Parsed delivery date: None
+2025-05-02 17:04:16,029 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&thread_id=eq.1967ab19c3293811&message_id=eq.None "HTTP/1.1 200 OK"
+2025-05-02 17:04:16,030 - INFO - Insert: New email log for thread_id=1967ab19c3293811, message_id=None
+2025-05-02 17:04:16,074 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-02 17:04:16,078 - INFO - Message sent to MCP server: po status update
+2025-05-02 17:04:16,078 - INFO - Processed email: 1967ab19c3293811
+2025-05-02 17:04:17,270 - INFO - Is vendor: True
+2025-05-02 17:04:19,269 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 17:04:19,272 - INFO - Generated email type: delivery confirmation
+2025-05-02 17:04:19,273 - INFO - Fetching thread history for thread_id: 1967b271a1c91212
+2025-05-02 17:04:19,314 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.1967b271a1c91212&order=sent_at "HTTP/1.1 200 OK"
+2025-05-02 17:04:19,315 - INFO - Found 0 emails in thread
+2025-05-02 17:04:20,185 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 17:04:20,186 - INFO - Parsed delivery date: 2025-05-01
+2025-05-02 17:04:20,231 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&thread_id=eq.1967b271a1c91212&message_id=eq.None "HTTP/1.1 200 OK"
+2025-05-02 17:04:20,232 - INFO - Insert: New email log for thread_id=1967b271a1c91212, message_id=None
+2025-05-02 17:04:20,280 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-02 17:04:20,656 - INFO - Message sent to MCP server: 
+2025-05-02 17:04:20,657 - INFO - Processed email: 1967b271a1c91212
+2025-05-02 17:04:20,895 - INFO - Is vendor: True
+2025-05-02 17:04:23,479 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 17:04:23,485 - INFO - Generated email type: delivery confirmation
+2025-05-02 17:04:23,485 - INFO - Fetching thread history for thread_id: 1967b32b2f36808c
+2025-05-02 17:04:23,529 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.1967b32b2f36808c&order=sent_at "HTTP/1.1 200 OK"
+2025-05-02 17:04:23,529 - INFO - Found 0 emails in thread
+2025-05-02 17:04:24,391 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 17:04:24,395 - INFO - Parsed delivery date: 2025-05-01
+2025-05-02 17:04:24,437 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&thread_id=eq.1967b32b2f36808c&message_id=eq.None "HTTP/1.1 200 OK"
+2025-05-02 17:04:24,438 - INFO - Insert: New email log for thread_id=1967b32b2f36808c, message_id=None
+2025-05-02 17:04:24,487 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-02 17:04:24,594 - INFO - Message sent to MCP server: 
+2025-05-02 17:04:24,595 - INFO - Processed email: 1967b32b2f36808c
+2025-05-02 17:04:33,144 - INFO - Is vendor: True
+2025-05-02 17:04:35,315 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 17:04:35,318 - INFO - Generated email type: order confirmation
+2025-05-02 17:04:35,318 - INFO - Fetching thread history for thread_id: 1968507ce2f9fef8
+2025-05-02 17:04:35,405 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.1968507ce2f9fef8&order=sent_at "HTTP/1.1 200 OK"
+2025-05-02 17:04:35,411 - INFO - Found 0 emails in thread
+2025-05-02 17:04:36,245 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 17:04:36,248 - INFO - Parsed delivery date: 2025-05-01
+2025-05-02 17:04:36,298 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&thread_id=eq.1968507ce2f9fef8&message_id=eq.None "HTTP/1.1 200 OK"
+2025-05-02 17:04:36,299 - INFO - Insert: New email log for thread_id=1968507ce2f9fef8, message_id=None
+2025-05-02 17:04:36,348 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-02 17:04:36,613 - INFO - Message sent to MCP server: 
+2025-05-02 17:04:36,614 - INFO - Processed email: 1968507ce2f9fef8
+2025-05-02 17:04:37,096 - INFO - Is vendor: True
+2025-05-02 17:04:40,000 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 17:04:40,003 - INFO - Generated email type: shipment scheduling
+2025-05-02 17:04:40,004 - INFO - Fetching thread history for thread_id: 19685655410ff470
+2025-05-02 17:04:40,050 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.19685655410ff470&order=sent_at "HTTP/1.1 200 OK"
+2025-05-02 17:04:40,052 - INFO - Found 0 emails in thread
+2025-05-02 17:04:44,089 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 17:04:44,095 - INFO - Parsed delivery date: 2023-05-07
+2025-05-02 17:04:44,140 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&thread_id=eq.19685655410ff470&message_id=eq.None "HTTP/1.1 200 OK"
+2025-05-02 17:04:44,140 - INFO - Insert: New email log for thread_id=19685655410ff470, message_id=None
+2025-05-02 17:04:44,189 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-02 17:04:44,193 - INFO - Message sent to MCP server: eta alert
+2025-05-02 17:04:44,194 - INFO - Processed email: 19685655410ff470
+2025-05-02 17:04:44,432 - INFO - Is vendor: True
+2025-05-02 17:04:46,099 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 17:04:46,105 - INFO - Generated email type: delivery delay
+2025-05-02 17:04:46,105 - INFO - Fetching thread history for thread_id: 196858d50560d69c
+2025-05-02 17:04:46,161 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.196858d50560d69c&order=sent_at "HTTP/1.1 200 OK"
+2025-05-02 17:04:46,163 - INFO - Found 0 emails in thread
+2025-05-02 17:04:46,967 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 17:04:46,986 - INFO - Parsed delivery date: None
+2025-05-02 17:04:47,018 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&thread_id=eq.196858d50560d69c&message_id=eq.None "HTTP/1.1 200 OK"
+2025-05-02 17:04:47,019 - INFO - Insert: New email log for thread_id=196858d50560d69c, message_id=None
+2025-05-02 17:04:47,051 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-02 17:04:47,311 - INFO - Message sent to MCP server: new eta for the latest po
+2025-05-02 17:04:47,312 - INFO - Processed email: 196858d50560d69c
+2025-05-02 17:04:47,544 - INFO - Is vendor: True
+2025-05-02 17:04:49,348 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 17:04:49,354 - INFO - Generated email type: delivery delay
+2025-05-02 17:04:49,354 - INFO - Fetching thread history for thread_id: 196858fe40e734ea
+2025-05-02 17:04:49,391 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.196858fe40e734ea&order=sent_at "HTTP/1.1 200 OK"
+2025-05-02 17:04:49,395 - INFO - Found 0 emails in thread
+2025-05-02 17:04:53,446 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 17:04:53,453 - INFO - Parsed delivery date: None
+2025-05-02 17:04:53,502 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&thread_id=eq.196858fe40e734ea&message_id=eq.None "HTTP/1.1 200 OK"
+2025-05-02 17:04:53,504 - INFO - Insert: New email log for thread_id=196858fe40e734ea, message_id=None
+2025-05-02 17:04:53,535 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-02 17:04:53,541 - INFO - Message sent to MCP server: delay alert for the latest po
+2025-05-02 17:04:53,541 - INFO - Processed email: 196858fe40e734ea
+2025-05-02 17:04:55,661 - INFO - Is vendor: True
+2025-05-02 17:04:57,773 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 17:04:57,775 - INFO - Generated email type: purchase order
+2025-05-02 17:04:58,214 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/storage/v1/object/attachments-from-vendor//None "HTTP/1.1 400 Bad Request"
+2025-05-02 17:04:58,218 - ERROR - Error downloading attachment: {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-05-02 17:04:58,219 - INFO - Fetching thread history for thread_id: 196872f923934e74
+2025-05-02 17:04:58,258 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.196872f923934e74&order=sent_at "HTTP/1.1 200 OK"
+2025-05-02 17:04:58,259 - INFO - Found 3 emails in thread
+2025-05-02 17:04:59,170 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 17:04:59,172 - INFO - Parsed delivery date: 2023-05-11
+2025-05-02 17:04:59,208 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&thread_id=eq.196872f923934e74&message_id=eq.None "HTTP/1.1 200 OK"
+2025-05-02 17:04:59,209 - INFO - Insert: New email log for thread_id=196872f923934e74, message_id=None
+2025-05-02 17:04:59,238 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-02 17:04:59,513 - INFO - Message sent to MCP server: PO for 100ml cosmetic containers
+2025-05-02 17:04:59,513 - INFO - Processed email: 19687301aeba3f47
+2025-05-02 17:04:59,994 - INFO - Is vendor: True
+2025-05-02 17:05:03,865 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 17:05:03,872 - INFO - Generated email type: shipment confirmation
+2025-05-02 17:05:03,873 - INFO - Fetching thread history for thread_id: 196872f923934e74
+2025-05-02 17:05:03,917 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.196872f923934e74&order=sent_at "HTTP/1.1 200 OK"
+2025-05-02 17:05:03,922 - INFO - Found 4 emails in thread
+2025-05-02 17:05:04,680 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 17:05:04,682 - INFO - Parsed delivery date: 2023-05-07
+2025-05-02 17:05:04,739 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&thread_id=eq.196872f923934e74&message_id=eq.None "HTTP/1.1 200 OK"
+2025-05-02 17:05:04,741 - INFO - Insert: New email log for thread_id=196872f923934e74, message_id=None
+2025-05-02 17:05:04,779 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-02 17:05:04,880 - INFO - Message sent to MCP server: Re: PO for 100ml cosmetic containers
+2025-05-02 17:05:04,881 - INFO - Processed email: 1968733cd67bc06f
+2025-05-02 17:05:05,124 - INFO - Is vendor: True
+2025-05-02 17:05:07,177 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 17:05:07,182 - INFO - Generated email type: delivery delay
+2025-05-02 17:05:07,184 - INFO - Fetching thread history for thread_id: 196872f923934e74
+2025-05-02 17:05:07,251 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.196872f923934e74&order=sent_at "HTTP/1.1 200 OK"
+2025-05-02 17:05:07,255 - INFO - Found 5 emails in thread
+2025-05-02 17:05:08,094 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 17:05:08,097 - INFO - Parsed delivery date: 2023-05-08
+2025-05-02 17:05:08,130 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&thread_id=eq.196872f923934e74&message_id=eq.None "HTTP/1.1 200 OK"
+2025-05-02 17:05:08,134 - INFO - Insert: New email log for thread_id=196872f923934e74, message_id=None
+2025-05-02 17:05:08,178 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-02 17:05:08,440 - INFO - Message sent to MCP server: Re: PO for 100ml cosmetic containers
+2025-05-02 17:05:08,441 - INFO - Processed email: 196873410fd5bbde
+2025-05-02 17:05:08,679 - INFO - Is vendor: True
+2025-05-02 17:05:10,836 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 17:05:10,843 - INFO - Generated email type: shipment confirmation
+2025-05-02 17:05:10,844 - INFO - Fetching thread history for thread_id: 196872f923934e74
+2025-05-02 17:05:10,886 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.196872f923934e74&order=sent_at "HTTP/1.1 200 OK"
+2025-05-02 17:05:10,889 - INFO - Found 6 emails in thread
+2025-05-02 17:05:11,761 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 17:05:11,764 - INFO - Parsed delivery date: 2025-05-07
+2025-05-02 17:05:11,804 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&thread_id=eq.196872f923934e74&message_id=eq.None "HTTP/1.1 200 OK"
+2025-05-02 17:05:11,806 - INFO - Insert: New email log for thread_id=196872f923934e74, message_id=None
+2025-05-02 17:05:11,839 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-02 17:05:12,111 - INFO - Message sent to MCP server: Re: PO for 100ml cosmetic containers
+2025-05-02 17:05:12,112 - INFO - Processed email: 19687342396240ae
+2025-05-02 17:05:20,754 - INFO - GmailWatcher initialized
+2025-05-02 17:05:20,755 - INFO - Searching emails with query: after:2025/04/02
+2025-05-02 17:05:54,905 - INFO - Is vendor: True
+2025-05-02 17:05:56,356 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 17:05:56,358 - INFO - Generated email type: purchase order review
+2025-05-02 17:05:57,094 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/storage/v1/object/attachments-from-vendor//None "HTTP/1.1 400 Bad Request"
+2025-05-02 17:05:57,096 - ERROR - Error downloading attachment: {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-05-02 17:05:57,096 - INFO - Fetching thread history for thread_id: 1967aac700cf1999
+2025-05-02 17:05:57,196 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.1967aac700cf1999&order=sent_at "HTTP/1.1 200 OK"
+2025-05-02 17:05:57,197 - INFO - Found 1 emails in thread
+2025-05-02 17:05:57,866 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 17:05:57,869 - INFO - Parsed delivery date: None
+2025-05-02 17:05:57,907 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&thread_id=eq.1967aac700cf1999&message_id=eq.None "HTTP/1.1 200 OK"
+2025-05-02 17:05:57,909 - INFO - Insert: New email log for thread_id=1967aac700cf1999, message_id=None
+2025-05-02 17:05:57,948 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-02 17:05:57,950 - INFO - Initializing Supabase client with URL: https://ujvbinqvvgbzgwqluian.supabase.co
+2025-05-02 17:05:57,980 - INFO - Supabase client initialized successfully
+2025-05-02 17:05:58,059 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/purchase_orders?select=vendor_email&vendor_email=not.is.null "HTTP/1.1 200 OK"
+2025-05-02 17:05:58,323 - INFO - Message sent to MCP server: new po
+2025-05-02 17:05:58,324 - INFO - Processed email: 1967aac700cf1999
+2025-05-02 17:05:58,542 - ERROR - Error processing message 1967ab19c3293811: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2548)
+2025-05-02 17:05:59,848 - INFO - Is vendor: True
+2025-05-02 17:06:01,774 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 17:06:01,779 - INFO - Generated email type: delivery confirmation
+2025-05-02 17:06:01,780 - INFO - Fetching thread history for thread_id: 1967b271a1c91212
+2025-05-02 17:06:01,813 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.1967b271a1c91212&order=sent_at "HTTP/1.1 200 OK"
+2025-05-02 17:06:01,819 - INFO - Found 1 emails in thread
+2025-05-02 17:06:02,857 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 17:06:02,864 - INFO - Parsed delivery date: 2025-05-01
+2025-05-02 17:06:02,900 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&thread_id=eq.1967b271a1c91212&message_id=eq.None "HTTP/1.1 200 OK"
+2025-05-02 17:06:02,902 - INFO - Insert: New email log for thread_id=1967b271a1c91212, message_id=None
+2025-05-02 17:06:02,946 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-02 17:06:02,963 - INFO - Message sent to MCP server: 
+2025-05-02 17:06:02,963 - INFO - Processed email: 1967b271a1c91212
+2025-05-02 17:06:03,188 - INFO - Is vendor: True
+2025-05-02 17:06:08,138 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 17:06:08,145 - INFO - Generated email type: delivery confirmation
+2025-05-02 17:06:08,145 - INFO - Fetching thread history for thread_id: 1967b32b2f36808c
+2025-05-02 17:06:08,272 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.1967b32b2f36808c&order=sent_at "HTTP/1.1 200 OK"
+2025-05-02 17:06:08,273 - INFO - Found 1 emails in thread
+2025-05-02 17:06:09,384 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 17:06:09,391 - INFO - Parsed delivery date: 2025-05-01
+2025-05-02 17:06:09,430 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&thread_id=eq.1967b32b2f36808c&message_id=eq.None "HTTP/1.1 200 OK"
+2025-05-02 17:06:09,431 - INFO - Insert: New email log for thread_id=1967b32b2f36808c, message_id=None
+2025-05-02 17:06:09,464 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-02 17:06:09,736 - INFO - Message sent to MCP server: 
+2025-05-02 17:06:09,738 - INFO - Processed email: 1967b32b2f36808c
+2025-05-02 17:06:18,413 - INFO - Is vendor: True
+2025-05-02 17:06:20,651 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 17:06:20,658 - INFO - Generated email type: order confirmation
+2025-05-02 17:06:20,660 - INFO - Fetching thread history for thread_id: 1968507ce2f9fef8
+2025-05-02 17:06:20,758 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.1968507ce2f9fef8&order=sent_at "HTTP/1.1 200 OK"
+2025-05-02 17:06:20,760 - INFO - Found 1 emails in thread
+2025-05-02 17:06:21,667 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 17:06:21,671 - INFO - Parsed delivery date: 2025-05-01
+2025-05-02 17:06:21,741 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&thread_id=eq.1968507ce2f9fef8&message_id=eq.None "HTTP/1.1 200 OK"
+2025-05-02 17:06:21,742 - INFO - Insert: New email log for thread_id=1968507ce2f9fef8, message_id=None
+2025-05-02 17:06:21,792 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-02 17:06:22,067 - INFO - Message sent to MCP server: 
+2025-05-02 17:06:22,068 - INFO - Processed email: 1968507ce2f9fef8
+2025-05-02 17:06:22,552 - INFO - Is vendor: True
+2025-05-02 17:06:24,325 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 17:06:24,338 - INFO - Generated email type: shipment scheduling
+2025-05-02 17:06:24,340 - INFO - Fetching thread history for thread_id: 19685655410ff470
+2025-05-02 17:06:24,385 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.19685655410ff470&order=sent_at "HTTP/1.1 200 OK"
+2025-05-02 17:06:24,386 - INFO - Found 1 emails in thread
+2025-05-02 17:06:25,170 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 17:06:25,175 - INFO - Parsed delivery date: 2023-05-07
+2025-05-02 17:06:25,220 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&thread_id=eq.19685655410ff470&message_id=eq.None "HTTP/1.1 200 OK"
+2025-05-02 17:06:25,221 - INFO - Insert: New email log for thread_id=19685655410ff470, message_id=None
+2025-05-02 17:06:25,267 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-02 17:06:25,270 - INFO - Message sent to MCP server: eta alert
+2025-05-02 17:06:25,271 - INFO - Processed email: 19685655410ff470
+2025-05-02 17:06:25,499 - INFO - Is vendor: True
+2025-05-02 17:06:27,621 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 17:06:27,623 - INFO - Generated email type: delivery delay
+2025-05-02 17:06:27,624 - INFO - Fetching thread history for thread_id: 196858d50560d69c
+2025-05-02 17:06:27,659 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.196858d50560d69c&order=sent_at "HTTP/1.1 200 OK"
+2025-05-02 17:06:27,660 - INFO - Found 1 emails in thread
+2025-05-02 17:06:28,608 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 17:06:28,614 - INFO - Parsed delivery date: None
+2025-05-02 17:06:28,646 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&thread_id=eq.196858d50560d69c&message_id=eq.None "HTTP/1.1 200 OK"
+2025-05-02 17:06:28,647 - INFO - Insert: New email log for thread_id=196858d50560d69c, message_id=None
+2025-05-02 17:06:28,686 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-02 17:06:28,942 - INFO - Message sent to MCP server: new eta for the latest po
+2025-05-02 17:06:28,942 - INFO - Processed email: 196858d50560d69c
+2025-05-02 17:06:29,188 - INFO - Is vendor: True
+2025-05-02 17:06:30,722 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 17:06:30,732 - INFO - Generated email type: delivery delay
+2025-05-02 17:06:30,733 - INFO - Fetching thread history for thread_id: 196858fe40e734ea
+2025-05-02 17:06:30,766 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.196858fe40e734ea&order=sent_at "HTTP/1.1 200 OK"
+2025-05-02 17:06:30,768 - INFO - Found 1 emails in thread
+2025-05-02 17:06:31,573 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 17:06:31,580 - INFO - Parsed delivery date: None
+2025-05-02 17:06:31,617 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&thread_id=eq.196858fe40e734ea&message_id=eq.None "HTTP/1.1 200 OK"
+2025-05-02 17:06:31,619 - INFO - Insert: New email log for thread_id=196858fe40e734ea, message_id=None
+2025-05-02 17:06:31,665 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-02 17:06:31,669 - INFO - Message sent to MCP server: delay alert for the latest po
+2025-05-02 17:06:31,669 - INFO - Processed email: 196858fe40e734ea
+2025-05-02 17:06:33,805 - INFO - Is vendor: True
+2025-05-02 17:06:36,402 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 17:06:36,412 - INFO - Generated email type: purchase order
+2025-05-02 17:06:36,878 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/storage/v1/object/attachments-from-vendor//None "HTTP/1.1 400 Bad Request"
+2025-05-02 17:06:36,880 - ERROR - Error downloading attachment: {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-05-02 17:06:36,882 - INFO - Fetching thread history for thread_id: 196872f923934e74
+2025-05-02 17:06:36,953 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.196872f923934e74&order=sent_at "HTTP/1.1 200 OK"
+2025-05-02 17:06:36,954 - INFO - Found 7 emails in thread
+2025-05-02 17:06:37,737 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 17:06:37,745 - INFO - Parsed delivery date: 2023-05-09
+2025-05-02 17:06:37,783 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&thread_id=eq.196872f923934e74&message_id=eq.None "HTTP/1.1 200 OK"
+2025-05-02 17:06:37,785 - INFO - Insert: New email log for thread_id=196872f923934e74, message_id=None
+2025-05-02 17:06:37,817 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-02 17:06:38,083 - INFO - Message sent to MCP server: PO for 100ml cosmetic containers
+2025-05-02 17:06:38,084 - INFO - Processed email: 19687301aeba3f47
+2025-05-02 17:06:38,543 - INFO - Is vendor: True
+2025-05-02 17:06:40,912 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 17:06:40,919 - INFO - Generated email type: shipment confirmation
+2025-05-02 17:06:40,919 - INFO - Fetching thread history for thread_id: 196872f923934e74
+2025-05-02 17:06:40,950 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.196872f923934e74&order=sent_at "HTTP/1.1 200 OK"
+2025-05-02 17:06:40,951 - INFO - Found 8 emails in thread
+2025-05-02 17:06:41,867 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 17:06:41,870 - INFO - Parsed delivery date: 2023-05-11
+2025-05-02 17:06:41,907 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&thread_id=eq.196872f923934e74&message_id=eq.None "HTTP/1.1 200 OK"
+2025-05-02 17:06:41,909 - INFO - Insert: New email log for thread_id=196872f923934e74, message_id=None
+2025-05-02 17:06:41,948 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-02 17:06:41,953 - INFO - Message sent to MCP server: Re: PO for 100ml cosmetic containers
+2025-05-02 17:06:41,954 - INFO - Processed email: 1968733cd67bc06f
+2025-05-02 17:06:42,219 - INFO - Is vendor: True
+2025-05-02 17:06:44,472 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 17:06:44,473 - INFO - Generated email type: delivery delay
+2025-05-02 17:06:44,473 - INFO - Fetching thread history for thread_id: 196872f923934e74
+2025-05-02 17:06:44,503 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.196872f923934e74&order=sent_at "HTTP/1.1 200 OK"
+2025-05-02 17:06:44,504 - INFO - Found 9 emails in thread
+2025-05-02 17:06:45,708 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 17:06:45,711 - INFO - Parsed delivery date: 2023-05-08
+2025-05-02 17:06:45,745 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&thread_id=eq.196872f923934e74&message_id=eq.None "HTTP/1.1 200 OK"
+2025-05-02 17:06:45,746 - INFO - Insert: New email log for thread_id=196872f923934e74, message_id=None
+2025-05-02 17:06:45,781 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-02 17:06:46,042 - INFO - Message sent to MCP server: Re: PO for 100ml cosmetic containers
+2025-05-02 17:06:46,044 - INFO - Processed email: 196873410fd5bbde
+2025-05-02 17:06:46,277 - INFO - Is vendor: True
+2025-05-02 17:06:48,461 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 17:06:48,468 - INFO - Generated email type: shipment confirmation
+2025-05-02 17:06:48,469 - INFO - Fetching thread history for thread_id: 196872f923934e74
+2025-05-02 17:06:48,515 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.196872f923934e74&order=sent_at "HTTP/1.1 200 OK"
+2025-05-02 17:06:48,517 - INFO - Found 10 emails in thread
+2025-05-02 17:06:49,803 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 17:06:49,804 - INFO - Parsed delivery date: 2023-05-07
+2025-05-02 17:06:49,837 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&thread_id=eq.196872f923934e74&message_id=eq.None "HTTP/1.1 200 OK"
+2025-05-02 17:06:49,838 - INFO - Insert: New email log for thread_id=196872f923934e74, message_id=None
+2025-05-02 17:06:49,873 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-02 17:06:50,136 - INFO - Message sent to MCP server: Re: PO for 100ml cosmetic containers
+2025-05-02 17:06:50,137 - INFO - Processed email: 19687342396240ae
+2025-05-02 17:06:58,680 - ERROR - Error processing message 1968f0d91b42bce7: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2548)
+2025-05-02 17:23:09,675 - INFO - Vendor CSV path from .env: C:\Users\USER\po_agent_os\mock_vendor_emails.csv
+2025-05-02 17:23:10,296 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/purchase_orders?select=vendor_email&vendor_email=not.is.null "HTTP/1.1 200 OK"
+2025-05-02 17:23:10,303 - INFO - Loaded 2 vendor emails from database
+2025-05-02 17:23:10,304 - INFO - Loaded 0 additional vendor emails from CSV
+2025-05-02 17:23:10,304 - INFO - Total unique vendor emails: 2
+2025-05-02 17:23:10,310 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-05-02 17:23:10,591 - INFO - Initializing Supabase client with URL: https://ujvbinqvvgbzgwqluian.supabase.co
+2025-05-02 17:23:10,615 - INFO - Supabase client initialized successfully
+2025-05-02 17:23:10,616 - INFO - Searching emails with query: after:2025/04/02
+2025-05-02 17:23:47,537 - INFO - Is vendor: True
+2025-05-02 17:23:49,296 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 17:23:49,302 - INFO - Generated email type: purchase order review
+2025-05-02 17:23:49,745 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/storage/v1/object/attachments-from-vendor//None "HTTP/1.1 400 Bad Request"
+2025-05-02 17:23:49,746 - ERROR - Error downloading attachment: {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-05-02 17:23:49,747 - INFO - Fetching thread history for thread_id: 1967aac700cf1999
+2025-05-02 17:23:49,855 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.1967aac700cf1999&order=sent_at "HTTP/1.1 200 OK"
+2025-05-02 17:23:49,859 - INFO - Found 0 emails in thread
+2025-05-02 17:23:50,719 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 17:23:50,954 - INFO - Parsed delivery date: None
+2025-05-02 17:23:51,015 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&thread_id=eq.1967aac700cf1999&message_id=eq.None "HTTP/1.1 200 OK"
+2025-05-02 17:23:51,016 - INFO - Insert: New email log for thread_id=1967aac700cf1999, message_id=None
+2025-05-02 17:23:51,063 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-02 17:23:51,334 - INFO - Message sent to MCP server: new po
+2025-05-02 17:23:51,334 - INFO - Processed email: 1967aac700cf1999
+2025-05-02 17:23:51,587 - INFO - Is vendor: True
+2025-05-02 17:23:53,108 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 17:23:53,109 - INFO - Generated email type: delivery delay
+2025-05-02 17:23:53,110 - INFO - Fetching thread history for thread_id: 1967ab19c3293811
+2025-05-02 17:23:53,143 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.1967ab19c3293811&order=sent_at "HTTP/1.1 200 OK"
+2025-05-02 17:23:53,148 - INFO - Found 0 emails in thread
+2025-05-02 17:23:53,731 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 17:23:53,733 - INFO - Parsed delivery date: None
+2025-05-02 17:23:53,769 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&thread_id=eq.1967ab19c3293811&message_id=eq.None "HTTP/1.1 200 OK"
+2025-05-02 17:23:53,770 - INFO - Insert: New email log for thread_id=1967ab19c3293811, message_id=None
+2025-05-02 17:23:53,811 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-02 17:23:53,815 - INFO - Message sent to MCP server: po status update
+2025-05-02 17:23:53,816 - INFO - Processed email: 1967ab19c3293811
+2025-05-02 17:23:55,045 - INFO - Is vendor: True
+2025-05-02 17:23:59,060 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 17:23:59,071 - INFO - Generated email type: delivery confirmation
+2025-05-02 17:23:59,072 - INFO - Fetching thread history for thread_id: 1967b271a1c91212
+2025-05-02 17:23:59,164 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.1967b271a1c91212&order=sent_at "HTTP/1.1 200 OK"
+2025-05-02 17:23:59,166 - INFO - Found 0 emails in thread
+2025-05-02 17:23:59,976 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 17:23:59,979 - INFO - Parsed delivery date: 2025-05-01
+2025-05-02 17:24:00,038 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&thread_id=eq.1967b271a1c91212&message_id=eq.None "HTTP/1.1 200 OK"
+2025-05-02 17:24:00,039 - INFO - Insert: New email log for thread_id=1967b271a1c91212, message_id=None
+2025-05-02 17:24:00,086 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-02 17:24:00,432 - INFO - Message sent to MCP server: 
+2025-05-02 17:24:00,433 - INFO - Processed email: 1967b271a1c91212
+2025-05-02 17:24:00,661 - INFO - Is vendor: True
+2025-05-02 17:24:02,698 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 17:24:02,700 - INFO - Generated email type: delivery confirmation
+2025-05-02 17:24:02,700 - INFO - Fetching thread history for thread_id: 1967b32b2f36808c
+2025-05-02 17:24:02,761 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.1967b32b2f36808c&order=sent_at "HTTP/1.1 200 OK"
+2025-05-02 17:24:02,762 - INFO - Found 0 emails in thread
+2025-05-02 17:24:03,612 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 17:24:03,613 - INFO - Parsed delivery date: 2025-05-01
+2025-05-02 17:24:03,659 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&thread_id=eq.1967b32b2f36808c&message_id=eq.None "HTTP/1.1 200 OK"
+2025-05-02 17:24:03,660 - INFO - Insert: New email log for thread_id=1967b32b2f36808c, message_id=None
+2025-05-02 17:24:03,704 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-02 17:24:03,964 - INFO - Message sent to MCP server: 
+2025-05-02 17:24:03,964 - INFO - Processed email: 1967b32b2f36808c
+2025-05-02 17:24:13,050 - INFO - Is vendor: True
+2025-05-02 17:24:15,196 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 17:24:15,198 - INFO - Generated email type: order confirmation
+2025-05-02 17:24:15,198 - INFO - Fetching thread history for thread_id: 1968507ce2f9fef8
+2025-05-02 17:24:15,278 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.1968507ce2f9fef8&order=sent_at "HTTP/1.1 200 OK"
+2025-05-02 17:24:15,280 - INFO - Found 0 emails in thread
+2025-05-02 17:24:16,180 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 17:24:16,183 - INFO - Parsed delivery date: 2025-05-01
+2025-05-02 17:24:16,235 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&thread_id=eq.1968507ce2f9fef8&message_id=eq.None "HTTP/1.1 200 OK"
+2025-05-02 17:24:16,236 - INFO - Insert: New email log for thread_id=1968507ce2f9fef8, message_id=None
+2025-05-02 17:24:16,273 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-02 17:24:16,542 - INFO - Message sent to MCP server: 
+2025-05-02 17:24:16,543 - INFO - Processed email: 1968507ce2f9fef8
+2025-05-02 17:24:17,033 - INFO - Is vendor: True
+2025-05-02 17:24:20,939 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 17:24:20,940 - INFO - Generated email type: shipment scheduling
+2025-05-02 17:24:20,942 - INFO - Fetching thread history for thread_id: 19685655410ff470
+2025-05-02 17:24:20,991 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.19685655410ff470&order=sent_at "HTTP/1.1 200 OK"
+2025-05-02 17:24:20,993 - INFO - Found 0 emails in thread
+2025-05-02 17:24:21,927 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 17:24:21,940 - INFO - Parsed delivery date: 2023-05-07
+2025-05-02 17:24:21,979 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&thread_id=eq.19685655410ff470&message_id=eq.None "HTTP/1.1 200 OK"
+2025-05-02 17:24:21,980 - INFO - Insert: New email log for thread_id=19685655410ff470, message_id=None
+2025-05-02 17:24:22,026 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-02 17:24:22,029 - INFO - Message sent to MCP server: eta alert
+2025-05-02 17:24:22,031 - INFO - Processed email: 19685655410ff470
+2025-05-02 17:24:22,259 - INFO - Is vendor: True
+2025-05-02 17:24:24,371 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 17:24:24,376 - INFO - Generated email type: delivery delay
+2025-05-02 17:24:24,376 - INFO - Fetching thread history for thread_id: 196858d50560d69c
+2025-05-02 17:24:24,420 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.196858d50560d69c&order=sent_at "HTTP/1.1 200 OK"
+2025-05-02 17:24:24,423 - INFO - Found 0 emails in thread
+2025-05-02 17:24:25,077 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 17:24:25,081 - INFO - Parsed delivery date: None
+2025-05-02 17:24:25,121 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&thread_id=eq.196858d50560d69c&message_id=eq.None "HTTP/1.1 200 OK"
+2025-05-02 17:24:25,124 - INFO - Insert: New email log for thread_id=196858d50560d69c, message_id=None
+2025-05-02 17:24:25,167 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-02 17:24:25,441 - INFO - Message sent to MCP server: new eta for the latest po
+2025-05-02 17:24:25,441 - INFO - Processed email: 196858d50560d69c
+2025-05-02 17:24:25,689 - INFO - Is vendor: True
+2025-05-02 17:24:27,245 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 17:24:27,321 - INFO - Generated email type: delivery delay
+2025-05-02 17:24:27,322 - INFO - Fetching thread history for thread_id: 196858fe40e734ea
+2025-05-02 17:24:27,367 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.196858fe40e734ea&order=sent_at "HTTP/1.1 200 OK"
+2025-05-02 17:24:27,369 - INFO - Found 0 emails in thread
+2025-05-02 17:24:28,415 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 17:24:28,422 - INFO - Parsed delivery date: None
+2025-05-02 17:24:28,479 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&thread_id=eq.196858fe40e734ea&message_id=eq.None "HTTP/1.1 200 OK"
+2025-05-02 17:24:28,481 - INFO - Insert: New email log for thread_id=196858fe40e734ea, message_id=None
+2025-05-02 17:24:28,535 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-02 17:24:28,795 - INFO - Message sent to MCP server: delay alert for the latest po
+2025-05-02 17:24:28,796 - INFO - Processed email: 196858fe40e734ea
+2025-05-02 17:24:30,997 - INFO - Is vendor: True
+2025-05-02 17:24:33,726 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 17:24:33,732 - INFO - Generated email type: purchase order confirmation
+2025-05-02 17:24:34,183 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/storage/v1/object/attachments-from-vendor//None "HTTP/1.1 400 Bad Request"
+2025-05-02 17:24:34,183 - ERROR - Error downloading attachment: {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-05-02 17:24:34,183 - INFO - Fetching thread history for thread_id: 196872f923934e74
+2025-05-02 17:24:34,271 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.196872f923934e74&order=sent_at "HTTP/1.1 200 OK"
+2025-05-02 17:24:34,273 - INFO - Found 0 emails in thread
+2025-05-02 17:24:35,378 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 17:24:35,381 - INFO - Parsed delivery date: 2023-05-07
+2025-05-02 17:24:35,417 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&thread_id=eq.196872f923934e74&message_id=eq.None "HTTP/1.1 200 OK"
+2025-05-02 17:24:35,418 - INFO - Insert: New email log for thread_id=196872f923934e74, message_id=None
+2025-05-02 17:24:35,450 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-02 17:24:35,453 - INFO - Message sent to MCP server: PO for 100ml cosmetic containers
+2025-05-02 17:24:35,455 - INFO - Processed email: 19687301aeba3f47
+2025-05-02 17:24:35,942 - INFO - Is vendor: True
+2025-05-02 17:24:38,373 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 17:24:38,378 - INFO - Generated email type: shipment confirmation
+2025-05-02 17:24:38,379 - INFO - Fetching thread history for thread_id: 196872f923934e74
+2025-05-02 17:24:38,424 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.196872f923934e74&order=sent_at "HTTP/1.1 200 OK"
+2025-05-02 17:24:38,426 - INFO - Found 1 emails in thread
+2025-05-02 17:24:39,492 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 17:24:39,499 - INFO - Parsed delivery date: 2023-05-07
+2025-05-02 17:24:39,556 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&thread_id=eq.196872f923934e74&message_id=eq.None "HTTP/1.1 200 OK"
+2025-05-02 17:24:39,557 - INFO - Insert: New email log for thread_id=196872f923934e74, message_id=None
+2025-05-02 17:24:39,588 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-02 17:24:39,849 - INFO - Message sent to MCP server: Re: PO for 100ml cosmetic containers
+2025-05-02 17:24:39,850 - INFO - Processed email: 1968733cd67bc06f
+2025-05-02 17:24:40,099 - INFO - Is vendor: True
+2025-05-02 17:24:42,223 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 17:24:42,238 - INFO - Generated email type: delivery delay
+2025-05-02 17:24:42,238 - INFO - Fetching thread history for thread_id: 196872f923934e74
+2025-05-02 17:24:42,280 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.196872f923934e74&order=sent_at "HTTP/1.1 200 OK"
+2025-05-02 17:24:42,282 - INFO - Found 2 emails in thread
+2025-05-02 17:24:43,484 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 17:24:43,486 - INFO - Parsed delivery date: 2023-05-09
+2025-05-02 17:24:43,528 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&thread_id=eq.196872f923934e74&message_id=eq.None "HTTP/1.1 200 OK"
+2025-05-02 17:24:43,529 - INFO - Insert: New email log for thread_id=196872f923934e74, message_id=None
+2025-05-02 17:24:43,559 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-02 17:24:43,563 - INFO - Message sent to MCP server: Re: PO for 100ml cosmetic containers
+2025-05-02 17:24:43,564 - INFO - Processed email: 196873410fd5bbde
+2025-05-02 17:24:43,803 - INFO - Is vendor: True
+2025-05-02 17:24:45,832 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 17:24:45,835 - INFO - Generated email type: shipment confirmation
+2025-05-02 17:24:45,836 - INFO - Fetching thread history for thread_id: 196872f923934e74
+2025-05-02 17:24:45,868 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.196872f923934e74&order=sent_at "HTTP/1.1 200 OK"
+2025-05-02 17:24:45,872 - INFO - Found 3 emails in thread
+2025-05-02 17:24:46,829 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 17:24:46,830 - INFO - Parsed delivery date: 2023-05-07
+2025-05-02 17:24:46,869 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&thread_id=eq.196872f923934e74&message_id=eq.None "HTTP/1.1 200 OK"
+2025-05-02 17:24:46,871 - INFO - Insert: New email log for thread_id=196872f923934e74, message_id=None
+2025-05-02 17:24:46,902 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-02 17:24:47,171 - INFO - Message sent to MCP server: Re: PO for 100ml cosmetic containers
+2025-05-02 17:24:47,172 - INFO - Processed email: 19687342396240ae
+2025-05-02 17:24:56,192 - INFO - GmailWatcher initialized
+2025-05-02 17:24:56,193 - INFO - Searching emails with query: after:2025/04/02
+2025-05-02 17:25:32,170 - INFO - Is vendor: True
+2025-05-02 17:25:34,367 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 17:25:34,375 - INFO - Generated email type: purchase order review
+2025-05-02 17:25:35,176 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/storage/v1/object/attachments-from-vendor//None "HTTP/1.1 400 Bad Request"
+2025-05-02 17:25:35,177 - ERROR - Error downloading attachment: {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-05-02 17:25:35,178 - INFO - Fetching thread history for thread_id: 1967aac700cf1999
+2025-05-02 17:25:35,304 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.1967aac700cf1999&order=sent_at "HTTP/1.1 200 OK"
+2025-05-02 17:25:35,309 - INFO - Found 1 emails in thread
+2025-05-02 17:25:35,987 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 17:25:35,989 - INFO - Parsed delivery date: None
+2025-05-02 17:25:36,027 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&thread_id=eq.1967aac700cf1999&message_id=eq.None "HTTP/1.1 200 OK"
+2025-05-02 17:25:36,029 - INFO - Insert: New email log for thread_id=1967aac700cf1999, message_id=None
+2025-05-02 17:25:36,064 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-02 17:25:36,066 - INFO - Initializing Supabase client with URL: https://ujvbinqvvgbzgwqluian.supabase.co
+2025-05-02 17:25:36,099 - INFO - Supabase client initialized successfully
+2025-05-02 17:25:36,181 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/purchase_orders?select=vendor_email&vendor_email=not.is.null "HTTP/1.1 200 OK"
+2025-05-02 17:25:36,454 - INFO - Message sent to MCP server: new po
+2025-05-02 17:25:36,455 - INFO - Processed email: 1967aac700cf1999
+2025-05-02 17:25:36,662 - ERROR - Error processing message 1967ab19c3293811: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2548)
+2025-05-02 17:25:38,051 - INFO - Is vendor: True
+2025-05-02 17:25:40,546 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 17:25:40,551 - INFO - Generated email type: delivery confirmation
+2025-05-02 17:25:40,552 - INFO - Fetching thread history for thread_id: 1967b271a1c91212
+2025-05-02 17:25:40,588 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.1967b271a1c91212&order=sent_at "HTTP/1.1 200 OK"
+2025-05-02 17:25:40,588 - INFO - Found 1 emails in thread
+2025-05-02 17:25:41,376 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 17:25:41,380 - INFO - Parsed delivery date: 2025-05-01
+2025-05-02 17:25:41,409 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&thread_id=eq.1967b271a1c91212&message_id=eq.None "HTTP/1.1 200 OK"
+2025-05-02 17:25:41,410 - INFO - Insert: New email log for thread_id=1967b271a1c91212, message_id=None
+2025-05-02 17:25:41,439 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-02 17:25:41,442 - INFO - Message sent to MCP server: 
+2025-05-02 17:25:41,443 - INFO - Processed email: 1967b271a1c91212
+2025-05-02 17:25:41,685 - INFO - Is vendor: True
+2025-05-02 17:25:43,857 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 17:25:43,864 - INFO - Generated email type: delivery confirmation
+2025-05-02 17:25:43,865 - INFO - Fetching thread history for thread_id: 1967b32b2f36808c
+2025-05-02 17:25:43,947 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.1967b32b2f36808c&order=sent_at "HTTP/1.1 200 OK"
+2025-05-02 17:25:43,949 - INFO - Found 1 emails in thread
+2025-05-02 17:25:45,081 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 17:25:45,083 - INFO - Parsed delivery date: 2025-05-01
+2025-05-02 17:25:45,118 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&thread_id=eq.1967b32b2f36808c&message_id=eq.None "HTTP/1.1 200 OK"
+2025-05-02 17:25:45,120 - INFO - Insert: New email log for thread_id=1967b32b2f36808c, message_id=None
+2025-05-02 17:25:45,161 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-02 17:25:45,433 - INFO - Message sent to MCP server: 
+2025-05-02 17:25:45,434 - INFO - Processed email: 1967b32b2f36808c
+2025-05-02 17:25:54,858 - INFO - Is vendor: True
+2025-05-02 17:25:57,220 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 17:25:57,227 - INFO - Generated email type: order confirmation
+2025-05-02 17:25:57,228 - INFO - Fetching thread history for thread_id: 1968507ce2f9fef8
+2025-05-02 17:25:57,327 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.1968507ce2f9fef8&order=sent_at "HTTP/1.1 200 OK"
+2025-05-02 17:25:57,329 - INFO - Found 1 emails in thread
+2025-05-02 17:25:58,150 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 17:25:58,153 - INFO - Parsed delivery date: 2025-05-01
+2025-05-02 17:25:58,185 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&thread_id=eq.1968507ce2f9fef8&message_id=eq.None "HTTP/1.1 200 OK"
+2025-05-02 17:25:58,186 - INFO - Insert: New email log for thread_id=1968507ce2f9fef8, message_id=None
+2025-05-02 17:25:58,219 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-02 17:25:58,478 - INFO - Message sent to MCP server: 
+2025-05-02 17:25:58,479 - INFO - Processed email: 1968507ce2f9fef8
+2025-05-02 17:25:58,974 - INFO - Is vendor: True
+2025-05-02 17:26:00,882 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 17:26:00,977 - INFO - Generated email type: shipment scheduling
+2025-05-02 17:26:00,977 - INFO - Fetching thread history for thread_id: 19685655410ff470
+2025-05-02 17:26:01,029 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.19685655410ff470&order=sent_at "HTTP/1.1 200 OK"
+2025-05-02 17:26:01,030 - INFO - Found 1 emails in thread
+2025-05-02 17:26:01,927 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 17:26:01,929 - INFO - Parsed delivery date: 2023-05-07
+2025-05-02 17:26:01,968 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&thread_id=eq.19685655410ff470&message_id=eq.None "HTTP/1.1 200 OK"
+2025-05-02 17:26:01,970 - INFO - Insert: New email log for thread_id=19685655410ff470, message_id=None
+2025-05-02 17:26:02,004 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-02 17:26:02,009 - INFO - Message sent to MCP server: eta alert
+2025-05-02 17:26:02,009 - INFO - Processed email: 19685655410ff470
+2025-05-02 17:26:02,248 - INFO - Is vendor: True
+2025-05-02 17:26:04,004 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 17:26:04,008 - INFO - Generated email type: delivery delay
+2025-05-02 17:26:04,008 - INFO - Fetching thread history for thread_id: 196858d50560d69c
+2025-05-02 17:26:04,041 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.196858d50560d69c&order=sent_at "HTTP/1.1 200 OK"
+2025-05-02 17:26:04,042 - INFO - Found 1 emails in thread
+2025-05-02 17:26:04,697 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 17:26:04,937 - INFO - Parsed delivery date: None
+2025-05-02 17:26:04,968 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&thread_id=eq.196858d50560d69c&message_id=eq.None "HTTP/1.1 200 OK"
+2025-05-02 17:26:04,969 - INFO - Insert: New email log for thread_id=196858d50560d69c, message_id=None
+2025-05-02 17:26:05,027 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-02 17:26:05,287 - INFO - Message sent to MCP server: new eta for the latest po
+2025-05-02 17:26:05,288 - INFO - Processed email: 196858d50560d69c
+2025-05-02 17:26:05,529 - INFO - Is vendor: True
+2025-05-02 17:26:07,105 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 17:26:07,107 - INFO - Generated email type: delivery delay
+2025-05-02 17:26:07,107 - INFO - Fetching thread history for thread_id: 196858fe40e734ea
+2025-05-02 17:26:07,139 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.196858fe40e734ea&order=sent_at "HTTP/1.1 200 OK"
+2025-05-02 17:26:07,140 - INFO - Found 1 emails in thread
+2025-05-02 17:26:07,933 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 17:26:07,937 - INFO - Parsed delivery date: None
+2025-05-02 17:26:07,968 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&thread_id=eq.196858fe40e734ea&message_id=eq.None "HTTP/1.1 200 OK"
+2025-05-02 17:26:07,969 - INFO - Insert: New email log for thread_id=196858fe40e734ea, message_id=None
+2025-05-02 17:26:08,015 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-02 17:26:08,039 - INFO - Message sent to MCP server: delay alert for the latest po
+2025-05-02 17:26:08,039 - INFO - Processed email: 196858fe40e734ea
+2025-05-02 17:26:10,519 - INFO - Is vendor: True
+2025-05-02 17:26:13,065 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 17:26:13,069 - INFO - Generated email type: purchase order
+2025-05-02 17:26:13,517 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/storage/v1/object/attachments-from-vendor//None "HTTP/1.1 400 Bad Request"
+2025-05-02 17:26:13,520 - ERROR - Error downloading attachment: {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-05-02 17:26:13,522 - INFO - Fetching thread history for thread_id: 196872f923934e74
+2025-05-02 17:26:13,595 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.196872f923934e74&order=sent_at "HTTP/1.1 200 OK"
+2025-05-02 17:26:13,600 - INFO - Found 4 emails in thread
+2025-05-02 17:26:14,386 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 17:26:14,393 - INFO - Parsed delivery date: 2023-05-09
+2025-05-02 17:26:14,432 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&thread_id=eq.196872f923934e74&message_id=eq.None "HTTP/1.1 200 OK"
+2025-05-02 17:26:14,433 - INFO - Insert: New email log for thread_id=196872f923934e74, message_id=None
+2025-05-02 17:26:14,462 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-02 17:26:14,723 - INFO - Message sent to MCP server: PO for 100ml cosmetic containers
+2025-05-02 17:26:14,724 - INFO - Processed email: 19687301aeba3f47
+2025-05-02 17:26:15,197 - INFO - Is vendor: True
+2025-05-02 17:26:17,657 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 17:26:17,663 - INFO - Generated email type: shipment confirmation
+2025-05-02 17:26:17,664 - INFO - Fetching thread history for thread_id: 196872f923934e74
+2025-05-02 17:26:17,695 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.196872f923934e74&order=sent_at "HTTP/1.1 200 OK"
+2025-05-02 17:26:17,696 - INFO - Found 5 emails in thread
+2025-05-02 17:26:18,943 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 17:26:18,949 - INFO - Parsed delivery date: 2023-05-09
+2025-05-02 17:26:18,979 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&thread_id=eq.196872f923934e74&message_id=eq.None "HTTP/1.1 200 OK"
+2025-05-02 17:26:18,980 - INFO - Insert: New email log for thread_id=196872f923934e74, message_id=None
+2025-05-02 17:26:19,015 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-02 17:26:19,019 - INFO - Message sent to MCP server: Re: PO for 100ml cosmetic containers
+2025-05-02 17:26:19,020 - INFO - Processed email: 1968733cd67bc06f
+2025-05-02 17:26:19,270 - INFO - Is vendor: True
+2025-05-02 17:26:21,645 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 17:26:21,650 - INFO - Generated email type: delivery delay
+2025-05-02 17:26:21,651 - INFO - Fetching thread history for thread_id: 196872f923934e74
+2025-05-02 17:26:21,687 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.196872f923934e74&order=sent_at "HTTP/1.1 200 OK"
+2025-05-02 17:26:21,689 - INFO - Found 6 emails in thread
+2025-05-02 17:26:22,830 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 17:26:22,834 - INFO - Parsed delivery date: 2023-05-11
+2025-05-02 17:26:22,867 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&thread_id=eq.196872f923934e74&message_id=eq.None "HTTP/1.1 200 OK"
+2025-05-02 17:26:22,869 - INFO - Insert: New email log for thread_id=196872f923934e74, message_id=None
+2025-05-02 17:26:22,903 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-02 17:26:23,178 - INFO - Message sent to MCP server: Re: PO for 100ml cosmetic containers
+2025-05-02 17:26:23,179 - INFO - Processed email: 196873410fd5bbde
+2025-05-02 17:26:23,405 - INFO - Is vendor: True
+2025-05-02 17:26:25,475 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 17:26:25,481 - INFO - Generated email type: shipment confirmation
+2025-05-02 17:26:25,482 - INFO - Fetching thread history for thread_id: 196872f923934e74
+2025-05-02 17:26:25,510 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.196872f923934e74&order=sent_at "HTTP/1.1 200 OK"
+2025-05-02 17:26:25,511 - INFO - Found 7 emails in thread
+2025-05-02 17:26:26,266 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 17:26:26,267 - INFO - Parsed delivery date: 2023-05-07
+2025-05-02 17:26:26,302 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&thread_id=eq.196872f923934e74&message_id=eq.None "HTTP/1.1 200 OK"
+2025-05-02 17:26:26,304 - INFO - Insert: New email log for thread_id=196872f923934e74, message_id=None
+2025-05-02 17:26:26,338 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-02 17:26:26,610 - INFO - Message sent to MCP server: Re: PO for 100ml cosmetic containers
+2025-05-02 17:26:26,613 - INFO - Processed email: 19687342396240ae
+2025-05-02 17:27:36,605 - ERROR - Error processing message 1968f0d91b42bce7: The read operation timed out
+2025-05-02 17:35:36,759 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/purchase_orders?select=vendor_email&vendor_email=not.is.null "HTTP/1.1 200 OK"
+2025-05-02 17:45:37,745 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/purchase_orders?select=vendor_email&vendor_email=not.is.null "HTTP/1.1 200 OK"
+2025-05-02 20:32:01,833 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/purchase_orders?select=vendor_email&vendor_email=not.is.null "HTTP/1.1 200 OK"
+2025-05-02 20:42:02,472 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/purchase_orders?select=vendor_email&vendor_email=not.is.null "HTTP/1.1 200 OK"
+2025-05-02 21:05:51,266 - INFO - Vendor CSV path from .env: C:\Users\USER\po_agent_os\mock_vendor_emails.csv
+2025-05-02 21:05:51,824 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/purchase_orders?select=vendor_email&vendor_email=not.is.null "HTTP/1.1 200 OK"
+2025-05-02 21:05:51,827 - INFO - Loaded 1 vendor emails from database
+2025-05-02 21:05:51,828 - INFO - Loaded 0 additional vendor emails from CSV
+2025-05-02 21:05:51,828 - INFO - Total unique vendor emails: 1
+2025-05-02 21:05:51,838 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-05-02 21:05:52,041 - INFO - Initializing Supabase client with URL: https://ujvbinqvvgbzgwqluian.supabase.co
+2025-05-02 21:05:52,068 - INFO - Supabase client initialized successfully
+2025-05-02 21:05:52,069 - INFO - Searching emails with query: after:2025/04/02
+2025-05-02 21:06:40,452 - INFO - Is vendor: True
+2025-05-02 21:06:43,043 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 21:06:43,048 - INFO - Generated email type: purchase order confirmation
+2025-05-02 21:06:43,656 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/storage/v1/object/attachments-from-vendor//None "HTTP/1.1 400 Bad Request"
+2025-05-02 21:06:43,656 - ERROR - Error downloading attachment: {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-05-02 21:06:43,657 - INFO - Fetching thread history for thread_id: 196872f923934e74
+2025-05-02 21:06:43,962 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.196872f923934e74&order=sent_at "HTTP/1.1 200 OK"
+2025-05-02 21:06:43,967 - INFO - Found 0 emails in thread
+2025-05-02 21:06:44,770 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 21:06:44,775 - INFO - Parsed delivery date: 2023-05-07
+2025-05-02 21:06:44,813 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&thread_id=eq.196872f923934e74&message_id=eq.None "HTTP/1.1 200 OK"
+2025-05-02 21:06:44,814 - INFO - Insert: New email log for thread_id=196872f923934e74, message_id=None
+2025-05-02 21:06:44,867 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-02 21:06:45,146 - INFO - Message sent to MCP server: PO for 100ml cosmetic containers
+2025-05-02 21:06:45,148 - INFO - Processed email: 19687301aeba3f47
+2025-05-02 21:06:45,611 - INFO - Is vendor: True
+2025-05-02 21:06:47,955 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 21:06:47,959 - INFO - Generated email type: shipment confirmation
+2025-05-02 21:06:47,959 - INFO - Fetching thread history for thread_id: 196872f923934e74
+2025-05-02 21:06:47,999 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.196872f923934e74&order=sent_at "HTTP/1.1 200 OK"
+2025-05-02 21:06:48,001 - INFO - Found 1 emails in thread
+2025-05-02 21:06:48,929 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 21:06:48,932 - INFO - Parsed delivery date: 2023-05-07
+2025-05-02 21:06:48,971 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&thread_id=eq.196872f923934e74&message_id=eq.None "HTTP/1.1 200 OK"
+2025-05-02 21:06:48,972 - INFO - Insert: New email log for thread_id=196872f923934e74, message_id=None
+2025-05-02 21:06:49,017 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-02 21:06:49,024 - INFO - Message sent to MCP server: Re: PO for 100ml cosmetic containers
+2025-05-02 21:06:49,024 - INFO - Processed email: 1968733cd67bc06f
+2025-05-02 21:06:49,250 - INFO - Is vendor: True
+2025-05-02 21:06:51,535 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 21:06:51,537 - INFO - Generated email type: delivery delay
+2025-05-02 21:06:51,537 - INFO - Fetching thread history for thread_id: 196872f923934e74
+2025-05-02 21:06:51,595 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.196872f923934e74&order=sent_at "HTTP/1.1 200 OK"
+2025-05-02 21:06:51,596 - INFO - Found 2 emails in thread
+2025-05-02 21:06:52,485 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 21:06:52,497 - INFO - Parsed delivery date: 2023-05-08
+2025-05-02 21:06:52,534 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&thread_id=eq.196872f923934e74&message_id=eq.None "HTTP/1.1 200 OK"
+2025-05-02 21:06:52,535 - INFO - Insert: New email log for thread_id=196872f923934e74, message_id=None
+2025-05-02 21:06:52,572 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-02 21:06:52,842 - INFO - Message sent to MCP server: Re: PO for 100ml cosmetic containers
+2025-05-02 21:06:52,843 - INFO - Processed email: 196873410fd5bbde
+2025-05-02 21:06:53,072 - INFO - Is vendor: True
+2025-05-02 21:06:55,307 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 21:06:55,309 - INFO - Generated email type: shipment confirmation
+2025-05-02 21:06:55,309 - INFO - Fetching thread history for thread_id: 196872f923934e74
+2025-05-02 21:06:55,361 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.196872f923934e74&order=sent_at "HTTP/1.1 200 OK"
+2025-05-02 21:06:55,362 - INFO - Found 3 emails in thread
+2025-05-02 21:06:56,212 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 21:06:56,216 - INFO - Parsed delivery date: 2023-05-08
+2025-05-02 21:06:56,260 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&thread_id=eq.196872f923934e74&message_id=eq.None "HTTP/1.1 200 OK"
+2025-05-02 21:06:56,260 - INFO - Insert: New email log for thread_id=196872f923934e74, message_id=None
+2025-05-02 21:06:56,297 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-02 21:06:56,557 - INFO - Message sent to MCP server: Re: PO for 100ml cosmetic containers
+2025-05-02 21:06:56,558 - INFO - Processed email: 19687342396240ae
+2025-05-02 21:07:04,855 - INFO - GmailWatcher initialized
+2025-05-02 21:07:04,856 - INFO - Searching emails with query: after:2025/04/02
+2025-05-02 21:07:52,902 - INFO - Is vendor: True
+2025-05-02 21:07:55,072 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 21:07:55,074 - INFO - Generated email type: purchase order
+2025-05-02 21:07:55,867 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/storage/v1/object/attachments-from-vendor//None "HTTP/1.1 400 Bad Request"
+2025-05-02 21:07:55,869 - ERROR - Error downloading attachment: {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-05-02 21:07:55,871 - INFO - Fetching thread history for thread_id: 196872f923934e74
+2025-05-02 21:07:55,980 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.196872f923934e74&order=sent_at "HTTP/1.1 200 OK"
+2025-05-02 21:07:55,983 - INFO - Found 4 emails in thread
+2025-05-02 21:07:57,256 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 21:07:57,259 - INFO - Parsed delivery date: 2023-05-08
+2025-05-02 21:07:57,293 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&thread_id=eq.196872f923934e74&message_id=eq.None "HTTP/1.1 200 OK"
+2025-05-02 21:07:57,295 - INFO - Insert: New email log for thread_id=196872f923934e74, message_id=None
+2025-05-02 21:07:57,355 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-02 21:07:57,356 - INFO - Initializing Supabase client with URL: https://ujvbinqvvgbzgwqluian.supabase.co
+2025-05-02 21:07:57,380 - INFO - Supabase client initialized successfully
+2025-05-02 21:07:57,467 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/purchase_orders?select=vendor_email&vendor_email=not.is.null "HTTP/1.1 200 OK"
+2025-05-02 21:07:57,830 - INFO - Message sent to MCP server: PO for 100ml cosmetic containers
+2025-05-02 21:07:57,831 - INFO - Processed email: 19687301aeba3f47
+2025-05-02 21:08:57,859 - ERROR - Error processing message 19687310a0f43503: The read operation timed out
+2025-05-02 21:08:58,404 - ERROR - Error processing message 1968733cd67bc06f: [SSL: UNEXPECTED_RECORD] unexpected record (_ssl.c:2548)
+2025-05-02 21:08:58,769 - INFO - Is vendor: True
+2025-05-02 21:09:00,990 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 21:09:01,002 - INFO - Generated email type: delivery delay
+2025-05-02 21:09:01,002 - INFO - Fetching thread history for thread_id: 196872f923934e74
+2025-05-02 21:09:01,122 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.196872f923934e74&order=sent_at "HTTP/1.1 200 OK"
+2025-05-02 21:09:01,123 - INFO - Found 5 emails in thread
+2025-05-02 21:09:01,901 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 21:09:01,903 - INFO - Parsed delivery date: 2023-05-10
+2025-05-02 21:09:01,948 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&thread_id=eq.196872f923934e74&message_id=eq.None "HTTP/1.1 200 OK"
+2025-05-02 21:09:01,949 - INFO - Insert: New email log for thread_id=196872f923934e74, message_id=None
+2025-05-02 21:09:01,999 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-02 21:09:02,269 - INFO - Message sent to MCP server: Re: PO for 100ml cosmetic containers
+2025-05-02 21:09:02,269 - INFO - Processed email: 196873410fd5bbde
+2025-05-02 21:09:02,495 - INFO - Is vendor: True
+2025-05-02 21:09:04,823 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 21:09:04,835 - INFO - Generated email type: shipment confirmation
+2025-05-02 21:09:04,835 - INFO - Fetching thread history for thread_id: 196872f923934e74
+2025-05-02 21:09:04,871 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.196872f923934e74&order=sent_at "HTTP/1.1 200 OK"
+2025-05-02 21:09:04,873 - INFO - Found 6 emails in thread
+2025-05-02 21:09:05,781 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 21:09:05,783 - INFO - Parsed delivery date: 2023-05-07
+2025-05-02 21:09:05,823 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&thread_id=eq.196872f923934e74&message_id=eq.None "HTTP/1.1 200 OK"
+2025-05-02 21:09:05,824 - INFO - Insert: New email log for thread_id=196872f923934e74, message_id=None
+2025-05-02 21:09:05,860 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-02 21:09:05,883 - INFO - Message sent to MCP server: Re: PO for 100ml cosmetic containers
+2025-05-02 21:09:05,883 - INFO - Processed email: 19687342396240ae
+2025-05-02 21:19:16,247 - INFO - Vendor CSV path from .env: C:\Users\USER\po_agent_os\mock_vendor_emails.csv
+2025-05-02 21:19:16,815 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/purchase_orders?select=vendor_email&vendor_email=not.is.null "HTTP/1.1 200 OK"
+2025-05-02 21:19:16,818 - INFO - Loaded 1 vendor emails from database
+2025-05-02 21:19:16,819 - INFO - Loaded 0 additional vendor emails from CSV
+2025-05-02 21:19:16,819 - INFO - Total unique vendor emails: 1
+2025-05-02 21:19:16,825 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-05-02 21:19:17,020 - INFO - Initializing Supabase client with URL: https://ujvbinqvvgbzgwqluian.supabase.co
+2025-05-02 21:19:17,043 - INFO - Supabase client initialized successfully
+2025-05-02 21:19:17,044 - INFO - Searching emails with query: after:2025/04/02
+2025-05-02 21:20:10,375 - INFO - Is vendor: True
+2025-05-02 21:20:15,965 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 21:20:18,096 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 21:20:18,097 - INFO - Generated email type: purchase order
+2025-05-02 21:20:18,537 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/storage/v1/object/attachments-from-vendor//None "HTTP/1.1 400 Bad Request"
+2025-05-02 21:20:18,539 - ERROR - Error downloading attachment: {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-05-02 21:20:18,539 - INFO - Fetching thread history for thread_id: 196872f923934e74
+2025-05-02 21:20:18,665 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.196872f923934e74&order=sent_at "HTTP/1.1 200 OK"
+2025-05-02 21:20:18,670 - INFO - Found 0 emails in thread
+2025-05-02 21:20:19,616 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 21:20:19,618 - INFO - Parsed delivery date: 2023-05-07
+2025-05-02 21:20:19,665 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&thread_id=eq.196872f923934e74&message_id=eq.None "HTTP/1.1 200 OK"
+2025-05-02 21:20:19,666 - INFO - Insert: New email log for thread_id=196872f923934e74, message_id=None
+2025-05-02 21:20:19,708 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-02 21:20:19,981 - INFO - Message sent to MCP server: PO for 100ml cosmetic containers
+2025-05-02 21:20:19,983 - INFO - Processed email: 19687301aeba3f47
+2025-05-02 21:20:20,460 - INFO - Is vendor: True
+2025-05-02 21:20:24,975 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 21:20:26,935 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 21:20:26,941 - INFO - Generated email type: shipment confirmation
+2025-05-02 21:20:26,941 - INFO - Fetching thread history for thread_id: 196872f923934e74
+2025-05-02 21:20:27,111 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.196872f923934e74&order=sent_at "HTTP/1.1 200 OK"
+2025-05-02 21:20:27,114 - INFO - Found 1 emails in thread
+2025-05-02 21:20:27,927 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 21:20:27,933 - INFO - Parsed delivery date: 2023-05-07
+2025-05-02 21:20:27,982 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&thread_id=eq.196872f923934e74&message_id=eq.None "HTTP/1.1 200 OK"
+2025-05-02 21:20:27,983 - INFO - Insert: New email log for thread_id=196872f923934e74, message_id=None
+2025-05-02 21:20:28,077 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-02 21:20:28,081 - INFO - Message sent to MCP server: Re: PO for 100ml cosmetic containers
+2025-05-02 21:20:28,082 - INFO - Processed email: 1968733cd67bc06f
+2025-05-02 21:20:28,315 - INFO - Is vendor: True
+2025-05-02 21:20:33,161 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 21:20:35,027 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 21:20:35,030 - INFO - Generated email type: delivery delay
+2025-05-02 21:20:35,030 - INFO - Fetching thread history for thread_id: 196872f923934e74
+2025-05-02 21:20:35,155 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.196872f923934e74&order=sent_at "HTTP/1.1 200 OK"
+2025-05-02 21:20:35,158 - INFO - Found 2 emails in thread
+2025-05-02 21:20:35,879 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 21:20:35,883 - INFO - Parsed delivery date: 2023-05-08
+2025-05-02 21:20:35,930 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&thread_id=eq.196872f923934e74&message_id=eq.None "HTTP/1.1 200 OK"
+2025-05-02 21:20:35,932 - INFO - Insert: New email log for thread_id=196872f923934e74, message_id=None
+2025-05-02 21:20:35,968 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-02 21:20:36,228 - INFO - Message sent to MCP server: Re: PO for 100ml cosmetic containers
+2025-05-02 21:20:36,228 - INFO - Processed email: 196873410fd5bbde
+2025-05-02 21:20:36,470 - INFO - Is vendor: True
+2025-05-02 21:20:42,578 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 21:20:44,271 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 21:20:44,274 - INFO - Generated email type: shipment confirmation
+2025-05-02 21:20:44,274 - INFO - Fetching thread history for thread_id: 196872f923934e74
+2025-05-02 21:20:44,365 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.196872f923934e74&order=sent_at "HTTP/1.1 200 OK"
+2025-05-02 21:20:44,368 - INFO - Found 3 emails in thread
+2025-05-02 21:20:45,155 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 21:20:45,171 - INFO - Parsed delivery date: 2025-05-07
+2025-05-02 21:20:45,219 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&thread_id=eq.196872f923934e74&message_id=eq.None "HTTP/1.1 200 OK"
+2025-05-02 21:20:45,242 - INFO - Insert: New email log for thread_id=196872f923934e74, message_id=None
+2025-05-02 21:20:45,303 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-02 21:20:45,392 - INFO - Message sent to MCP server: Re: PO for 100ml cosmetic containers
+2025-05-02 21:20:45,393 - INFO - Processed email: 19687342396240ae
+2025-05-02 21:20:56,518 - INFO - GmailWatcher initialized
+2025-05-02 21:20:56,519 - INFO - Searching emails with query: after:2025/04/02
+2025-05-02 21:21:49,484 - INFO - Is vendor: True
+2025-05-02 21:21:54,354 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 21:21:56,403 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 21:21:56,405 - INFO - Generated email type: purchase order
+2025-05-02 21:21:57,262 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/storage/v1/object/attachments-from-vendor//None "HTTP/1.1 400 Bad Request"
+2025-05-02 21:21:57,263 - ERROR - Error downloading attachment: {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-05-02 21:21:57,263 - INFO - Fetching thread history for thread_id: 196872f923934e74
+2025-05-02 21:21:57,358 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.196872f923934e74&order=sent_at "HTTP/1.1 200 OK"
+2025-05-02 21:21:57,362 - INFO - Found 4 emails in thread
+2025-05-02 21:21:58,197 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 21:21:58,201 - INFO - Parsed delivery date: 2023-05-08
+2025-05-02 21:21:58,231 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&thread_id=eq.196872f923934e74&message_id=eq.None "HTTP/1.1 200 OK"
+2025-05-02 21:21:58,231 - INFO - Insert: New email log for thread_id=196872f923934e74, message_id=None
+2025-05-02 21:21:58,274 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-02 21:21:58,275 - INFO - Initializing Supabase client with URL: https://ujvbinqvvgbzgwqluian.supabase.co
+2025-05-02 21:21:58,303 - INFO - Supabase client initialized successfully
+2025-05-02 21:21:58,434 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/purchase_orders?select=vendor_email&vendor_email=not.is.null "HTTP/1.1 200 OK"
+2025-05-02 21:21:58,704 - INFO - Message sent to MCP server: PO for 100ml cosmetic containers
+2025-05-02 21:21:58,704 - INFO - Processed email: 19687301aeba3f47
+2025-05-02 21:29:19,625 - INFO - Vendor CSV path from .env: C:\Users\USER\po_agent_os\mock_vendor_emails.csv
+2025-05-02 21:29:20,217 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/purchase_orders?select=vendor_email&vendor_email=not.is.null "HTTP/1.1 200 OK"
+2025-05-02 21:29:20,219 - INFO - Loaded 1 vendor emails from database
+2025-05-02 21:29:20,220 - INFO - Loaded 0 additional vendor emails from CSV
+2025-05-02 21:29:20,220 - INFO - Total unique vendor emails: 1
+2025-05-02 21:29:20,226 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-05-02 21:29:20,448 - INFO - Initializing Supabase client with URL: https://ujvbinqvvgbzgwqluian.supabase.co
+2025-05-02 21:29:20,475 - INFO - Supabase client initialized successfully
+2025-05-02 21:29:20,475 - INFO - Searching emails with query: after:2025/04/02
+2025-05-02 21:30:11,265 - INFO - Is vendor: True
+2025-05-02 21:30:15,368 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 21:30:17,976 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 21:30:17,978 - INFO - Generated email type: purchase order confirmation
+2025-05-02 21:30:18,456 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/storage/v1/object/attachments-from-vendor//None "HTTP/1.1 400 Bad Request"
+2025-05-02 21:30:18,457 - ERROR - Error downloading attachment: {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-05-02 21:30:18,457 - INFO - Fetching thread history for thread_id: 196872f923934e74
+2025-05-02 21:30:18,584 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.196872f923934e74&order=sent_at "HTTP/1.1 200 OK"
+2025-05-02 21:30:18,587 - INFO - Found 0 emails in thread
+2025-05-02 21:30:19,407 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 21:30:19,414 - INFO - Parsed delivery date: 2023-05-07
+2025-05-02 21:30:19,468 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&thread_id=eq.196872f923934e74&message_id=eq.None "HTTP/1.1 200 OK"
+2025-05-02 21:30:19,470 - INFO - Insert: New email log for thread_id=196872f923934e74, message_id=None
+2025-05-02 21:30:19,509 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-02 21:30:19,768 - INFO - Message sent to MCP server: PO for 100ml cosmetic containers
+2025-05-02 21:30:19,768 - INFO - Processed email: 19687301aeba3f47
+2025-05-02 21:30:20,257 - INFO - Is vendor: True
+2025-05-02 21:30:25,344 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 21:30:27,841 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 21:30:27,848 - INFO - Generated email type: shipment confirmation
+2025-05-02 21:30:27,849 - INFO - Fetching thread history for thread_id: 196872f923934e74
+2025-05-02 21:30:27,968 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.196872f923934e74&order=sent_at "HTTP/1.1 200 OK"
+2025-05-02 21:30:27,970 - INFO - Found 1 emails in thread
+2025-05-02 21:30:28,962 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 21:30:28,975 - INFO - Parsed delivery date: 2023-05-07
+2025-05-02 21:30:29,031 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&thread_id=eq.196872f923934e74&message_id=eq.None "HTTP/1.1 200 OK"
+2025-05-02 21:30:29,032 - INFO - Insert: New email log for thread_id=196872f923934e74, message_id=None
+2025-05-02 21:30:29,068 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-02 21:30:29,072 - INFO - Message sent to MCP server: Re: PO for 100ml cosmetic containers
+2025-05-02 21:30:29,073 - INFO - Processed email: 1968733cd67bc06f
+2025-05-02 21:30:29,305 - INFO - Is vendor: True
+2025-05-02 21:30:35,024 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 21:30:37,281 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 21:30:37,285 - INFO - Generated email type: delivery delay
+2025-05-02 21:30:37,286 - INFO - Fetching thread history for thread_id: 196872f923934e74
+2025-05-02 21:30:37,379 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.196872f923934e74&order=sent_at "HTTP/1.1 200 OK"
+2025-05-02 21:30:37,382 - INFO - Found 2 emails in thread
+2025-05-02 21:30:38,315 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 21:30:38,318 - INFO - Parsed delivery date: 2023-05-09
+2025-05-02 21:30:38,358 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&thread_id=eq.196872f923934e74&message_id=eq.None "HTTP/1.1 200 OK"
+2025-05-02 21:30:38,361 - INFO - Insert: New email log for thread_id=196872f923934e74, message_id=None
+2025-05-02 21:30:38,423 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-02 21:30:38,695 - INFO - Message sent to MCP server: Re: PO for 100ml cosmetic containers
+2025-05-02 21:30:38,696 - INFO - Processed email: 196873410fd5bbde
+2025-05-02 21:30:38,934 - INFO - Is vendor: True
+2025-05-02 21:30:46,732 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 21:30:48,760 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 21:30:48,764 - INFO - Generated email type: shipment confirmation
+2025-05-02 21:30:48,764 - INFO - Fetching thread history for thread_id: 196872f923934e74
+2025-05-02 21:30:48,929 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.196872f923934e74&order=sent_at "HTTP/1.1 200 OK"
+2025-05-02 21:30:48,938 - INFO - Found 3 emails in thread
+2025-05-02 21:30:50,111 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 21:30:50,115 - INFO - Parsed delivery date: 2023-05-07
+2025-05-02 21:30:50,178 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&thread_id=eq.196872f923934e74&message_id=eq.None "HTTP/1.1 200 OK"
+2025-05-02 21:30:50,181 - INFO - Insert: New email log for thread_id=196872f923934e74, message_id=None
+2025-05-02 21:30:50,247 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-02 21:30:50,524 - INFO - Message sent to MCP server: Re: PO for 100ml cosmetic containers
+2025-05-02 21:30:50,526 - INFO - Processed email: 19687342396240ae
+2025-05-02 21:30:59,220 - INFO - GmailWatcher initialized
+2025-05-02 21:30:59,222 - INFO - Searching emails with query: after:2025/04/02
+2025-05-02 21:31:47,792 - INFO - Is vendor: True
+2025-05-02 21:31:51,694 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 21:31:53,471 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 21:31:53,478 - INFO - Generated email type: purchase order
+2025-05-02 21:31:54,420 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/storage/v1/object/attachments-from-vendor//None "HTTP/1.1 400 Bad Request"
+2025-05-02 21:31:54,423 - ERROR - Error downloading attachment: {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-05-02 21:31:54,424 - INFO - Fetching thread history for thread_id: 196872f923934e74
+2025-05-02 21:31:54,563 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.196872f923934e74&order=sent_at "HTTP/1.1 200 OK"
+2025-05-02 21:31:54,565 - INFO - Found 4 emails in thread
+2025-05-02 21:31:55,387 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 21:31:55,391 - INFO - Parsed delivery date: 2023-05-09
+2025-05-02 21:31:55,429 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&thread_id=eq.196872f923934e74&message_id=eq.None "HTTP/1.1 200 OK"
+2025-05-02 21:31:55,430 - INFO - Insert: New email log for thread_id=196872f923934e74, message_id=None
+2025-05-02 21:31:55,462 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-02 21:31:55,463 - INFO - Initializing Supabase client with URL: https://ujvbinqvvgbzgwqluian.supabase.co
+2025-05-02 21:31:55,487 - INFO - Supabase client initialized successfully
+2025-05-02 21:31:55,572 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/purchase_orders?select=vendor_email&vendor_email=not.is.null "HTTP/1.1 200 OK"
+2025-05-02 21:31:55,843 - INFO - Message sent to MCP server: PO for 100ml cosmetic containers
+2025-05-02 21:31:55,843 - INFO - Processed email: 19687301aeba3f47
+2025-05-02 21:31:56,057 - ERROR - Error processing message 19687310a0f43503: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2548)
+2025-05-02 21:31:56,430 - INFO - Is vendor: True
+2025-05-02 21:32:00,983 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 21:32:02,926 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 21:32:02,931 - INFO - Generated email type: shipment confirmation
+2025-05-02 21:32:02,933 - INFO - Fetching thread history for thread_id: 196872f923934e74
+2025-05-02 21:32:03,015 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.196872f923934e74&order=sent_at "HTTP/1.1 200 OK"
+2025-05-02 21:32:03,018 - INFO - Found 5 emails in thread
+2025-05-02 21:32:04,201 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 21:32:04,207 - INFO - Parsed delivery date: 2023-05-07
+2025-05-02 21:32:04,241 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&thread_id=eq.196872f923934e74&message_id=eq.None "HTTP/1.1 200 OK"
+2025-05-02 21:32:04,242 - INFO - Insert: New email log for thread_id=196872f923934e74, message_id=None
+2025-05-02 21:32:04,281 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-02 21:32:04,286 - INFO - Message sent to MCP server: Re: PO for 100ml cosmetic containers
+2025-05-02 21:32:04,286 - INFO - Processed email: 1968733cd67bc06f
+2025-05-02 21:32:04,519 - INFO - Is vendor: True
+2025-05-02 21:32:09,001 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 21:32:11,087 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 21:32:11,091 - INFO - Generated email type: delivery delay
+2025-05-02 21:32:11,092 - INFO - Fetching thread history for thread_id: 196872f923934e74
+2025-05-02 21:32:11,171 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.196872f923934e74&order=sent_at "HTTP/1.1 200 OK"
+2025-05-02 21:32:11,172 - INFO - Found 6 emails in thread
+2025-05-02 21:32:12,041 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 21:32:12,045 - INFO - Parsed delivery date: 2023-05-09
+2025-05-02 21:32:12,071 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&thread_id=eq.196872f923934e74&message_id=eq.None "HTTP/1.1 200 OK"
+2025-05-02 21:32:12,072 - INFO - Insert: New email log for thread_id=196872f923934e74, message_id=None
+2025-05-02 21:32:12,102 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-02 21:32:12,360 - INFO - Message sent to MCP server: Re: PO for 100ml cosmetic containers
+2025-05-02 21:32:12,360 - INFO - Processed email: 196873410fd5bbde
+2025-05-02 21:32:12,609 - INFO - Is vendor: True
+2025-05-02 21:32:17,486 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 21:32:20,484 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 21:32:20,492 - INFO - Generated email type: shipment confirmation
+2025-05-02 21:32:20,492 - INFO - Fetching thread history for thread_id: 196872f923934e74
+2025-05-02 21:32:20,577 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.196872f923934e74&order=sent_at "HTTP/1.1 200 OK"
+2025-05-02 21:32:20,579 - INFO - Found 7 emails in thread
+2025-05-02 21:32:21,301 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 21:32:21,306 - INFO - Parsed delivery date: 2023-05-09
+2025-05-02 21:32:21,356 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&thread_id=eq.196872f923934e74&message_id=eq.None "HTTP/1.1 200 OK"
+2025-05-02 21:32:21,357 - INFO - Insert: New email log for thread_id=196872f923934e74, message_id=None
+2025-05-02 21:32:21,398 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-02 21:32:21,493 - INFO - Message sent to MCP server: Re: PO for 100ml cosmetic containers
+2025-05-02 21:32:21,494 - INFO - Processed email: 19687342396240ae
+2025-05-02 21:40:41,285 - INFO - Vendor CSV path from .env: C:\Users\USER\po_agent_os\mock_vendor_emails.csv
+2025-05-02 21:40:41,870 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/purchase_orders?select=vendor_email&vendor_email=not.is.null "HTTP/1.1 200 OK"
+2025-05-02 21:40:41,873 - INFO - Loaded 1 vendor emails from database
+2025-05-02 21:40:41,873 - INFO - Loaded 0 additional vendor emails from CSV
+2025-05-02 21:40:41,873 - INFO - Total unique vendor emails: 1
+2025-05-02 21:40:41,880 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-05-02 21:40:42,064 - INFO - Initializing Supabase client with URL: https://ujvbinqvvgbzgwqluian.supabase.co
+2025-05-02 21:40:42,085 - INFO - Supabase client initialized successfully
+2025-05-02 21:40:42,086 - INFO - Searching emails with query: after:2025/04/02
+2025-05-02 21:41:32,993 - INFO - Is vendor: True
+2025-05-02 21:41:33,514 - ERROR - Error saving email log: 'SupabaseService' object has no attribute 'table'
+2025-05-02 21:41:33,516 - ERROR - Error type: AttributeError
+2025-05-02 21:41:33,783 - INFO - Message sent to MCP server: PO for 100ml cosmetic containers
+2025-05-02 21:41:33,784 - INFO - Processed email: 19687301aeba3f47
+2025-05-02 21:41:34,299 - INFO - Is vendor: True
+2025-05-02 21:41:34,798 - ERROR - Error saving email log: 'SupabaseService' object has no attribute 'table'
+2025-05-02 21:41:34,800 - ERROR - Error type: AttributeError
+2025-05-02 21:41:34,812 - INFO - Message sent to MCP server: Re: PO for 100ml cosmetic containers
+2025-05-02 21:41:34,813 - INFO - Processed email: 1968733cd67bc06f
+2025-05-02 21:41:35,055 - INFO - Is vendor: True
+2025-05-02 21:41:35,601 - ERROR - Error saving email log: 'SupabaseService' object has no attribute 'table'
+2025-05-02 21:41:35,601 - ERROR - Error type: AttributeError
+2025-05-02 21:41:35,862 - INFO - Message sent to MCP server: Re: PO for 100ml cosmetic containers
+2025-05-02 21:41:35,863 - INFO - Processed email: 196873410fd5bbde
+2025-05-02 21:41:36,108 - INFO - Is vendor: True
+2025-05-02 21:41:36,594 - ERROR - Error saving email log: 'SupabaseService' object has no attribute 'table'
+2025-05-02 21:41:36,594 - ERROR - Error type: AttributeError
+2025-05-02 21:41:36,596 - INFO - Message sent to MCP server: Re: PO for 100ml cosmetic containers
+2025-05-02 21:41:36,597 - INFO - Processed email: 19687342396240ae
+2025-05-02 21:41:45,275 - INFO - GmailWatcher initialized
+2025-05-02 21:41:45,277 - INFO - Searching emails with query: after:2025/04/02
+2025-05-02 21:42:35,712 - INFO - Is vendor: True
+2025-05-02 21:42:36,242 - ERROR - Error saving email log: 'SupabaseService' object has no attribute 'table'
+2025-05-02 21:42:36,243 - ERROR - Error type: AttributeError
+2025-05-02 21:42:36,244 - INFO - Initializing Supabase client with URL: https://ujvbinqvvgbzgwqluian.supabase.co
+2025-05-02 21:42:36,276 - INFO - Supabase client initialized successfully
+2025-05-02 21:42:36,906 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/purchase_orders?select=vendor_email&vendor_email=not.is.null "HTTP/1.1 200 OK"
+2025-05-02 21:42:37,185 - INFO - Message sent to MCP server: PO for 100ml cosmetic containers
+2025-05-02 21:42:37,185 - INFO - Processed email: 19687301aeba3f47
+2025-05-02 21:43:15,314 - INFO - Vendor CSV path from .env: C:\Users\USER\po_agent_os\mock_vendor_emails.csv
+2025-05-02 21:43:15,467 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/purchase_orders?select=vendor_email&vendor_email=not.is.null "HTTP/1.1 200 OK"
+2025-05-02 21:43:15,471 - INFO - Loaded 1 vendor emails from database
+2025-05-02 21:43:15,472 - INFO - Loaded 0 additional vendor emails from CSV
+2025-05-02 21:43:15,472 - INFO - Total unique vendor emails: 1
+2025-05-02 21:43:15,480 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-05-02 21:43:15,889 - INFO - Initializing Supabase client with URL: https://ujvbinqvvgbzgwqluian.supabase.co
+2025-05-02 21:43:15,939 - INFO - Supabase client initialized successfully
+2025-05-02 21:43:15,942 - INFO - Searching emails with query: after:2025/04/02
+2025-05-02 21:44:07,105 - INFO - Is vendor: True
+2025-05-02 21:44:07,703 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&message_id=eq.19687301aeba3f47 "HTTP/1.1 200 OK"
+2025-05-02 21:44:10,410 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 21:44:12,336 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 21:44:12,338 - INFO - Generated email type: purchase order confirmation
+2025-05-02 21:44:12,864 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/storage/v1/object/attachments-from-vendor//None "HTTP/1.1 400 Bad Request"
+2025-05-02 21:44:12,865 - ERROR - Error downloading attachment: {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-05-02 21:44:12,865 - INFO - Fetching thread history for thread_id: 196872f923934e74
+2025-05-02 21:44:12,961 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.196872f923934e74&order=sent_at "HTTP/1.1 200 OK"
+2025-05-02 21:44:12,967 - INFO - Found 0 emails in thread
+2025-05-02 21:44:14,058 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 21:44:14,061 - INFO - Parsed delivery date: 2023-05-07
+2025-05-02 21:44:14,192 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&thread_id=eq.196872f923934e74&message_id=eq.19687301aeba3f47 "HTTP/1.1 200 OK"
+2025-05-02 21:44:14,194 - INFO - Insert: New email log for thread_id=196872f923934e74, message_id=19687301aeba3f47
+2025-05-02 21:44:14,354 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-02 21:44:14,630 - INFO - Message sent to MCP server: PO for 100ml cosmetic containers
+2025-05-02 21:44:14,631 - INFO - Processed email: 19687301aeba3f47
+2025-05-02 21:44:15,136 - INFO - Is vendor: True
+2025-05-02 21:44:15,667 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&message_id=eq.1968733cd67bc06f "HTTP/1.1 200 OK"
+2025-05-02 21:44:19,751 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 21:44:21,544 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 21:44:21,846 - INFO - Generated email type: shipment confirmation
+2025-05-02 21:44:21,847 - INFO - Fetching thread history for thread_id: 196872f923934e74
+2025-05-02 21:44:22,336 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.196872f923934e74&order=sent_at "HTTP/1.1 200 OK"
+2025-05-02 21:44:22,338 - INFO - Found 1 emails in thread
+2025-05-02 21:44:23,464 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 21:44:23,471 - INFO - Parsed delivery date: 2023-05-07
+2025-05-02 21:44:23,509 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&thread_id=eq.196872f923934e74&message_id=eq.1968733cd67bc06f "HTTP/1.1 200 OK"
+2025-05-02 21:44:23,511 - INFO - Insert: New email log for thread_id=196872f923934e74, message_id=1968733cd67bc06f
+2025-05-02 21:44:23,544 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-02 21:44:23,550 - INFO - Message sent to MCP server: Re: PO for 100ml cosmetic containers
+2025-05-02 21:44:23,551 - INFO - Processed email: 1968733cd67bc06f
+2025-05-02 21:44:23,802 - INFO - Is vendor: True
+2025-05-02 21:44:24,315 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&message_id=eq.196873410fd5bbde "HTTP/1.1 200 OK"
+2025-05-02 21:44:26,757 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 21:44:28,671 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 21:44:28,675 - INFO - Generated email type: delivery delay
+2025-05-02 21:44:28,676 - INFO - Fetching thread history for thread_id: 196872f923934e74
+2025-05-02 21:44:28,714 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.196872f923934e74&order=sent_at "HTTP/1.1 200 OK"
+2025-05-02 21:44:28,716 - INFO - Found 2 emails in thread
+2025-05-02 21:44:29,579 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 21:44:29,581 - INFO - Parsed delivery date: 2023-05-09
+2025-05-02 21:44:29,626 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&thread_id=eq.196872f923934e74&message_id=eq.196873410fd5bbde "HTTP/1.1 200 OK"
+2025-05-02 21:44:29,628 - INFO - Insert: New email log for thread_id=196872f923934e74, message_id=196873410fd5bbde
+2025-05-02 21:44:29,660 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-02 21:44:29,923 - INFO - Message sent to MCP server: Re: PO for 100ml cosmetic containers
+2025-05-02 21:44:29,923 - INFO - Processed email: 196873410fd5bbde
+2025-05-02 21:44:30,172 - INFO - Is vendor: True
+2025-05-02 21:44:30,707 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&message_id=eq.19687342396240ae "HTTP/1.1 200 OK"
+2025-05-02 21:44:33,453 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 21:44:34,901 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 21:44:34,908 - INFO - Generated email type: shipment confirmation
+2025-05-02 21:44:34,909 - INFO - Fetching thread history for thread_id: 196872f923934e74
+2025-05-02 21:44:34,947 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.196872f923934e74&order=sent_at "HTTP/1.1 200 OK"
+2025-05-02 21:44:34,950 - INFO - Found 3 emails in thread
+2025-05-02 21:44:35,661 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 21:44:35,662 - INFO - Parsed delivery date: 2023-05-09
+2025-05-02 21:44:35,701 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&thread_id=eq.196872f923934e74&message_id=eq.19687342396240ae "HTTP/1.1 200 OK"
+2025-05-02 21:44:35,702 - INFO - Insert: New email log for thread_id=196872f923934e74, message_id=19687342396240ae
+2025-05-02 21:44:35,734 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-02 21:44:35,740 - INFO - Message sent to MCP server: Re: PO for 100ml cosmetic containers
+2025-05-02 21:44:35,740 - INFO - Processed email: 19687342396240ae
+2025-05-02 21:44:44,634 - INFO - GmailWatcher initialized
+2025-05-02 21:44:44,634 - INFO - Searching emails with query: after:2025/04/02
+2025-05-02 21:45:35,048 - INFO - Is vendor: True
+2025-05-02 21:45:35,679 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&message_id=eq.19687301aeba3f47 "HTTP/1.1 200 OK"
+2025-05-02 21:45:35,686 - INFO - Duplicate message_id 19687301aeba3f47 detected, skipping save.
+2025-05-02 21:45:35,688 - INFO - Initializing Supabase client with URL: https://ujvbinqvvgbzgwqluian.supabase.co
+2025-05-02 21:45:35,730 - INFO - Supabase client initialized successfully
+2025-05-02 21:45:35,825 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/purchase_orders?select=vendor_email&vendor_email=not.is.null "HTTP/1.1 200 OK"
+2025-05-02 21:45:36,086 - INFO - Message sent to MCP server: PO for 100ml cosmetic containers
+2025-05-02 21:45:36,086 - INFO - Processed email: 19687301aeba3f47
+2025-05-02 23:07:49,974 - INFO - Vendor CSV path from .env: C:\Users\USER\po_agent_os\mock_vendor_emails.csv
+2025-05-02 23:07:50,127 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/purchase_orders?select=vendor_email&vendor_email=not.is.null "HTTP/1.1 200 OK"
+2025-05-02 23:07:50,130 - INFO - Loaded 1 vendor emails from database
+2025-05-02 23:07:50,130 - INFO - Loaded 0 additional vendor emails from CSV
+2025-05-02 23:07:50,130 - INFO - Total unique vendor emails: 1
+2025-05-02 23:07:50,137 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-05-02 23:07:50,376 - INFO - Initializing Supabase client with URL: https://ujvbinqvvgbzgwqluian.supabase.co
+2025-05-02 23:07:50,400 - INFO - Supabase client initialized successfully
+2025-05-02 23:07:50,401 - INFO - Searching emails with query: after:2025/04/02
+2025-05-02 23:08:45,815 - INFO - Is vendor: True
+2025-05-02 23:08:47,433 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&message_id=eq.19687301aeba3f47 "HTTP/1.1 200 OK"
+2025-05-02 23:08:47,438 - ERROR - Error saving email log: 'TextProcessor' object has no attribute 'extract_po_number'
+2025-05-02 23:08:47,439 - ERROR - Error type: AttributeError
+2025-05-02 23:08:47,700 - INFO - Message sent to MCP server: PO for 100ml cosmetic containers
+2025-05-02 23:08:47,700 - INFO - Processed email: 19687301aeba3f47
+2025-05-02 23:08:48,213 - INFO - Is vendor: True
+2025-05-02 23:08:48,834 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&message_id=eq.1968733cd67bc06f "HTTP/1.1 200 OK"
+2025-05-02 23:08:48,839 - ERROR - Error saving email log: 'TextProcessor' object has no attribute 'extract_po_number'
+2025-05-02 23:08:48,839 - ERROR - Error type: AttributeError
+2025-05-02 23:08:48,844 - INFO - Message sent to MCP server: Re: PO for 100ml cosmetic containers
+2025-05-02 23:08:48,845 - INFO - Processed email: 1968733cd67bc06f
+2025-05-02 23:08:49,082 - INFO - Is vendor: True
+2025-05-02 23:08:49,657 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&message_id=eq.196873410fd5bbde "HTTP/1.1 200 OK"
+2025-05-02 23:08:49,662 - ERROR - Error saving email log: 'TextProcessor' object has no attribute 'extract_po_number'
+2025-05-02 23:08:49,662 - ERROR - Error type: AttributeError
+2025-05-02 23:08:49,924 - INFO - Message sent to MCP server: Re: PO for 100ml cosmetic containers
+2025-05-02 23:08:49,925 - INFO - Processed email: 196873410fd5bbde
+2025-05-02 23:08:50,178 - INFO - Is vendor: True
+2025-05-02 23:08:50,720 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&message_id=eq.19687342396240ae "HTTP/1.1 200 OK"
+2025-05-02 23:08:50,722 - ERROR - Error saving email log: 'TextProcessor' object has no attribute 'extract_po_number'
+2025-05-02 23:08:50,723 - ERROR - Error type: AttributeError
+2025-05-02 23:08:50,725 - INFO - Message sent to MCP server: Re: PO for 100ml cosmetic containers
+2025-05-02 23:08:50,727 - INFO - Processed email: 19687342396240ae
+2025-05-02 23:09:00,156 - INFO - GmailWatcher initialized
+2025-05-02 23:09:00,158 - INFO - Searching emails with query: after:2025/04/02
+2025-05-02 23:09:52,282 - INFO - Is vendor: True
+2025-05-02 23:09:52,912 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&message_id=eq.19687301aeba3f47 "HTTP/1.1 200 OK"
+2025-05-02 23:09:52,914 - ERROR - Error saving email log: 'TextProcessor' object has no attribute 'extract_po_number'
+2025-05-02 23:09:52,915 - ERROR - Error type: AttributeError
+2025-05-02 23:09:52,915 - INFO - Initializing Supabase client with URL: https://ujvbinqvvgbzgwqluian.supabase.co
+2025-05-02 23:09:52,939 - INFO - Supabase client initialized successfully
+2025-05-02 23:09:53,027 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/purchase_orders?select=vendor_email&vendor_email=not.is.null "HTTP/1.1 200 OK"
+2025-05-02 23:09:53,656 - INFO - Message sent to MCP server: PO for 100ml cosmetic containers
+2025-05-02 23:09:53,657 - INFO - Processed email: 19687301aeba3f47
+2025-05-02 23:09:54,173 - INFO - Is vendor: True
+2025-05-02 23:09:54,724 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&message_id=eq.1968733cd67bc06f "HTTP/1.1 200 OK"
+2025-05-02 23:09:54,725 - ERROR - Error saving email log: 'TextProcessor' object has no attribute 'extract_po_number'
+2025-05-02 23:09:54,725 - ERROR - Error type: AttributeError
+2025-05-02 23:09:54,728 - INFO - Message sent to MCP server: Re: PO for 100ml cosmetic containers
+2025-05-02 23:09:54,729 - INFO - Processed email: 1968733cd67bc06f
+2025-05-02 23:09:54,960 - INFO - Is vendor: True
+2025-05-02 23:09:55,541 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&message_id=eq.196873410fd5bbde "HTTP/1.1 200 OK"
+2025-05-02 23:09:55,544 - ERROR - Error saving email log: 'TextProcessor' object has no attribute 'extract_po_number'
+2025-05-02 23:09:55,546 - ERROR - Error type: AttributeError
+2025-05-02 23:09:55,821 - INFO - Message sent to MCP server: Re: PO for 100ml cosmetic containers
+2025-05-02 23:09:55,822 - INFO - Processed email: 196873410fd5bbde
+2025-05-02 23:09:56,074 - INFO - Is vendor: True
+2025-05-02 23:09:56,689 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&message_id=eq.19687342396240ae "HTTP/1.1 200 OK"
+2025-05-02 23:09:56,690 - ERROR - Error saving email log: 'TextProcessor' object has no attribute 'extract_po_number'
+2025-05-02 23:09:56,691 - ERROR - Error type: AttributeError
+2025-05-02 23:09:56,694 - INFO - Message sent to MCP server: Re: PO for 100ml cosmetic containers
+2025-05-02 23:09:56,694 - INFO - Processed email: 19687342396240ae
+2025-05-02 23:15:17,091 - INFO - Vendor CSV path from .env: C:\Users\USER\po_agent_os\mock_vendor_emails.csv
+2025-05-02 23:15:17,612 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/purchase_orders?select=vendor_email&vendor_email=not.is.null "HTTP/1.1 200 OK"
+2025-05-02 23:15:17,615 - INFO - Loaded 1 vendor emails from database
+2025-05-02 23:15:17,616 - INFO - Loaded 0 additional vendor emails from CSV
+2025-05-02 23:15:17,616 - INFO - Total unique vendor emails: 1
+2025-05-02 23:15:17,621 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-05-02 23:15:17,854 - INFO - Initializing Supabase client with URL: https://ujvbinqvvgbzgwqluian.supabase.co
+2025-05-02 23:15:17,885 - INFO - Supabase client initialized successfully
+2025-05-02 23:15:17,886 - INFO - Searching emails with query: after:2025/04/02
+2025-05-02 23:16:10,179 - INFO - Is vendor: True
+2025-05-02 23:16:10,826 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&message_id=eq.19687301aeba3f47 "HTTP/1.1 200 OK"
+2025-05-02 23:16:15,175 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 23:16:16,755 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 23:16:16,758 - INFO - Generated email type: purchase order
+2025-05-02 23:16:17,169 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/storage/v1/object/attachments-from-vendor//None "HTTP/1.1 400 Bad Request"
+2025-05-02 23:16:17,170 - ERROR - Error downloading attachment: {'statusCode': 400, 'error': 'Duplicate', 'message': 'The resource already exists'}
+2025-05-02 23:16:17,170 - INFO - Fetching thread history for thread_id: 196872f923934e74
+2025-05-02 23:16:17,259 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.196872f923934e74&order=sent_at "HTTP/1.1 200 OK"
+2025-05-02 23:16:17,262 - INFO - Found 0 emails in thread
+2025-05-02 23:16:18,138 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 23:16:18,147 - INFO - Parsed delivery date: 2023-05-07
+2025-05-02 23:16:18,182 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&thread_id=eq.196872f923934e74&message_id=eq.19687301aeba3f47 "HTTP/1.1 200 OK"
+2025-05-02 23:16:18,183 - INFO - Insert: New email log for thread_id=196872f923934e74, message_id=19687301aeba3f47
+2025-05-02 23:16:18,222 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-02 23:16:18,494 - INFO - Message sent to MCP server: PO for 100ml cosmetic containers
+2025-05-02 23:16:18,494 - INFO - Processed email: 19687301aeba3f47
+2025-05-02 23:16:18,981 - INFO - Is vendor: True
+2025-05-02 23:16:19,519 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&message_id=eq.1968733cd67bc06f "HTTP/1.1 200 OK"
+2025-05-02 23:16:22,510 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 23:16:24,366 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 23:16:24,369 - INFO - Generated email type: shipment confirmation
+2025-05-02 23:16:24,369 - INFO - Fetching thread history for thread_id: 196872f923934e74
+2025-05-02 23:16:24,411 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.196872f923934e74&order=sent_at "HTTP/1.1 200 OK"
+2025-05-02 23:16:24,413 - INFO - Found 1 emails in thread
+2025-05-02 23:16:25,281 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 23:16:25,283 - INFO - Parsed delivery date: 2023-05-07
+2025-05-02 23:16:25,320 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&thread_id=eq.196872f923934e74&message_id=eq.1968733cd67bc06f "HTTP/1.1 200 OK"
+2025-05-02 23:16:25,321 - INFO - Insert: New email log for thread_id=196872f923934e74, message_id=1968733cd67bc06f
+2025-05-02 23:16:25,359 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-02 23:16:25,363 - INFO - Message sent to MCP server: Re: PO for 100ml cosmetic containers
+2025-05-02 23:16:25,363 - INFO - Processed email: 1968733cd67bc06f
+2025-05-02 23:16:25,607 - INFO - Is vendor: True
+2025-05-02 23:16:26,159 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&message_id=eq.196873410fd5bbde "HTTP/1.1 200 OK"
+2025-05-02 23:16:29,420 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 23:16:31,426 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 23:16:31,431 - INFO - Generated email type: delivery delay
+2025-05-02 23:16:31,432 - INFO - Fetching thread history for thread_id: 196872f923934e74
+2025-05-02 23:16:31,558 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.196872f923934e74&order=sent_at "HTTP/1.1 200 OK"
+2025-05-02 23:16:31,559 - INFO - Found 2 emails in thread
+2025-05-02 23:16:32,448 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 23:16:32,454 - INFO - Parsed delivery date: 2023-05-09
+2025-05-02 23:16:32,489 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&thread_id=eq.196872f923934e74&message_id=eq.196873410fd5bbde "HTTP/1.1 200 OK"
+2025-05-02 23:16:32,490 - INFO - Insert: New email log for thread_id=196872f923934e74, message_id=196873410fd5bbde
+2025-05-02 23:16:32,535 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-02 23:16:32,806 - INFO - Message sent to MCP server: Re: PO for 100ml cosmetic containers
+2025-05-02 23:16:32,808 - INFO - Processed email: 196873410fd5bbde
+2025-05-02 23:16:33,067 - INFO - Is vendor: True
+2025-05-02 23:16:33,613 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&message_id=eq.19687342396240ae "HTTP/1.1 200 OK"
+2025-05-02 23:16:36,348 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 23:16:37,963 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 23:16:37,977 - INFO - Generated email type: shipment confirmation
+2025-05-02 23:16:37,979 - INFO - Fetching thread history for thread_id: 196872f923934e74
+2025-05-02 23:16:38,015 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.196872f923934e74&order=sent_at "HTTP/1.1 200 OK"
+2025-05-02 23:16:38,016 - INFO - Found 3 emails in thread
+2025-05-02 23:16:38,831 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-02 23:16:38,833 - INFO - Parsed delivery date: 2023-05-09
+2025-05-02 23:16:38,868 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&thread_id=eq.196872f923934e74&message_id=eq.19687342396240ae "HTTP/1.1 200 OK"
+2025-05-02 23:16:38,871 - INFO - Insert: New email log for thread_id=196872f923934e74, message_id=19687342396240ae
+2025-05-02 23:16:38,904 - INFO - HTTP Request: POST https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs "HTTP/1.1 201 Created"
+2025-05-02 23:16:38,912 - INFO - Message sent to MCP server: Re: PO for 100ml cosmetic containers
+2025-05-02 23:16:38,913 - INFO - Processed email: 19687342396240ae
+2025-05-02 23:16:47,992 - INFO - GmailWatcher initialized
+2025-05-02 23:16:47,994 - INFO - Searching emails with query: after:2025/04/02
+2025-05-02 23:17:03,584 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-1' coro=<main() done, defined at C:\Users\USER\po_agent_os\Vendor_email_logger_agent\main.py:264> exception=KeyboardInterrupt()>
+Traceback (most recent call last):
+  File "C:\Users\USER\po_agent_os\Vendor_email_logger_agent\main.py", line 316, in <module>
+    asyncio.run(main())
+  File "C:\Users\USER\AppData\Local\Programs\Python\Python310\lib\asyncio\runners.py", line 47, in run
+    _cancel_all_tasks(loop)
+  File "C:\Users\USER\AppData\Local\Programs\Python\Python310\lib\asyncio\runners.py", line 63, in _cancel_all_tasks
+    loop.run_until_complete(tasks.gather(*to_cancel, return_exceptions=True))
+  File "C:\Users\USER\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 633, in run_until_complete
+    self.run_forever()
+  File "C:\Users\USER\AppData\Local\Programs\Python\Python310\lib\asyncio\windows_events.py", line 321, in run_forever
+    super().run_forever()
+  File "C:\Users\USER\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 600, in run_forever
+    self._run_once()
+  File "C:\Users\USER\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 1896, in _run_once
+    handle._run()
+  File "C:\Users\USER\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\USER\po_agent_os\Vendor_email_logger_agent\main.py", line 302, in main
+    await asyncio.gather(
+  File "C:\Users\USER\AppData\Local\Programs\Python\Python310\lib\asyncio\runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "C:\Users\USER\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 633, in run_until_complete
+    self.run_forever()
+  File "C:\Users\USER\AppData\Local\Programs\Python\Python310\lib\asyncio\windows_events.py", line 321, in run_forever
+    super().run_forever()
+  File "C:\Users\USER\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 600, in run_forever
+    self._run_once()
+  File "C:\Users\USER\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 1896, in _run_once
+    handle._run()
+  File "C:\Users\USER\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\USER\po_agent_os\Vendor_email_logger_agent\main.py", line 186, in collect_historical_emails
+    all_messages.sort(key=get_msg_date)
+  File "C:\Users\USER\po_agent_os\Vendor_email_logger_agent\main.py", line 162, in get_msg_date
+    ).execute()
+  File "C:\Users\USER\po_agent_os\.venv\lib\site-packages\googleapiclient\_helpers.py", line 130, in positional_wrapper
+    return wrapped(*args, **kwargs)
+  File "C:\Users\USER\po_agent_os\.venv\lib\site-packages\googleapiclient\http.py", line 923, in execute
+    resp, content = _retry_request(
+  File "C:\Users\USER\po_agent_os\.venv\lib\site-packages\googleapiclient\http.py", line 191, in _retry_request
+    resp, content = http.request(uri, method, *args, **kwargs)
+  File "C:\Users\USER\po_agent_os\.venv\lib\site-packages\google_auth_httplib2.py", line 218, in request
+    response, content = self.http.request(
+  File "C:\Users\USER\po_agent_os\.venv\lib\site-packages\httplib2\__init__.py", line 1724, in request
+    (response, content) = self._request(
+  File "C:\Users\USER\po_agent_os\.venv\lib\site-packages\httplib2\__init__.py", line 1444, in _request
+    (response, content) = self._conn_request(conn, request_uri, method, body, headers)
+  File "C:\Users\USER\po_agent_os\.venv\lib\site-packages\httplib2\__init__.py", line 1396, in _conn_request
+    response = conn.getresponse()
+  File "C:\Users\USER\AppData\Local\Programs\Python\Python310\lib\http\client.py", line 1374, in getresponse
+    response.begin()
+  File "C:\Users\USER\AppData\Local\Programs\Python\Python310\lib\http\client.py", line 318, in begin
+    version, status, reason = self._read_status()
+  File "C:\Users\USER\AppData\Local\Programs\Python\Python310\lib\http\client.py", line 279, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+  File "C:\Users\USER\AppData\Local\Programs\Python\Python310\lib\socket.py", line 705, in readinto
+    return self._sock.recv_into(b)
+  File "C:\Users\USER\AppData\Local\Programs\Python\Python310\lib\ssl.py", line 1274, in recv_into
+    return self.read(nbytes, buffer)
+  File "C:\Users\USER\AppData\Local\Programs\Python\Python310\lib\ssl.py", line 1130, in read
+    return self._sslobj.read(len, buffer)
+KeyboardInterrupt
+2025-05-02 23:17:03,589 - ERROR - Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x0000020D31F688E0>
+2025-05-02 23:22:30,877 - INFO - Vendor CSV path from .env: C:\Users\USER\po_agent_os\mock_vendor_emails.csv
+2025-05-02 23:22:31,408 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/purchase_orders?select=vendor_email&vendor_email=not.is.null "HTTP/1.1 200 OK"
+2025-05-02 23:22:31,411 - INFO - Loaded 1 vendor emails from database
+2025-05-02 23:22:31,412 - INFO - Loaded 0 additional vendor emails from CSV
+2025-05-02 23:22:31,412 - INFO - Total unique vendor emails: 1
+2025-05-02 23:22:31,417 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-05-02 23:22:31,692 - INFO - Initializing Supabase client with URL: https://ujvbinqvvgbzgwqluian.supabase.co
+2025-05-02 23:22:31,762 - INFO - Supabase client initialized successfully
+2025-05-02 23:22:31,763 - INFO - Searching emails with query: after:2025/04/02
+2025-05-02 23:23:28,075 - INFO - Is vendor: True
+2025-05-02 23:23:28,681 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&message_id=eq.19687301aeba3f47 "HTTP/1.1 200 OK"
+2025-05-02 23:23:28,686 - ERROR - Error saving email log: 'TextProcessor' object has no attribute 'extract_po_number'
+2025-05-02 23:23:28,686 - ERROR - Error type: AttributeError
+2025-05-02 23:23:28,958 - INFO - Message sent to MCP server: PO for 100ml cosmetic containers
+2025-05-02 23:23:28,958 - INFO - Processed email: 19687301aeba3f47
+2025-05-02 23:23:29,438 - INFO - Is vendor: True
+2025-05-02 23:23:29,957 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&message_id=eq.1968733cd67bc06f "HTTP/1.1 200 OK"
+2025-05-02 23:23:29,962 - ERROR - Error saving email log: 'TextProcessor' object has no attribute 'extract_po_number'
+2025-05-02 23:23:29,962 - ERROR - Error type: AttributeError
+2025-05-02 23:23:29,966 - INFO - Message sent to MCP server: Re: PO for 100ml cosmetic containers
+2025-05-02 23:23:29,966 - INFO - Processed email: 1968733cd67bc06f
+2025-05-02 23:23:30,210 - INFO - Is vendor: True
+2025-05-02 23:23:30,746 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&message_id=eq.196873410fd5bbde "HTTP/1.1 200 OK"
+2025-05-02 23:23:30,749 - ERROR - Error saving email log: 'TextProcessor' object has no attribute 'extract_po_number'
+2025-05-02 23:23:30,750 - ERROR - Error type: AttributeError
+2025-05-02 23:23:31,008 - INFO - Message sent to MCP server: Re: PO for 100ml cosmetic containers
+2025-05-02 23:23:31,009 - INFO - Processed email: 196873410fd5bbde
+2025-05-02 23:23:31,257 - INFO - Is vendor: True
+2025-05-02 23:23:31,798 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&message_id=eq.19687342396240ae "HTTP/1.1 200 OK"
+2025-05-02 23:23:31,801 - ERROR - Error saving email log: 'TextProcessor' object has no attribute 'extract_po_number'
+2025-05-02 23:23:31,801 - ERROR - Error type: AttributeError
+2025-05-02 23:23:31,804 - INFO - Message sent to MCP server: Re: PO for 100ml cosmetic containers
+2025-05-02 23:23:31,805 - INFO - Processed email: 19687342396240ae
+2025-05-02 23:23:40,440 - INFO - GmailWatcher initialized
+2025-05-02 23:23:40,441 - INFO - Searching emails with query: after:2025/04/02
+2025-05-02 23:24:31,932 - INFO - Is vendor: True
+2025-05-02 23:24:33,305 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&message_id=eq.19687301aeba3f47 "HTTP/1.1 200 OK"
+2025-05-02 23:24:33,308 - ERROR - Error saving email log: 'TextProcessor' object has no attribute 'extract_po_number'
+2025-05-02 23:24:33,308 - ERROR - Error type: AttributeError
+2025-05-02 23:24:33,308 - INFO - Initializing Supabase client with URL: https://ujvbinqvvgbzgwqluian.supabase.co
+2025-05-02 23:24:33,332 - INFO - Supabase client initialized successfully
+2025-05-02 23:24:33,420 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/purchase_orders?select=vendor_email&vendor_email=not.is.null "HTTP/1.1 200 OK"
+2025-05-02 23:24:57,895 - INFO - Vendor CSV path from .env: C:\Users\USER\po_agent_os\mock_vendor_emails.csv
+2025-05-02 23:24:57,984 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/purchase_orders?select=vendor_email&vendor_email=not.is.null "HTTP/1.1 200 OK"
+2025-05-02 23:24:57,988 - INFO - Loaded 1 vendor emails from database
+2025-05-02 23:24:57,988 - INFO - Loaded 0 additional vendor emails from CSV
+2025-05-02 23:24:57,989 - INFO - Total unique vendor emails: 1
+2025-05-02 23:24:57,993 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-05-02 23:24:58,208 - INFO - Initializing Supabase client with URL: https://ujvbinqvvgbzgwqluian.supabase.co
+2025-05-02 23:24:58,236 - INFO - Supabase client initialized successfully
+2025-05-02 23:24:58,237 - INFO - Searching emails with query: after:2025/04/02
+2025-05-02 23:25:51,518 - INFO - Is vendor: True
+2025-05-02 23:25:52,194 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&message_id=eq.19687301aeba3f47 "HTTP/1.1 200 OK"
+2025-05-02 23:25:52,200 - ERROR - Error saving email log: TextProcessor.extract_po_number() got multiple values for argument 'attachments'
+2025-05-02 23:25:52,201 - ERROR - Error type: TypeError
+2025-05-02 23:25:52,485 - INFO - Message sent to MCP server: PO for 100ml cosmetic containers
+2025-05-02 23:25:52,486 - INFO - Processed email: 19687301aeba3f47
+2025-05-02 23:25:52,983 - INFO - Is vendor: True
+2025-05-02 23:25:53,495 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&message_id=eq.1968733cd67bc06f "HTTP/1.1 200 OK"
+2025-05-02 23:25:53,498 - ERROR - Error saving email log: TextProcessor.extract_po_number() got multiple values for argument 'attachments'
+2025-05-02 23:25:53,498 - ERROR - Error type: TypeError
+2025-05-02 23:25:53,501 - INFO - Message sent to MCP server: Re: PO for 100ml cosmetic containers
+2025-05-02 23:25:53,501 - INFO - Processed email: 1968733cd67bc06f
+2025-05-02 23:25:53,751 - INFO - Is vendor: True
+2025-05-02 23:25:54,288 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&message_id=eq.196873410fd5bbde "HTTP/1.1 200 OK"
+2025-05-02 23:25:54,290 - ERROR - Error saving email log: TextProcessor.extract_po_number() got multiple values for argument 'attachments'
+2025-05-02 23:25:54,290 - ERROR - Error type: TypeError
+2025-05-02 23:25:54,552 - INFO - Message sent to MCP server: Re: PO for 100ml cosmetic containers
+2025-05-02 23:25:54,552 - INFO - Processed email: 196873410fd5bbde
+2025-05-02 23:25:54,833 - INFO - Is vendor: True
+2025-05-02 23:25:55,360 - INFO - HTTP Request: GET https://ujvbinqvvgbzgwqluian.supabase.co/rest/v1/email_logs?select=id&message_id=eq.19687342396240ae "HTTP/1.1 200 OK"
+2025-05-02 23:25:55,362 - ERROR - Error saving email log: TextProcessor.extract_po_number() got multiple values for argument 'attachments'
+2025-05-02 23:25:55,363 - ERROR - Error type: TypeError
+2025-05-02 23:25:55,365 - INFO - Message sent to MCP server: Re: PO for 100ml cosmetic containers
+2025-05-02 23:25:55,366 - INFO - Processed email: 19687342396240ae
+2025-05-02 23:26:04,440 - INFO - GmailWatcher initialized
+2025-05-02 23:26:04,441 - INFO - Searching emails with query: after:2025/04/02
+2025-05-02 23:26:27,898 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-1' coro=<main() done, defined at C:\Users\USER\po_agent_os\Vendor_email_logger_agent\main.py:264> exception=KeyboardInterrupt()>
+Traceback (most recent call last):
+  File "C:\Users\USER\po_agent_os\Vendor_email_logger_agent\main.py", line 316, in <module>
+    asyncio.run(main())
+  File "C:\Users\USER\AppData\Local\Programs\Python\Python310\lib\asyncio\runners.py", line 47, in run
+    _cancel_all_tasks(loop)
+  File "C:\Users\USER\AppData\Local\Programs\Python\Python310\lib\asyncio\runners.py", line 63, in _cancel_all_tasks
+    loop.run_until_complete(tasks.gather(*to_cancel, return_exceptions=True))
+  File "C:\Users\USER\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 633, in run_until_complete
+    self.run_forever()
+  File "C:\Users\USER\AppData\Local\Programs\Python\Python310\lib\asyncio\windows_events.py", line 321, in run_forever
+    super().run_forever()
+  File "C:\Users\USER\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 600, in run_forever
+    self._run_once()
+  File "C:\Users\USER\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 1896, in _run_once
+    handle._run()
+  File "C:\Users\USER\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\USER\po_agent_os\Vendor_email_logger_agent\main.py", line 302, in main
+    await asyncio.gather(
+  File "C:\Users\USER\AppData\Local\Programs\Python\Python310\lib\asyncio\runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "C:\Users\USER\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 633, in run_until_complete
+    self.run_forever()
+  File "C:\Users\USER\AppData\Local\Programs\Python\Python310\lib\asyncio\windows_events.py", line 321, in run_forever
+    super().run_forever()
+  File "C:\Users\USER\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 600, in run_forever
+    self._run_once()
+  File "C:\Users\USER\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 1896, in _run_once
+    handle._run()
+  File "C:\Users\USER\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\USER\po_agent_os\Vendor_email_logger_agent\main.py", line 186, in collect_historical_emails
+    all_messages.sort(key=get_msg_date)
+  File "C:\Users\USER\po_agent_os\Vendor_email_logger_agent\main.py", line 162, in get_msg_date
+    ).execute()
+  File "C:\Users\USER\po_agent_os\.venv\lib\site-packages\googleapiclient\_helpers.py", line 130, in positional_wrapper
+    return wrapped(*args, **kwargs)
+  File "C:\Users\USER\po_agent_os\.venv\lib\site-packages\googleapiclient\http.py", line 923, in execute
+    resp, content = _retry_request(
+  File "C:\Users\USER\po_agent_os\.venv\lib\site-packages\googleapiclient\http.py", line 191, in _retry_request
+    resp, content = http.request(uri, method, *args, **kwargs)
+  File "C:\Users\USER\po_agent_os\.venv\lib\site-packages\google_auth_httplib2.py", line 218, in request
+    response, content = self.http.request(
+  File "C:\Users\USER\po_agent_os\.venv\lib\site-packages\httplib2\__init__.py", line 1724, in request
+    (response, content) = self._request(
+  File "C:\Users\USER\po_agent_os\.venv\lib\site-packages\httplib2\__init__.py", line 1444, in _request
+    (response, content) = self._conn_request(conn, request_uri, method, body, headers)
+  File "C:\Users\USER\po_agent_os\.venv\lib\site-packages\httplib2\__init__.py", line 1396, in _conn_request
+    response = conn.getresponse()
+  File "C:\Users\USER\AppData\Local\Programs\Python\Python310\lib\http\client.py", line 1374, in getresponse
+    response.begin()
+  File "C:\Users\USER\AppData\Local\Programs\Python\Python310\lib\http\client.py", line 318, in begin
+    version, status, reason = self._read_status()
+  File "C:\Users\USER\AppData\Local\Programs\Python\Python310\lib\http\client.py", line 279, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+  File "C:\Users\USER\AppData\Local\Programs\Python\Python310\lib\socket.py", line 705, in readinto
+    return self._sock.recv_into(b)
+  File "C:\Users\USER\AppData\Local\Programs\Python\Python310\lib\ssl.py", line 1274, in recv_into
+    return self.read(nbytes, buffer)
+  File "C:\Users\USER\AppData\Local\Programs\Python\Python310\lib\ssl.py", line 1130, in read
+    return self._sslobj.read(len, buffer)
+KeyboardInterrupt
+2025-05-02 23:26:27,902 - ERROR - Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x00000237CBA15FF0>
