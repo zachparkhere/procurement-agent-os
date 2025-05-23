@@ -11,7 +11,7 @@ router = APIRouter()
 
 BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
 CREDENTIALS_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'credentials.json')
-REDIRECT_URI = "http://localhost:8000/auth/callback/google"
+REDIRECT_URI = os.getenv("GOOGLE_REDIRECT_URI", "http://localhost:8000/auth/callback/google")
 SCOPES = ["https://mail.google.com/", "https://www.googleapis.com/auth/userinfo.email", "openid"]
 
 @router.get("/google")
