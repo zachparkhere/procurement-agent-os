@@ -1,10 +1,12 @@
 # gmail/gmail_watcher.py
 from googleapiclient.discovery import build
-from typing import Dict, List, Optional
+from typing import Dict, List, Optional, Callable
 import time
 from datetime import datetime, timedelta
-from .message_filter import is_vendor_email
+from Vendor_email_logger_agent.src.gmail.message_filter import is_vendor_email
 import traceback
+import logging
+from googleapiclient.discovery import Resource
 
 class GmailWatcher:
     def __init__(self, service, vendor_manager):

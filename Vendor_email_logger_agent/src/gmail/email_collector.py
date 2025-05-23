@@ -1,9 +1,10 @@
 # gmail/email_collector.py
-from googleapiclient.discovery import build
-from typing import Dict, List, Optional
-from datetime import datetime, timedelta
-from .message_filter import is_vendor_email, get_email_type
 import logging
+from typing import Dict, List, Optional
+from googleapiclient.discovery import Resource
+from googleapiclient.discovery import build
+from datetime import datetime, timedelta
+from Vendor_email_logger_agent.src.gmail.message_filter import is_vendor_email, get_email_type
 
 logger = logging.getLogger(__name__)
 

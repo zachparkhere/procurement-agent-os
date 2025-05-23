@@ -6,10 +6,10 @@ from datetime import datetime, timezone
 import PyPDF2
 import docx
 import pandas as pd
-from ..utils.text_processor import TextProcessor
-from ..gmail.message_filter import get_email_type
+from Vendor_email_logger_agent.src.utils.text_processor import TextProcessor
+from Vendor_email_logger_agent.src.gmail.message_filter import get_email_type
 from typing import Dict, List
-from po_agent_os.supabase_client import supabase
+from procurement_agent_os.supabase_client import supabase
 import re
 
 logger = logging.getLogger(__name__)
