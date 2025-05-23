@@ -1,11 +1,15 @@
 import sys
 import os
+import logging
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")))
 import streamlit as st
 import bcrypt
 from po_agent_os.supabase_client_anon import supabase
 import requests
+from po_agent_os.logging_config import setup_logging
 
+# 로깅 설정
+logger = setup_logging(__name__)
 
 # 🔐 Login check
 if "user" not in st.session_state:
@@ -19,11 +23,17 @@ user_id = user_row["id"]
 st.sidebar.markdown(f"**Logged in as:** {user_email}")
 
 # ✅ DB에서 현재 사용자 정보 가져오기
-user_res = supabase.table("users") \
-    .select("eta_followup_interval_days, email_provider, email_address") \
-    .eq("id", user_id) \
-    .limit(1) \
-    .execute()
+try:
+    user_res = supabase.table("users") \
+        .select("eta_followup_interval_days, email_provider, email_address") \
+        .eq("id", user_id) \
+        .limit(1) \
+        .execute()
+    logger.info(f"Retrieved user settings for user_id: {user_id}")
+except Exception as e:
+    logger.error(f"Failed to retrieve user settings: {str(e)}")
+    st.error("Failed to load user settings. Please try again.")
+    st.stop()
 
 user_data = user_res.data[0] if user_res.data else {}
 current_interval = user_data.get("eta_followup_interval_days", 3)
@@ -34,6 +44,7 @@ linked_email = user_data.get("email_address", None)
 access_token = st.session_state.get("access_token")
 refresh_token = st.session_state.get("refresh_token")
 if not access_token or not refresh_token:
+    logger.warning(f"Missing tokens for user: {user_email}")
     st.error("Missing tokens. Please log in again.")
     st.stop()
 
@@ -43,7 +54,9 @@ try:
         access_token,
         refresh_token
     )
+    logger.info(f"Successfully set Supabase auth session for user: {user_email}")
 except Exception as e:
+    logger.error(f"Authentication failed for user {user_email}: {str(e)}")
     st.error("Authentication failed. Please log in again.")
     st.exception(e)
     st.stop()
@@ -59,20 +72,29 @@ new_pw2 = st.text_input("Confirm new password", type="password")
 
 if st.button("✅ Update Password"):
     if not new_pw or not new_pw2:
+        logger.warning("Password update attempted with empty fields")
         st.error("Please fill in both fields.")
     elif new_pw != new_pw2:
+        logger.warning("Password update attempted with non-matching passwords")
         st.error("Passwords do not match.")
     elif len(new_pw) < 8:
+        logger.warning("Password update attempted with password less than 8 characters")
         st.error("Password must be at least 8 characters.")
     else:
-        hashed_pw = bcrypt.hashpw(new_pw.encode(), bcrypt.gensalt()).decode()
-        result = supabase.table("users").update(
-            {"password_hash": hashed_pw}
-        ).eq("id", user_id).execute()
-        if result.data:
-            st.success("🎉 Password successfully updated!")
-        else:
-            st.error("Something went wrong. Please try again.")
+        try:
+            hashed_pw = bcrypt.hashpw(new_pw.encode(), bcrypt.gensalt()).decode()
+            result = supabase.table("users").update(
+                {"password_hash": hashed_pw}
+            ).eq("id", user_id).execute()
+            if result.data:
+                logger.info(f"Password successfully updated for user: {user_email}")
+                st.success("🎉 Password successfully updated!")
+            else:
+                logger.error(f"Failed to update password for user: {user_email}")
+                st.error("Something went wrong. Please try again.")
+        except Exception as e:
+            logger.error(f"Error updating password for user {user_email}: {str(e)}")
+            st.error("An error occurred while updating password.")
 
 # -----------------------
 # ⏱️ ETA Follow-up Interval
@@ -84,13 +106,19 @@ st.caption("How often to remind vendors who haven't shared an ETA.")
 new_interval = st.number_input("Change interval:", min_value=1, max_value=30, value=current_interval, step=1)
 
 if st.button("✅ Save Interval"):
-    result = supabase.table("users").update(
-        {"eta_followup_interval_days": new_interval}
-    ).eq("id", user_id).execute()
-    if result.data:
-        st.success(f"Interval updated to {new_interval} days.")
-    else:
-        st.error("Failed to update. Please try again.")
+    try:
+        result = supabase.table("users").update(
+            {"eta_followup_interval_days": new_interval}
+        ).eq("id", user_id).execute()
+        if result.data:
+            logger.info(f"ETA follow-up interval updated to {new_interval} days for user: {user_email}")
+            st.success(f"Interval updated to {new_interval} days.")
+        else:
+            logger.error(f"Failed to update ETA follow-up interval for user: {user_email}")
+            st.error("Failed to update. Please try again.")
+    except Exception as e:
+        logger.error(f"Error updating ETA follow-up interval for user {user_email}: {str(e)}")
+        st.error("An error occurred while updating interval.")
 
 # -----------------------
 # 📧 Email Integration Section
@@ -108,22 +136,36 @@ provider = st.selectbox("Choose email service to link", ["Gmail", "Outlook"])
 if provider == "Gmail":
     if st.button("🔗 Link Google Account"):
         try:
+            logger.info(f"Attempting to link Google account for user: {user_email}")
             r = requests.get("http://localhost:8000/auth/google", params={"user_id": user_id})
             if r.status_code == 200:
                 auth_url = r.json().get("auth_url")
                 if auth_url:
+                    logger.info(f"Successfully generated Google auth URL for user: {user_email}")
                     st.success("✅ Redirecting to Google login...")
                     st.components.v1.html(f"""<script>window.open("{auth_url}", "_blank")</script>""")
                 else:
+                    logger.error(f"No auth_url received from server for user: {user_email}")
                     st.error("No auth_url received from server.")
             else:
+                logger.error(f"Server returned status {r.status_code} for user: {user_email}")
                 st.error(f"Server returned status {r.status_code}")
         except Exception as e:
+            logger.error(f"Error linking Google account for user {user_email}: {str(e)}")
             st.error(f"Exception: {e}")
 
 elif provider == "Outlook":
     if st.button("🔗 Link Outlook Account"):
-        r = requests.get("http://localhost:8000/auth/outlook", params={"user_id": user_id})
-        auth_url = r.json().get("auth_url")
-        if auth_url:
-            st.markdown(f"[Click here to link Outlook account]({auth_url})")
+        try:
+            logger.info(f"Attempting to link Outlook account for user: {user_email}")
+            r = requests.get("http://localhost:8000/auth/outlook", params={"user_id": user_id})
+            auth_url = r.json().get("auth_url")
+            if auth_url:
+                logger.info(f"Successfully generated Outlook auth URL for user: {user_email}")
+                st.markdown(f"[Click here to link Outlook account]({auth_url})")
+            else:
+                logger.error(f"No auth_url received from server for user: {user_email}")
+                st.error("Failed to get authentication URL")
+        except Exception as e:
+            logger.error(f"Error linking Outlook account for user {user_email}: {str(e)}")
+            st.error("An error occurred while linking Outlook account")
