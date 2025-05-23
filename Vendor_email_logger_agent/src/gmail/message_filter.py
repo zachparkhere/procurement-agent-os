@@ -2,9 +2,9 @@
 import re, csv, os, logging
 from typing import Dict, List, Set
 from pathlib import Path
-from po_agent_os.supabase_client import supabase
+from procurement_agent_os.supabase_client import supabase
 from dotenv import load_dotenv
-from po_agent_os.Vendor_email_logger_agent.config import settings
+from Vendor_email_logger_agent.config import settings
 
 # Load environment variables
 load_dotenv()

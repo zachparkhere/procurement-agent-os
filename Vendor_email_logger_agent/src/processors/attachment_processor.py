@@ -6,7 +6,7 @@ import PyPDF2
 import docx
 import pandas as pd
 from supabase import create_client, Client
-from ..utils.text_processor import TextProcessor
+from Vendor_email_logger_agent.src.utils.text_processor import TextProcessor
 from datetime import datetime
 from typing import Optional
 

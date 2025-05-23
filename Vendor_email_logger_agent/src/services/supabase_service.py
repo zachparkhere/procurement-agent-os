@@ -1,8 +1,8 @@
 import logging
 from datetime import datetime
-from po_agent_os.supabase_client import supabase
+from procurement_agent_os.supabase_client import supabase
 from supabase import Client
-from po_agent_os.Vendor_email_logger_agent.config import settings
+from Vendor_email_logger_agent.config import settings
 from storage3.utils import StorageException
 
 logger = logging.getLogger(__name__)
