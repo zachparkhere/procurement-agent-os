@@ -1,0 +1,1860 @@
+2025-05-22 16:28:37,278 - INFO - HTTP Request: GET https://hgxqgvqrnyuoyxnnptwt.supabase.co/rest/v1/users?select=%2A&email_access_token=not.is.null "HTTP/2 200 OK"
+2025-05-22 16:28:37,291 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-05-22 16:28:37,838 - INFO - HTTP Request: GET https://hgxqgvqrnyuoyxnnptwt.supabase.co/rest/v1/purchase_orders?select=vendor_email&vendor_email=not.is.null "HTTP/2 200 OK"
+2025-05-22 16:28:37,840 - INFO - Loaded 1 vendor emails from database
+2025-05-22 16:28:38,278 - INFO - Initializing Supabase client with URL: https://hgxqgvqrnyuoyxnnptwt.supabase.co
+2025-05-22 16:28:38,304 - INFO - Supabase client initialized successfully
+2025-05-22 16:28:38,305 - INFO - [zach@shiftsai.com] GmailWatcher initialized
+2025-05-22 16:28:38,306 - INFO - Searching emails with query: after:2025/04/22
+2025-05-22 16:28:38,795 - INFO - INBOX에서 가져온 메시지 수: 419
+2025-05-22 16:28:38,796 - INFO - INBOX 메시지 ID: 196f6b02a145bd8a
+2025-05-22 16:28:38,797 - INFO - INBOX 메시지 ID: 196f6940ae74de7d
+2025-05-22 16:28:38,797 - INFO - INBOX 메시지 ID: 196f66c791585347
+2025-05-22 16:28:38,797 - INFO - INBOX 메시지 ID: 196f656025253ae5
+2025-05-22 16:28:38,798 - INFO - INBOX 메시지 ID: 196f655f8b2caffa
+2025-05-22 16:28:38,798 - INFO - INBOX 메시지 ID: 196f5fc5b0ad7320
+2025-05-22 16:28:38,798 - INFO - INBOX 메시지 ID: 196f4dd722ef594e
+2025-05-22 16:28:38,799 - INFO - INBOX 메시지 ID: 196f4dcee5bcc355
+2025-05-22 16:28:38,799 - INFO - INBOX 메시지 ID: 196f43b843a84f5d
+2025-05-22 16:28:38,799 - INFO - INBOX 메시지 ID: 196f40de46ca7e47
+2025-05-22 16:28:38,799 - INFO - INBOX 메시지 ID: 196f40de1d31f57b
+2025-05-22 16:28:38,800 - INFO - INBOX 메시지 ID: 196f3be6493de870
+2025-05-22 16:28:38,800 - INFO - INBOX 메시지 ID: 196f3a2a2c03f66d
+2025-05-22 16:28:38,800 - INFO - INBOX 메시지 ID: 196f36bc1af27a56
+2025-05-22 16:28:38,801 - INFO - INBOX 메시지 ID: 196f3271fe4461fc
+2025-05-22 16:28:38,801 - INFO - INBOX 메시지 ID: 196f311ae52a2185
+2025-05-22 16:28:38,801 - INFO - INBOX 메시지 ID: 196f2e7153d35582
+2025-05-22 16:28:38,801 - INFO - INBOX 메시지 ID: 196f23af4ed33344
+2025-05-22 16:28:38,802 - INFO - INBOX 메시지 ID: 196f15959b106e3c
+2025-05-22 16:28:38,802 - INFO - INBOX 메시지 ID: 196f0652796cf004
+2025-05-22 16:28:38,802 - INFO - INBOX 메시지 ID: 196f02a5c11c483d
+2025-05-22 16:28:38,802 - INFO - INBOX 메시지 ID: 196efd77a20f7b24
+2025-05-22 16:28:38,803 - INFO - INBOX 메시지 ID: 196eeda107c823bd
+2025-05-22 16:28:38,803 - INFO - INBOX 메시지 ID: 196eece00a556d40
+2025-05-22 16:28:38,803 - INFO - INBOX 메시지 ID: 196eec8e331f366b
+2025-05-22 16:28:38,804 - INFO - INBOX 메시지 ID: 196ee6f2eb29257a
+2025-05-22 16:28:38,804 - INFO - INBOX 메시지 ID: 196ee69ece38d692
+2025-05-22 16:28:38,804 - INFO - INBOX 메시지 ID: 196ee39afa617639
+2025-05-22 16:28:38,804 - INFO - INBOX 메시지 ID: 196ee33e80f4fa0f
+2025-05-22 16:28:38,804 - INFO - INBOX 메시지 ID: 196edfdab53fe472
+2025-05-22 16:28:38,805 - INFO - INBOX 메시지 ID: 196edc5e9aae90d7
+2025-05-22 16:28:38,805 - INFO - INBOX 메시지 ID: 196ed0e32d6b03bf
+2025-05-22 16:28:38,805 - INFO - INBOX 메시지 ID: 196ebd9ebbb4e1a8
+2025-05-22 16:28:38,805 - INFO - INBOX 메시지 ID: 196eb497c450de0d
+2025-05-22 16:28:38,806 - INFO - INBOX 메시지 ID: 196eb39533c47e5d
+2025-05-22 16:28:38,806 - INFO - INBOX 메시지 ID: 196eb3577fe1244c
+2025-05-22 16:28:38,806 - INFO - INBOX 메시지 ID: 196eacfeef87a30b
+2025-05-22 16:28:38,806 - INFO - INBOX 메시지 ID: 196e9eb3bd8f339f
+2025-05-22 16:28:38,806 - INFO - INBOX 메시지 ID: 196e9a5f78248cdd
+2025-05-22 16:28:38,807 - INFO - INBOX 메시지 ID: 196e92be07743835
+2025-05-22 16:28:38,807 - INFO - INBOX 메시지 ID: 196e8d885df8e855
+2025-05-22 16:28:38,807 - INFO - INBOX 메시지 ID: 196e866dce050c06
+2025-05-22 16:28:38,808 - INFO - INBOX 메시지 ID: 196e70c00fdf7f7b
+2025-05-22 16:28:38,808 - INFO - INBOX 메시지 ID: 196e646574c465ad
+2025-05-22 16:28:38,808 - INFO - INBOX 메시지 ID: 196e5e628a0194dd
+2025-05-22 16:28:38,809 - INFO - INBOX 메시지 ID: 196e5e6180dedab8
+2025-05-22 16:28:38,809 - INFO - INBOX 메시지 ID: 196e5c61c95399c7
+2025-05-22 16:28:38,809 - INFO - INBOX 메시지 ID: 196e5a41f6f49b20
+2025-05-22 16:28:38,809 - INFO - INBOX 메시지 ID: 196e498e59a27026
+2025-05-22 16:28:38,811 - INFO - INBOX 메시지 ID: 196e179fc5c42501
+2025-05-22 16:28:38,811 - INFO - INBOX 메시지 ID: 196dfddbe9900e43
+2025-05-22 16:28:38,811 - INFO - INBOX 메시지 ID: 196df9f547128c41
+2025-05-22 16:28:38,811 - INFO - INBOX 메시지 ID: 196df1041e70453b
+2025-05-22 16:28:38,812 - INFO - INBOX 메시지 ID: 196de9d16e99cd0d
+2025-05-22 16:28:38,812 - INFO - INBOX 메시지 ID: 196dacdedb797cb6
+2025-05-22 16:28:38,812 - INFO - INBOX 메시지 ID: 196da7c7040117fd
+2025-05-22 16:28:38,812 - INFO - INBOX 메시지 ID: 196da68bdaebadc9
+2025-05-22 16:28:38,812 - INFO - INBOX 메시지 ID: 196da68bacf85a0c
+2025-05-22 16:28:38,812 - INFO - INBOX 메시지 ID: 196d99c9d5874a89
+2025-05-22 16:28:38,813 - INFO - INBOX 메시지 ID: 196d965cb976ef93
+2025-05-22 16:28:38,813 - INFO - INBOX 메시지 ID: 196d898a9cc015dc
+2025-05-22 16:28:38,813 - INFO - INBOX 메시지 ID: 196d88cafbb29ca7
+2025-05-22 16:28:38,813 - INFO - INBOX 메시지 ID: 196d71a73d9ffb28
+2025-05-22 16:28:38,813 - INFO - INBOX 메시지 ID: 196d719a0169a1af
+2025-05-22 16:28:38,814 - INFO - INBOX 메시지 ID: 196d6d2745305d3e
+2025-05-22 16:28:38,814 - INFO - INBOX 메시지 ID: 196d6b710d942189
+2025-05-22 16:28:38,814 - INFO - INBOX 메시지 ID: 196d6b2b51651031
+2025-05-22 16:28:38,814 - INFO - INBOX 메시지 ID: 196d67b1de6efd93
+2025-05-22 16:28:38,814 - INFO - INBOX 메시지 ID: 196d637df39b5d6a
+2025-05-22 16:28:38,814 - INFO - INBOX 메시지 ID: 196d624b88af7fa1
+2025-05-22 16:28:38,815 - INFO - INBOX 메시지 ID: 196d624b2caec800
+2025-05-22 16:28:38,815 - INFO - INBOX 메시지 ID: 196d619c47c3473e
+2025-05-22 16:28:38,815 - INFO - INBOX 메시지 ID: 196d5fe217fbe2ce
+2025-05-22 16:28:38,815 - INFO - INBOX 메시지 ID: 196d55fd1940c8a8
+2025-05-22 16:28:38,815 - INFO - INBOX 메시지 ID: 196d514bd7320a95
+2025-05-22 16:28:38,816 - INFO - INBOX 메시지 ID: 196d4adfb69f5bb2
+2025-05-22 16:28:38,816 - INFO - INBOX 메시지 ID: 196d478665eab0dc
+2025-05-22 16:28:38,816 - INFO - INBOX 메시지 ID: 196d476af804010e
+2025-05-22 16:28:38,816 - INFO - INBOX 메시지 ID: 196d45eae7dcbb68
+2025-05-22 16:28:38,816 - INFO - INBOX 메시지 ID: 196d45e7c3a5cedd
+2025-05-22 16:28:38,817 - INFO - INBOX 메시지 ID: 196d4485bb899ad3
+2025-05-22 16:28:38,817 - INFO - INBOX 메시지 ID: 196d3bd011d8bdcf
+2025-05-22 16:28:38,817 - INFO - INBOX 메시지 ID: 196d3a007aab8df7
+2025-05-22 16:28:38,817 - INFO - INBOX 메시지 ID: 196d3265d7ffbbfa
+2025-05-22 16:28:38,835 - INFO - INBOX 메시지 ID: 196d31c6ff3fe9d0
+2025-05-22 16:28:38,836 - INFO - INBOX 메시지 ID: 196d31bce5247646
+2025-05-22 16:28:38,836 - INFO - INBOX 메시지 ID: 196d31bcbf340a9b
+2025-05-22 16:28:38,836 - INFO - INBOX 메시지 ID: 196d31a1293069e3
+2025-05-22 16:28:38,837 - INFO - INBOX 메시지 ID: 196d318cc36c2300
+2025-05-22 16:28:38,837 - INFO - INBOX 메시지 ID: 196d30e54ae47baa
+2025-05-22 16:28:38,838 - INFO - INBOX 메시지 ID: 196d303a21057013
+2025-05-22 16:28:38,838 - INFO - INBOX 메시지 ID: 196d29f0fd9f435a
+2025-05-22 16:28:38,838 - INFO - INBOX 메시지 ID: 196d21ee0cfff00d
+2025-05-22 16:28:38,839 - INFO - INBOX 메시지 ID: 196d18374aeece33
+2025-05-22 16:28:38,839 - INFO - INBOX 메시지 ID: 196d1734144ea009
+2025-05-22 16:28:38,839 - INFO - INBOX 메시지 ID: 196d1681a3b7f3d6
+2025-05-22 16:28:38,840 - INFO - INBOX 메시지 ID: 196d0d408f5369d3
+2025-05-22 16:28:38,840 - INFO - INBOX 메시지 ID: 196d02cc7cc02ea1
+2025-05-22 16:28:38,840 - INFO - INBOX 메시지 ID: 196cffe44774d29a
+2025-05-22 16:28:38,841 - INFO - INBOX 메시지 ID: 196cfaecb380323e
+2025-05-22 16:28:38,841 - INFO - INBOX 메시지 ID: 196cf836d929a487
+2025-05-22 16:28:38,841 - INFO - INBOX 메시지 ID: 196cf2348a9fb38c
+2025-05-22 16:28:38,841 - INFO - INBOX 메시지 ID: 196cf1ba1e1439e9
+2025-05-22 16:28:38,842 - INFO - INBOX 메시지 ID: 196cf18e817e9ef3
+2025-05-22 16:28:38,842 - INFO - INBOX 메시지 ID: 196cf009aef6c6b0
+2025-05-22 16:28:38,842 - INFO - INBOX 메시지 ID: 196ce8fadbf3df42
+2025-05-22 16:28:38,844 - INFO - INBOX 메시지 ID: 196ce2e6a6f33f71
+2025-05-22 16:28:38,844 - INFO - INBOX 메시지 ID: 196cd2cc3bcf10d2
+2025-05-22 16:28:38,844 - INFO - INBOX 메시지 ID: 196cc8625ab89794
+2025-05-22 16:28:38,845 - INFO - INBOX 메시지 ID: 196cc3f127816f58
+2025-05-22 16:28:38,845 - INFO - INBOX 메시지 ID: 196cbc95b1924eeb
+2025-05-22 16:28:38,845 - INFO - INBOX 메시지 ID: 196cb7ff5a5fe48f
+2025-05-22 16:28:38,846 - INFO - INBOX 메시지 ID: 196cb7ae9094ef44
+2025-05-22 16:28:38,846 - INFO - INBOX 메시지 ID: 196cb7ae6d7407ee
+2025-05-22 16:28:38,846 - INFO - INBOX 메시지 ID: 196cb6edf4ad139d
+2025-05-22 16:28:38,846 - INFO - INBOX 메시지 ID: 196cb3b6445d65f8
+2025-05-22 16:28:38,847 - INFO - INBOX 메시지 ID: 196cae768bc6a566
+2025-05-22 16:28:38,847 - INFO - INBOX 메시지 ID: 196cae0ca4affc5f
+2025-05-22 16:28:38,847 - INFO - INBOX 메시지 ID: 196cac34de23e1e5
+2025-05-22 16:28:38,848 - INFO - INBOX 메시지 ID: 196caa1e00fefcba
+2025-05-22 16:28:38,848 - INFO - INBOX 메시지 ID: 196ca631b3cb0d3d
+2025-05-22 16:28:38,848 - INFO - INBOX 메시지 ID: 196c9fc050d453f7
+2025-05-22 16:28:38,849 - INFO - INBOX 메시지 ID: 196c9c0d44e53f2b
+2025-05-22 16:28:38,849 - INFO - INBOX 메시지 ID: 196c9be6e3c57cc2
+2025-05-22 16:28:38,849 - INFO - INBOX 메시지 ID: 196c9b592fe0091e
+2025-05-22 16:28:38,849 - INFO - INBOX 메시지 ID: 196c9006423b2380
+2025-05-22 16:28:38,850 - INFO - INBOX 메시지 ID: 196c86dc4d06b5d2
+2025-05-22 16:28:38,850 - INFO - INBOX 메시지 ID: 196c82d749456bf2
+2025-05-22 16:28:38,850 - INFO - INBOX 메시지 ID: 196c81a1b2a68941
+2025-05-22 16:28:38,851 - INFO - INBOX 메시지 ID: 196c819ea8ed563e
+2025-05-22 16:28:38,851 - INFO - INBOX 메시지 ID: 196c81663982b67a
+2025-05-22 16:28:38,851 - INFO - INBOX 메시지 ID: 196c7347078d037f
+2025-05-22 16:28:38,851 - INFO - INBOX 메시지 ID: 196c72e440968912
+2025-05-22 16:28:38,852 - INFO - INBOX 메시지 ID: 196c6d459b374571
+2025-05-22 16:28:38,852 - INFO - INBOX 메시지 ID: 196c686acf4dca4d
+2025-05-22 16:28:38,852 - INFO - INBOX 메시지 ID: 196c686a66237511
+2025-05-22 16:28:38,853 - INFO - INBOX 메시지 ID: 196c5df1565d270e
+2025-05-22 16:28:38,853 - INFO - INBOX 메시지 ID: 196c5bbd6598a98b
+2025-05-22 16:28:38,853 - INFO - INBOX 메시지 ID: 196c555966b3ce41
+2025-05-22 16:28:38,853 - INFO - INBOX 메시지 ID: 196c534c8e9825c3
+2025-05-22 16:28:38,853 - INFO - INBOX 메시지 ID: 196c4f10a26aa16b
+2025-05-22 16:28:38,854 - INFO - INBOX 메시지 ID: 196c4d176125a7b8
+2025-05-22 16:28:38,854 - INFO - INBOX 메시지 ID: 196c4cdb87d9ce32
+2025-05-22 16:28:38,854 - INFO - INBOX 메시지 ID: 196c4cc520b05eb5
+2025-05-22 16:28:38,854 - INFO - INBOX 메시지 ID: 196c2feefba188ea
+2025-05-22 16:28:38,856 - INFO - INBOX 메시지 ID: 196c29ac9b5211aa
+2025-05-22 16:28:38,856 - INFO - INBOX 메시지 ID: 196c29ac2fd47b42
+2025-05-22 16:28:38,856 - INFO - INBOX 메시지 ID: 196c1be54bfc3195
+2025-05-22 16:28:38,856 - INFO - INBOX 메시지 ID: 196bfad5287a1a0e
+2025-05-22 16:28:38,857 - INFO - INBOX 메시지 ID: 196bd6d68a47e07c
+2025-05-22 16:28:38,857 - INFO - INBOX 메시지 ID: 196bbd100d8d9130
+2025-05-22 16:28:38,857 - INFO - INBOX 메시지 ID: 196bb92830ef6e38
+2025-05-22 16:28:38,857 - INFO - INBOX 메시지 ID: 196b9ab0bd01948c
+2025-05-22 16:28:38,858 - INFO - INBOX 메시지 ID: 196b7f675c87c75f
+2025-05-22 16:28:38,858 - INFO - INBOX 메시지 ID: 196b715be8e02537
+2025-05-22 16:28:38,858 - INFO - INBOX 메시지 ID: 196b6a167db7db9e
+2025-05-22 16:28:38,858 - INFO - INBOX 메시지 ID: 196b66db3d975646
+2025-05-22 16:28:38,859 - INFO - INBOX 메시지 ID: 196b66cc152f20b0
+2025-05-22 16:28:38,859 - INFO - INBOX 메시지 ID: 196b64d2a101cc2d
+2025-05-22 16:28:38,859 - INFO - INBOX 메시지 ID: 196b632d10e5ab28
+2025-05-22 16:28:38,860 - INFO - INBOX 메시지 ID: 196b632c1e98ff01
+2025-05-22 16:28:38,860 - INFO - INBOX 메시지 ID: 196b58fd571c19bb
+2025-05-22 16:28:38,860 - INFO - INBOX 메시지 ID: 196b4d9bfeec4d60
+2025-05-22 16:28:38,860 - INFO - INBOX 메시지 ID: 196b30c14270e191
+2025-05-22 16:28:38,861 - INFO - INBOX 메시지 ID: 196b2a0b9f4cecda
+2025-05-22 16:28:38,861 - INFO - INBOX 메시지 ID: 196b2715ec4ba997
+2025-05-22 16:28:38,861 - INFO - INBOX 메시지 ID: 196b265d659ac360
+2025-05-22 16:28:38,861 - INFO - INBOX 메시지 ID: 196b25888e60efc8
+2025-05-22 16:28:38,861 - INFO - INBOX 메시지 ID: 196b241b4f1cd26d
+2025-05-22 16:28:38,862 - INFO - INBOX 메시지 ID: 196b20ba71da1e46
+2025-05-22 16:28:38,862 - INFO - INBOX 메시지 ID: 196b1eae2a6de63c
+2025-05-22 16:28:38,862 - INFO - INBOX 메시지 ID: 196b1cd4d7c06b3c
+2025-05-22 16:28:38,863 - INFO - INBOX 메시지 ID: 196b0fecd98d3f92
+2025-05-22 16:28:38,863 - INFO - INBOX 메시지 ID: 196b07bd140299b1
+2025-05-22 16:28:38,863 - INFO - INBOX 메시지 ID: 196b06c33072e8d4
+2025-05-22 16:28:38,864 - INFO - INBOX 메시지 ID: 196b0573cf088848
+2025-05-22 16:28:38,864 - INFO - INBOX 메시지 ID: 196b052d0eb015ff
+2025-05-22 16:28:38,864 - INFO - INBOX 메시지 ID: 196b051b443f7153
+2025-05-22 16:28:38,873 - INFO - INBOX 메시지 ID: 196b037dd57c2c4d
+2025-05-22 16:28:38,873 - INFO - INBOX 메시지 ID: 196b032ad0893700
+2025-05-22 16:28:38,874 - INFO - INBOX 메시지 ID: 196b00cdb0a0a476
+2025-05-22 16:28:38,874 - INFO - INBOX 메시지 ID: 196afcdc39031ddb
+2025-05-22 16:28:38,874 - INFO - INBOX 메시지 ID: 196af9e438108edf
+2025-05-22 16:28:38,875 - INFO - INBOX 메시지 ID: 196af2232d08b15c
+2025-05-22 16:28:38,875 - INFO - INBOX 메시지 ID: 196aea5da4764cef
+2025-05-22 16:28:38,875 - INFO - INBOX 메시지 ID: 196aea4f74f8d97a
+2025-05-22 16:28:38,877 - INFO - INBOX 메시지 ID: 196ae91a6fc71634
+2025-05-22 16:28:38,877 - INFO - INBOX 메시지 ID: 196ae13c808bc86f
+2025-05-22 16:28:38,877 - INFO - INBOX 메시지 ID: 196adfa53fcbfd23
+2025-05-22 16:28:38,878 - INFO - INBOX 메시지 ID: 196addcf5799f11d
+2025-05-22 16:28:38,878 - INFO - INBOX 메시지 ID: 196acc3a5638213f
+2025-05-22 16:28:38,878 - INFO - INBOX 메시지 ID: 196aca6fc9a08d38
+2025-05-22 16:28:38,878 - INFO - INBOX 메시지 ID: 196ac8f2ab3936be
+2025-05-22 16:28:38,879 - INFO - INBOX 메시지 ID: 196ac2bd56222c46
+2025-05-22 16:28:38,879 - INFO - INBOX 메시지 ID: 196ac23521f8f93e
+2025-05-22 16:28:38,879 - INFO - INBOX 메시지 ID: 196ac1f803a12ac0
+2025-05-22 16:28:38,880 - INFO - INBOX 메시지 ID: 196ac0bb1dbf8e13
+2025-05-22 16:28:38,880 - INFO - INBOX 메시지 ID: 196abee51efa0d01
+2025-05-22 16:28:38,880 - INFO - INBOX 메시지 ID: 196ab5be665ddb78
+2025-05-22 16:28:38,881 - INFO - INBOX 메시지 ID: 196aafbd0ad5a1ff
+2025-05-22 16:28:38,881 - INFO - INBOX 메시지 ID: 196aa1fc35cabc8b
+2025-05-22 16:28:38,881 - INFO - INBOX 메시지 ID: 196a95820558872f
+2025-05-22 16:28:38,882 - INFO - INBOX 메시지 ID: 196a92f3ed30b906
+2025-05-22 16:28:38,882 - INFO - INBOX 메시지 ID: 196a8906a72185dc
+2025-05-22 16:28:38,882 - INFO - INBOX 메시지 ID: 196a82ff771a4a46
+2025-05-22 16:28:38,882 - INFO - INBOX 메시지 ID: 196a7be526c1b8dc
+2025-05-22 16:28:38,884 - INFO - INBOX 메시지 ID: 196a73f046770709
+2025-05-22 16:28:38,884 - INFO - INBOX 메시지 ID: 196a737ff3c79198
+2025-05-22 16:28:38,884 - INFO - INBOX 메시지 ID: 196a7026427d0a55
+2025-05-22 16:28:38,885 - INFO - INBOX 메시지 ID: 196a6b1d3d67fe1d
+2025-05-22 16:28:38,885 - INFO - INBOX 메시지 ID: 196a68f1545aaadf
+2025-05-22 16:28:38,885 - INFO - INBOX 메시지 ID: 196a6739a55dbfc3
+2025-05-22 16:28:38,886 - INFO - INBOX 메시지 ID: 196a6617aa1aad2b
+2025-05-22 16:28:38,886 - INFO - INBOX 메시지 ID: 196a65d546a8eaac
+2025-05-22 16:28:38,886 - INFO - INBOX 메시지 ID: 196a651bfc5d0aae
+2025-05-22 16:28:38,887 - INFO - INBOX 메시지 ID: 196a62027b3fbca8
+2025-05-22 16:28:38,887 - INFO - INBOX 메시지 ID: 196a5ed4baae8ea9
+2025-05-22 16:28:38,887 - INFO - INBOX 메시지 ID: 196a5cf2279bb3bc
+2025-05-22 16:28:38,888 - INFO - INBOX 메시지 ID: 196a5ca575a733c3
+2025-05-22 16:28:38,888 - INFO - INBOX 메시지 ID: 196a578636ea706b
+2025-05-22 16:28:38,888 - INFO - INBOX 메시지 ID: 196a4f0b090a5718
+2025-05-22 16:28:38,888 - INFO - INBOX 메시지 ID: 196a47e34daa55d4
+2025-05-22 16:28:38,889 - INFO - INBOX 메시지 ID: 196a3f6c1a52f3cc
+2025-05-22 16:28:38,889 - INFO - INBOX 메시지 ID: 196a3cf28837c2ac
+2025-05-22 16:28:38,889 - INFO - INBOX 메시지 ID: 196a3c34e9e20a51
+2025-05-22 16:28:38,890 - INFO - INBOX 메시지 ID: 196a3a17e0513016
+2025-05-22 16:28:38,890 - INFO - INBOX 메시지 ID: 196a33a3bd7b4fdc
+2025-05-22 16:28:38,890 - INFO - INBOX 메시지 ID: 196a2ab0e364fe10
+2025-05-22 16:28:38,892 - INFO - INBOX 메시지 ID: 196a25b2b0d92117
+2025-05-22 16:28:38,906 - INFO - INBOX 메시지 ID: 196a1f6ae86a5d6b
+2025-05-22 16:28:38,908 - INFO - INBOX 메시지 ID: 196a1d4df3403c4e
+2025-05-22 16:28:38,917 - INFO - INBOX 메시지 ID: 196a1b7ee3173b86
+2025-05-22 16:28:38,928 - INFO - INBOX 메시지 ID: 196a18aad8d281b7
+2025-05-22 16:28:38,933 - INFO - INBOX 메시지 ID: 196a18aabefa3505
+2025-05-22 16:28:38,934 - INFO - INBOX 메시지 ID: 196a10891727377e
+2025-05-22 16:28:38,935 - INFO - INBOX 메시지 ID: 196a0e4c5cb4a7aa
+2025-05-22 16:28:38,941 - INFO - INBOX 메시지 ID: 196a0bf538f826e1
+2025-05-22 16:28:38,943 - INFO - INBOX 메시지 ID: 1969ef26c5c4ef14
+2025-05-22 16:28:38,943 - INFO - INBOX 메시지 ID: 1969e9dca9d652a4
+2025-05-22 16:28:38,944 - INFO - INBOX 메시지 ID: 1969e2d054deabc6
+2025-05-22 16:28:38,944 - INFO - INBOX 메시지 ID: 1969d9d2f1b7dc0c
+2025-05-22 16:28:38,945 - INFO - INBOX 메시지 ID: 19697da0d09da5f7
+2025-05-22 16:28:38,945 - INFO - INBOX 메시지 ID: 19697c5a37a27f84
+2025-05-22 16:28:38,946 - INFO - INBOX 메시지 ID: 19697862056b8197
+2025-05-22 16:28:38,946 - INFO - INBOX 메시지 ID: 196959dba47b0757
+2025-05-22 16:28:38,946 - INFO - INBOX 메시지 ID: 1969450ef8c11988
+2025-05-22 16:28:38,947 - INFO - INBOX 메시지 ID: 19693e80a3a9d176
+2025-05-22 16:28:38,948 - INFO - INBOX 메시지 ID: 19692d52d6ffb443
+2025-05-22 16:28:38,948 - INFO - INBOX 메시지 ID: 196926157b96b45e
+2025-05-22 16:28:38,948 - INFO - INBOX 메시지 ID: 19692393e9b6470f
+2025-05-22 16:28:38,950 - INFO - INBOX 메시지 ID: 196923115547c544
+2025-05-22 16:28:38,950 - INFO - INBOX 메시지 ID: 19691efa5159297b
+2025-05-22 16:28:38,951 - INFO - INBOX 메시지 ID: 1969183d438cd911
+2025-05-22 16:28:38,951 - INFO - INBOX 메시지 ID: 196917dd29b7e531
+2025-05-22 16:28:38,951 - INFO - INBOX 메시지 ID: 1969167d1b28d3d5
+2025-05-22 16:28:38,952 - INFO - INBOX 메시지 ID: 1968e4db433cfdc5
+2025-05-22 16:28:38,952 - INFO - INBOX 메시지 ID: 1968dfa60862de6a
+2025-05-22 16:28:38,953 - INFO - INBOX 메시지 ID: 1968dc44e111cc95
+2025-05-22 16:28:38,953 - INFO - INBOX 메시지 ID: 1968db94322133eb
+2025-05-22 16:28:38,954 - INFO - INBOX 메시지 ID: 1968db4c03192c0d
+2025-05-22 16:28:38,954 - INFO - INBOX 메시지 ID: 1968db0a78b7de48
+2025-05-22 16:28:38,954 - INFO - INBOX 메시지 ID: 1968da6414142fe9
+2025-05-22 16:28:38,955 - INFO - INBOX 메시지 ID: 1968d88427fa1660
+2025-05-22 16:28:38,955 - INFO - INBOX 메시지 ID: 1968d706d1e89dda
+2025-05-22 16:28:38,955 - INFO - INBOX 메시지 ID: 1968d5dc525d48e1
+2025-05-22 16:28:38,956 - INFO - INBOX 메시지 ID: 1968cea5b30cd5b0
+2025-05-22 16:28:38,956 - INFO - INBOX 메시지 ID: 1968cdd75809e792
+2025-05-22 16:28:38,956 - INFO - INBOX 메시지 ID: 1968ca0ddd91e213
+2025-05-22 16:28:38,957 - INFO - INBOX 메시지 ID: 1968c485ba4ce794
+2025-05-22 16:28:38,957 - INFO - INBOX 메시지 ID: 1968c46ae01ceaa5
+2025-05-22 16:28:38,957 - INFO - INBOX 메시지 ID: 1968c2890c2c8b1a
+2025-05-22 16:28:38,958 - INFO - INBOX 메시지 ID: 1968bfbe8f589984
+2025-05-22 16:28:38,958 - INFO - INBOX 메시지 ID: 1968b98952337f59
+2025-05-22 16:28:38,958 - INFO - INBOX 메시지 ID: 1968b8fe4a221334
+2025-05-22 16:28:38,959 - INFO - INBOX 메시지 ID: 1968b449fc29cec4
+2025-05-22 16:28:38,959 - INFO - INBOX 메시지 ID: 1968aad6caddbe5a
+2025-05-22 16:28:38,959 - INFO - INBOX 메시지 ID: 1968a843546c6131
+2025-05-22 16:28:38,959 - INFO - INBOX 메시지 ID: 19689fca7a97f234
+2025-05-22 16:28:38,960 - INFO - INBOX 메시지 ID: 196897f041a8d0f1
+2025-05-22 16:28:38,960 - INFO - INBOX 메시지 ID: 196894a598dd8bbe
+2025-05-22 16:28:38,960 - INFO - INBOX 메시지 ID: 196892986f835ca3
+2025-05-22 16:28:38,961 - INFO - INBOX 메시지 ID: 19688abe1efb65ab
+2025-05-22 16:28:38,961 - INFO - INBOX 메시지 ID: 196877d1c23bbc86
+2025-05-22 16:28:38,961 - INFO - INBOX 메시지 ID: 1968740e9229348e
+2025-05-22 16:28:38,961 - INFO - INBOX 메시지 ID: 196873410fd5bbde
+2025-05-22 16:28:38,962 - INFO - INBOX 메시지 ID: 1968733cd67bc06f
+2025-05-22 16:28:38,962 - INFO - INBOX 메시지 ID: 19687310a0f43503
+2025-05-22 16:28:38,963 - INFO - INBOX 메시지 ID: 1968703dff39787c
+2025-05-22 16:28:38,963 - INFO - INBOX 메시지 ID: 196870387c09b636
+2025-05-22 16:28:38,964 - INFO - INBOX 메시지 ID: 19686c9331bee4ac
+2025-05-22 16:28:38,965 - INFO - INBOX 메시지 ID: 196865c4313c69ee
+2025-05-22 16:28:38,965 - INFO - INBOX 메시지 ID: 1968614074973d76
+2025-05-22 16:28:38,967 - INFO - INBOX 메시지 ID: 196861406c0122a3
+2025-05-22 16:28:38,967 - INFO - INBOX 메시지 ID: 196858fe40e734ea
+2025-05-22 16:28:38,968 - INFO - INBOX 메시지 ID: 196858d50560d69c
+2025-05-22 16:28:38,969 - INFO - INBOX 메시지 ID: 19685655410ff470
+2025-05-22 16:28:38,969 - INFO - INBOX 메시지 ID: 196853f9d1bc1d2b
+2025-05-22 16:28:38,988 - INFO - INBOX 메시지 ID: 19684e710a5290de
+2025-05-22 16:28:38,989 - INFO - INBOX 메시지 ID: 19684a1366fead43
+2025-05-22 16:28:39,005 - INFO - INBOX 메시지 ID: 19684a132ca74bde
+2025-05-22 16:28:39,007 - INFO - INBOX 메시지 ID: 19684a07992ee607
+2025-05-22 16:28:39,008 - INFO - INBOX 메시지 ID: 196849e358ba9ffa
+2025-05-22 16:28:39,008 - INFO - INBOX 메시지 ID: 196849e22242940e
+2025-05-22 16:28:39,010 - INFO - INBOX 메시지 ID: 196846c8b0cec244
+2025-05-22 16:28:39,010 - INFO - INBOX 메시지 ID: 19684066f17d6b35
+2025-05-22 16:28:39,012 - INFO - INBOX 메시지 ID: 19683b5188d20235
+2025-05-22 16:28:39,012 - INFO - INBOX 메시지 ID: 196829b3f1bb8ffb
+2025-05-22 16:28:39,013 - INFO - INBOX 메시지 ID: 196829b392112b61
+2025-05-22 16:28:39,014 - INFO - INBOX 메시지 ID: 196828803e6dfcf4
+2025-05-22 16:28:39,015 - INFO - INBOX 메시지 ID: 1968283e34fe7faf
+2025-05-22 16:28:39,015 - INFO - INBOX 메시지 ID: 1968242db3273e3b
+2025-05-22 16:28:39,016 - INFO - INBOX 메시지 ID: 19681f471235e5e7
+2025-05-22 16:28:39,016 - INFO - INBOX 메시지 ID: 19681c2bb09e0fee
+2025-05-22 16:28:39,017 - INFO - INBOX 메시지 ID: 19680e47d603015e
+2025-05-22 16:28:39,018 - INFO - INBOX 메시지 ID: 19680371f38c23fc
+2025-05-22 16:28:39,018 - INFO - INBOX 메시지 ID: 1968034217fbe71e
+2025-05-22 16:28:39,018 - INFO - INBOX 메시지 ID: 1968027a0d05a57e
+2025-05-22 16:28:39,020 - INFO - INBOX 메시지 ID: 1967f4633e3cbf06
+2025-05-22 16:28:39,020 - INFO - INBOX 메시지 ID: 1967f13ef2942a3a
+2025-05-22 16:28:39,021 - INFO - INBOX 메시지 ID: 1967e8676b7f4e03
+2025-05-22 16:28:39,021 - INFO - INBOX 메시지 ID: 1967df2e171c8f2e
+2025-05-22 16:28:39,021 - INFO - INBOX 메시지 ID: 1967de9994c25657
+2025-05-22 16:28:39,021 - INFO - INBOX 메시지 ID: 1967dd69ba28480e
+2025-05-22 16:28:39,022 - INFO - INBOX 메시지 ID: 1967dcb63df1e5c4
+2025-05-22 16:28:39,022 - INFO - INBOX 메시지 ID: 1967dc560a91b9e2
+2025-05-22 16:28:39,022 - INFO - INBOX 메시지 ID: 1967da0b02977020
+2025-05-22 16:28:39,023 - INFO - INBOX 메시지 ID: 1967d47733d7c5e4
+2025-05-22 16:28:39,023 - INFO - INBOX 메시지 ID: 1967cf0d223c330c
+2025-05-22 16:28:39,023 - INFO - INBOX 메시지 ID: 1967ce9c77222e21
+2025-05-22 16:28:39,024 - INFO - INBOX 메시지 ID: 1967ccaa78421e88
+2025-05-22 16:28:39,024 - INFO - INBOX 메시지 ID: 1967b1c207fc97d9
+2025-05-22 16:28:39,024 - INFO - INBOX 메시지 ID: 1967ae5d4b3feac0
+2025-05-22 16:28:39,025 - INFO - INBOX 메시지 ID: 1967adf87b4b82e2
+2025-05-22 16:28:39,025 - INFO - INBOX 메시지 ID: 1967ab19c3293811
+2025-05-22 16:28:39,026 - INFO - INBOX 메시지 ID: 1967aac700cf1999
+2025-05-22 16:28:39,026 - INFO - INBOX 메시지 ID: 1967a92e5b274964
+2025-05-22 16:28:39,026 - INFO - INBOX 메시지 ID: 1967a2099bc40c25
+2025-05-22 16:28:39,028 - INFO - INBOX 메시지 ID: 196799620672f68f
+2025-05-22 16:28:39,028 - INFO - INBOX 메시지 ID: 1967994d0a6369e0
+2025-05-22 16:28:39,028 - INFO - INBOX 메시지 ID: 196790e94dcb5e18
+2025-05-22 16:28:39,029 - INFO - INBOX 메시지 ID: 19678ad1bfe0cca5
+2025-05-22 16:28:39,029 - INFO - INBOX 메시지 ID: 19678373ed70cd12
+2025-05-22 16:28:39,029 - INFO - INBOX 메시지 ID: 19674e27da287fb1
+2025-05-22 16:28:39,030 - INFO - INBOX 메시지 ID: 1967497ad93e7df9
+2025-05-22 16:28:39,031 - INFO - INBOX 메시지 ID: 196746d21d1e0bb3
+2025-05-22 16:28:39,031 - INFO - INBOX 메시지 ID: 19673b5506cd007b
+2025-05-22 16:28:39,031 - INFO - INBOX 메시지 ID: 19673794ce84ba0b
+2025-05-22 16:28:39,032 - INFO - INBOX 메시지 ID: 196729535825f65c
+2025-05-22 16:28:39,032 - INFO - INBOX 메시지 ID: 19671ccc9c2b85fa
+2025-05-22 16:28:39,032 - INFO - INBOX 메시지 ID: 196715605f3cebe6
+2025-05-22 16:28:39,032 - INFO - INBOX 메시지 ID: 19670a345be448f9
+2025-05-22 16:28:39,034 - INFO - INBOX 메시지 ID: 1966f66c69df1ba9
+2025-05-22 16:28:39,034 - INFO - INBOX 메시지 ID: 1966e5e6e2bea1f3
+2025-05-22 16:28:39,034 - INFO - INBOX 메시지 ID: 1966e58ca9695673
+2025-05-22 16:28:39,035 - INFO - INBOX 메시지 ID: 1966d2c1743abec6
+2025-05-22 16:28:39,035 - INFO - INBOX 메시지 ID: 1966c90a04da0476
+2025-05-22 16:28:39,035 - INFO - INBOX 메시지 ID: 1966c7551caf9010
+2025-05-22 16:28:39,036 - INFO - INBOX 메시지 ID: 1966bd50e3313b4f
+2025-05-22 16:28:39,036 - INFO - INBOX 메시지 ID: 1966aada21ecf8f4
+2025-05-22 16:28:39,036 - INFO - INBOX 메시지 ID: 1966a17b67bdec9c
+2025-05-22 16:28:39,036 - INFO - INBOX 메시지 ID: 19669f016f4c7a6b
+2025-05-22 16:28:39,037 - INFO - INBOX 메시지 ID: 1966987eb1987563
+2025-05-22 16:28:39,037 - INFO - INBOX 메시지 ID: 196696a2a3ed6f35
+2025-05-22 16:28:39,037 - INFO - INBOX 메시지 ID: 196695b7a7147f50
+2025-05-22 16:28:39,038 - INFO - INBOX 메시지 ID: 19668eb6fcfb3f7d
+2025-05-22 16:28:39,038 - INFO - INBOX 메시지 ID: 19668c480a1ad604
+2025-05-22 16:28:39,038 - INFO - INBOX 메시지 ID: 19668c2485dff58b
+2025-05-22 16:28:39,038 - INFO - INBOX 메시지 ID: 19668aaba321c913
+2025-05-22 16:28:39,039 - INFO - INBOX 메시지 ID: 1966891916e56eb1
+2025-05-22 16:28:39,039 - INFO - INBOX 메시지 ID: 19668402bc0ebd5b
+2025-05-22 16:28:39,039 - INFO - INBOX 메시지 ID: 196683e7229426fc
+2025-05-22 16:28:39,040 - INFO - INBOX 메시지 ID: 19668183c120e0fb
+2025-05-22 16:28:39,040 - INFO - INBOX 메시지 ID: 19667f048e2afa6d
+2025-05-22 16:28:39,040 - INFO - INBOX 메시지 ID: 19667b03cf6ec9a4
+2025-05-22 16:28:39,041 - INFO - INBOX 메시지 ID: 19667a1aa8c5d141
+2025-05-22 16:28:39,041 - INFO - INBOX 메시지 ID: 196671cb160698fa
+2025-05-22 16:28:39,042 - INFO - INBOX 메시지 ID: 1966675e551856f8
+2025-05-22 16:28:39,043 - INFO - INBOX 메시지 ID: 19665a1b29e1ee18
+2025-05-22 16:28:39,043 - INFO - INBOX 메시지 ID: 196654f8aaecc264
+2025-05-22 16:28:39,043 - INFO - INBOX 메시지 ID: 196651a274baee03
+2025-05-22 16:28:39,044 - INFO - INBOX 메시지 ID: 19664fd204a13380
+2025-05-22 16:28:39,044 - INFO - INBOX 메시지 ID: 19664d118d903556
+2025-05-22 16:28:39,044 - INFO - INBOX 메시지 ID: 19664c297b6cda37
+2025-05-22 16:28:39,044 - INFO - INBOX 메시지 ID: 196648b0ae5e6ff8
+2025-05-22 16:28:39,045 - INFO - INBOX 메시지 ID: 196640bfc6f23d57
+2025-05-22 16:28:39,045 - INFO - INBOX 메시지 ID: 19663ca46f398c4b
+2025-05-22 16:28:39,046 - INFO - INBOX 메시지 ID: 19663c7b8f736c87
+2025-05-22 16:28:39,047 - INFO - INBOX 메시지 ID: 19663a78b79f8d0f
+2025-05-22 16:28:39,047 - INFO - INBOX 메시지 ID: 19663a672de24076
+2025-05-22 16:28:39,049 - INFO - INBOX 메시지 ID: 19662fb26ddf6ac7
+2025-05-22 16:28:39,050 - INFO - INBOX 메시지 ID: 19662fad6f487d32
+2025-05-22 16:28:39,051 - INFO - INBOX 메시지 ID: 19662d72258d2e57
+2025-05-22 16:28:39,051 - INFO - INBOX 메시지 ID: 19662b143b7f48be
+2025-05-22 16:28:39,052 - INFO - INBOX 메시지 ID: 19662622af465ad7
+2025-05-22 16:28:39,052 - INFO - INBOX 메시지 ID: 19662081dc3ecb5d
+2025-05-22 16:28:39,053 - INFO - INBOX 메시지 ID: 19661c43c1f6c379
+2025-05-22 16:28:39,054 - INFO - INBOX 메시지 ID: 19661c276fe613d2
+2025-05-22 16:28:39,056 - INFO - INBOX 메시지 ID: 196617f28caab0b3
+2025-05-22 16:28:39,057 - INFO - INBOX 메시지 ID: 1966005e91c21ae7
+2025-05-22 16:28:39,058 - INFO - INBOX 메시지 ID: 1965ff7af5d988e3
+2025-05-22 16:28:39,059 - INFO - INBOX 메시지 ID: 1965fd632c4e805b
+2025-05-22 16:28:39,064 - INFO - INBOX 메시지 ID: 1965fc36422d459a
+2025-05-22 16:28:39,066 - INFO - INBOX 메시지 ID: 1965fa1905135eb8
+2025-05-22 16:28:39,067 - INFO - INBOX 메시지 ID: 1965f1778b0e3b3a
+2025-05-22 16:28:39,067 - INFO - INBOX 메시지 ID: 1965ee0d611dfde5
+2025-05-22 16:28:39,068 - INFO - INBOX 메시지 ID: 1965edeb7578b6b1
+2025-05-22 16:28:39,068 - INFO - INBOX 메시지 ID: 1965ed1b26c8ea44
+2025-05-22 16:28:39,069 - INFO - INBOX 메시지 ID: 1965eabc490cfd3b
+2025-05-22 16:28:39,069 - INFO - INBOX 메시지 ID: 1965e69e8691b4c7
+2025-05-22 16:28:39,071 - INFO - INBOX 메시지 ID: 1965e69896d3c9b5
+2025-05-22 16:28:39,071 - INFO - INBOX 메시지 ID: 1965e584197cc64c
+2025-05-22 16:28:39,071 - INFO - INBOX 메시지 ID: 1965e55e1a250bcb
+2025-05-22 16:28:39,072 - INFO - INBOX 메시지 ID: 1965e51b6680ee3e
+2025-05-22 16:28:39,072 - INFO - INBOX 메시지 ID: 1965dd1ae58b01b0
+2025-05-22 16:28:39,072 - INFO - INBOX 메시지 ID: 1965db97adfcd962
+2025-05-22 16:28:39,072 - INFO - INBOX 메시지 ID: 1965d35615fefa71
+2025-05-22 16:28:39,072 - INFO - INBOX 메시지 ID: 1965cd7eec0d5618
+2025-05-22 16:28:39,073 - INFO - INBOX 메시지 ID: 1965c308b0c90fb8
+2025-05-22 16:28:39,073 - INFO - INBOX 메시지 ID: 1965af1fe505e045
+2025-05-22 16:30:30,015 - INFO - Processing message: 1965af1fe505e045, from: Arize AI <smcamis@arize.com>, to: sungho@shiftsai.com
+2025-05-22 16:30:30,015 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:30,016 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:30,252 - INFO - Processing message: 1965c308b0c90fb8, from: Gamma <hello@gamma.app>, to: sungho@shiftsai.com
+2025-05-22 16:30:30,252 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:30,253 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:30,486 - INFO - Processing message: 1965cd7eec0d5618, from: "Wix.com" <wix-team@emails.wix.com>, to: zach@shiftsai.com
+2025-05-22 16:30:30,486 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:30,488 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:30,727 - INFO - Processing message: 1965d35615fefa71, from: Ben Thompson <email@stratechery.com>, to: Zach Park <zach@shiftsai.com>
+2025-05-22 16:30:30,727 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:30,727 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:30,957 - INFO - Processing message: 1965db97adfcd962, from: Eric at Genspark <ericjing@genspark.ai>, to: Sungho Park <sungho@shiftsai.com>
+2025-05-22 16:30:30,958 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:30,958 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:31,206 - INFO - Processing message: 1965dd1ae58b01b0, from: The Airtable Team <team@mail.airtable.com>, to: sungho@shiftsai.com
+2025-05-22 16:30:31,206 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:31,207 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:31,439 - INFO - Processing message: 1965e51b6680ee3e, from: EntreConnect Team <entreconnect@substack.com>, to: zach@shiftsai.com
+2025-05-22 16:30:31,440 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:31,440 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:31,718 - INFO - Processing message: 1965e55e1a250bcb, from: Fed at GummySearch <hello@mg.gummysearch.com>, to: sungho@shiftsai.com
+2025-05-22 16:30:31,718 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:31,718 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:31,945 - INFO - Processing message: 1965e584197cc64c, from: "FRC :: North America" <founders-na@calendar.luma-mail.com>, to: sungho@shiftsai.com
+2025-05-22 16:30:31,947 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:31,947 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:32,179 - INFO - Processing message: 1965e69896d3c9b5, from: "FRC :: North America" <founders-na@calendar.luma-mail.com>, to: sungho@shiftsai.com
+2025-05-22 16:30:32,179 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:32,179 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:32,541 - INFO - Processing message: 1965e69e8691b4c7, from: "FRC :: North America" <founders-na@calendar.luma-mail.com>, to: sungho@shiftsai.com
+2025-05-22 16:30:32,542 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:32,542 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:32,789 - INFO - Processing message: 1965eabc490cfd3b, from: Supabase <noreply@supabase.com>, to: zach@shiftsai.com
+2025-05-22 16:30:32,789 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:32,790 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:33,034 - INFO - Processing message: 1965ed1b26c8ea44, from: Mariane Bekker <noreply@luma-mail.com>, to: zach@shiftsai.com
+2025-05-22 16:30:33,035 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:33,035 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:33,269 - INFO - Processing message: 1965edeb7578b6b1, from: Mariane Bekker <marianebekker@user.luma-mail.com>, to: sungho@shiftsai.com
+2025-05-22 16:30:33,269 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:33,270 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:33,506 - INFO - Processing message: 1965ee0d611dfde5, from: NEON <hello@neon.work>, to: <zach@shiftsai.com>
+2025-05-22 16:30:33,506 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:33,507 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:33,744 - INFO - Processing message: 1965f1778b0e3b3a, from: JoinBrands <joinbrands@mail.beehiiv.com>, to: "sungho@shiftsai.com" <sungho@shiftsai.com>
+2025-05-22 16:30:33,745 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:33,746 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:33,978 - INFO - Processing message: 1965fa1905135eb8, from: Anand Sanwal <anand.sanwal@cbinsights.com>, to: zach@shiftsai.com
+2025-05-22 16:30:33,979 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:33,979 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:34,214 - INFO - Processing message: 1965fc36422d459a, from: Joscha Bach <usr-p6mV95gQrYkB3nZ@user.luma-mail.com>, to: sungho@shiftsai.com
+2025-05-22 16:30:34,215 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:34,215 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:34,461 - INFO - Processing message: 1965fd632c4e805b, from: Laurence Ion <noreply@luma-mail.com>, to: sungho@shiftsai.com
+2025-05-22 16:30:34,461 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:34,461 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:34,693 - INFO - Processing message: 1965ff7af5d988e3, from: "공팔리터" <newsletter@08liter.com>, to: <sungho@shiftsai.com>
+2025-05-22 16:30:34,694 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:34,694 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:34,932 - INFO - Processing message: 1966005e91c21ae7, from: By The Bay <info@bythebay.io>, to: "sungho@shiftsai.com" <sungho@shiftsai.com>
+2025-05-22 16:30:34,933 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:34,933 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:35,388 - INFO - Processing message: 196617f28caab0b3, from: TAGby <support@tagby.io>, to: <sungho@shiftsai.com>
+2025-05-22 16:30:35,388 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:35,388 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:35,632 - INFO - Processing message: 19661c276fe613d2, from: SAP Universal ID - Notification <noreply-uid@sap.com>, to: zach@shiftsai.com
+2025-05-22 16:30:35,633 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:35,633 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:35,881 - INFO - Processing message: 19661c43c1f6c379, from: SAP <webmaster@sap.com>, to: zach@shiftsai.com
+2025-05-22 16:30:35,881 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:35,881 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:36,112 - INFO - Processing message: 19662081dc3ecb5d, from: "Wix.com" <wix-team@emails.wix.com>, to: zach@shiftsai.com
+2025-05-22 16:30:36,112 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:36,113 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:36,374 - INFO - Processing message: 19662622af465ad7, from: The Team at DashThis <info@dashthis.com>, to: sungho@shiftsai.com
+2025-05-22 16:30:36,375 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:36,375 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:36,608 - INFO - Processing message: 19662b143b7f48be, from: Specter Insights <noreply@insights.tryspecter.com>, to: zach@shiftsai.com
+2025-05-22 16:30:36,609 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:36,610 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:36,857 - INFO - Processing message: 19662d72258d2e57, from: CamelAI <notifications@camelai.com>, to: Zach Park <zach@shiftsai.com>
+2025-05-22 16:30:36,858 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:36,858 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:37,104 - INFO - Processing message: 19662fad6f487d32, from: Zoom App Marketplace <noreply-marketplace@zoom.us>, to: zach@shiftsai.com
+2025-05-22 16:30:37,105 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:37,105 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:37,368 - INFO - Processing message: 19662fb26ddf6ac7, from: Zoom App Marketplace <noreply-marketplace@zoom.us>, to: zach@shiftsai.com
+2025-05-22 16:30:37,368 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:37,368 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:37,609 - INFO - Processing message: 19663a672de24076, from: Calendly <notifications@calendly.com>, to: zach@shiftsai.com
+2025-05-22 16:30:37,609 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:37,610 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:37,847 - INFO - Processing message: 19663a78b79f8d0f, from: Drake Wheeler <drakew@mymiestro.com>, to: zach@shiftsai.com
+2025-05-22 16:30:37,848 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:37,848 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:38,083 - INFO - Processing message: 19663c7b8f736c87, from: "Sarah @ Arize" <smcamis@arize.com>, to: sungho@shiftsai.com
+2025-05-22 16:30:38,083 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:38,083 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:38,318 - INFO - Processing message: 19663ca46f398c4b, from: Google Cloud <CloudPlatform-noreply@google.com>, to: zach@shiftsai.com
+2025-05-22 16:30:38,318 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:38,320 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:38,549 - INFO - Processing message: 196640bfc6f23d57, from: Team Zilliz <hello@zilliz.com>, to: sungho@shiftsai.com
+2025-05-22 16:30:38,549 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:38,550 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:38,773 - INFO - Processing message: 196648b0ae5e6ff8, from: "Freelancer.com" <noreply@notifications.freelancer.com>, to: sungho@shiftsai.com
+2025-05-22 16:30:38,773 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:38,774 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:38,999 - INFO - Processing message: 19664c297b6cda37, from: Mariane Bekker <foundersbay@mail.beehiiv.com>, to: "sungho@shiftsai.com" <sungho@shiftsai.com>
+2025-05-22 16:30:39,000 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:39,000 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:39,248 - INFO - Processing message: 19664d118d903556, from: Murray - Open Future Forum and Friends <OpenFutureForum@calendar.luma-mail.com>, to: sungho@shiftsai.com
+2025-05-22 16:30:39,249 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:39,250 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:39,494 - INFO - Processing message: 19664fd204a13380, from: Nijansh Verma <noreply@luma-mail.com>, to: zach@shiftsai.com
+2025-05-22 16:30:39,496 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:39,497 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:39,740 - INFO - Processing message: 196651a274baee03, from: SFVibe <sfvibe@mail.beehiiv.com>, to: "sungho@shiftsai.com" <sungho@shiftsai.com>
+2025-05-22 16:30:39,742 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:39,742 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:39,967 - INFO - Processing message: 196654f8aaecc264, from: Fred from Optmyzr <newsletters@optmyzr.com>, to: sungho@shiftsai.com
+2025-05-22 16:30:39,967 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:39,968 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:40,189 - INFO - Processing message: 19665a1b29e1ee18, from: Hedra <hello@hedra.com>, to: <zach@shiftsai.com>
+2025-05-22 16:30:40,189 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:40,190 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:40,420 - INFO - Processing message: 1966675e551856f8, from: zcal Tips <team@learn.zcal.co>, to: zach@shiftsai.com
+2025-05-22 16:30:40,420 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:40,422 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:40,681 - INFO - Processing message: 196671cb160698fa, from: Tzu-Ling Wen <tzuling.wen@upfluence.com>, to: "sungho@shiftsai.com" <sungho@shiftsai.com>
+2025-05-22 16:30:40,682 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:40,682 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:40,913 - INFO - Processing message: 19667a1aa8c5d141, from: The Founder Playbook <thefounderplaybook@mail.beehiiv.com>, to: "zach@shiftsai.com" <zach@shiftsai.com>
+2025-05-22 16:30:40,913 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:40,913 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:41,152 - INFO - Processing message: 19667b03cf6ec9a4, from: Eleni from Modash <eleni@modash.io>, to: "sungho@shiftsai.com" <sungho@shiftsai.com>
+2025-05-22 16:30:41,153 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:41,153 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:41,382 - INFO - Processing message: 19667f048e2afa6d, from: Anna Anisin <anna.a@formulatedby.com>, to: sungho@shiftsai.com
+2025-05-22 16:30:41,382 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:41,382 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:41,614 - INFO - Processing message: 19668183c120e0fb, from: Steph from OpenVC <steph@openvc.app>, to: zach@shiftsai.com
+2025-05-22 16:30:41,614 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:41,614 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:41,854 - INFO - Processing message: 196683e7229426fc, from: Generative AI San Francisco and Bay Area <genai-sf@calendar.luma-mail.com>, to: zach@shiftsai.com
+2025-05-22 16:30:41,855 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:41,855 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:42,097 - INFO - Processing message: 19668402bc0ebd5b, from: Generative AI San Francisco and Bay Area <genai-sf@calendar.luma-mail.com>, to: sungho@shiftsai.com
+2025-05-22 16:30:42,097 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:42,097 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:42,344 - INFO - Processing message: 1966891916e56eb1, from: The Airtable Team <team@mail.airtable.com>, to: sungho@shiftsai.com
+2025-05-22 16:30:42,344 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:42,345 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:42,574 - INFO - Processing message: 19668aaba321c913, from: Olivia at Traackr <influence@traackr.com>, to: <sungho@shiftsai.com>
+2025-05-22 16:30:42,575 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:42,575 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:42,812 - INFO - Processing message: 19668c2485dff58b, from: The Calendly Team <webinars@send.calendly.com>, to: zach@shiftsai.com
+2025-05-22 16:30:42,814 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:42,814 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:43,054 - INFO - Processing message: 19668c480a1ad604, from: "Michelle @ Calendly" <productupdates@send.calendly.com>, to: sungho@shiftsai.com
+2025-05-22 16:30:43,055 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:43,055 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:43,294 - INFO - Processing message: 19668eb6fcfb3f7d, from: Alex Yaseen <alex@team.parabola.io>, to: zach@shiftsai.com
+2025-05-22 16:30:43,295 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:43,295 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:43,528 - INFO - Processing message: 196695b7a7147f50, from: The AI Agents Community <usr-7cYluunXhTnZqzF@user.luma-mail.com>, to: sungho@shiftsai.com
+2025-05-22 16:30:43,529 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:43,529 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:43,778 - INFO - Processing message: 196696a2a3ed6f35, from: "창업진흥원" <1357@kised.or.kr>, to: "익명" <sungho@shiftsai.com>
+2025-05-22 16:30:43,778 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:43,778 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:44,041 - INFO - Processing message: 1966987eb1987563, from: Eric Ciarla <eric@tryfirecrawl.com>, to: zach@shiftsai.com
+2025-05-22 16:30:44,041 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:44,042 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:44,268 - INFO - Processing message: 19669f016f4c7a6b, from: Anand Sanwal <anand.sanwal@cbinsights.com>, to: zach@shiftsai.com
+2025-05-22 16:30:44,268 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:44,269 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:44,508 - INFO - Processing message: 1966a17b67bdec9c, from: "공팔리터" <newsletter@08liter.com>, to: <sungho@shiftsai.com>
+2025-05-22 16:30:44,508 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:44,509 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:44,754 - INFO - Processing message: 1966aada21ecf8f4, from: JoinBrands <hello@joinbrands.com>, to: Sungho Park <sungho@shiftsai.com>
+2025-05-22 16:30:44,754 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:44,755 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:44,997 - INFO - Processing message: 1966bd50e3313b4f, from: Parabola Support <support@parabola.io>, to: Zach <zach@shiftsai.com>
+2025-05-22 16:30:44,997 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:44,997 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:45,226 - INFO - Processing message: 1966c7551caf9010, from: Ben Thompson <email@stratechery.com>, to: Zach Park <zach@shiftsai.com>
+2025-05-22 16:30:45,226 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:45,227 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:45,466 - INFO - Processing message: 1966c90a04da0476, from: TikTok For Business <marketing-api@ads-service.tiktok.com>, to: sungho@shiftsai.com
+2025-05-22 16:30:45,467 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:45,467 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:45,720 - INFO - Processing message: 1966d2c1743abec6, from: GitHub <noreply@github.com>, to: zachparkhere <zach@shiftsai.com>
+2025-05-22 16:30:45,721 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:45,721 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:45,955 - INFO - Processing message: 1966e58ca9695673, from: NEON <hello@neon.work>, to: <zach@shiftsai.com>
+2025-05-22 16:30:45,955 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:45,956 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:46,201 - INFO - Processing message: 1966e5e6e2bea1f3, from: ScrollStopper <joinbrands@mail.beehiiv.com>, to: "sungho@shiftsai.com" <sungho@shiftsai.com>
+2025-05-22 16:30:46,201 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:46,201 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:46,451 - INFO - Processing message: 1966f66c69df1ba9, from: Laurence Ion <laurence@user.luma-mail.com>, to: sungho@shiftsai.com
+2025-05-22 16:30:46,453 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:46,453 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:46,680 - INFO - Processing message: 19670a345be448f9, from: GitHub <noreply@github.com>, to: zachparkhere <zach@shiftsai.com>
+2025-05-22 16:30:46,680 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:46,681 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:46,900 - INFO - Processing message: 196715605f3cebe6, from: Pipedrive <info@pipedrive.com>, to: zach@shiftsai.com
+2025-05-22 16:30:46,900 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:46,901 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:47,126 - INFO - Processing message: 19671ccc9c2b85fa, from: Pipedrive <info@pipedrive.com>, to: zach@shiftsai.com
+2025-05-22 16:30:47,127 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:47,127 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:47,368 - INFO - Processing message: 196729535825f65c, from: "ceo@makeugc.ai" <ceo@makeugc.ai>, to: Sungho Park <sungho@shiftsai.com>
+2025-05-22 16:30:47,369 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:47,369 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:47,601 - INFO - Processing message: 19673794ce84ba0b, from: "Kyosuke’s Newsletter " <kyosuketogami@substack.com>, to: zach@shiftsai.com
+2025-05-22 16:30:47,606 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:47,606 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:47,849 - INFO - Processing message: 19673b5506cd007b, from: Anand Sanwal <anand.sanwal@cbinsights.com>, to: zach@shiftsai.com
+2025-05-22 16:30:47,850 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:47,850 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:48,099 - INFO - Processing message: 196746d21d1e0bb3, from: Agency AI Newsletter <agentops@substack.com>, to: zach@shiftsai.com
+2025-05-22 16:30:48,100 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:48,100 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:48,356 - INFO - Processing message: 1967497ad93e7df9, from: EntreConnect Team <entreconnect@substack.com>, to: zach@shiftsai.com
+2025-05-22 16:30:48,357 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:48,357 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:48,604 - INFO - Processing message: 19674e27da287fb1, from: yeoni-p <noreply@github.com>, to: zach@shiftsai.com
+2025-05-22 16:30:48,604 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:48,605 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:48,841 - INFO - Processing message: 19678373ed70cd12, from: "Sarah @ Arize" <smcamis@arize.com>, to: sungho@shiftsai.com
+2025-05-22 16:30:48,841 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:48,842 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:49,068 - INFO - Processing message: 19678ad1bfe0cca5, from: "FRC :: North America" <founders-na@calendar.luma-mail.com>, to: sungho@shiftsai.com
+2025-05-22 16:30:49,068 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:49,069 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:49,311 - INFO - Processing message: 196790e94dcb5e18, from: Natalie Pan <nataliepan@user.luma-mail.com>, to: sungho@shiftsai.com
+2025-05-22 16:30:49,311 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:49,312 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:49,550 - INFO - Processing message: 1967994d0a6369e0, from: "공팔리터" <newsletter@08liter.com>, to: <sungho@shiftsai.com>
+2025-05-22 16:30:49,551 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:49,551 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:49,786 - INFO - Processing message: 196799620672f68f, from: Deb at Zapier <blog@send.zapier.com>, to: sungho@shiftsai.com
+2025-05-22 16:30:49,786 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:49,787 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:50,038 - INFO - Processing message: 1967a2099bc40c25, from: JoinBrands <hello@joinbrands.com>, to: Sungho Park <sungho@shiftsai.com>
+2025-05-22 16:30:50,039 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:50,039 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:50,272 - INFO - Processing message: 1967a92e5b274964, from: Notion Mail Team <team@mail.notion.so>, to: <zach@shiftsai.com>
+2025-05-22 16:30:50,273 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:50,273 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:50,548 - INFO - Processing message: 1967aac700cf1999, from: "박성호" <mario904@snu.ac.kr>, to: zach@shiftsai.com
+2025-05-22 16:30:50,548 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:50,548 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:50,795 - INFO - Processing message: 1967ab19c3293811, from: "박성호" <mario904@snu.ac.kr>, to: zach@shiftsai.com
+2025-05-22 16:30:50,797 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:50,797 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:51,039 - INFO - Processing message: 1967adf87b4b82e2, from: OpenGig <nijansh@opengig.info>, to: Zach <zach@shiftsai.com>
+2025-05-22 16:30:51,039 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:51,041 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:51,277 - INFO - Processing message: 1967ae5d4b3feac0, from: LinkedIn <messages-noreply@linkedin.com>, to: Zach Park <zach@shiftsai.com>
+2025-05-22 16:30:51,277 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:51,277 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:51,505 - INFO - Processing message: 1967aecfdf082ded, from: zach@shiftsai.com, to: 
+2025-05-22 16:30:51,506 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:51,507 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:51,744 - INFO - Processing message: 1967b1c207fc97d9, from: Laurence Ion <laurence@user.luma-mail.com>, to: sungho@shiftsai.com
+2025-05-22 16:30:51,744 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:51,746 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:51,975 - INFO - Processing message: 1967b271a1c91212, from: zach@shiftsai.com, to: 
+2025-05-22 16:30:51,976 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:51,976 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:52,216 - INFO - Processing message: 1967b32b2f36808c, from: zach@shiftsai.com, to: 
+2025-05-22 16:30:52,216 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:52,216 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:52,449 - INFO - Processing message: 1967ccaa78421e88, from: Apify <hello@apify.com>, to: sungho@shiftsai.com
+2025-05-22 16:30:52,450 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:52,450 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:52,688 - INFO - Processing message: 1967ce9c77222e21, from: The SingleStore Team <news@singlestore.com>, to: sungho@shiftsai.com
+2025-05-22 16:30:52,688 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:52,689 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:52,924 - INFO - Processing message: 1967cf0d223c330c, from: Colton at Traackr <influence@traackr.com>, to: <sungho@shiftsai.com>
+2025-05-22 16:30:52,925 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:52,925 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:53,175 - INFO - Processing message: 1967d47733d7c5e4, from: "Frontier Tower | Berlinhouse" <noreply@luma-mail.com>, to: sungho@shiftsai.com
+2025-05-22 16:30:53,175 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:53,176 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:53,404 - INFO - Processing message: 1967da0b02977020, from: Natalie Pan <nataliepan@user.luma-mail.com>, to: sungho@shiftsai.com
+2025-05-22 16:30:53,405 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:53,405 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:53,659 - INFO - Processing message: 1967dc560a91b9e2, from: NEON <hello@neon.work>, to: <zach@shiftsai.com>
+2025-05-22 16:30:53,659 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:53,659 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:53,907 - INFO - Processing message: 1967dcb63df1e5c4, from: Samir Malhotra <samir.malhotra@vanta.com>, to: Sungho Park <sungho@shiftsai.com>
+2025-05-22 16:30:53,907 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:53,907 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:54,142 - INFO - Processing message: 1967dd69ba28480e, from: Tom Nakata <usr-xom2oCMVLClGVAO@user.luma-mail.com>, to: zach@shiftsai.com
+2025-05-22 16:30:54,144 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:54,144 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:54,380 - INFO - Processing message: 1967de9994c25657, from: Murray - Open Future Forum and Friends <OpenFutureForum@calendar.luma-mail.com>, to: sungho@shiftsai.com
+2025-05-22 16:30:54,381 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:54,381 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:54,618 - INFO - Processing message: 1967df2e171c8f2e, from: "Aron @ Gumloop" <aron@gumloopmail.com>, to: sungho@shiftsai.com
+2025-05-22 16:30:54,618 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:54,619 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:54,848 - INFO - Processing message: 1967e8676b7f4e03, from: Gladys from Beta University <betauniversity@substack.com>, to: zach@shiftsai.com
+2025-05-22 16:30:54,849 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:54,849 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:55,079 - INFO - Processing message: 1967f13ef2942a3a, from: Fred from Optmyzr <frederick@optmyzr.com>, to: sungho@shiftsai.com
+2025-05-22 16:30:55,080 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:55,080 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:55,312 - INFO - Processing message: 1967f4633e3cbf06, from: JoinBrands <hello@joinbrands.com>, to: Sungho Park <sungho@shiftsai.com>
+2025-05-22 16:30:55,312 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:55,312 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:55,560 - INFO - Processing message: 1968027a0d05a57e, from: Mail Delivery Subsystem <mailer-daemon@googlemail.com>, to: zach@shiftsai.com
+2025-05-22 16:30:55,560 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:55,561 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:55,796 - INFO - Processing message: 1968034217fbe71e, from: Laurence Ion <laurence@user.luma-mail.com>, to: sungho@shiftsai.com
+2025-05-22 16:30:55,796 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:55,797 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:56,032 - INFO - Processing message: 19680371f38c23fc, from: Laurence Ion <noreply@luma-mail.com>, to: sungho@shiftsai.com
+2025-05-22 16:30:56,033 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:56,033 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:56,273 - INFO - Processing message: 19680e47d603015e, from: "Wix.com" <wix-team@emails.wix.com>, to: zach@shiftsai.com
+2025-05-22 16:30:56,274 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:56,274 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:56,509 - INFO - Processing message: 19681c2bb09e0fee, from: Tyler Carmody <tyler@formulatedby.com>, to: sungho@shiftsai.com
+2025-05-22 16:30:56,509 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:56,510 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:56,755 - INFO - Processing message: 19681f471235e5e7, from: Notion Mail Team <team@mail.notion.so>, to: <zach@shiftsai.com>
+2025-05-22 16:30:56,755 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:56,755 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:57,016 - INFO - Processing message: 1968242db3273e3b, from: "ceo@makeugc.ai" <ceo@makeugc.ai>, to: Sungho Park <sungho@shiftsai.com>
+2025-05-22 16:30:57,018 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:57,018 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:57,378 - INFO - Processing message: 1968283e34fe7faf, from: Adam Chan <itsajchan@user.luma-mail.com>, to: sungho@shiftsai.com
+2025-05-22 16:30:57,378 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:57,378 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:57,607 - INFO - Processing message: 196828803e6dfcf4, from: Joscha Bach <usr-p6mV95gQrYkB3nZ@user.luma-mail.com>, to: sungho@shiftsai.com
+2025-05-22 16:30:57,607 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:57,609 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:57,837 - INFO - Processing message: 196829b392112b61, from: "ceo@makeugc.ai" <ceo@makeugc.ai>, to: Sungho Park <sungho@shiftsai.com>
+2025-05-22 16:30:57,837 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:57,838 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:58,094 - INFO - Processing message: 196829b3f1bb8ffb, from: Mariane Bekker <foundersbay@mail.beehiiv.com>, to: "sungho@shiftsai.com" <sungho@shiftsai.com>
+2025-05-22 16:30:58,096 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:58,096 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:58,326 - INFO - Processing message: 19683b5188d20235, from: Anand Sanwal <anand.sanwal@cbinsights.com>, to: zach@shiftsai.com
+2025-05-22 16:30:58,326 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:58,327 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:58,581 - INFO - Processing message: 19684066f17d6b35, from: "공팔리터" <newsletter@08liter.com>, to: <sungho@shiftsai.com>
+2025-05-22 16:30:58,582 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:58,582 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:58,818 - INFO - Processing message: 196846c8b0cec244, from: JoinBrands <hello@joinbrands.com>, to: Sungho Park <sungho@shiftsai.com>
+2025-05-22 16:30:58,818 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:58,819 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:59,047 - INFO - Processing message: 196847e0daf39016, from: Zach Park <zach@shiftsai.com>, to: drakew@mymiestro.com
+2025-05-22 16:30:59,047 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:59,048 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:59,291 - INFO - Processing message: 196849e22242940e, from: Zoom <no-reply@zoom.us>, to: zach@shiftsai.com
+2025-05-22 16:30:59,291 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:59,292 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:59,524 - INFO - Processing message: 196849e358ba9ffa, from: Calendly <notifications@calendly.com>, to: zach@shiftsai.com
+2025-05-22 16:30:59,524 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:59,524 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:59,760 - INFO - Processing message: 19684a07992ee607, from: Calendly <notifications@calendly.com>, to: zach@shiftsai.com
+2025-05-22 16:30:59,761 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:59,761 - INFO - is_vendor_email 결과: False
+2025-05-22 16:30:59,984 - INFO - Processing message: 19684a132ca74bde, from: Drake Wheeler <drakew@mymiestro.com>, to: Zach Park <zach@shiftsai.com>
+2025-05-22 16:30:59,984 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:30:59,984 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:00,234 - INFO - Processing message: 19684a1366fead43, from: Drake Wheeler <drakew@mymiestro.com>, to: zach@shiftsai.com
+2025-05-22 16:31:00,234 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:00,235 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:00,476 - INFO - Processing message: 19684a5157890d9f, from: Zach Park <zach@shiftsai.com>, to: Drake Wheeler <drakew@mymiestro.com>
+2025-05-22 16:31:00,476 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:00,477 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:00,704 - INFO - Processing message: 19684e710a5290de, from: Manus AI Team <noreply@mail.manus.im>, to: zach@shiftsai.com
+2025-05-22 16:31:00,704 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:00,705 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:00,959 - INFO - Processing message: 1968507ce2f9fef8, from: zach@shiftsai.com, to: 
+2025-05-22 16:31:00,959 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:00,959 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:01,203 - INFO - Processing message: 196853f9d1bc1d2b, from: Mail Delivery Subsystem <mailer-daemon@googlemail.com>, to: zach@shiftsai.com
+2025-05-22 16:31:01,203 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:01,203 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:01,444 - INFO - Processing message: 19685655410ff470, from: "박성호" <mario904@snu.ac.kr>, to: zach@shiftsai.com
+2025-05-22 16:31:01,444 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:01,444 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:01,671 - INFO - Processing message: 196858d50560d69c, from: "박성호" <mario904@snu.ac.kr>, to: zach@shiftsai.com
+2025-05-22 16:31:01,671 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:01,672 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:01,909 - INFO - Processing message: 196858fe40e734ea, from: "박성호" <mario904@snu.ac.kr>, to: zach@shiftsai.com
+2025-05-22 16:31:01,909 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:01,909 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:02,188 - INFO - Processing message: 1968614074973d76, from: TikTok For Business <no-reply@notifications.tiktok.com>, to: sungho@shiftsai.com
+2025-05-22 16:31:02,189 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:02,189 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:02,427 - INFO - Processing message: 196861406c0122a3, from: "Wix.com" <wix-team@emails.wix.com>, to: zach@shiftsai.com
+2025-05-22 16:31:02,428 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:02,428 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:02,655 - INFO - Processing message: 196865c4313c69ee, from: JoinBrands <hello@joinbrands.com>, to: Sungho Park <sungho@shiftsai.com>
+2025-05-22 16:31:02,655 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:02,655 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:02,882 - INFO - Processing message: 19686c9331bee4ac, from: Steph from OpenVC <steph@openvc.app>, to: zach@shiftsai.com
+2025-05-22 16:31:02,884 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:02,884 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:03,114 - INFO - Processing message: 196870387c09b636, from: "WordPress.com" <hello@wordpress.com>, to: sungho@shiftsai.com
+2025-05-22 16:31:03,114 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:03,116 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:03,348 - INFO - Processing message: 1968703dff39787c, from: Frederick Vallaeys <frederick@optmyzr.com>, to: sungho@shiftsai.com
+2025-05-22 16:31:03,348 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:03,348 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:03,581 - INFO - Processing message: 196872cc777fe826, from: Zach Park <zach@shiftsai.com>, to: "ggbni0816@gmail.com" <ggbni0816@gmail.com>
+2025-05-22 16:31:03,581 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:03,581 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:03,820 - INFO - Processing message: 196872d69b9c09db, from: Zach Park <zach@shiftsai.com>, to: mario904@naver.com
+2025-05-22 16:31:03,820 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:03,821 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:04,053 - INFO - Processing message: 19687301aeba3f47, from: Zach Park <zach@shiftsai.com>, to: "news4sungho@gmail.com" <news4sungho@gmail.com>
+2025-05-22 16:31:04,054 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:04,054 - INFO - Is vendor: True
+2025-05-22 16:31:04,055 - INFO - is_vendor_email 결과: True
+2025-05-22 16:31:04,286 - INFO - [DB저장전] direction: outbound, msg_id: 19687301aeba3f47, from: Zach Park <zach@shiftsai.com>, to: "news4sungho@gmail.com" <news4sungho@gmail.com>
+2025-05-22 16:31:04,761 - INFO - HTTP Request: GET https://hgxqgvqrnyuoyxnnptwt.supabase.co/rest/v1/email_logs?select=message_id&message_id=eq.19687301aeba3f47 "HTTP/2 200 OK"
+2025-05-22 16:31:09,187 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-22 16:31:09,197 - INFO - Generated email type: purchase order confirmation
+2025-05-22 16:31:10,158 - INFO - HTTP Request: POST https://hgxqgvqrnyuoyxnnptwt.supabase.co/storage/v1/object/attachments-from-vendor//None "HTTP/2 400 Bad Request"
+2025-05-22 16:31:10,159 - ERROR - Error downloading attachment: {'statusCode': 409, 'error': Duplicate, 'message': The resource already exists}
+2025-05-22 16:31:10,159 - INFO - Fetching thread history for thread_id: 196872f923934e74
+2025-05-22 16:31:10,378 - INFO - HTTP Request: GET https://hgxqgvqrnyuoyxnnptwt.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.196872f923934e74&order=sent_at.asc "HTTP/2 200 OK"
+2025-05-22 16:31:10,384 - INFO - Found 0 emails in thread
+2025-05-22 16:31:13,334 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-22 16:31:13,336 - INFO - Parsed delivery date: 2025-05-07
+2025-05-22 16:31:13,539 - INFO - HTTP Request: GET https://hgxqgvqrnyuoyxnnptwt.supabase.co/rest/v1/email_logs?select=message_id&thread_id=eq.196872f923934e74&message_id=eq.19687301aeba3f47 "HTTP/2 200 OK"
+2025-05-22 16:31:13,539 - INFO - [INSERT-DEBUG] email_log_data to insert: {'thread_id': '196872f923934e74', 'direction': 'outbound', 'sender_email': 'Zach Park <zach@shiftsai.com>', 'recipient_email': '"news4sungho@gmail.com" <news4sungho@gmail.com>', 'subject': 'PO for 100ml cosmetic containers', 'sent_at': 'Wed, 30 Apr 2025 23:53:18 +0900', 'created_at': '2025-05-22T07:31:13.336073', 'updated_at': '2025-05-22T07:31:13.336073', 'received_at': None, 'status': 'sent', 'email_type': 'purchase order confirmation', 'has_attachment': True, 'filename': 'PO-240430-002.xlsx', 'attachment_types': ['application/haansoftxlsx'], 'summary': 'Zach has sent an official purchase order (PO-240430-002) for 1,000 units of 100ml cosmetic containers, requesting confirmation of receipt and an estimated delivery date.', 'sender_role': 'admin', 'parsed_delivery_date': '2025-05-07', 'body': "Dear Mario,\r\n\r\nI hope you're doing well.\r\nPlease find attached our official PO (PO-240430-002) for 1,000 units of\r\n100ml cosmetic containers.\r\n\r\nShip to:\r\nShifts Main Center\r\n123 AI Valley, Gangnam-gu, Seoul, South Korea\r\n\r\nExpected delivery: May 7\r\nShipping method: DHL\r\nPayment terms: Net 15\r\n\r\nPlease confirm receipt and let us know your estimated delivery date.\r\n\r\nBest regards,\r\nZach\r\nzach@shiftsai.com\r\n", 'message_id': '19687301aeba3f47', 'po_number': 'PO-240430-002'}
+2025-05-22 16:31:13,727 - INFO - HTTP Request: POST https://hgxqgvqrnyuoyxnnptwt.supabase.co/rest/v1/email_logs "HTTP/2 201 Created"
+2025-05-22 16:31:13,729 - INFO - [INSERT-DEBUG] insert response: data=[{'id': 'e3ca76d1-cb4e-4010-98aa-6189097ee831', 'po_id': None, 'vendor_id': None, 'subject': 'PO for 100ml cosmetic containers', 'sender_email': 'Zach Park <zach@shiftsai.com>', 'received_at': None, 'summary': 'Zach has sent an official purchase order (PO-240430-002) for 1,000 units of 100ml cosmetic containers, requesting confirmation of receipt and an estimated delivery date.', 'body': "Dear Mario,\r\n\r\nI hope you're doing well.\r\nPlease find attached our official PO (PO-240430-002) for 1,000 units of\r\n100ml cosmetic containers.\r\n\r\nShip to:\r\nShifts Main Center\r\n123 AI Valley, Gangnam-gu, Seoul, South Korea\r\n\r\nExpected delivery: May 7\r\nShipping method: DHL\r\nPayment terms: Net 15\r\n\r\nPlease confirm receipt and let us know your estimated delivery date.\r\n\r\nBest regards,\r\nZach\r\nzach@shiftsai.com\r\n", 'email_type': 'purchase order confirmation', 'created_at': '2025-05-22T07:31:13.336073', 'po_number': 'PO-240430-002', 'user_id': None, 'read': False, 'sender_role': 'admin', 'message_id': '19687301aeba3f47', 'thread_id': '196872f923934e74', 'direction': 'outbound', 'recipient_email': '"news4sungho@gmail.com" <news4sungho@gmail.com>', 'sent_at': '2025-04-30T23:53:18', 'updated_at': '2025-05-22T07:31:13.336073', 'status': 'sent', 'has_attachment': True, 'filename': 'PO-240430-002.xlsx', 'attachment_types': '["application/haansoftxlsx"]', 'parsed_delivery_date': '2025-05-07', 'llm_draft_id': None}] count=None
+2025-05-22 16:31:13,730 - INFO - Initializing Supabase client with URL: https://hgxqgvqrnyuoyxnnptwt.supabase.co
+2025-05-22 16:31:13,730 - INFO - Supabase client initialized successfully
+2025-05-22 16:31:13,906 - INFO - HTTP Request: GET https://hgxqgvqrnyuoyxnnptwt.supabase.co/rest/v1/purchase_orders?select=vendor_email&vendor_email=not.is.null "HTTP/2 200 OK"
+2025-05-22 16:31:14,168 - ERROR - Failed to send message to MCP server: 404
+2025-05-22 16:31:14,407 - ERROR - Error processing message 19687310a0f43503: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2548)
+2025-05-22 16:31:14,781 - INFO - Processing message: 1968733cd67bc06f, from: Sungho <news4sungho@gmail.com>, to: Zach Park <zach@shiftsai.com>
+2025-05-22 16:31:14,781 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:14,782 - INFO - Is vendor: True
+2025-05-22 16:31:14,782 - INFO - is_vendor_email 결과: True
+2025-05-22 16:31:15,059 - INFO - [DB저장전] direction: inbound, msg_id: 1968733cd67bc06f, from: Sungho <news4sungho@gmail.com>, to: Zach Park <zach@shiftsai.com>
+2025-05-22 16:31:15,479 - INFO - HTTP Request: GET https://hgxqgvqrnyuoyxnnptwt.supabase.co/rest/v1/email_logs?select=message_id&message_id=eq.1968733cd67bc06f "HTTP/2 200 OK"
+2025-05-22 16:31:17,070 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-22 16:31:17,071 - INFO - Generated email type: shipment confirmation
+2025-05-22 16:31:17,072 - INFO - Fetching thread history for thread_id: 196872f923934e74
+2025-05-22 16:31:17,255 - INFO - HTTP Request: GET https://hgxqgvqrnyuoyxnnptwt.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.196872f923934e74&order=sent_at.asc "HTTP/2 200 OK"
+2025-05-22 16:31:17,256 - INFO - Found 1 emails in thread
+2025-05-22 16:31:18,410 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-22 16:31:18,412 - INFO - Parsed delivery date: 2025-05-06
+2025-05-22 16:31:18,595 - INFO - HTTP Request: GET https://hgxqgvqrnyuoyxnnptwt.supabase.co/rest/v1/email_logs?select=message_id&thread_id=eq.196872f923934e74&message_id=eq.1968733cd67bc06f "HTTP/2 200 OK"
+2025-05-22 16:31:18,596 - INFO - [INSERT-DEBUG] email_log_data to insert: {'thread_id': '196872f923934e74', 'direction': 'inbound', 'sender_email': 'Sungho <news4sungho@gmail.com>', 'recipient_email': 'Zach Park <zach@shiftsai.com>', 'subject': 'Re: PO for 100ml cosmetic containers', 'sent_at': None, 'created_at': '2025-05-22T07:31:18.412542', 'updated_at': '2025-05-22T07:31:18.412542', 'received_at': 'Wed, 30 Apr 2025 23:57:07 +0900', 'status': 'received', 'email_type': 'shipment confirmation', 'has_attachment': False, 'filename': None, 'attachment_types': [], 'summary': "Mario confirms the receipt of Zach's purchase order for 1,000 units of cosmetic containers and informs that the shipment will be made via DHL with an estimated delivery date of May 6.", 'sender_role': 'vendor', 'parsed_delivery_date': '2025-05-06', 'body': "Hi Zach,\r\n\r\nThank you for your PO.\r\nWe confirm receipt and can ship the 1,000 units via DHL.\r\nEstimated delivery date is May 6.\r\n\r\nLet us know if you need anything else.\r\n\r\nBest,\r\nMario\r\n\r\n2025년 4월 30일 (수) 오후 11:53, Zach Park <zach@shiftsai.com>님이 작성:\r\n\r\n> Dear Mario,\r\n>\r\n> I hope you're doing well.\r\n> Please find attached our official PO (PO-240430-002) for 1,000 units of\r\n> 100ml cosmetic containers.\r\n>\r\n> Ship to:\r\n> Shifts Main Center\r\n> 123 AI Valley, Gangnam-gu, Seoul, South Korea\r\n>\r\n> Expected delivery: May 7\r\n> Shipping method: DHL\r\n> Payment terms: Net 15\r\n>\r\n> Please confirm receipt and let us know your estimated delivery date.\r\n>\r\n> Best regards,\r\n> Zach\r\n> zach@shiftsai.com\r\n>\r\n", 'message_id': '1968733cd67bc06f', 'po_number': 'PO-240430-002'}
+2025-05-22 16:31:18,779 - INFO - HTTP Request: POST https://hgxqgvqrnyuoyxnnptwt.supabase.co/rest/v1/email_logs "HTTP/2 201 Created"
+2025-05-22 16:31:18,780 - INFO - [INSERT-DEBUG] insert response: data=[{'id': '107166df-93e8-4d78-b716-68e47dad4d6c', 'po_id': None, 'vendor_id': None, 'subject': 'Re: PO for 100ml cosmetic containers', 'sender_email': 'Sungho <news4sungho@gmail.com>', 'received_at': '2025-04-30T23:57:07', 'summary': "Mario confirms the receipt of Zach's purchase order for 1,000 units of cosmetic containers and informs that the shipment will be made via DHL with an estimated delivery date of May 6.", 'body': "Hi Zach,\r\n\r\nThank you for your PO.\r\nWe confirm receipt and can ship the 1,000 units via DHL.\r\nEstimated delivery date is May 6.\r\n\r\nLet us know if you need anything else.\r\n\r\nBest,\r\nMario\r\n\r\n2025년 4월 30일 (수) 오후 11:53, Zach Park <zach@shiftsai.com>님이 작성:\r\n\r\n> Dear Mario,\r\n>\r\n> I hope you're doing well.\r\n> Please find attached our official PO (PO-240430-002) for 1,000 units of\r\n> 100ml cosmetic containers.\r\n>\r\n> Ship to:\r\n> Shifts Main Center\r\n> 123 AI Valley, Gangnam-gu, Seoul, South Korea\r\n>\r\n> Expected delivery: May 7\r\n> Shipping method: DHL\r\n> Payment terms: Net 15\r\n>\r\n> Please confirm receipt and let us know your estimated delivery date.\r\n>\r\n> Best regards,\r\n> Zach\r\n> zach@shiftsai.com\r\n>\r\n", 'email_type': 'shipment confirmation', 'created_at': '2025-05-22T07:31:18.412542', 'po_number': 'PO-240430-002', 'user_id': None, 'read': False, 'sender_role': 'vendor', 'message_id': '1968733cd67bc06f', 'thread_id': '196872f923934e74', 'direction': 'inbound', 'recipient_email': 'Zach Park <zach@shiftsai.com>', 'sent_at': None, 'updated_at': '2025-05-22T07:31:18.412542', 'status': 'received', 'has_attachment': False, 'filename': None, 'attachment_types': '[]', 'parsed_delivery_date': '2025-05-06', 'llm_draft_id': None}] count=None
+2025-05-22 16:31:18,783 - ERROR - Failed to send message to MCP server: 404
+2025-05-22 16:31:19,548 - INFO - Processing message: 196873410fd5bbde, from: Sungho <news4sungho@gmail.com>, to: Zach Park <zach@shiftsai.com>
+2025-05-22 16:31:19,548 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:19,549 - INFO - Is vendor: True
+2025-05-22 16:31:19,549 - INFO - is_vendor_email 결과: True
+2025-05-22 16:31:19,954 - INFO - [DB저장전] direction: inbound, msg_id: 196873410fd5bbde, from: Sungho <news4sungho@gmail.com>, to: Zach Park <zach@shiftsai.com>
+2025-05-22 16:31:20,368 - INFO - HTTP Request: GET https://hgxqgvqrnyuoyxnnptwt.supabase.co/rest/v1/email_logs?select=message_id&message_id=eq.196873410fd5bbde "HTTP/2 200 OK"
+2025-05-22 16:31:22,909 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-22 16:31:22,910 - INFO - Generated email type: delivery delay
+2025-05-22 16:31:22,911 - INFO - Fetching thread history for thread_id: 196872f923934e74
+2025-05-22 16:31:23,088 - INFO - HTTP Request: GET https://hgxqgvqrnyuoyxnnptwt.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.196872f923934e74&order=sent_at.asc "HTTP/2 200 OK"
+2025-05-22 16:31:23,090 - INFO - Found 2 emails in thread
+2025-05-22 16:31:24,114 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-22 16:31:24,117 - INFO - Parsed delivery date: 2025-05-08
+2025-05-22 16:31:24,295 - INFO - HTTP Request: GET https://hgxqgvqrnyuoyxnnptwt.supabase.co/rest/v1/email_logs?select=message_id&thread_id=eq.196872f923934e74&message_id=eq.196873410fd5bbde "HTTP/2 200 OK"
+2025-05-22 16:31:24,490 - INFO - HTTP Request: POST https://hgxqgvqrnyuoyxnnptwt.supabase.co/rest/v1/email_logs "HTTP/2 201 Created"
+2025-05-22 16:31:24,509 - ERROR - Failed to send message to MCP server: 404
+2025-05-22 16:31:24,785 - INFO - Processing message: 19687342396240ae, from: Zach Park <zach@shiftsai.com>, to: Sungho <news4sungho@gmail.com>
+2025-05-22 16:31:24,785 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:24,785 - INFO - Is vendor: True
+2025-05-22 16:31:24,786 - INFO - is_vendor_email 결과: True
+2025-05-22 16:31:25,094 - INFO - [DB저장전] direction: outbound, msg_id: 19687342396240ae, from: Zach Park <zach@shiftsai.com>, to: Sungho <news4sungho@gmail.com>
+2025-05-22 16:31:25,514 - INFO - HTTP Request: GET https://hgxqgvqrnyuoyxnnptwt.supabase.co/rest/v1/email_logs?select=message_id&message_id=eq.19687342396240ae "HTTP/2 200 OK"
+2025-05-22 16:31:27,379 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-22 16:31:27,381 - INFO - Generated email type: shipment confirmation
+2025-05-22 16:31:27,381 - INFO - Fetching thread history for thread_id: 196872f923934e74
+2025-05-22 16:31:27,570 - INFO - HTTP Request: GET https://hgxqgvqrnyuoyxnnptwt.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.196872f923934e74&order=sent_at.asc "HTTP/2 200 OK"
+2025-05-22 16:31:27,572 - INFO - Found 3 emails in thread
+2025-05-22 16:31:30,365 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-22 16:31:30,367 - INFO - Parsed delivery date: 2025-05-06
+2025-05-22 16:31:30,578 - INFO - HTTP Request: GET https://hgxqgvqrnyuoyxnnptwt.supabase.co/rest/v1/email_logs?select=message_id&thread_id=eq.196872f923934e74&message_id=eq.19687342396240ae "HTTP/2 200 OK"
+2025-05-22 16:31:30,580 - INFO - [INSERT-DEBUG] email_log_data to insert: {'thread_id': '196872f923934e74', 'direction': 'outbound', 'sender_email': 'Zach Park <zach@shiftsai.com>', 'recipient_email': 'Sungho <news4sungho@gmail.com>', 'subject': 'Re: PO for 100ml cosmetic containers', 'sent_at': 'Wed, 30 Apr 2025 23:57:42 +0900', 'created_at': '2025-05-22T07:31:30.367346', 'updated_at': '2025-05-22T07:31:30.367346', 'received_at': None, 'status': 'sent', 'email_type': 'shipment confirmation', 'has_attachment': False, 'filename': None, 'attachment_types': [], 'summary': 'Zach requests Mario to confirm when the shipment of 1,000 units has been dispatched and to provide the DHL tracking number once it is available.', 'sender_role': 'admin', 'parsed_delivery_date': '2025-05-06', 'body': "Thanks for the update, Mario.\r\n\r\nPlease confirm once the shipment has been dispatched and share the DHL\r\ntracking number once available.\r\n\r\nBest,\r\nZach\r\n\r\n2025년 4월 30일 (수) 오후 11:57, Sungho <news4sungho@gmail.com>님이 작성:\r\n\r\n> Hi Zach,\r\n>\r\n> Thank you for your PO.\r\n> We confirm receipt and can ship the 1,000 units via DHL.\r\n> Estimated delivery date is May 6.\r\n>\r\n> Let us know if you need anything else.\r\n>\r\n> Best,\r\n> Mario\r\n>\r\n> 2025년 4월 30일 (수) 오후 11:53, Zach Park <zach@shiftsai.com>님이 작성:\r\n>\r\n>> Dear Mario,\r\n>>\r\n>> I hope you're doing well.\r\n>> Please find attached our official PO (PO-240430-002) for 1,000 units of\r\n>> 100ml cosmetic containers.\r\n>>\r\n>> Ship to:\r\n>> Shifts Main Center\r\n>> 123 AI Valley, Gangnam-gu, Seoul, South Korea\r\n>>\r\n>> Expected delivery: May 7\r\n>> Shipping method: DHL\r\n>> Payment terms: Net 15\r\n>>\r\n>> Please confirm receipt and let us know your estimated delivery date.\r\n>>\r\n>> Best regards,\r\n>> Zach\r\n>> zach@shiftsai.com\r\n>>\r\n>\r\n", 'message_id': '19687342396240ae', 'po_number': 'PO-240430-002'}
+2025-05-22 16:31:30,774 - INFO - HTTP Request: POST https://hgxqgvqrnyuoyxnnptwt.supabase.co/rest/v1/email_logs "HTTP/2 201 Created"
+2025-05-22 16:31:30,776 - INFO - [INSERT-DEBUG] insert response: data=[{'id': 'bca719e4-3170-4337-b801-dcc22510f0ff', 'po_id': None, 'vendor_id': None, 'subject': 'Re: PO for 100ml cosmetic containers', 'sender_email': 'Zach Park <zach@shiftsai.com>', 'received_at': None, 'summary': 'Zach requests Mario to confirm when the shipment of 1,000 units has been dispatched and to provide the DHL tracking number once it is available.', 'body': "Thanks for the update, Mario.\r\n\r\nPlease confirm once the shipment has been dispatched and share the DHL\r\ntracking number once available.\r\n\r\nBest,\r\nZach\r\n\r\n2025년 4월 30일 (수) 오후 11:57, Sungho <news4sungho@gmail.com>님이 작성:\r\n\r\n> Hi Zach,\r\n>\r\n> Thank you for your PO.\r\n> We confirm receipt and can ship the 1,000 units via DHL.\r\n> Estimated delivery date is May 6.\r\n>\r\n> Let us know if you need anything else.\r\n>\r\n> Best,\r\n> Mario\r\n>\r\n> 2025년 4월 30일 (수) 오후 11:53, Zach Park <zach@shiftsai.com>님이 작성:\r\n>\r\n>> Dear Mario,\r\n>>\r\n>> I hope you're doing well.\r\n>> Please find attached our official PO (PO-240430-002) for 1,000 units of\r\n>> 100ml cosmetic containers.\r\n>>\r\n>> Ship to:\r\n>> Shifts Main Center\r\n>> 123 AI Valley, Gangnam-gu, Seoul, South Korea\r\n>>\r\n>> Expected delivery: May 7\r\n>> Shipping method: DHL\r\n>> Payment terms: Net 15\r\n>>\r\n>> Please confirm receipt and let us know your estimated delivery date.\r\n>>\r\n>> Best regards,\r\n>> Zach\r\n>> zach@shiftsai.com\r\n>>\r\n>\r\n", 'email_type': 'shipment confirmation', 'created_at': '2025-05-22T07:31:30.367346', 'po_number': 'PO-240430-002', 'user_id': None, 'read': False, 'sender_role': 'admin', 'message_id': '19687342396240ae', 'thread_id': '196872f923934e74', 'direction': 'outbound', 'recipient_email': 'Sungho <news4sungho@gmail.com>', 'sent_at': '2025-04-30T23:57:42', 'updated_at': '2025-05-22T07:31:30.367346', 'status': 'sent', 'has_attachment': False, 'filename': None, 'attachment_types': '[]', 'parsed_delivery_date': '2025-05-06', 'llm_draft_id': None}] count=None
+2025-05-22 16:31:31,032 - ERROR - Failed to send message to MCP server: 404
+2025-05-22 16:31:31,274 - INFO - Processing message: 1968740e9229348e, from: Specter Insights <noreply@insights.tryspecter.com>, to: zach@shiftsai.com
+2025-05-22 16:31:31,274 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:31,274 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:31,531 - INFO - Processing message: 196877d1c23bbc86, from: Tactiq <newsletter@tactiq.io>, to: <sungho@shiftsai.com>
+2025-05-22 16:31:31,532 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:31,532 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:31,771 - INFO - Processing message: 19688abe1efb65ab, from: Team Zilliz <chloe.williams@zilliz.com>, to: sungho@shiftsai.com
+2025-05-22 16:31:31,772 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:31,772 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:32,021 - INFO - Processing message: 196892986f835ca3, from: Eleni from Modash <eleni@modash.io>, to: "sungho@shiftsai.com" <sungho@shiftsai.com>
+2025-05-22 16:31:32,022 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:32,022 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:32,269 - INFO - Processing message: 196894a598dd8bbe, from: SFVibe <sfvibe@mail.beehiiv.com>, to: "sungho@shiftsai.com" <sungho@shiftsai.com>
+2025-05-22 16:31:32,269 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:32,270 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:32,509 - INFO - Processing message: 196897f041a8d0f1, from: Fred from Optmyzr <newsletters@optmyzr.com>, to: sungho@shiftsai.com
+2025-05-22 16:31:32,510 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:32,510 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:32,754 - INFO - Processing message: 19689fca7a97f234, from: HeyGen <no_reply@email.heygen.com>, to: sungho@shiftsai.com
+2025-05-22 16:31:32,754 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:32,755 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:33,002 - INFO - Processing message: 1968a843546c6131, from: zcal Tips <team@learn.zcal.co>, to: zach@shiftsai.com
+2025-05-22 16:31:33,002 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:33,002 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:33,251 - INFO - Processing message: 1968aad6caddbe5a, from: GitGuardian <security@getgitguardian.com>, to: zach@shiftsai.com
+2025-05-22 16:31:33,251 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:33,252 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:33,488 - INFO - Processing message: 1968b449fc29cec4, from: "Todoist 월간" <no-reply@todoist.com>, to: sungho@shiftsai.com
+2025-05-22 16:31:33,489 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:33,489 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:33,728 - INFO - Processing message: 1968b8fe4a221334, from: Mail Delivery Subsystem <mailer-daemon@googlemail.com>, to: zach@shiftsai.com
+2025-05-22 16:31:33,729 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:33,729 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:34,300 - INFO - Processing message: 1968b98952337f59, from: The Founder Playbook <thefounderplaybook@mail.beehiiv.com>, to: "zach@shiftsai.com" <zach@shiftsai.com>
+2025-05-22 16:31:34,301 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:34,301 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:34,556 - INFO - Processing message: 1968bfbe8f589984, from: Anna Anisin <anna.a@formulatedby.com>, to: sungho@shiftsai.com
+2025-05-22 16:31:34,556 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:34,557 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:34,846 - INFO - Processing message: 1968c2890c2c8b1a, from: The Airtable Team <team@mail.airtable.com>, to: sungho@shiftsai.com
+2025-05-22 16:31:34,847 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:34,847 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:35,087 - INFO - Processing message: 1968c46ae01ceaa5, from: Generative AI San Francisco and Bay Area <genai-sf@calendar.luma-mail.com>, to: sungho@shiftsai.com
+2025-05-22 16:31:35,088 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:35,088 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:35,322 - INFO - Processing message: 1968c485ba4ce794, from: Generative AI San Francisco and Bay Area <genai-sf@calendar.luma-mail.com>, to: zach@shiftsai.com
+2025-05-22 16:31:35,322 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:35,322 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:35,569 - INFO - Processing message: 1968ca0ddd91e213, from: Daivik Goel <daivikgoel@user.luma-mail.com>, to: sungho@shiftsai.com
+2025-05-22 16:31:35,569 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:35,569 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:35,939 - INFO - Processing message: 1968cdd75809e792, from: Calendly <notifications@calendly.com>, to: zach@shiftsai.com
+2025-05-22 16:31:35,939 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:35,940 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:36,184 - INFO - Processing message: 1968cea5b30cd5b0, from: The Airtable Team <team@mail.airtable.com>, to: sungho@shiftsai.com
+2025-05-22 16:31:36,184 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:36,185 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:36,409 - INFO - Processing message: 1968d5dc525d48e1, from: "ceo@makeugc.ai" <ceo@makeugc.ai>, to: Sungho Park <sungho@shiftsai.com>
+2025-05-22 16:31:36,409 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:36,409 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:36,646 - INFO - Processing message: 1968d706d1e89dda, from: NEON <hello@neon.work>, to: <zach@shiftsai.com>
+2025-05-22 16:31:36,646 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:36,646 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:36,878 - INFO - Processing message: 1968d88427fa1660, from: The Google Workspace Team <workspace-noreply@google.com>, to: zach@shiftsai.com
+2025-05-22 16:31:36,878 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:36,879 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:37,111 - INFO - Processing message: 1968da6414142fe9, from: Stripe <updates@e.stripe.com>, to: sungho@shiftsai.com
+2025-05-22 16:31:37,111 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:37,111 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:37,369 - INFO - Processing message: 1968db0a78b7de48, from: Toku Yamashita <toku@user.luma-mail.com>, to: zach@shiftsai.com
+2025-05-22 16:31:37,370 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:37,370 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:37,600 - INFO - Processing message: 1968db4c03192c0d, from: "Gargi K Kand - Nova / Vently" <gargikand@user.luma-mail.com>, to: sungho@shiftsai.com
+2025-05-22 16:31:37,600 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:37,601 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:37,834 - INFO - Processing message: 1968db94322133eb, from: "Gargi K Kand - Nova / Vently" <noreply@luma-mail.com>, to: sungho@shiftsai.com
+2025-05-22 16:31:37,834 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:37,835 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:38,060 - INFO - Processing message: 1968dc44e111cc95, from: Google Cloud <CloudPlatform-noreply@google.com>, to: zach@shiftsai.com
+2025-05-22 16:31:38,060 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:38,061 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:38,289 - INFO - Processing message: 1968dfa60862de6a, from: Anand Sanwal <anand.sanwal@cbinsights.com>, to: zach@shiftsai.com
+2025-05-22 16:31:38,289 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:38,289 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:38,530 - INFO - Processing message: 1968e4db433cfdc5, from: "공팔리터" <newsletter@08liter.com>, to: <sungho@shiftsai.com>
+2025-05-22 16:31:38,530 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:38,531 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:38,785 - INFO - Processing message: 1968ed4438f0eb57, from: Zach Park <zach@shiftsai.com>, to: Drake Wheeler <drakew@mymiestro.com>
+2025-05-22 16:31:38,786 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:38,786 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:39,034 - INFO - Processing message: 1968f005cbd87e65, from: Zach Park <zach@shiftsai.com>, to: Drake Wheeler <drakew@mymiestro.com>
+2025-05-22 16:31:39,034 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:39,035 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:39,285 - INFO - Processing message: 1968f08dc8d3991c, from: Zach Park <zach@shiftsai.com>, to: harrison.muhia@eapcc.co.ke
+2025-05-22 16:31:39,285 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:39,286 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:39,527 - INFO - Processing message: 1968f0a5c13a5a39, from: Zach Park <zach@shiftsai.com>, to: wnguyen@alliedfit.com
+2025-05-22 16:31:39,528 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:39,528 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:39,766 - INFO - Processing message: 1968f0b8c4187cc9, from: Zach Park <zach@shiftsai.com>, to: travis.carney@xssentials.com
+2025-05-22 16:31:39,766 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:39,767 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:40,007 - INFO - Processing message: 1968f0c4003d9fbe, from: Zach Park <zach@shiftsai.com>, to: blr.csun@gmail.com
+2025-05-22 16:31:40,007 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:40,008 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:40,242 - INFO - Processing message: 1968f0d91b42bce7, from: Zach Park <zach@shiftsai.com>, to: chlarence.tauro@datacom.com
+2025-05-22 16:31:40,242 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:40,242 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:40,490 - INFO - Processing message: 1969167d1b28d3d5, from: "ceo@makeugc.ai" <ceo@makeugc.ai>, to: Sungho Park <sungho@shiftsai.com>
+2025-05-22 16:31:40,490 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:40,491 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:40,718 - INFO - Processing message: 196917dd29b7e531, from: Notion Mail Team <team@mail.notion.so>, to: <zach@shiftsai.com>
+2025-05-22 16:31:40,719 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:40,719 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:40,947 - INFO - Processing message: 1969183d438cd911, from: Pipedrive <hello@pipedrive.com>, to: sungho@shiftsai.com
+2025-05-22 16:31:40,947 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:40,948 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:41,183 - INFO - Processing message: 19691efa5159297b, from: Google Payments <payments-noreply@google.com>, to: sungho@shiftsai.com
+2025-05-22 16:31:41,184 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:41,184 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:41,431 - INFO - Processing message: 196923115547c544, from: Fed at GummySearch <hello@mg.gummysearch.com>, to: sungho@shiftsai.com
+2025-05-22 16:31:41,431 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:41,431 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:41,674 - INFO - Processing message: 19692393e9b6470f, from: Hedra <hello@hedra.com>, to: <zach@shiftsai.com>
+2025-05-22 16:31:41,674 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:41,675 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:41,913 - INFO - Processing message: 196926157b96b45e, from: ScrollStopper <joinbrands@mail.beehiiv.com>, to: "sungho@shiftsai.com" <sungho@shiftsai.com>
+2025-05-22 16:31:41,915 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:41,915 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:42,154 - INFO - Processing message: 19692d52d6ffb443, from: Samir Malhotra <samir.malhotra@vanta.com>, to: Sungho Park <sungho@shiftsai.com>
+2025-05-22 16:31:42,154 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:42,154 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:42,397 - INFO - Processing message: 19693e80a3a9d176, from: Laurence Ion <laurence@user.luma-mail.com>, to: sungho@shiftsai.com
+2025-05-22 16:31:42,398 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:42,398 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:42,644 - INFO - Processing message: 1969450ef8c11988, from: Yujian Tang <usr-6sqwH2G0ljnGYBZ@user.luma-mail.com>, to: sungho@shiftsai.com
+2025-05-22 16:31:42,645 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:42,645 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:42,877 - INFO - Processing message: 196959dba47b0757, from: Ben Thompson <email@stratechery.com>, to: Zach Park <zach@shiftsai.com>
+2025-05-22 16:31:42,877 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:42,878 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:43,122 - INFO - Processing message: 19697862056b8197, from: "Kyosuke’s Newsletter " <kyosuketogami@substack.com>, to: zach@shiftsai.com
+2025-05-22 16:31:43,123 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:43,123 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:43,371 - INFO - Processing message: 19697c5a37a27f84, from: Anand Sanwal <anand.sanwal@cbinsights.com>, to: zach@shiftsai.com
+2025-05-22 16:31:43,371 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:43,372 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:43,721 - INFO - Processing message: 19697da0d09da5f7, from: "FRC :: North America" <founders-na@calendar.luma-mail.com>, to: sungho@shiftsai.com
+2025-05-22 16:31:43,722 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:43,723 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:43,970 - INFO - Processing message: 1969d9d2f1b7dc0c, from: "Frontier Tower | Berlinhouse" <frontiertower@user.luma-mail.com>, to: sungho@shiftsai.com
+2025-05-22 16:31:43,970 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:43,971 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:44,231 - INFO - Processing message: 1969e2d054deabc6, from: JoinBrands <hello@joinbrands.com>, to: Sungho Park <sungho@shiftsai.com>
+2025-05-22 16:31:44,231 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:44,231 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:44,482 - INFO - Processing message: 1969e9dca9d652a4, from: The Vanta team <vantateam@vanta.com>, to: sungho@shiftsai.com
+2025-05-22 16:31:44,482 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:44,483 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:44,728 - INFO - Processing message: 1969ef26c5c4ef14, from: LinkedIn <messages-noreply@linkedin.com>, to: Zach Park <zach@shiftsai.com>
+2025-05-22 16:31:44,729 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:44,729 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:44,974 - INFO - Processing message: 196a0bf538f826e1, from: AssemblyAI <support@assemblyai.com>, to: zach@shiftsai.com
+2025-05-22 16:31:44,975 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:44,975 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:45,224 - INFO - Processing message: 196a0e4c5cb4a7aa, from: Ian from JoinBrands <ian@joinbrands.com>, to: sungho@shiftsai.com
+2025-05-22 16:31:45,225 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:45,225 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:45,763 - INFO - Processing message: 196a10891727377e, from: Ben Thompson <email@stratechery.com>, to: Zach Park <zach@shiftsai.com>
+2025-05-22 16:31:45,763 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:45,764 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:45,998 - INFO - Processing message: 196a18aad8d281b7, from: FounderCoHo from FounderCoHo <foundercoho@substack.com>, to: sungho@shiftsai.com
+2025-05-22 16:31:45,999 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:45,999 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:46,236 - INFO - Processing message: 196a18aabefa3505, from: FounderCoHo from FounderCoHo <foundercoho@substack.com>, to: zach@shiftsai.com
+2025-05-22 16:31:46,236 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:46,237 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:46,486 - INFO - Processing message: 196a1b7ee3173b86, from: Akhil K G <akhil@daily.co>, to: sungho@shiftsai.com
+2025-05-22 16:31:46,486 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:46,486 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:46,731 - INFO - Processing message: 196a1d4df3403c4e, from: NEON <hello@neon.work>, to: <zach@shiftsai.com>
+2025-05-22 16:31:46,732 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:46,732 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:46,970 - INFO - Processing message: 196a1f6ae86a5d6b, from: Mariane Bekker <foundersbay@mail.beehiiv.com>, to: "sungho@shiftsai.com" <sungho@shiftsai.com>
+2025-05-22 16:31:46,970 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:46,970 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:47,212 - INFO - Processing message: 196a25b2b0d92117, from: Fed at GummySearch <hello@mg.gummysearch.com>, to: zach@shiftsai.com
+2025-05-22 16:31:47,212 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:47,212 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:47,457 - INFO - Processing message: 196a2ab0e364fe10, from: Brock Young <brock@icon.com>, to: zach@shiftsai.com
+2025-05-22 16:31:47,458 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:47,458 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:47,735 - INFO - Processing message: 196a33a3bd7b4fdc, from: Vimal from Optmyzr <newsletters@optmyzr.com>, to: sungho@shiftsai.com
+2025-05-22 16:31:47,737 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:47,737 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:47,968 - INFO - Processing message: 196a3a17e0513016, from: Joscha Bach <usr-p6mV95gQrYkB3nZ@user.luma-mail.com>, to: sungho@shiftsai.com
+2025-05-22 16:31:47,969 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:47,969 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:48,209 - INFO - Processing message: 196a3c34e9e20a51, from: The Vanta Team <vantateam@vanta.com>, to: sungho@shiftsai.com
+2025-05-22 16:31:48,209 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:48,209 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:48,451 - INFO - Processing message: 196a3cf28837c2ac, from: Laurence Ion <noreply@luma-mail.com>, to: sungho@shiftsai.com
+2025-05-22 16:31:48,451 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:48,452 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:48,705 - INFO - Processing message: 196a3f6c1a52f3cc, from: "Tej Luthra (AWS)" <tluthra@user.luma-mail.com>, to: sungho@shiftsai.com
+2025-05-22 16:31:48,706 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:48,706 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:48,968 - INFO - Processing message: 196a47e34daa55d4, from: FounderCoHo <FounderCoHo@user.luma-mail.com>, to: sungho@shiftsai.com
+2025-05-22 16:31:48,969 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:48,969 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:49,204 - INFO - Processing message: 196a4f0b090a5718, from: "Wix.com" <wix-team@emails.wix.com>, to: zach@shiftsai.com
+2025-05-22 16:31:49,204 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:49,204 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:49,437 - INFO - Processing message: 196a578636ea706b, from: Jack from Storydoc <jack@product.storydoc.com>, to: Sungho Park <sungho@shiftsai.com>
+2025-05-22 16:31:49,438 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:49,438 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:49,673 - INFO - Processing message: 196a5ca575a733c3, from: Brock Young <brock@icon.com>, to: zach@shiftsai.com
+2025-05-22 16:31:49,673 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:49,673 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:49,913 - INFO - Processing message: 196a5cf2279bb3bc, from: Specter Insights <noreply@insights.tryspecter.com>, to: zach@shiftsai.com
+2025-05-22 16:31:49,915 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:49,915 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:50,166 - INFO - Processing message: 196a5ed4baae8ea9, from: Fed at GummySearch <hello@mg.gummysearch.com>, to: zach@shiftsai.com
+2025-05-22 16:31:50,166 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:50,167 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:50,407 - INFO - Processing message: 196a62027b3fbca8, from: Tracey at Traackr <influence@traackr.com>, to: <sungho@shiftsai.com>
+2025-05-22 16:31:50,408 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:50,408 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:50,640 - INFO - Processing message: 196a651bfc5d0aae, from: Apollo <hello@mail.apollo.io>, to: sungho@shiftsai.com
+2025-05-22 16:31:50,641 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:50,641 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:50,878 - INFO - Processing message: 196a65d546a8eaac, from: Team Memgraph <marketing-team@memgraph.io>, to: sungho@shiftsai.com
+2025-05-22 16:31:50,879 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:50,879 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:51,156 - INFO - Processing message: 196a6617aa1aad2b, from: "Google Workspace팀" <workspace-noreply@google.com>, to: zach@shiftsai.com
+2025-05-22 16:31:51,156 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:51,157 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:51,406 - INFO - Processing message: 196a6739a55dbfc3, from: Tyler from DSS <tyler@formulatedby.com>, to: sungho@shiftsai.com
+2025-05-22 16:31:51,407 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:51,407 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:51,656 - INFO - Processing message: 196a68f1545aaadf, from: Zapier Events <events@send.zapier.com>, to: sungho@shiftsai.com
+2025-05-22 16:31:51,657 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:51,658 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:51,913 - INFO - Processing message: 196a6b1d3d67fe1d, from: Supabase <noreply@supabase.com>, to: zach@shiftsai.com
+2025-05-22 16:31:51,913 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:51,914 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:52,158 - INFO - Processing message: 196a7026427d0a55, from: Stripe <updates@e.stripe.com>, to: sungho@shiftsai.com
+2025-05-22 16:31:52,158 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:52,160 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:52,519 - INFO - Processing message: 196a737ff3c79198, from: Sarah Welsh <swelsh@arize.com>, to: sungho@shiftsai.com
+2025-05-22 16:31:52,519 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:52,519 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:52,763 - INFO - Processing message: 196a73f046770709, from: Akhil K G <akhil@daily.co>, to: sungho@shiftsai.com
+2025-05-22 16:31:52,764 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:52,764 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:53,006 - INFO - Processing message: 196a7be526c1b8dc, from: Anand Sanwal <anand.sanwal@cbinsights.com>, to: zach@shiftsai.com
+2025-05-22 16:31:53,007 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:53,007 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:53,239 - INFO - Processing message: 196a82ff771a4a46, from: "공팔리터" <newsletter@08liter.com>, to: <sungho@shiftsai.com>
+2025-05-22 16:31:53,239 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:53,239 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:53,484 - INFO - Processing message: 196a8906a72185dc, from: Zoom <no-reply@zoom.us>, to: zach@shiftsai.com
+2025-05-22 16:31:53,484 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:53,486 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:53,722 - INFO - Processing message: 196a92f3ed30b906, from: "Frontier Tower | Berlinhouse" <frontiertower@user.luma-mail.com>, to: sungho@shiftsai.com
+2025-05-22 16:31:53,723 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:53,723 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:53,961 - INFO - Processing message: 196a95820558872f, from: Whimsical Team <hello@whimsical.com>, to: zach@shiftsai.com
+2025-05-22 16:31:53,961 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:53,962 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:54,204 - INFO - Processing message: 196a97dc1b95ab79, from: Zach Park <zach@shiftsai.com>, to: harrison.muhia@eapcc.co.ke
+2025-05-22 16:31:54,205 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:54,205 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:54,454 - INFO - Processing message: 196a97e3125ebaca, from: Zach Park <zach@shiftsai.com>, to: wnguyen@alliedfit.com
+2025-05-22 16:31:54,455 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:54,455 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:54,696 - INFO - Processing message: 196a97e83f5f1785, from: Zach Park <zach@shiftsai.com>, to: travis.carney@xssentials.com
+2025-05-22 16:31:54,696 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:54,697 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:54,939 - INFO - Processing message: 196a97ef82f6d7a4, from: Zach Park <zach@shiftsai.com>, to: blr.csun@gmail.com
+2025-05-22 16:31:54,940 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:54,940 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:55,183 - INFO - Processing message: 196a97f5710cbe0d, from: Zach Park <zach@shiftsai.com>, to: chlarence.tauro@datacom.com
+2025-05-22 16:31:55,184 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:55,184 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:55,437 - INFO - Processing message: 196aa1fc35cabc8b, from: "Wix.com" <wix-team@emails.wix.com>, to: zach@shiftsai.com
+2025-05-22 16:31:55,437 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:55,438 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:55,676 - INFO - Processing message: 196aafbd0ad5a1ff, from: Steph from OpenVC <steph@openvc.app>, to: zach@shiftsai.com
+2025-05-22 16:31:55,677 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:55,677 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:55,924 - INFO - Processing message: 196ab5be665ddb78, from: Stripe <updates@e.stripe.com>, to: sungho@shiftsai.com
+2025-05-22 16:31:55,924 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:55,925 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:56,171 - INFO - Processing message: 196abee51efa0d01, from: "ceo@makeugc.ai" <ceo@makeugc.ai>, to: Sungho Park <sungho@shiftsai.com>
+2025-05-22 16:31:56,172 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:56,172 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:56,413 - INFO - Processing message: 196ac0bb1dbf8e13, from: Hustle Fund <usr-k43EzVH5KLDNNy7@user.luma-mail.com>, to: zach@shiftsai.com
+2025-05-22 16:31:56,413 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:56,415 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:56,647 - INFO - Processing message: 196ac1f803a12ac0, from: ScrollStopper <joinbrands@mail.beehiiv.com>, to: "sungho@shiftsai.com" <sungho@shiftsai.com>
+2025-05-22 16:31:56,647 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:56,648 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:56,885 - INFO - Processing message: 196ac23521f8f93e, from: Team Zilliz <hello@zilliz.com>, to: sungho@shiftsai.com
+2025-05-22 16:31:56,885 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:56,885 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:57,129 - INFO - Processing message: 196ac2bd56222c46, from: Gladys from Beta University <betauniversity@substack.com>, to: zach@shiftsai.com
+2025-05-22 16:31:57,130 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:57,130 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:57,382 - INFO - Processing message: 196ac8f2ab3936be, from: "ceo@makeugc.ai" <ceo@makeugc.ai>, to: Sungho Park <sungho@shiftsai.com>
+2025-05-22 16:31:57,382 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:57,382 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:57,630 - INFO - Processing message: 196aca6fc9a08d38, from: "Sarah @ Arize" <smcamis@arize.com>, to: sungho@shiftsai.com
+2025-05-22 16:31:57,630 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:57,631 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:57,867 - INFO - Processing message: 196acc3a5638213f, from: Mailsuite Daily Report <daily-report@mailsuite.com>, to: zach@shiftsai.com
+2025-05-22 16:31:57,867 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:57,868 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:58,103 - INFO - Processing message: 196addcf5799f11d, from: Gangesh <gangesh@user.luma-mail.com>, to: zach@shiftsai.com
+2025-05-22 16:31:58,104 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:58,104 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:58,373 - INFO - Processing message: 196adfa53fcbfd23, from: Rahul Vohra <welcome@superhuman.com>, to: zach@shiftsai.com
+2025-05-22 16:31:58,374 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:58,374 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:58,608 - INFO - Processing message: 196ae13c808bc86f, from: Laurence Ion <noreply@luma-mail.com>, to: sungho@shiftsai.com
+2025-05-22 16:31:58,608 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:58,610 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:58,856 - INFO - Processing message: 196ae91a6fc71634, from: zcal Tips <team@learn.zcal.co>, to: zach@shiftsai.com
+2025-05-22 16:31:58,857 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:58,857 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:59,090 - INFO - Processing message: 196aea4f74f8d97a, from: Mailsuite Reminder <reminders@mailsuite.com>, to: zach@shiftsai.com
+2025-05-22 16:31:59,090 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:59,090 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:59,324 - INFO - Processing message: 196aea5da4764cef, from: Mailsuite Reminder <reminders@mailsuite.com>, to: zach@shiftsai.com
+2025-05-22 16:31:59,324 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:59,325 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:59,584 - INFO - Processing message: 196af2232d08b15c, from: Specter Insights <noreply@insights.tryspecter.com>, to: zach@shiftsai.com
+2025-05-22 16:31:59,584 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:59,584 - INFO - is_vendor_email 결과: False
+2025-05-22 16:31:59,812 - INFO - Processing message: 196af9e438108edf, from: The Founder Playbook <thefounderplaybook@mail.beehiiv.com>, to: "zach@shiftsai.com" <zach@shiftsai.com>
+2025-05-22 16:31:59,812 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:31:59,814 - INFO - is_vendor_email 결과: False
+2025-05-22 16:32:00,052 - INFO - Processing message: 196afcdc39031ddb, from: Eleni from Modash <eleni@modash.io>, to: "sungho@shiftsai.com" <sungho@shiftsai.com>
+2025-05-22 16:32:00,053 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:32:00,053 - INFO - is_vendor_email 결과: False
+2025-05-22 16:32:00,287 - INFO - Processing message: 196b00cdb0a0a476, from: Anna Anisin <anna.a@formulatedby.com>, to: sungho@shiftsai.com
+2025-05-22 16:32:00,287 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:32:00,287 - INFO - is_vendor_email 결과: False
+2025-05-22 16:32:00,535 - INFO - Processing message: 196b032ad0893700, from: Whimsical Team <hello@whimsical.com>, to: zach@shiftsai.com
+2025-05-22 16:32:00,535 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:32:00,536 - INFO - is_vendor_email 결과: False
+2025-05-22 16:32:00,833 - INFO - Processing message: 196b037dd57c2c4d, from: The Airtable Team <team@mail.airtable.com>, to: sungho@shiftsai.com
+2025-05-22 16:32:00,834 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:32:00,834 - INFO - is_vendor_email 결과: False
+2025-05-22 16:32:01,087 - INFO - Processing message: 196b051b443f7153, from: Generative AI San Francisco and Bay Area <genai-sf@calendar.luma-mail.com>, to: sungho@shiftsai.com
+2025-05-22 16:32:01,088 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:32:01,088 - INFO - is_vendor_email 결과: False
+2025-05-22 16:32:01,320 - INFO - Processing message: 196b052d0eb015ff, from: Generative AI San Francisco and Bay Area <genai-sf@calendar.luma-mail.com>, to: zach@shiftsai.com
+2025-05-22 16:32:01,321 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:32:01,321 - INFO - is_vendor_email 결과: False
+2025-05-22 16:32:01,563 - INFO - Processing message: 196b0573cf088848, from: Sungho <news4sungho@gmail.com>, to: Zach Park <zach@shiftsai.com>
+2025-05-22 16:32:01,564 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:32:01,564 - INFO - Is vendor: True
+2025-05-22 16:32:01,565 - INFO - is_vendor_email 결과: True
+2025-05-22 16:32:01,824 - INFO - [DB저장전] direction: inbound, msg_id: 196b0573cf088848, from: Sungho <news4sungho@gmail.com>, to: Zach Park <zach@shiftsai.com>
+2025-05-22 16:32:02,283 - INFO - HTTP Request: GET https://hgxqgvqrnyuoyxnnptwt.supabase.co/rest/v1/email_logs?select=message_id&message_id=eq.196b0573cf088848 "HTTP/2 200 OK"
+2025-05-22 16:32:03,870 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-22 16:32:03,873 - INFO - Generated email type: delivery delay
+2025-05-22 16:32:03,874 - INFO - Fetching thread history for thread_id: 196872f923934e74
+2025-05-22 16:32:04,058 - INFO - HTTP Request: GET https://hgxqgvqrnyuoyxnnptwt.supabase.co/rest/v1/email_logs?select=%2A&thread_id=eq.196872f923934e74&order=sent_at.asc "HTTP/2 200 OK"
+2025-05-22 16:32:04,060 - INFO - Found 4 emails in thread
+2025-05-22 16:32:05,127 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-22 16:32:05,130 - INFO - Parsed delivery date: 2025-05-11
+2025-05-22 16:32:05,705 - INFO - HTTP Request: GET https://hgxqgvqrnyuoyxnnptwt.supabase.co/rest/v1/email_logs?select=message_id&thread_id=eq.196872f923934e74&message_id=eq.196b0573cf088848 "HTTP/2 200 OK"
+2025-05-22 16:32:05,706 - INFO - [INSERT-DEBUG] email_log_data to insert: {'thread_id': '196872f923934e74', 'direction': 'inbound', 'sender_email': 'Sungho <news4sungho@gmail.com>', 'recipient_email': 'Zach Park <zach@shiftsai.com>', 'subject': 'Re: PO for 100ml cosmetic containers', 'sent_at': None, 'created_at': '2025-05-22T07:32:05.131578', 'updated_at': '2025-05-22T07:32:05.131578', 'received_at': 'Thu, 8 May 2025 23:40:17 +0900', 'status': 'received', 'email_type': 'delivery delay', 'has_attachment': False, 'filename': None, 'attachment_types': [], 'summary': 'The shipment of 1,000 units will be delayed and is now expected to be shipped by May 11th, as opposed to the initially estimated delivery date of May 6th.', 'sender_role': 'vendor', 'parsed_delivery_date': '2025-05-11', 'body': "Hi, Zach. I'm so sorry to say that it will definitely be shipped until May\r\n11th.\r\n\r\n2025년 4월 30일 (수) 오후 11:57, Zach Park <zach@shiftsai.com>님이 작성:\r\n\r\n> Thanks for the update, Mario.\r\n>\r\n> Please confirm once the shipment has been dispatched and share the DHL\r\n> tracking number once available.\r\n>\r\n> Best,\r\n> Zach\r\n>\r\n> 2025년 4월 30일 (수) 오후 11:57, Sungho <news4sungho@gmail.com>님이 작성:\r\n>\r\n>> Hi Zach,\r\n>>\r\n>> Thank you for your PO.\r\n>> We confirm receipt and can ship the 1,000 units via DHL.\r\n>> Estimated delivery date is May 6.\r\n>>\r\n>> Let us know if you need anything else.\r\n>>\r\n>> Best,\r\n>> Mario\r\n>>\r\n>> 2025년 4월 30일 (수) 오후 11:53, Zach Park <zach@shiftsai.com>님이 작성:\r\n>>\r\n>>> Dear Mario,\r\n>>>\r\n>>> I hope you're doing well.\r\n>>> Please find attached our official PO (PO-240430-002) for 1,000 units of\r\n>>> 100ml cosmetic containers.\r\n>>>\r\n>>> Ship to:\r\n>>> Shifts Main Center\r\n>>> 123 AI Valley, Gangnam-gu, Seoul, South Korea\r\n>>>\r\n>>> Expected delivery: May 7\r\n>>> Shipping method: DHL\r\n>>> Payment terms: Net 15\r\n>>>\r\n>>> Please confirm receipt and let us know your estimated delivery date.\r\n>>>\r\n>>> Best regards,\r\n>>> Zach\r\n>>> zach@shiftsai.com\r\n>>>\r\n>>\r\n", 'message_id': '196b0573cf088848', 'po_number': 'PO-240430-002'}
+2025-05-22 16:32:05,887 - INFO - HTTP Request: POST https://hgxqgvqrnyuoyxnnptwt.supabase.co/rest/v1/email_logs "HTTP/2 201 Created"
+2025-05-22 16:32:05,889 - INFO - [INSERT-DEBUG] insert response: data=[{'id': 'f5585469-9ffd-48ce-8f1e-dd202f132617', 'po_id': None, 'vendor_id': None, 'subject': 'Re: PO for 100ml cosmetic containers', 'sender_email': 'Sungho <news4sungho@gmail.com>', 'received_at': '2025-05-08T23:40:17', 'summary': 'The shipment of 1,000 units will be delayed and is now expected to be shipped by May 11th, as opposed to the initially estimated delivery date of May 6th.', 'body': "Hi, Zach. I'm so sorry to say that it will definitely be shipped until May\r\n11th.\r\n\r\n2025년 4월 30일 (수) 오후 11:57, Zach Park <zach@shiftsai.com>님이 작성:\r\n\r\n> Thanks for the update, Mario.\r\n>\r\n> Please confirm once the shipment has been dispatched and share the DHL\r\n> tracking number once available.\r\n>\r\n> Best,\r\n> Zach\r\n>\r\n> 2025년 4월 30일 (수) 오후 11:57, Sungho <news4sungho@gmail.com>님이 작성:\r\n>\r\n>> Hi Zach,\r\n>>\r\n>> Thank you for your PO.\r\n>> We confirm receipt and can ship the 1,000 units via DHL.\r\n>> Estimated delivery date is May 6.\r\n>>\r\n>> Let us know if you need anything else.\r\n>>\r\n>> Best,\r\n>> Mario\r\n>>\r\n>> 2025년 4월 30일 (수) 오후 11:53, Zach Park <zach@shiftsai.com>님이 작성:\r\n>>\r\n>>> Dear Mario,\r\n>>>\r\n>>> I hope you're doing well.\r\n>>> Please find attached our official PO (PO-240430-002) for 1,000 units of\r\n>>> 100ml cosmetic containers.\r\n>>>\r\n>>> Ship to:\r\n>>> Shifts Main Center\r\n>>> 123 AI Valley, Gangnam-gu, Seoul, South Korea\r\n>>>\r\n>>> Expected delivery: May 7\r\n>>> Shipping method: DHL\r\n>>> Payment terms: Net 15\r\n>>>\r\n>>> Please confirm receipt and let us know your estimated delivery date.\r\n>>>\r\n>>> Best regards,\r\n>>> Zach\r\n>>> zach@shiftsai.com\r\n>>>\r\n>>\r\n", 'email_type': 'delivery delay', 'created_at': '2025-05-22T07:32:05.131578', 'po_number': 'PO-240430-002', 'user_id': None, 'read': False, 'sender_role': 'vendor', 'message_id': '196b0573cf088848', 'thread_id': '196872f923934e74', 'direction': 'inbound', 'recipient_email': 'Zach Park <zach@shiftsai.com>', 'sent_at': None, 'updated_at': '2025-05-22T07:32:05.131578', 'status': 'received', 'has_attachment': False, 'filename': None, 'attachment_types': '[]', 'parsed_delivery_date': '2025-05-11', 'llm_draft_id': None}] count=None
+2025-05-22 16:32:06,158 - ERROR - Failed to send message to MCP server: 404
+2025-05-22 16:32:06,391 - INFO - Processing message: 196b06c33072e8d4, from: The SingleStore Team <webinars@singlestore.com>, to: sungho@shiftsai.com
+2025-05-22 16:32:06,391 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:32:06,392 - INFO - is_vendor_email 결과: False
+2025-05-22 16:32:06,618 - INFO - Processing message: 196b07bd140299b1, from: Gangesh <noreply@luma-mail.com>, to: zach@shiftsai.com
+2025-05-22 16:32:06,618 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:32:06,618 - INFO - is_vendor_email 결과: False
+2025-05-22 16:32:06,868 - INFO - Processing message: 196b0fecd98d3f92, from: Team Memgraph <marketing-team@memgraph.io>, to: sungho@shiftsai.com
+2025-05-22 16:32:06,868 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:32:06,868 - INFO - is_vendor_email 결과: False
+2025-05-22 16:32:07,100 - INFO - Processing message: 196b1cd4d7c06b3c, from: "ceo@makeugc.ai" <ceo@makeugc.ai>, to: Sungho Park <sungho@shiftsai.com>
+2025-05-22 16:32:07,100 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:32:07,101 - INFO - is_vendor_email 결과: False
+2025-05-22 16:32:07,339 - INFO - Processing message: 196b1eae2a6de63c, from: Eric at Genspark <ericjing@genspark.ai>, to: Sungho Park <sungho@shiftsai.com>
+2025-05-22 16:32:07,340 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:32:07,340 - INFO - is_vendor_email 결과: False
+2025-05-22 16:32:07,593 - INFO - Processing message: 196b20ba71da1e46, from: Anand Sanwal <anand.sanwal@cbinsights.com>, to: zach@shiftsai.com
+2025-05-22 16:32:07,594 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:32:07,594 - INFO - is_vendor_email 결과: False
+2025-05-22 16:32:07,830 - INFO - Processing message: 196b241b4f1cd26d, from: "공팔리터" <newsletter@08liter.com>, to: <sungho@shiftsai.com>
+2025-05-22 16:32:07,830 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:32:07,831 - INFO - is_vendor_email 결과: False
+2025-05-22 16:32:08,075 - INFO - Processing message: 196b25888e60efc8, from: "Frontier Tower | Berlinhouse" <noreply@luma-mail.com>, to: sungho@shiftsai.com
+2025-05-22 16:32:08,076 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:32:08,076 - INFO - is_vendor_email 결과: False
+2025-05-22 16:32:08,339 - INFO - Processing message: 196b265d659ac360, from: Ant Wilson <ant@supabase.com>, to: zach@shiftsai.com
+2025-05-22 16:32:08,339 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:32:08,341 - INFO - is_vendor_email 결과: False
+2025-05-22 16:32:08,576 - INFO - Processing message: 196b2715ec4ba997, from: HeyGen <no_reply@email.heygen.com>, to: sungho@shiftsai.com
+2025-05-22 16:32:08,577 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:32:08,577 - INFO - is_vendor_email 결과: False
+2025-05-22 16:32:08,813 - INFO - Processing message: 196b2a0b9f4cecda, from: Brandwatch <webinars@brandwatch.com>, to: sungho@shiftsai.com
+2025-05-22 16:32:08,815 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:32:08,815 - INFO - is_vendor_email 결과: False
+2025-05-22 16:32:09,065 - INFO - Processing message: 196b30c14270e191, from: "Freelancer.com" <noreply@notifications.freelancer.com>, to: sungho@shiftsai.com
+2025-05-22 16:32:09,066 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:32:09,066 - INFO - is_vendor_email 결과: False
+2025-05-22 16:32:09,318 - INFO - Processing message: 196b4d9bfeec4d60, from: TikTok For Business <marketing-api@ads-service.tiktok.com>, to: sungho@shiftsai.com
+2025-05-22 16:32:09,319 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:32:09,319 - INFO - is_vendor_email 결과: False
+2025-05-22 16:32:09,557 - INFO - Processing message: 196b58fd571c19bb, from: Pipedrive <hello@pipedrive.com>, to: sungho@shiftsai.com
+2025-05-22 16:32:09,557 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:32:09,557 - INFO - is_vendor_email 결과: False
+2025-05-22 16:32:09,799 - INFO - Processing message: 196b632c1e98ff01, from: Mariane Bekker <foundersbay@mail.beehiiv.com>, to: "sungho@shiftsai.com" <sungho@shiftsai.com>
+2025-05-22 16:32:09,799 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:32:09,800 - INFO - is_vendor_email 결과: False
+2025-05-22 16:32:10,031 - INFO - Processing message: 196b632d10e5ab28, from: Mariane Bekker <foundersbay@mail.beehiiv.com>, to: "zach@shiftsai.com" <zach@shiftsai.com>
+2025-05-22 16:32:10,031 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:32:10,031 - INFO - is_vendor_email 결과: False
+2025-05-22 16:32:10,282 - INFO - Processing message: 196b64d2a101cc2d, from: Brock Young <brock@icon.com>, to: zach@shiftsai.com
+2025-05-22 16:32:10,284 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:32:10,284 - INFO - is_vendor_email 결과: False
+2025-05-22 16:32:10,528 - INFO - Processing message: 196b66db3d975646, from: NEON <hello@neon.work>, to: <zach@shiftsai.com>
+2025-05-22 16:32:10,529 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:32:10,529 - INFO - is_vendor_email 결과: False
+2025-05-22 16:32:10,785 - INFO - Processing message: 196b66cc152f20b0, from: ScrollStopper <joinbrands@mail.beehiiv.com>, to: "sungho@shiftsai.com" <sungho@shiftsai.com>
+2025-05-22 16:32:10,785 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:32:10,786 - INFO - is_vendor_email 결과: False
+2025-05-22 16:32:11,014 - INFO - Processing message: 196b6a167db7db9e, from: The Vanta team <vantateam@vanta.com>, to: sungho@shiftsai.com
+2025-05-22 16:32:11,014 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:32:11,014 - INFO - is_vendor_email 결과: False
+2025-05-22 16:32:11,247 - INFO - Processing message: 196b715be8e02537, from: Murray <murray@user.luma-mail.com>, to: sungho@shiftsai.com
+2025-05-22 16:32:11,249 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:32:11,249 - INFO - is_vendor_email 결과: False
+2025-05-22 16:32:11,508 - INFO - Processing message: 196b7f675c87c75f, from: The Google Workspace Team <workspace-noreply@google.com>, to: zach@shiftsai.com
+2025-05-22 16:32:11,509 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:32:11,509 - INFO - is_vendor_email 결과: False
+2025-05-22 16:32:11,760 - INFO - Processing message: 196b9ab0bd01948c, from: Ben Thompson <email@stratechery.com>, to: Zach Park <zach@shiftsai.com>
+2025-05-22 16:32:11,760 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:32:11,761 - INFO - is_vendor_email 결과: False
+2025-05-22 16:32:12,009 - INFO - Processing message: 196bb92830ef6e38, from: "Kyosuke’s Newsletter " <kyosuketogami@substack.com>, to: zach@shiftsai.com
+2025-05-22 16:32:12,010 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:32:12,010 - INFO - is_vendor_email 결과: False
+2025-05-22 16:32:12,252 - INFO - Processing message: 196bbd100d8d9130, from: Anand Sanwal <anand.sanwal@cbinsights.com>, to: zach@shiftsai.com
+2025-05-22 16:32:12,252 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:32:12,253 - INFO - is_vendor_email 결과: False
+2025-05-22 16:32:12,501 - INFO - Processing message: 196bd6d68a47e07c, from: Rahul Vohra <welcome@superhuman.com>, to: zach@shiftsai.com
+2025-05-22 16:32:12,502 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:32:12,502 - INFO - is_vendor_email 결과: False
+2025-05-22 16:32:12,741 - INFO - Processing message: 196bfad5287a1a0e, from: "ceo@makeugc.ai" <ceo@makeugc.ai>, to: Sungho Park <sungho@shiftsai.com>
+2025-05-22 16:32:12,742 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:32:12,742 - INFO - is_vendor_email 결과: False
+2025-05-22 16:32:12,983 - INFO - Processing message: 196c1be54bfc3195, from: "공팔리터" <newsletter@08liter.com>, to: <sungho@shiftsai.com>
+2025-05-22 16:32:12,984 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:32:12,984 - INFO - is_vendor_email 결과: False
+2025-05-22 16:32:13,229 - INFO - Processing message: 196c29ac2fd47b42, from: Michael Truell <michaelt@cursor.so>, to: zach@shiftsai.com
+2025-05-22 16:32:13,229 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:32:13,229 - INFO - is_vendor_email 결과: False
+2025-05-22 16:32:13,466 - INFO - Processing message: 196c29ac9b5211aa, from: Cursor <failed-payments+acct_1Lb5LzB4TZWxSIGU@stripe.com>, to: zach@shiftsai.com
+2025-05-22 16:32:13,466 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:32:13,467 - INFO - is_vendor_email 결과: False
+2025-05-22 16:32:13,701 - INFO - Processing message: 196c2feefba188ea, from: LinkedIn <messages-noreply@linkedin.com>, to: Zach Park <zach@shiftsai.com>
+2025-05-22 16:32:13,702 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:32:13,702 - INFO - is_vendor_email 결과: False
+2025-05-22 16:32:13,933 - INFO - Processing message: 196c4cc520b05eb5, from: Whimsical Team <hello@whimsical.com>, to: zach@shiftsai.com
+2025-05-22 16:32:13,933 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:32:13,935 - INFO - is_vendor_email 결과: False
+2025-05-22 16:32:14,184 - INFO - Processing message: 196c4cdb87d9ce32, from: The Airtable Team <team@mail.airtable.com>, to: sungho@shiftsai.com
+2025-05-22 16:32:14,184 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:32:14,184 - INFO - is_vendor_email 결과: False
+2025-05-22 16:32:14,422 - INFO - Processing message: 196c4d176125a7b8, from: JoinBrands <hello@joinbrands.com>, to: Sungho Park <sungho@shiftsai.com>
+2025-05-22 16:32:14,422 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:32:14,423 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:14,428 - ERROR - Error processing message 196c4f10a26aa16b: The read operation timed out
+2025-05-22 16:33:14,908 - ERROR - Error processing message 196c534c8e9825c3: [SSL: DECRYPTION_FAILED_OR_BAD_RECORD_MAC] decryption failed or bad record mac (_ssl.c:2548)
+2025-05-22 16:33:15,274 - INFO - Processing message: 196c555966b3ce41, from: Zapier Events <events@send.zapier.com>, to: sungho@shiftsai.com
+2025-05-22 16:33:15,274 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:15,275 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:15,515 - INFO - Processing message: 196c5bbd6598a98b, from: Murray - Open Future Forum and Friends <OpenFutureForum@calendar.luma-mail.com>, to: sungho@shiftsai.com
+2025-05-22 16:33:15,515 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:15,516 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:15,775 - INFO - Processing message: 196c5df1565d270e, from: NEON <hello@neon.work>, to: <zach@shiftsai.com>
+2025-05-22 16:33:15,775 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:15,775 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:16,116 - INFO - Processing message: 196c686a66237511, from: Mariane Bekker <foundersbay@mail.beehiiv.com>, to: "sungho@shiftsai.com" <sungho@shiftsai.com>
+2025-05-22 16:33:16,117 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:16,117 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:16,364 - INFO - Processing message: 196c686acf4dca4d, from: Mariane Bekker <foundersbay@mail.beehiiv.com>, to: "zach@shiftsai.com" <zach@shiftsai.com>
+2025-05-22 16:33:16,364 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:16,365 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:16,622 - INFO - Processing message: 196c6d459b374571, from: Jakob Drzazga <noreply@luma-mail.com>, to: sungho@shiftsai.com
+2025-05-22 16:33:16,622 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:16,624 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:16,871 - INFO - Processing message: 196c72e440968912, from: Vaishak Kumar <noreply@luma-mail.com>, to: sungho@shiftsai.com
+2025-05-22 16:33:16,871 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:16,871 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:17,127 - INFO - Processing message: 196c7347078d037f, from: "Freelancer.com" <noreply@notifications.freelancer.com>, to: sungho@shiftsai.com
+2025-05-22 16:33:17,128 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:17,128 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:17,371 - INFO - Processing message: 196c81663982b67a, from: Yujian Tang <usr-6sqwH2G0ljnGYBZ@user.luma-mail.com>, to: sungho@shiftsai.com
+2025-05-22 16:33:17,371 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:17,372 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:17,626 - INFO - Processing message: 196c819ea8ed563e, from: SFVibe <sfvibe@mail.beehiiv.com>, to: "sungho@shiftsai.com" <sungho@shiftsai.com>
+2025-05-22 16:33:17,628 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:17,628 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:17,871 - INFO - Processing message: 196c81a1b2a68941, from: SFVibe <sfvibe@mail.beehiiv.com>, to: "zach@shiftsai.com" <zach@shiftsai.com>
+2025-05-22 16:33:17,872 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:17,872 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:18,115 - INFO - Processing message: 196c82d749456bf2, from: Brandwatch <info@brandwatch.com>, to: sungho@shiftsai.com
+2025-05-22 16:33:18,116 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:18,116 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:18,362 - INFO - Processing message: 196c86dc4d06b5d2, from: Nijansh Verma <nijansh_opengig@user.luma-mail.com>, to: zach@shiftsai.com
+2025-05-22 16:33:18,363 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:18,363 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:18,605 - INFO - Processing message: 196c9006423b2380, from: "Wix.com" <wix-team@emails.wix.com>, to: zach@shiftsai.com
+2025-05-22 16:33:18,605 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:18,606 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:18,854 - INFO - Processing message: 196c9b592fe0091e, from: Specter Insights <noreply@insights.tryspecter.com>, to: zach@shiftsai.com
+2025-05-22 16:33:18,855 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:18,855 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:19,093 - INFO - Processing message: 196c9be6e3c57cc2, from: Tzu-Ling Wen <tzuling.wen@upfluence.com>, to: "sungho@shiftsai.com" <sungho@shiftsai.com>
+2025-05-22 16:33:19,093 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:19,094 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:19,347 - INFO - Processing message: 196c9c0d44e53f2b, from: "ceo@makeugc.ai" <ceo@makeugc.ai>, to: Sungho Park <sungho@shiftsai.com>
+2025-05-22 16:33:19,348 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:19,348 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:19,592 - INFO - Processing message: 196c9fc050d453f7, from: "The FRED Team at the St. Louis Fed" <newsletter@stlouisfed.org>, to: "sungho@shiftsai.com" <sungho@shiftsai.com>
+2025-05-22 16:33:19,592 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:19,592 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:20,047 - INFO - Processing message: 196ca631b3cb0d3d, from: Apollo <support@apollo.io>, to: sungho@shiftsai.com
+2025-05-22 16:33:20,047 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:20,048 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:20,289 - INFO - Processing message: 196caa1e00fefcba, from: Nikhil Pareek <nikhil@techfutureagi.com>, to: sungho@shiftsai.com
+2025-05-22 16:33:20,290 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:20,290 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:20,538 - INFO - Processing message: 196cac34de23e1e5, from: Supabase <noreply@supabase.com>, to: zach@shiftsai.com
+2025-05-22 16:33:20,539 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:20,539 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:20,786 - INFO - Processing message: 196cae0ca4affc5f, from: Arize Observe <smcamis@arize.com>, to: sungho@shiftsai.com
+2025-05-22 16:33:20,787 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:20,787 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:21,035 - INFO - Processing message: 196cae768bc6a566, from: "Viktor (buzzabout.ai)" <viktor@email.buzzabout.ai>, to: sungho@shiftsai.com
+2025-05-22 16:33:21,036 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:21,036 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:21,280 - INFO - Processing message: 196cb3b6445d65f8, from: Tom Nakata <usr-xom2oCMVLClGVAO@user.luma-mail.com>, to: zach@shiftsai.com
+2025-05-22 16:33:21,282 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:21,282 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:21,527 - INFO - Processing message: 196cb6edf4ad139d, from: Joscha Bach <usr-p6mV95gQrYkB3nZ@user.luma-mail.com>, to: sungho@shiftsai.com
+2025-05-22 16:33:21,527 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:21,528 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:21,777 - INFO - Processing message: 196cb7ae9094ef44, from: FounderCoHo from FounderCoHo <foundercoho@substack.com>, to: sungho@shiftsai.com
+2025-05-22 16:33:21,778 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:21,778 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:22,016 - INFO - Processing message: 196cb7ae6d7407ee, from: FounderCoHo from FounderCoHo <foundercoho@substack.com>, to: zach@shiftsai.com
+2025-05-22 16:33:22,016 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:22,017 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:22,268 - INFO - Processing message: 196cb7ff5a5fe48f, from: Gladys from Beta University <betauniversity@substack.com>, to: zach@shiftsai.com
+2025-05-22 16:33:22,271 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:22,272 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:22,518 - INFO - Processing message: 196cbc95b1924eeb, from: Anand Sanwal <anand.sanwal@cbinsights.com>, to: zach@shiftsai.com
+2025-05-22 16:33:22,518 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:22,519 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:22,762 - INFO - Processing message: 196cc3f127816f58, from: "공팔리터" <newsletter@08liter.com>, to: <sungho@shiftsai.com>
+2025-05-22 16:33:22,763 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:22,763 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:23,015 - INFO - Processing message: 196cc8625ab89794, from: JoinBrands <hello@joinbrands.com>, to: Sungho Park <sungho@shiftsai.com>
+2025-05-22 16:33:23,015 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:23,016 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:23,263 - INFO - Processing message: 196cd2cc3bcf10d2, from: Fred from Optmyzr <newsletters@optmyzr.com>, to: sungho@shiftsai.com
+2025-05-22 16:33:23,264 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:23,264 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:23,494 - INFO - Processing message: 196cddeab5f18740, from: Zach Park <zach@shiftsai.com>, to: jiyeon@shiftsai.com
+2025-05-22 16:33:23,494 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:23,494 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:23,750 - INFO - Processing message: 196ce2e6a6f33f71, from: "Wix.com" <wix-team@emails.wix.com>, to: zach@shiftsai.com
+2025-05-22 16:33:23,750 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:23,750 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:24,001 - INFO - Processing message: 196ce8fadbf3df42, from: Team Pinecone <community@pinecone.io>, to: sungho@shiftsai.com
+2025-05-22 16:33:24,001 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:24,001 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:24,278 - INFO - Processing message: 196cf009aef6c6b0, from: Tyler Carmody <tyler@formulatedby.com>, to: sungho@shiftsai.com
+2025-05-22 16:33:24,279 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:24,279 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:24,520 - INFO - Processing message: 196cf18e817e9ef3, from: Whimsical Team <hello@whimsical.com>, to: zach@shiftsai.com
+2025-05-22 16:33:24,521 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:24,521 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:24,766 - INFO - Processing message: 196cf1ba1e1439e9, from: The Airtable Team <team@mail.airtable.com>, to: sungho@shiftsai.com
+2025-05-22 16:33:24,767 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:24,767 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:24,998 - INFO - Processing message: 196cf2348a9fb38c, from: Specter Insights <noreply@insights.tryspecter.com>, to: zach@shiftsai.com
+2025-05-22 16:33:25,014 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:25,014 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:25,260 - INFO - Processing message: 196cf836d929a487, from: Stripe <updates@e.stripe.com>, to: sungho@shiftsai.com
+2025-05-22 16:33:25,260 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:25,261 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:25,513 - INFO - Processing message: 196cfaecb380323e, from: Mariane Bekker <marianebekker@user.luma-mail.com>, to: sungho@shiftsai.com
+2025-05-22 16:33:25,514 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:25,514 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:25,752 - INFO - Processing message: 196cffe44774d29a, from: The HeyGen Team <no_reply@heygen.com>, to: sungho@shiftsai.com
+2025-05-22 16:33:25,753 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:25,753 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:25,996 - INFO - Processing message: 196d02cc7cc02ea1, from: ScrollStopper <joinbrands@mail.beehiiv.com>, to: "sungho@shiftsai.com" <sungho@shiftsai.com>
+2025-05-22 16:33:25,996 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:25,997 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:26,231 - INFO - Processing message: 196d0d408f5369d3, from: Mailsuite Daily Report <daily-report@mailsuite.com>, to: zach@shiftsai.com
+2025-05-22 16:33:26,232 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:26,232 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:26,479 - INFO - Processing message: 196d1681a3b7f3d6, from: Yujian Tang <noreply@luma-mail.com>, to: sungho@shiftsai.com
+2025-05-22 16:33:26,479 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:26,479 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:26,717 - INFO - Processing message: 196d1734144ea009, from: Fred from Optmyzr <newsletters@optmyzr.com>, to: sungho@shiftsai.com
+2025-05-22 16:33:26,718 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:26,718 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:26,959 - INFO - Processing message: 196d18374aeece33, from: Brandwatch Consumer Research <info@brandwatch.com>, to: sungho@shiftsai.com
+2025-05-22 16:33:26,960 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:26,960 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:27,198 - INFO - Processing message: 196d21ee0cfff00d, from: The Vanta team <vantateam@vanta.com>, to: sungho@shiftsai.com
+2025-05-22 16:33:27,199 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:27,199 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:27,451 - INFO - Processing message: 196d29f0fd9f435a, from: zcal Tips <team@learn.zcal.co>, to: zach@shiftsai.com
+2025-05-22 16:33:27,451 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:27,452 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:27,693 - INFO - Processing message: 196d303a21057013, from: Featpaper <hello@wefeat.kr>, to: <sungho@shiftsai.com>
+2025-05-22 16:33:27,693 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:27,693 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:27,931 - INFO - Processing message: 196d30e54ae47baa, from: Supabase Auth <noreply@mail.app.supabase.io>, to: zach@shiftsai.com
+2025-05-22 16:33:27,931 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:27,932 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:28,172 - INFO - Processing message: 196d318cc36c2300, from: no-reply@signup.aws, to: zach@shiftsai.com
+2025-05-22 16:33:28,172 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:28,173 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:28,420 - INFO - Processing message: 196d31a1293069e3, from: Amazon Web Services <no-reply@amazonaws.com>, to: zach@shiftsai.com
+2025-05-22 16:33:28,421 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:28,421 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:28,652 - INFO - Processing message: 196d31bcbf340a9b, from: "NHN KCP 발신전용" <pgadmcust@kcp.co.kr>, to: <zach@shiftsai.com>
+2025-05-22 16:33:28,652 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:28,653 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:28,884 - INFO - Processing message: 196d31bce5247646, from: "NHN KCP 발신전용" <pgadmcust@kcp.co.kr>, to: <zach@shiftsai.com>
+2025-05-22 16:33:28,885 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:28,885 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:29,134 - INFO - Processing message: 196d31c6ff3fe9d0, from: Amazon Web Services <no-reply@amazonaws.com>, to: zach@shiftsai.com
+2025-05-22 16:33:29,134 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:29,135 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:29,380 - INFO - Processing message: 196d3265d7ffbbfa, from: Amazon Web Services <no-reply@amazonaws.com>, to: zach@shiftsai.com
+2025-05-22 16:33:29,380 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:29,381 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:29,636 - INFO - Processing message: 196d3a007aab8df7, from: Eleni from Modash <eleni@modash.io>, to: "sungho@shiftsai.com" <sungho@shiftsai.com>
+2025-05-22 16:33:29,637 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:29,637 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:29,895 - INFO - Processing message: 196d3bd011d8bdcf, from: The Founder Playbook <thefounderplaybook@mail.beehiiv.com>, to: "zach@shiftsai.com" <zach@shiftsai.com>
+2025-05-22 16:33:29,895 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:29,895 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:30,143 - INFO - Processing message: 196d4485bb899ad3, from: The Airtable Team <team@mail.airtable.com>, to: sungho@shiftsai.com
+2025-05-22 16:33:30,144 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:30,144 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:30,392 - INFO - Processing message: 196d45e7c3a5cedd, from: Generative AI San Francisco and Bay Area <genai-sf@calendar.luma-mail.com>, to: zach@shiftsai.com
+2025-05-22 16:33:30,393 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:30,393 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:30,639 - INFO - Processing message: 196d45eae7dcbb68, from: Generative AI San Francisco and Bay Area <genai-sf@calendar.luma-mail.com>, to: sungho@shiftsai.com
+2025-05-22 16:33:30,639 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:30,640 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:30,877 - INFO - Processing message: 196d476af804010e, from: The SingleStore Team <webinars@singlestore.com>, to: sungho@shiftsai.com
+2025-05-22 16:33:30,877 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:30,877 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:31,114 - INFO - Processing message: 196d478665eab0dc, from: CrewAI <support@crewai.com>, to: zach@shiftsai.com
+2025-05-22 16:33:31,115 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:31,115 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:31,349 - INFO - Processing message: 196d4adfb69f5bb2, from: "Notion CEO 아이반(Ivan)" <ivan@mail.notion.so>, to: <zach@shiftsai.com>
+2025-05-22 16:33:31,351 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:31,351 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:31,587 - INFO - Processing message: 196d514bd7320a95, from: Collabstr <hello@mailout.collabstr.com>, to: sungho@shiftsai.com
+2025-05-22 16:33:31,587 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:31,587 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:31,826 - INFO - Processing message: 196d55fd1940c8a8, from: The HeyGen Team <no_reply@heygen.com>, to: sungho@shiftsai.com
+2025-05-22 16:33:31,827 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:31,827 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:32,070 - INFO - Processing message: 196d5fe217fbe2ce, from: "창업진흥원" <1357@kised.or.kr>, to: "익명" <sungho@shiftsai.com>
+2025-05-22 16:33:32,070 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:32,071 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:32,319 - INFO - Processing message: 196d619c47c3473e, from: Anand Sanwal <anand.sanwal@cbinsights.com>, to: zach@shiftsai.com
+2025-05-22 16:33:32,320 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:32,320 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:32,555 - INFO - Processing message: 196d624b2caec800, from: Mariane Bekker <foundersbay@mail.beehiiv.com>, to: "sungho@shiftsai.com" <sungho@shiftsai.com>
+2025-05-22 16:33:32,555 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:32,556 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:32,796 - INFO - Processing message: 196d624b88af7fa1, from: Mariane Bekker <foundersbay@mail.beehiiv.com>, to: "zach@shiftsai.com" <zach@shiftsai.com>
+2025-05-22 16:33:32,797 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:32,797 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:33,036 - INFO - Processing message: 196d637df39b5d6a, from: "공팔리터" <newsletter@08liter.com>, to: <sungho@shiftsai.com>
+2025-05-22 16:33:33,038 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:33,038 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:33,303 - INFO - Processing message: 196d67b1de6efd93, from: Luma <noreply@luma-mail.com>, to: zach@shiftsai.com
+2025-05-22 16:33:33,303 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:33,303 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:33,858 - INFO - Processing message: 196d6b2b51651031, from: Brandwatch <webinars@brandwatch.com>, to: sungho@shiftsai.com
+2025-05-22 16:33:33,858 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:33,859 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:34,101 - INFO - Processing message: 196d6b710d942189, from: Laurence Ion <noreply@luma-mail.com>, to: sungho@shiftsai.com
+2025-05-22 16:33:34,101 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:34,101 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:34,347 - INFO - Processing message: 196d6d2745305d3e, from: JoinBrands <hello@joinbrands.com>, to: Sungho Park <sungho@shiftsai.com>
+2025-05-22 16:33:34,347 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:34,347 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:34,602 - INFO - Processing message: 196d719a0169a1af, from: no-reply@verify.signin.aws, to: zach@shiftsai.com
+2025-05-22 16:33:34,602 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:34,603 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:34,846 - INFO - Processing message: 196d71a73d9ffb28, from: anomalydetection@costalerts.amazonaws.com, to: zach@shiftsai.com
+2025-05-22 16:33:34,846 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:34,847 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:35,091 - INFO - Processing message: 196d88cafbb29ca7, from: Ben Thompson <email@stratechery.com>, to: Zach Park <zach@shiftsai.com>
+2025-05-22 16:33:35,091 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:35,092 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:35,326 - INFO - Processing message: 196d898a9cc015dc, from: TikTok For Business <marketing-api@ads-service.tiktok.com>, to: sungho@shiftsai.com
+2025-05-22 16:33:35,327 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:35,327 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:35,566 - INFO - Processing message: 196d965cb976ef93, from: Whimsical Team <hello@whimsical.com>, to: zach@shiftsai.com
+2025-05-22 16:33:35,566 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:35,567 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:35,826 - INFO - Processing message: 196d99c9d5874a89, from: Pipedrive <hello@pipedrive.com>, to: sungho@shiftsai.com
+2025-05-22 16:33:35,827 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:35,827 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:36,071 - INFO - Processing message: 196da68bdaebadc9, from: FounderCoHo from FounderCoHo <foundercoho@substack.com>, to: zach@shiftsai.com
+2025-05-22 16:33:36,072 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:36,072 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:36,299 - INFO - Processing message: 196da68bacf85a0c, from: FounderCoHo from FounderCoHo <foundercoho@substack.com>, to: sungho@shiftsai.com
+2025-05-22 16:33:36,299 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:36,299 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:36,533 - INFO - Processing message: 196da7c7040117fd, from: NEON <hello@neon.work>, to: <zach@shiftsai.com>
+2025-05-22 16:33:36,534 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:36,534 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:36,771 - INFO - Processing message: 196dacdedb797cb6, from: By The Bay <info@bythebay.io>, to: "sungho@shiftsai.com" <sungho@shiftsai.com>
+2025-05-22 16:33:36,774 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:36,774 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:37,029 - INFO - Processing message: 196de9d16e99cd0d, from: "ceo@makeugc.ai" <ceo@makeugc.ai>, to: Sungho Park <sungho@shiftsai.com>
+2025-05-22 16:33:37,029 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:37,030 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:37,266 - INFO - Processing message: 196df1041e70453b, from: Todoist <no-reply@todoist.com>, to: sungho@shiftsai.com
+2025-05-22 16:33:37,266 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:37,267 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:37,507 - INFO - Processing message: 196df9f547128c41, from: "Kyosuke’s Newsletter " <kyosuketogami@substack.com>, to: zach@shiftsai.com
+2025-05-22 16:33:37,508 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:37,508 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:37,753 - INFO - Processing message: 196dfddbe9900e43, from: Anand Sanwal <anand.sanwal@cbinsights.com>, to: zach@shiftsai.com
+2025-05-22 16:33:37,753 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:37,755 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:37,996 - INFO - Processing message: 196e179fc5c42501, from: Rahul Vohra <welcome@superhuman.com>, to: zach@shiftsai.com
+2025-05-22 16:33:37,997 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:37,997 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:38,239 - INFO - Processing message: 196e498e59a27026, from: The AI Hatchery <ai-agents-weekly@mail.beehiiv.com>, to: "sungho@shiftsai.com" <sungho@shiftsai.com>
+2025-05-22 16:33:38,240 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:38,241 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:38,589 - INFO - Processing message: 196e5a41f6f49b20, from: Murray <murray@user.luma-mail.com>, to: sungho@shiftsai.com
+2025-05-22 16:33:38,589 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:38,591 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:38,823 - INFO - Processing message: 196e5c61c95399c7, from: "공팔리터" <newsletter@08liter.com>, to: <sungho@shiftsai.com>
+2025-05-22 16:33:38,824 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:38,824 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:39,073 - INFO - Processing message: 196e5e6180dedab8, from: Mariane Bekker <foundersbay@mail.beehiiv.com>, to: "sungho@shiftsai.com" <sungho@shiftsai.com>
+2025-05-22 16:33:39,073 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:39,073 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:39,320 - INFO - Processing message: 196e5e628a0194dd, from: Mariane Bekker <foundersbay@mail.beehiiv.com>, to: "zach@shiftsai.com" <zach@shiftsai.com>
+2025-05-22 16:33:39,320 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:39,321 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:39,558 - INFO - Processing message: 196e646574c465ad, from: JoinBrands <hello@joinbrands.com>, to: Sungho Park <sungho@shiftsai.com>
+2025-05-22 16:33:39,559 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:39,559 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:39,798 - INFO - Processing message: 196e70c00fdf7f7b, from: LinkedIn <messages-noreply@linkedin.com>, to: Zach Park <zach@shiftsai.com>
+2025-05-22 16:33:39,799 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:39,799 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:40,049 - INFO - Processing message: 196e866dce050c06, from: Eric at Genspark <ericjing@genspark.ai>, to: Sungho Park <sungho@shiftsai.com>
+2025-05-22 16:33:40,049 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:40,049 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:40,289 - INFO - Processing message: 196e8d885df8e855, from: Whimsical Team <hello@whimsical.com>, to: zach@shiftsai.com
+2025-05-22 16:33:40,289 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:40,289 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:40,519 - INFO - Processing message: 196e92be07743835, from: Murray - Open Future Forum and Friends <OpenFutureForum@calendar.luma-mail.com>, to: sungho@shiftsai.com
+2025-05-22 16:33:40,520 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:40,520 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:40,759 - INFO - Processing message: 196e9a5f78248cdd, from: Substack <no-reply@substack.com>, to: zach@shiftsai.com
+2025-05-22 16:33:40,760 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:40,760 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:40,996 - INFO - Processing message: 196e9eb3bd8f339f, from: NEON <hello@neon.work>, to: <zach@shiftsai.com>
+2025-05-22 16:33:40,996 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:40,996 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:41,228 - INFO - Processing message: 196eacfeef87a30b, from: Vaishak Kumar <noreply@luma-mail.com>, to: sungho@shiftsai.com
+2025-05-22 16:33:41,228 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:41,228 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:41,473 - INFO - Processing message: 196eb3577fe1244c, from: Fred from Optmyzr <newsletters@optmyzr.com>, to: sungho@shiftsai.com
+2025-05-22 16:33:41,473 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:41,474 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:41,716 - INFO - Processing message: 196eb39533c47e5d, from: Napkin AI <contact@napkin.ai>, to: zach@shiftsai.com
+2025-05-22 16:33:41,717 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:41,717 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:41,960 - INFO - Processing message: 196eb497c450de0d, from: Brandwatch <webinars@brandwatch.com>, to: sungho@shiftsai.com
+2025-05-22 16:33:41,960 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:41,960 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:42,202 - INFO - Processing message: 196ebd9ebbb4e1a8, from: JoinBrands <hello@joinbrands.com>, to: Sungho Park <sungho@shiftsai.com>
+2025-05-22 16:33:42,202 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:42,203 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:42,439 - INFO - Processing message: 196ed0e32d6b03bf, from: "Wix.com" <wix-team@emails.wix.com>, to: zach@shiftsai.com
+2025-05-22 16:33:42,439 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:42,439 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:42,679 - INFO - Processing message: 196edc5e9aae90d7, from: Luma <noreply@luma-mail.com>, to: sungho@shiftsai.com
+2025-05-22 16:33:42,679 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:42,680 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:42,937 - INFO - Processing message: 196edfdab53fe472, from: Jasper <hey@jasper.ai>, to: sungho@shiftsai.com
+2025-05-22 16:33:42,939 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:42,939 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:43,196 - INFO - Processing message: 196ee33e80f4fa0f, from: Ben Thompson <email@stratechery.com>, to: Zach Park <zach@shiftsai.com>
+2025-05-22 16:33:43,197 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:43,197 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:43,446 - INFO - Processing message: 196ee39afa617639, from: Tracey at Traackr <influence@traackr.com>, to: <sungho@shiftsai.com>
+2025-05-22 16:33:43,446 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:43,446 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:43,692 - INFO - Processing message: 196ee69ece38d692, from: The AI Hatchery <ai-agents-weekly@mail.beehiiv.com>, to: "sungho@shiftsai.com" <sungho@shiftsai.com>
+2025-05-22 16:33:43,693 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:43,693 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:43,928 - INFO - Processing message: 196ee6f2eb29257a, from: Apollo <support@apollo.io>, to: sungho@shiftsai.com
+2025-05-22 16:33:43,928 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:43,929 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:44,175 - INFO - Processing message: 196eec8e331f366b, from: Kate at Make <info@make.com>, to: sungho@shiftsai.com
+2025-05-22 16:33:44,176 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:44,176 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:44,403 - INFO - Processing message: 196eece00a556d40, from: Supabase <noreply@supabase.com>, to: zach@shiftsai.com
+2025-05-22 16:33:44,404 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:44,404 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:44,635 - INFO - Processing message: 196eeda107c823bd, from: Toku Yamashita <toku@user.luma-mail.com>, to: zach@shiftsai.com
+2025-05-22 16:33:44,635 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:44,635 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:44,880 - INFO - Processing message: 196efd77a20f7b24, from: Joscha Bach <usr-p6mV95gQrYkB3nZ@user.luma-mail.com>, to: sungho@shiftsai.com
+2025-05-22 16:33:44,881 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:44,881 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:45,115 - INFO - Processing message: 196f02a5c11c483d, from: "공팔리터" <newsletter@08liter.com>, to: <sungho@shiftsai.com>
+2025-05-22 16:33:45,117 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:45,117 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:45,366 - INFO - Processing message: 196f0652796cf004, from: Natalie Pan <nataliepan@user.luma-mail.com>, to: sungho@shiftsai.com
+2025-05-22 16:33:45,366 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:45,367 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:45,605 - INFO - Processing message: 196f15959b106e3c, from: Google Cloud Community <no-reply@googlecloudcommunity.com>, to: zach@shiftsai.com
+2025-05-22 16:33:45,606 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:45,606 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:45,844 - INFO - Processing message: 196f23af4ed33344, from: "Wix.com" <wix-team@emails.wix.com>, to: zach@shiftsai.com
+2025-05-22 16:33:45,844 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:45,844 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:46,085 - INFO - Processing message: 196f2e7153d35582, from: Specter Insights <noreply@insights.tryspecter.com>, to: zach@shiftsai.com
+2025-05-22 16:33:46,086 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:46,087 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:46,334 - INFO - Processing message: 196f311ae52a2185, from: Tzu-Ling Wen <tzuling.wen@upfluence.com>, to: "sungho@shiftsai.com" <sungho@shiftsai.com>
+2025-05-22 16:33:46,335 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:46,335 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:46,571 - INFO - Processing message: 196f3271fe4461fc, from: The Airtable Team <team@mail.airtable.com>, to: sungho@shiftsai.com
+2025-05-22 16:33:46,572 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:46,572 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:46,818 - INFO - Processing message: 196f36bc1af27a56, from: Steph from OpenVC <steph@openvc.app>, to: zach@shiftsai.com
+2025-05-22 16:33:46,819 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:46,819 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:47,065 - INFO - Processing message: 196f3a2a2c03f66d, from: Mariane Bekker <marianebekker@user.luma-mail.com>, to: sungho@shiftsai.com
+2025-05-22 16:33:47,066 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:47,066 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:47,320 - INFO - Processing message: 196f3be6493de870, from: Team Memgraph <marketing-team@memgraph.io>, to: sungho@shiftsai.com
+2025-05-22 16:33:47,320 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:47,320 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:47,578 - INFO - Processing message: 196f40de46ca7e47, from: Mariane Bekker <foundersbay@mail.beehiiv.com>, to: "sungho@shiftsai.com" <sungho@shiftsai.com>
+2025-05-22 16:33:47,578 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:47,578 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:47,827 - INFO - Processing message: 196f40de1d31f57b, from: Mariane Bekker <foundersbay@mail.beehiiv.com>, to: "zach@shiftsai.com" <zach@shiftsai.com>
+2025-05-22 16:33:47,828 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:47,828 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:48,076 - INFO - Processing message: 196f43b843a84f5d, from: Team Zilliz <hello@zilliz.com>, to: sungho@shiftsai.com
+2025-05-22 16:33:48,077 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:48,077 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:48,314 - INFO - Processing message: 196f4dcee5bcc355, from: Meta for Business <advertise-noreply@support.facebook.com>, to: "박성호" <sungho@shiftsai.com>
+2025-05-22 16:33:48,314 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:48,315 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:48,574 - INFO - Processing message: 196f4dd722ef594e, from: Meta for Business <advertise-noreply@support.facebook.com>, to: "박성호" <sungho@shiftsai.com>
+2025-05-22 16:33:48,574 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:48,575 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:48,811 - INFO - Processing message: 196f5fc5b0ad7320, from: Impact Genius <programoffice@impactgenius.ai>, to: Zach Park <sungho@shiftsai.com>
+2025-05-22 16:33:48,811 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:48,811 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:49,058 - INFO - Processing message: 196f655f8b2caffa, from: GitHub <noreply@github.com>, to: zachparkhere <zach@shiftsai.com>
+2025-05-22 16:33:49,059 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:49,059 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:49,303 - INFO - Processing message: 196f656025253ae5, from: Streamlit Community Cloud <no-reply@streamlit.io>, to: zach@shiftsai.com
+2025-05-22 16:33:49,304 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:49,304 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:49,545 - INFO - Processing message: 196f66c791585347, from: system via Streamlit <notifications@streamlit.discoursemail.com>, to: zach@shiftsai.com
+2025-05-22 16:33:49,545 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:49,546 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:49,783 - INFO - Processing message: 196f6940ae74de7d, from: Manus <info@news.manus.im>, to: zach@shiftsai.com
+2025-05-22 16:33:49,785 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:49,785 - INFO - is_vendor_email 결과: False
+2025-05-22 16:33:50,017 - INFO - Processing message: 196f6b02a145bd8a, from: zcal Tips <team@learn.zcal.co>, to: zach@shiftsai.com
+2025-05-22 16:33:50,018 - INFO - 벤더 이메일 리스트: {'news4sungho@gmail.com'}
+2025-05-22 16:33:50,018 - INFO - is_vendor_email 결과: False
+2025-05-22 16:41:14,170 - INFO - HTTP Request: GET https://hgxqgvqrnyuoyxnnptwt.supabase.co/rest/v1/purchase_orders?select=vendor_email&vendor_email=not.is.null "HTTP/2 200 OK"
+2025-05-22 16:51:14,407 - INFO - HTTP Request: GET https://hgxqgvqrnyuoyxnnptwt.supabase.co/rest/v1/purchase_orders?select=vendor_email&vendor_email=not.is.null "HTTP/2 200 OK"
+2025-05-22 17:01:14,647 - INFO - HTTP Request: GET https://hgxqgvqrnyuoyxnnptwt.supabase.co/rest/v1/purchase_orders?select=vendor_email&vendor_email=not.is.null "HTTP/2 200 OK"
+2025-05-22 17:11:14,884 - INFO - HTTP Request: GET https://hgxqgvqrnyuoyxnnptwt.supabase.co/rest/v1/purchase_orders?select=vendor_email&vendor_email=not.is.null "HTTP/2 200 OK"
+2025-05-22 17:21:15,161 - INFO - HTTP Request: GET https://hgxqgvqrnyuoyxnnptwt.supabase.co/rest/v1/purchase_orders?select=vendor_email&vendor_email=not.is.null "HTTP/2 200 OK"
+2025-05-22 17:31:15,587 - INFO - HTTP Request: GET https://hgxqgvqrnyuoyxnnptwt.supabase.co/rest/v1/purchase_orders?select=vendor_email&vendor_email=not.is.null "HTTP/2 200 OK"
+2025-05-22 17:41:15,862 - INFO - HTTP Request: GET https://hgxqgvqrnyuoyxnnptwt.supabase.co/rest/v1/purchase_orders?select=vendor_email&vendor_email=not.is.null "HTTP/2 200 OK"
+2025-05-22 17:51:16,149 - INFO - HTTP Request: GET https://hgxqgvqrnyuoyxnnptwt.supabase.co/rest/v1/purchase_orders?select=vendor_email&vendor_email=not.is.null "HTTP/2 200 OK"
+2025-05-22 18:01:16,729 - INFO - HTTP Request: GET https://hgxqgvqrnyuoyxnnptwt.supabase.co/rest/v1/purchase_orders?select=vendor_email&vendor_email=not.is.null "HTTP/2 200 OK"
+2025-05-22 18:11:17,103 - INFO - HTTP Request: GET https://hgxqgvqrnyuoyxnnptwt.supabase.co/rest/v1/purchase_orders?select=vendor_email&vendor_email=not.is.null "HTTP/2 200 OK"
+2025-05-22 18:21:17,359 - INFO - HTTP Request: GET https://hgxqgvqrnyuoyxnnptwt.supabase.co/rest/v1/purchase_orders?select=vendor_email&vendor_email=not.is.null "HTTP/2 200 OK"
+2025-05-22 18:31:17,770 - INFO - HTTP Request: GET https://hgxqgvqrnyuoyxnnptwt.supabase.co/rest/v1/purchase_orders?select=vendor_email&vendor_email=not.is.null "HTTP/2 200 OK"
+2025-05-22 18:41:18,039 - INFO - HTTP Request: GET https://hgxqgvqrnyuoyxnnptwt.supabase.co/rest/v1/purchase_orders?select=vendor_email&vendor_email=not.is.null "HTTP/2 200 OK"
+2025-05-22 20:04:49,739 - INFO - HTTP Request: GET https://hgxqgvqrnyuoyxnnptwt.supabase.co/rest/v1/purchase_orders?select=vendor_email&vendor_email=not.is.null "HTTP/2 200 OK"
+2025-05-22 20:14:50,028 - INFO - HTTP Request: GET https://hgxqgvqrnyuoyxnnptwt.supabase.co/rest/v1/purchase_orders?select=vendor_email&vendor_email=not.is.null "HTTP/2 200 OK"
+2025-05-22 20:24:50,314 - INFO - HTTP Request: GET https://hgxqgvqrnyuoyxnnptwt.supabase.co/rest/v1/purchase_orders?select=vendor_email&vendor_email=not.is.null "HTTP/2 200 OK"
+2025-05-22 20:34:50,957 - INFO - HTTP Request: GET https://hgxqgvqrnyuoyxnnptwt.supabase.co/rest/v1/purchase_orders?select=vendor_email&vendor_email=not.is.null "HTTP/2 200 OK"
+2025-05-22 20:44:51,387 - INFO - HTTP Request: GET https://hgxqgvqrnyuoyxnnptwt.supabase.co/rest/v1/purchase_orders?select=vendor_email&vendor_email=not.is.null "HTTP/2 200 OK"
+2025-05-22 20:54:51,637 - INFO - HTTP Request: GET https://hgxqgvqrnyuoyxnnptwt.supabase.co/rest/v1/purchase_orders?select=vendor_email&vendor_email=not.is.null "HTTP/2 200 OK"
+2025-05-22 21:04:51,949 - INFO - HTTP Request: GET https://hgxqgvqrnyuoyxnnptwt.supabase.co/rest/v1/purchase_orders?select=vendor_email&vendor_email=not.is.null "HTTP/2 200 OK"
+2025-05-22 21:14:52,634 - INFO - HTTP Request: GET https://hgxqgvqrnyuoyxnnptwt.supabase.co/rest/v1/purchase_orders?select=vendor_email&vendor_email=not.is.null "HTTP/2 200 OK"
+2025-05-22 21:24:54,117 - INFO - HTTP Request: GET https://hgxqgvqrnyuoyxnnptwt.supabase.co/rest/v1/purchase_orders?select=vendor_email&vendor_email=not.is.null "HTTP/2 200 OK"
+2025-05-22 21:34:55,098 - INFO - HTTP Request: GET https://hgxqgvqrnyuoyxnnptwt.supabase.co/rest/v1/purchase_orders?select=vendor_email&vendor_email=not.is.null "HTTP/2 200 OK"
+2025-05-22 21:44:56,988 - INFO - HTTP Request: GET https://hgxqgvqrnyuoyxnnptwt.supabase.co/rest/v1/purchase_orders?select=vendor_email&vendor_email=not.is.null "HTTP/2 200 OK"
+2025-05-22 21:54:57,887 - INFO - HTTP Request: GET https://hgxqgvqrnyuoyxnnptwt.supabase.co/rest/v1/purchase_orders?select=vendor_email&vendor_email=not.is.null "HTTP/2 200 OK"
+2025-05-22 22:04:58,729 - INFO - HTTP Request: GET https://hgxqgvqrnyuoyxnnptwt.supabase.co/rest/v1/purchase_orders?select=vendor_email&vendor_email=not.is.null "HTTP/2 200 OK"
+2025-05-22 22:14:59,821 - INFO - HTTP Request: GET https://hgxqgvqrnyuoyxnnptwt.supabase.co/rest/v1/purchase_orders?select=vendor_email&vendor_email=not.is.null "HTTP/2 200 OK"
+2025-05-22 22:25:01,075 - INFO - HTTP Request: GET https://hgxqgvqrnyuoyxnnptwt.supabase.co/rest/v1/purchase_orders?select=vendor_email&vendor_email=not.is.null "HTTP/2 200 OK"
+2025-05-22 23:09:00,603 - INFO - HTTP Request: GET https://hgxqgvqrnyuoyxnnptwt.supabase.co/rest/v1/purchase_orders?select=vendor_email&vendor_email=not.is.null "HTTP/2 200 OK"
+2025-05-22 23:19:01,644 - INFO - HTTP Request: GET https://hgxqgvqrnyuoyxnnptwt.supabase.co/rest/v1/purchase_orders?select=vendor_email&vendor_email=not.is.null "HTTP/2 200 OK"
+2025-05-23 11:15:18,600 - INFO - HTTP Request: GET https://hgxqgvqrnyuoyxnnptwt.supabase.co/rest/v1/purchase_orders?select=vendor_email&vendor_email=not.is.null "HTTP/2 200 OK"
+2025-05-23 11:25:19,938 - INFO - HTTP Request: GET https://hgxqgvqrnyuoyxnnptwt.supabase.co/rest/v1/purchase_orders?select=vendor_email&vendor_email=not.is.null "HTTP/2 200 OK"
+2025-05-23 11:35:20,218 - INFO - HTTP Request: GET https://hgxqgvqrnyuoyxnnptwt.supabase.co/rest/v1/purchase_orders?select=vendor_email&vendor_email=not.is.null "HTTP/2 200 OK"
+2025-05-23 11:45:20,390 - INFO - HTTP Request: GET https://hgxqgvqrnyuoyxnnptwt.supabase.co/rest/v1/purchase_orders?select=vendor_email&vendor_email=not.is.null "HTTP/2 200 OK"
