@@ -7,7 +7,7 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")
 from pydantic_settings import BaseSettings
 from typing import List, ClassVar
 from dotenv import load_dotenv
-from procurement_agent_os.supabase_client import supabase
+from po_agent_os.supabase_client import supabase
 
 # .env 로드
 load_dotenv(os.path.join(os.path.dirname(os.path.dirname(__file__)), ".env"))

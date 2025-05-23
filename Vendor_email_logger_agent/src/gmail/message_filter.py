@@ -2,7 +2,7 @@
 import re, csv, os, logging
 from typing import Dict, List, Set
 from pathlib import Path
-from procurement_agent_os.supabase_client import supabase
+from po_agent_os.supabase_client import supabase
 from dotenv import load_dotenv
 from Vendor_email_logger_agent.config import settings
 
