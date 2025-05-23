@@ -6,10 +6,10 @@ import streamlit as st
 import bcrypt
 from po_agent_os.supabase_client_anon import supabase
 import requests
-from po_agent_os.logging_config import setup_logging
+from streamlit_ui.utils.logging_config import logging
 
 # 로깅 설정
-logger = setup_logging(__name__)
+logger = logging.getLogger(__name__)
 
 # 🔐 Login check
 if "user" not in st.session_state:
