@@ -1,6 +1,20 @@
 import sys
 import os
+import logging
+
+# 시스템 경로 설정
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+
+# logs 디렉토리 생성
+os.makedirs("logs", exist_ok=True)
+
+# 로깅 설정
+logging.basicConfig(
+    filename="logs/app.log",
+    filemode="a",
+    level=logging.INFO,
+    format="%(asctime)s - %(levelname)s - %(message)s"
+)
 
 import streamlit as st
 
@@ -17,4 +31,10 @@ pg = st.navigation([
     st.Page("pages/3_settings.py", title="Settings", icon="⚙️"),
     st.Page("pages/4_Upload_PO.py", title="Upload PO", icon="📤"),
 ])
-pg.run()
+
+try:
+    logging.info("Launching Streamlit app.")
+    pg.run()
+except Exception as e:
+    logging.exception("❌ Error running Streamlit app:")
+    raise e
