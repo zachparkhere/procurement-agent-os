@@ -82,7 +82,7 @@ def google_callback(request: Request):
             "email_token_json": json.loads(creds.to_json())
         }).eq("id", user_id).execute()
 
-        return RedirectResponse("http://localhost:8501/Login?linked=success")
+        return RedirectResponse("https://app.shiftsai.com/Login?linked=success")
 
     except Exception as e:
         print(f"❌ Google OAuth Callback Error: {e}")
