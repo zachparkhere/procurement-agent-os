@@ -2,7 +2,7 @@
 from openai import OpenAI
 from typing import Dict, List, Tuple, Optional
 import numpy as np
-from po_agent_os.Vendor_email_logger_agent.config import settings
+from Vendor_email_logger_agent.config import settings
 import tiktoken
 import logging
 from datetime import datetime

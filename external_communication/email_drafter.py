@@ -1,5 +1,5 @@
 import os
-from po_agent_os.supabase_client import supabase
+from procurement_agent_os.supabase_client import supabase
 from dotenv import load_dotenv
 
 # Load env vars
