@@ -9,7 +9,7 @@ import pandas as pd
 from Vendor_email_logger_agent.src.utils.text_processor import TextProcessor
 from Vendor_email_logger_agent.src.gmail.message_filter import get_email_type
 from typing import Dict, List
-from procurement_agent_os.supabase_client import supabase
+from po_agent_os.supabase_client import supabase
 import re
 
 logger = logging.getLogger(__name__)

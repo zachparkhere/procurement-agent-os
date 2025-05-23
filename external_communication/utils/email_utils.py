@@ -1,7 +1,7 @@
 from google.oauth2.credentials import Credentials
 from googleapiclient.discovery import build
 from google.auth.transport.requests import Request
-from po_agent_os.external_communication.config import supabase
+from external_communication.config import supabase
 from datetime import datetime
 import os
 import dateutil.parser  # ✅ 이거 pip install 필요함 (명령은 아래에)
