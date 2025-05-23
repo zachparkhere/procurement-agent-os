@@ -5,22 +5,22 @@ import asyncio
 import requests
 from typing import Dict, List
 import threading
-from po_agent_os.external_communication.utils.email_utils import send_approved_drafts
+from procurement_agent_os.external_communication.utils.email_utils import send_approved_drafts
 
 # === PATH SETUP ===
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # po_agent_os/
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # procurement_agent_os/
 sys.path.append(BASE_DIR)
 sys.path.append(os.path.join(BASE_DIR, "external_communication"))
 sys.path.append(os.path.join(BASE_DIR, "Vendor_email_logger_agent"))
 
 # === IMPORTS ===
-from po_agent_os.external_communication.agents.po_agent import handle_po_message
-from po_agent_os.external_communication.agents.followup_agent import handle_followup_message
-from po_agent_os.external_communication.agents.vendor_reply_agent import handle_vendor_reply_message
-from po_agent_os.external_communication.agents.draft_sender_agent import handle_draft_send_message
-from po_agent_os.external_communication.utils.eta_updater import process_eta_updates
-from po_agent_os.external_communication.utils.po_status_updater import analyze_po_status
-from po_agent_os.external_communication.config import supabase
+from procurement_agent_os.external_communication.agents.po_agent import handle_po_message
+from procurement_agent_os.external_communication.agents.followup_agent import handle_followup_message
+from procurement_agent_os.external_communication.agents.vendor_reply_agent import handle_vendor_reply_message
+from procurement_agent_os.external_communication.agents.draft_sender_agent import handle_draft_send_message
+from procurement_agent_os.external_communication.utils.eta_updater import process_eta_updates
+from procurement_agent_os.external_communication.utils.po_status_updater import analyze_po_status
+from procurement_agent_os.external_communication.config import supabase
 
 # === MCP AGENT ID ===
 AGENT_ID = "external_comm_hub"
