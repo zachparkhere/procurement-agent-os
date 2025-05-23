@@ -7,19 +7,19 @@ from datetime import datetime, timedelta
 from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
-from procurement_agent_os.Vendor_email_logger_agent.config import settings, AgentSettings
+from .config import settings, AgentSettings
 import openai
 
-from procurement_agent_os.Vendor_email_logger_agent.src.gmail.gmail_watcher import GmailWatcher
-from procurement_agent_os.Vendor_email_logger_agent.src.gmail.email_collector import EmailCollector
-from procurement_agent_os.Vendor_email_logger_agent.src.utils.text_processor import TextProcessor
-from procurement_agent_os.Vendor_email_logger_agent.src.processors.email_processor import EmailProcessor
-from procurement_agent_os.Vendor_email_logger_agent.src.processors.attachment_processor import AttachmentProcessor
-from procurement_agent_os.Vendor_email_logger_agent.src.services.mcp_service import MCPService
-from procurement_agent_os.Vendor_email_logger_agent.src.services.supabase_service import SupabaseService
-from procurement_agent_os.Vendor_email_logger_agent.src.gmail.message_filter import VendorEmailManager, is_vendor_email
-from procurement_agent_os.external_communication.utils.email_utils import get_gmail_service
-from procurement_agent_os.Vendor_email_logger_agent.config import supabase
+from .src.gmail.gmail_watcher import GmailWatcher
+from .src.gmail.email_collector import EmailCollector
+from .src.utils.text_processor import TextProcessor
+from .src.processors.email_processor import EmailProcessor
+from .src.processors.attachment_processor import AttachmentProcessor
+from .src.services.mcp_service import MCPService
+from .src.services.supabase_service import SupabaseService
+from .src.gmail.message_filter import VendorEmailManager, is_vendor_email
+from ..external_communication.utils.email_utils import get_gmail_service
+from .config import supabase
 
 # Load settings
 settings = AgentSettings()
