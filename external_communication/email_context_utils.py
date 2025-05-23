@@ -1,4 +1,4 @@
-from po_agent_os.supabase_client import supabase
+from procurement_agent_os.supabase_client import supabase
 import os
 from dotenv import load_dotenv
 from datetime import datetime

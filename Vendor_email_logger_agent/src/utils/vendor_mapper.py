@@ -1,6 +1,7 @@
 from typing import Dict, Optional
 import re
-from ..config import settings
+import os
+from Vendor_email_logger_agent.config import settings
 
 class VendorMapper:
     def __init__(self):

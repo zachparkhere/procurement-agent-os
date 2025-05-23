@@ -1,7 +1,7 @@
-from typing import Dict, Optional
 import re
+from typing import Dict, Optional
+from Vendor_email_logger_agent.config import settings
 from datetime import datetime, timedelta
-from ..config import settings
 
 class StatusDetector:
     def __init__(self):
