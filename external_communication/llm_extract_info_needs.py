@@ -1,94 +1,89 @@
-# llm_extract_info_needs.py
-
+import sys
 import os
-import json # Import json module
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.append(BASE_DIR)
+
+import json
 from openai import OpenAI
 from dotenv import load_dotenv
+from po_agent_os.supabase_client import supabase
+from datetime import datetime, timedelta
+import dateparser
 
 load_dotenv()
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
-client = OpenAI(api_key=OPENAI_API_KEY)
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
-def llm_extract_info_needs(email_subject, email_body):
-    prompt = f"""
-You are a helpful procurement planning assistant.
-You will receive an email from a vendor. Your task is to:
-
-1. Understand the intent of the message.
-2. Decide whether a reply is needed.
-3. Determine the appropriate type of reply: 'standard' (needs context/detail), 'simple_acknowledgment' (e.g., 'Thanks for confirming'), or 'no_reply'.
-4. If a 'standard' reply is needed, list the specific pieces of information (like ETA, vendor name, PO status, delivery confirmation details, etc.) from our internal system that would be helpful. If no extra info is needed, provide an empty list [].
-
-Here is the vendor message:
----
-Subject: {email_subject}
-Body:
-{email_body}
----
-
-You MUST respond ONLY with a valid JSON object containing the following keys:
-"intent": A short natural language description of the vendor's intent.
-"reply_needed": A boolean value (true or false).
-"suggested_reply_type": A string, must be one of 'standard', 'simple_acknowledgment', or 'no_reply'. Set to 'simple_acknowledgment' if the vendor just provided information and a simple thank you is sufficient. Set to 'no_reply' if reply_needed is false.
-"information_needed": A list of strings representing the specific information needed for a 'standard' reply (e.g., ["ETA", "PO status"]). Use an empty list [] if the reply type is not 'standard' or no specific information is required.
-
-Example JSON output format:
-{{
-  "intent": "Vendor confirmed delivery date for PO-123",
-  "reply_needed": true,
-  "suggested_reply_type": "simple_acknowledgment",
-  "information_needed": []
-}}
-
-Another Example:
-{{
-  "intent": "Vendor asking for payment status of invoice INV-456",
-  "reply_needed": true,
-  "suggested_reply_type": "standard",
-  "information_needed": ["Invoice payment status INV-456", "PO number related to INV-456"]
-}}
-
-Another Example:
-{{
-  "intent": "Vendor sent marketing newsletter",
-  "reply_needed": false,
-  "suggested_reply_type": "no_reply",
-  "information_needed": []
-}}
+SYSTEM_PROMPT = """
+You are a procurement email analyst. 
+Your job is to extract structured fields from vendor emails that relate to purchase orders.
 """
 
+USER_PROMPT_TEMPLATE = """
+EMAIL:
+Subject: {subject}
+Body:
+{body}
+
+---
+Return in JSON format:
+{
+  "delivery_date": "YYYY-MM-DD or null",
+  "intent": "confirm | delay | eta_proposal | no_info",
+  "reply_needed": true | false,
+  "suggested_reply_type": "standard | acknowledgement | no_reply | follow_up"
+}
+"""
+
+def enrich_email_with_llm(subject: str, body: str, po_number: str = None) -> dict:
+    prompt = USER_PROMPT_TEMPLATE.format(subject=subject, body=body)
     try:
         response = client.chat.completions.create(
-            model="gpt-4o",
-            response_format={ "type": "json_object" },
+            model="gpt-4",
             messages=[
-                {"role": "system", "content": "You analyze vendor emails and respond ONLY with the specified JSON object."},
+                {"role": "system", "content": SYSTEM_PROMPT},
                 {"role": "user", "content": prompt}
             ],
-            temperature=0.2
+            temperature=0
         )
-        
-        return response.choices[0].message.content.strip()
-
+        content = response.choices[0].message.content
+        parsed = json.loads(content)
+        if "delivery_date" not in parsed:
+            parsed["delivery_date"] = None
     except Exception as e:
-        print(f"❌ Error calling OpenAI API in llm_extract_info_needs: {e}")
-        return json.dumps({
-            "intent": "Error during analysis",
+        print("❌ LLM parsing failed:", e)
+        parsed = {
+            "delivery_date": None,
+            "intent": "no_info",
             "reply_needed": False,
-            "suggested_reply_type": "no_reply",
-            "information_needed": []
-        })
+            "suggested_reply_type": "no_reply"
+        }
 
-# Example usage
-if __name__ == "__main__":
-    subject = "RE: PO-2025-001 Delivery Date Confirmation"
-    body = "We confirm that the goods will be delivered by May 2nd."
-    result_json_str = llm_extract_info_needs(subject, body)
-    print("Raw JSON Output:")
-    print(result_json_str)
-    try:
-        parsed_result = json.loads(result_json_str)
-        print("\nParsed JSON Object:")
-        print(parsed_result)
-    except json.JSONDecodeError as e:
-        print(f"\n❌ Failed to parse the returned JSON: {e}") 
+    # Save full raw result as string
+    parsed["llm_analysis_result"] = json.dumps(parsed)
+    parsed["llm_intent"] = parsed.get("intent", "")
+    parsed["reply_needed"] = parsed.get("reply_needed", False)
+    parsed["suggested_reply_type"] = parsed.get("suggested_reply_type", "no_reply")
+    parsed["parsed_delivery_date"] = parsed.get("delivery_date")
+
+    # Optionally update PO if delivery date present
+    if po_number and parsed["parsed_delivery_date"]:
+        intent = parsed.get("intent", "")
+        delivery_date = parsed["parsed_delivery_date"]
+
+        # Fetch current ETA if needed
+        current_po = supabase.table("purchase_orders").select("eta").eq("po_number", po_number).limit(1).execute()
+        current_eta = None
+        if current_po.data:
+            current_eta = current_po.data[0].get("eta")
+
+        if intent == "confirm":
+            supabase.table("purchase_orders").update({
+                "confirmed_delivery_date": delivery_date
+            }).eq("po_number", po_number).execute()
+        elif intent in ("delay", "eta_proposal"):
+            if not current_eta or delivery_date != current_eta:
+                supabase.table("purchase_orders").update({
+                    "eta": delivery_date
+                }).eq("po_number", po_number).execute()
+
+    return parsed 

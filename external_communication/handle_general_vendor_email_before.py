@@ -6,7 +6,7 @@ import re
 from datetime import datetime
 from dotenv import load_dotenv
 from po_agent_os.supabase_client import supabase
-from po_agent_os.llm_extract_info_needs import enrich_email_with_llm
+from llm_extract_info_needs import enrich_email_with_llm
 from aggregate_context_blocks import aggregate_context_blocks
 from generate_multi_context_reply import generate_multi_context_reply
 from email_context_utils import get_last_conversation_by_request_form
