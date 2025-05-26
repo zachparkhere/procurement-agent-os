@@ -287,7 +287,8 @@ class EmailProcessor:
                 "sender_role": sender_role,  # outbound면 "admin", inbound면 "vendor"
                 "parsed_delivery_date": delivery_date,
                 "body": message_data.get("body_text"),
-                "message_id": message_data.get("message_id")  # ✅ message_id도 항상 저장
+                "message_id": message_data.get("message_id"),  # ✅ message_id도 항상 저장
+                "user_id": message_data.get("user_id")  # user_id 추가
             }
             
             # Supabase에 저장 (중복 체크/업데이트 기준은 thread_id)

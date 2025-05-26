@@ -86,6 +86,16 @@ async def process_email(service, msg, email_processor: EmailProcessor, mcp_servi
         direction = "outbound" if 'SENT' in message.get('labelIds', []) else "inbound"
         logger.info(f"[DB저장전] direction: {direction}, msg_id: {msg_id}, from: {from_email}, to: {to_email}")
         content = email_processor.get_message_content(msg_id)
+
+        # PO 번호 추출
+        po_number = email_processor.text_processor.find_po_number(
+            subject=subject,
+            body=content["body_text"],
+            attachments=content["attachments"],
+            thread_id=message.get("threadId"),
+            thread_po_cache=email_processor.thread_po_cache
+        )
+
         parsed_message = {
             "thread_id": message.get("threadId"),
             "message_id": msg_id,
@@ -96,7 +106,8 @@ async def process_email(service, msg, email_processor: EmailProcessor, mcp_servi
             "body_text": content["body_text"],
             "direction": direction,
             "attachments": content["attachments"],
-            "user_id": user_id
+            "po_number": po_number,
+            "user_id": user_id  # 전달받은 user_id 사용
         }
         await email_processor.save_email_log(parsed_message)
         await mcp_service.send_message(parsed_message)
@@ -210,9 +221,12 @@ async def watch_new_vendor_emails(service, email_processor, mcp_service, vendor_
     supabase_service = SupabaseService()
     while True:
         try:
-            # DB에서 vendor_email 목록 재조회
-            result = supabase_service.client.from_("purchase_orders").select("vendor_email").not_.is_("vendor_email", "null").execute()
-            db_emails = set(row["vendor_email"].strip().lower() for row in result.data if row.get("vendor_email"))
+            # DB에서 vendor_email과 user_id 목록 재조회
+            result = supabase_service.client.from_("purchase_orders").select("vendor_email,user_id").not_.is_("vendor_email", "null").execute()
+            # vendor_email과 user_id를 매핑하는 딕셔너리 생성
+            vendor_email_to_user_id = {row["vendor_email"].strip().lower(): row["user_id"] for row in result.data if row.get("vendor_email")}
+            db_emails = set(vendor_email_to_user_id.keys())
+            
             # 새로 발견된 이메일
             new_emails = db_emails - vendor_manager.vendor_emails
             if new_emails:
@@ -220,8 +234,8 @@ async def watch_new_vendor_emails(service, email_processor, mcp_service, vendor_
                     print(f"[NEW VENDOR EMAIL] {email} 발견! 히스토리 수집 시작...")
                     # 벤더 이메일 set에 추가
                     vendor_manager.vendor_emails.add(email)
-                    # 해당 이메일에 대한 히스토리 수집 트리거
-                    await collect_historical_emails_for_vendor(service, email_processor, mcp_service, vendor_manager, email, user_row["id"])
+                    # 해당 이메일에 대한 히스토리 수집 트리거 (user_id 전달)
+                    await collect_historical_emails_for_vendor(service, email_processor, mcp_service, vendor_manager, email, vendor_email_to_user_id[email])
             await asyncio.sleep(600)  # 10분마다 반복
         except Exception as e:
             print(f"[watch_new_vendor_emails] Error: {e}")
@@ -248,7 +262,7 @@ async def collect_historical_emails_for_vendor(service, email_processor, mcp_ser
                     metadataHeaders=['Subject', 'From', 'Date', 'To']
                 ).execute()
                 if is_vendor_email(message, vendor_manager):
-                    await process_email(service, msg, email_processor, mcp_service, vendor_manager, user_id)
+                    await process_email(service, msg, email_processor, mcp_service, vendor_manager, user_id)  # user_id 전달
             except Exception as e:
                 print(f"[HISTORY] Error processing message for {vendor_email}: {e}")
     except Exception as e:

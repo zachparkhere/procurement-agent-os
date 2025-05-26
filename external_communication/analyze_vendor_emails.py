@@ -5,7 +5,7 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 import json
 from dotenv import load_dotenv
 from po_agent_os.supabase_client import supabase
-from po_agent_os.llm_extract_info_needs import enrich_email_with_llm
+from llm_extract_info_needs import enrich_email_with_llm
 
 # Load environment variables
 load_dotenv()
