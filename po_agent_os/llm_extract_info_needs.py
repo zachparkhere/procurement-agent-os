@@ -1,8 +1,12 @@
+import sys
 import os
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.append(BASE_DIR)
+
 import json
 from openai import OpenAI
 from dotenv import load_dotenv
-from po_agent_os.Vendor_email_logger_agent.config import supabase
+from Vendor_email_logger_agent.config import supabase
 from datetime import datetime, timedelta
 import dateparser
 

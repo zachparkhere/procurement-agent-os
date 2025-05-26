@@ -1,16 +1,14 @@
-import os
 import sys
+import os
 from datetime import datetime
 from po_agent_os.supabase_client import supabase
 from dotenv import load_dotenv
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-sys.path.append(BASE_DIR)
-sys.path.append(os.path.join(BASE_DIR, "utils"))
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
-from analyze_vendor_emails import analyze_email_content
-from aggregate_context_blocks import aggregate_context_blocks as get_context_blocks
-from generate_multi_context_reply import generate_multi_context_reply as generate_reply_draft
+from external_communication.analyze_vendor_emails import analyze_email_content
+from external_communication.aggregate_context_blocks import aggregate_context_blocks as get_context_blocks
+from external_communication.generate_multi_context_reply import generate_multi_context_reply as generate_reply_draft
 from utils.email_thread_utils import get_latest_thread_id_for_po
 
 # Load Supabase

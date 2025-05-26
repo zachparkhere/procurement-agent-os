@@ -1,12 +1,10 @@
-import os
 import sys
+import os
 from datetime import datetime
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-sys.path.append(BASE_DIR)
-sys.path.append(os.path.join(BASE_DIR, "utils"))
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")))
 
-from handle_general_vendor_email import handle_general_vendor_email
+from external_communication.handle_general_vendor_email import handle_general_vendor_email
 from utils.attachment_parser import extract_text_from_attachments
 
 async def handle_vendor_reply_message(payload: dict):
