@@ -327,9 +327,15 @@ async def run_for_user(user_row):
         logger.error(f"[{user_row.get('email', 'unknown')}] Error in run_for_user: {e}")
 
 async def main():
-    # Supabase에서 email_access_token이 있는 모든 유저 조회
-    users = supabase.table("users").select("*").not_.is_("email_access_token", "null").execute().data
-    tasks = [run_for_user(user) for user in users]
+    # Supabase에서 모든 유저 조회 (email_access_token 조건 제거)
+    users = supabase.table("users").select("*").execute().data
+    print(f"Found {len(users)} users in database")
+    
+    tasks = []
+    for user in users:
+        print(f"Processing user: {user['email']}")
+        tasks.append(run_for_user(user))
+    
     await asyncio.gather(*tasks)
 
 if __name__ == "__main__":

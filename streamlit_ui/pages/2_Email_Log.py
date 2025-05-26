@@ -9,12 +9,24 @@ import html
 
 supabase = supabase
 
-# 이메일 전체 가져오기
+# 로그인된 유저 정보 (세션에서 가져옴)
+user_id = st.session_state.get("user_id")  # UUID
+user_email = st.session_state.get("user_email")  # 이메일 주소
+
+# 로그인 체크
+if not user_id or not user_email:
+    st.warning("You must be logged in to view your inbox.")
+    st.stop()
+
+# 이메일 조건: user_id 또는 sender/recipient_email 매칭
 email_res = supabase.table("email_logs").select(
-    "id, message_id, thread_id, po_number, sender_email, subject, body, created_at, direction, read, sent_at, received_at"
+    "id, message_id, thread_id, po_number, sender_email, recipient_email, subject, body, created_at, direction, read, sent_at, received_at"
+).or_(
+    f"user_id.eq.{user_id},sender_email.eq.{user_email},recipient_email.eq.{user_email}"
 ).order("created_at", desc=True).execute()
 
 emails = email_res.data or []
+
 
 # 📌 스레드별로 마지막 이메일만 (inbound인 것만)
 latest_inbound_per_thread = {}

@@ -3,8 +3,8 @@ import os
 from dotenv import load_dotenv
 from supabase import create_client
 
-# .env 파일을 프로젝트 루트에서 명시적으로 로드
-load_dotenv(os.path.join(os.path.dirname(os.path.dirname(__file__)), ".env"))
+# .env 파일을 po_agent_os 폴더에서 로드
+load_dotenv(os.path.join(os.path.dirname(os.path.dirname(__file__)), "po_agent_os", ".env"))
 
 class AgentSettings(BaseSettings):
     # Gmail API 설정
@@ -38,7 +38,7 @@ class AgentSettings(BaseSettings):
     PYTHONPATH: str = os.getenv('PYTHONPATH', '')
     
     class Config:
-        env_file = '.env'
+        env_file = os.path.join(os.path.dirname(os.path.dirname(__file__)), "po_agent_os", ".env")
         env_file_encoding = 'utf-8'
         case_sensitive = True
         extra = "allow"

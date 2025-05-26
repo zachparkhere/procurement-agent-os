@@ -8,31 +8,48 @@ import dateutil.parser  # ✅ 이거 pip install 필요함 (명령은 아래에)
 
 def get_gmail_service(user_row: dict):
     """Returns a Gmail API service authenticated with the user's token"""
-    expiry_raw = user_row["email_token_expiry"]
-    expiry_dt = dateutil.parser.parse(expiry_raw) if isinstance(expiry_raw, str) else expiry_raw
+    try:
+        expiry_raw = user_row["email_token_expiry"]
+        expiry_dt = dateutil.parser.parse(expiry_raw) if isinstance(expiry_raw, str) else expiry_raw
 
-    creds = Credentials(
-        token=user_row["email_access_token"],
-        refresh_token=user_row["email_refresh_token"],
-        token_uri="https://oauth2.googleapis.com/token",
-        client_id=os.getenv("GOOGLE_CLIENT_ID"),
-        client_secret=os.getenv("GOOGLE_CLIENT_SECRET"),
-        expiry=expiry_dt
-    )
+        print(f"🔑 Token info for {user_row['email']}:")
+        print(f"  - Expiry: {expiry_dt}")
+        print(f"  - Has refresh token: {bool(user_row.get('email_refresh_token'))}")
+        print(f"  - Has access token: {bool(user_row.get('email_access_token'))}")
 
-    # ✅ access token 만료 시 자동 갱신
-    if not creds.valid and creds.expired and creds.refresh_token:
-        print(f"♻️ Refreshing token for user {user_row['email']}")
-        creds.refresh(Request())
+        creds = Credentials(
+            token=user_row["email_access_token"],
+            refresh_token=user_row["email_refresh_token"],
+            token_uri="https://oauth2.googleapis.com/token",
+            client_id=os.getenv("GOOGLE_CLIENT_ID"),
+            client_secret=os.getenv("GOOGLE_CLIENT_SECRET"),
+            expiry=expiry_dt
+        )
 
-        # Supabase 업데이트
-        supabase.table("users").update({
-            "email_access_token": creds.token,
-            "email_token_expiry": creds.expiry.isoformat(),
-            "email_token_json": creds.to_json()
-        }).eq("id", user_row["id"]).execute()
+        # ✅ access token 만료 시 자동 갱신
+        if not creds.valid and creds.expired and creds.refresh_token:
+            print(f"♻️ Refreshing token for user {user_row['email']}")
+            try:
+                creds.refresh(Request())
+                print(f"✅ Token refreshed successfully for {user_row['email']}")
 
-    return build("gmail", "v1", credentials=creds)
+                # Supabase 업데이트
+                supabase.table("users").update({
+                    "email_access_token": creds.token,
+                    "email_token_expiry": creds.expiry.isoformat(),
+                    "email_token_json": creds.to_json()
+                }).eq("id", user_row["id"]).execute()
+                print(f"✅ Token updated in Supabase for {user_row['email']}")
+            except Exception as e:
+                print(f"❌ Failed to refresh token for {user_row['email']}: {str(e)}")
+                print(f"  - Error type: {type(e).__name__}")
+                raise
+
+        return build("gmail", "v1", credentials=creds)
+    except Exception as e:
+        print(f"❌ Error in get_gmail_service for {user_row.get('email', 'unknown')}: {str(e)}")
+        print(f"  - Error type: {type(e).__name__}")
+        raise
 
 def send_email_reply(service, to_email, subject, body, thread_id):
     from email.mime.text import MIMEText

@@ -24,6 +24,8 @@ else:
                 st.session_state["user"] = res.user
                 st.session_state["access_token"] = res.session.access_token
                 st.session_state["refresh_token"] = res.session.refresh_token
+                st.session_state["user_id"] = res.user.id
+                st.session_state["user_email"] = res.user.email
                 st.success("✅ Login successful!")
                 st.rerun()
             except Exception as e:

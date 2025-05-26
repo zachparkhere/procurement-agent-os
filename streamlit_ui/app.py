@@ -1,20 +1,12 @@
 import sys
 import os
-import logging
 
 # 시스템 경로 설정
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
-# logs 디렉토리 생성
-os.makedirs("logs", exist_ok=True)
-
-# 로깅 설정
-logging.basicConfig(
-    filename="logs/app.log",
-    filemode="a",
-    level=logging.INFO,
-    format="%(asctime)s - %(levelname)s - %(message)s"
-)
+# 공통 로깅 설정 불러오기
+from streamlit_ui.utils.logging_config import logging
+logger = logging.getLogger(__name__)
 
 import streamlit as st
 
@@ -33,8 +25,8 @@ pg = st.navigation([
 ])
 
 try:
-    logging.info("Launching Streamlit app.")
+    logger.info("🚀 Launching Streamlit app.")
     pg.run()
 except Exception as e:
-    logging.exception("❌ Error running Streamlit app:")
+    logger.exception("❌ Error running Streamlit app:")
     raise e
