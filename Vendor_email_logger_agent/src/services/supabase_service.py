@@ -56,25 +56,20 @@ class SupabaseService:
                 logger.info(f"Skip: Already exists for thread_id={thread_id}, message_id={message_id}")
                 return None
 
-            # 2. sender_email과 recipient_email로부터 user_id 매핑
-            sender_email = email_data.get("sender_email")
-            recipient_email = email_data.get("recipient_email")
-            
-            # sender_email 먼저 확인
-            user_id = await self.get_user_id_from_email(sender_email)
-            
-            # sender_email에서 찾지 못한 경우 recipient_email 확인
+            # 2. user_id 우선 할당, 없으면 sender/recipient_email로 매핑
+            user_id = email_data.get("user_id")
             if not user_id:
-                user_id = await self.get_user_id_from_email(recipient_email)
-                
-            logger.info(f"Mapped user_id {user_id} for email {sender_email or recipient_email}")
+                user_id = await self.get_user_id_from_email(email_data.get("sender_email"))
+                if not user_id:
+                    user_id = await self.get_user_id_from_email(email_data.get("recipient_email"))
+            logger.info(f"Mapped user_id {user_id} for email {email_data.get('sender_email') or email_data.get('recipient_email')}")
 
             # 3. email_log_data 생성 및 저장
             email_log_data = {
                 "thread_id": thread_id,
                 "direction": email_data.get("direction", "inbound"),
-                "sender_email": sender_email,
-                "recipient_email": recipient_email,
+                "sender_email": email_data.get("sender_email"),
+                "recipient_email": email_data.get("recipient_email"),
                 "subject": email_data.get("subject"),
                 "sent_at": email_data.get("sent_at"),
                 "created_at": now.isoformat(),

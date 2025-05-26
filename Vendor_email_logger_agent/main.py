@@ -89,7 +89,6 @@ async def process_email(service, msg, email_processor: EmailProcessor, mcp_servi
         # 이메일 주소 파싱
         from_email = extract_email_address(from_email)
         to_email = extract_email_address(to_email)
-        
         content = email_processor.get_message_content(msg_id)
 
         # PO 번호 추출

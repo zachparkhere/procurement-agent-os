@@ -5,6 +5,7 @@ from pathlib import Path
 from po_agent_os.supabase_client import supabase
 from dotenv import load_dotenv
 from Vendor_email_logger_agent.config import settings
+from email.utils import parseaddr
 
 # Load environment variables
 load_dotenv()
@@ -103,11 +104,8 @@ class VendorEmailManager:
         return is_vendor
 
 def extract_email_address(email_header: str) -> str:
-    """이메일 헤더에서 이메일 주소 추출"""
-    email_match = re.search(r'<([^>]+)>', email_header)
-    if email_match:
-        return email_match.group(1)
-    return email_header.strip()
+    _, email = parseaddr(email_header)
+    return email.lower()
 
 def is_vendor_email(email_data: Dict, vendor_manager) -> bool:
     """

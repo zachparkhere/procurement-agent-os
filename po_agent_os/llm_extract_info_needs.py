@@ -6,7 +6,7 @@ sys.path.append(BASE_DIR)
 import json
 from openai import OpenAI
 from dotenv import load_dotenv
-from Vendor_email_logger_agent.config import supabase
+from po_agent_os.supabase_client import supabase
 from datetime import datetime, timedelta
 import dateparser
 
