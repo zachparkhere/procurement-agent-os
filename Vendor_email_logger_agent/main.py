@@ -131,7 +131,7 @@ async def collect_historical_emails(service, email_processor: EmailProcessor, mc
             userId='me',
             labelIds=['INBOX'],
             q=query,
-            maxResults=200
+            maxResults=700
         ).execute()
         
         messages = results.get('messages', [])
@@ -144,7 +144,7 @@ async def collect_historical_emails(service, email_processor: EmailProcessor, mc
             userId='me',
             labelIds=['SENT'],
             q=query,
-            maxResults=200
+            maxResults=700
         ).execute()
         
         sent_messages = sent_results.get('messages', [])
