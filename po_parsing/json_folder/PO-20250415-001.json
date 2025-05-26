@@ -1,0 +1,40 @@
+{
+    "po_number": "PO-20250415-001",
+    "date": "TODAY",
+    "currency": "$",
+    "buyer": {
+        "company_name": "Acme Corporation",
+        "address": "123 Innovation Drive, San Francisco, CA 94105",
+        "phone": "(415) 555-1234"
+    },
+    "vendor": {
+        "vendor_company": "Global Supplies Inc.",
+        "vendor_name": "Procurement Department",
+        "vendor_address": "456 Market Street, New York, NY 10001",
+        "vendor_phone": "(212) 555-7890"
+    },
+    "items": [
+        {
+            "item_number": "23423423",
+            "item_name": "Product XYZ",
+            "quantity": 15,
+            "unit_price": 150,
+            "amount": 2250,
+            "category": "Unknown"
+        },
+        {
+            "item_number": "45645645",
+            "item_name": "Product ABC",
+            "quantity": 1,
+            "unit_price": 75,
+            "amount": 75,
+            "category": "Unknown"
+        }
+    ],
+    "subtotal": 2325,
+    "tax_rate": 0,
+    "shipping_fee": 0,
+    "other_fee": 0,
+    "total_amount": 2325,
+    "notes": "If you have any questions about this purchase order, please contact"
+}
