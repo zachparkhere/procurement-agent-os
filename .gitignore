@@ -1,5 +1,4 @@
-po_agent_os/credentials.json
-.env
+po_agent_os/credentials.json .env
 
 # Python
 __pycache__/
