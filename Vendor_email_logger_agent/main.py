@@ -19,7 +19,7 @@ from Vendor_email_logger_agent.src.processors.email_processor import EmailProces
 from Vendor_email_logger_agent.src.processors.attachment_processor import AttachmentProcessor
 from Vendor_email_logger_agent.src.services.mcp_service import MCPService
 from Vendor_email_logger_agent.src.services.supabase_service import SupabaseService
-from Vendor_email_logger_agent.src.gmail.message_filter import VendorEmailManager, is_vendor_email
+from Vendor_email_logger_agent.src.gmail.message_filter import VendorEmailManager, is_vendor_email, extract_email_address
 from external_communication.utils.email_utils import get_gmail_service
 from Vendor_email_logger_agent.config import supabase
 
@@ -85,6 +85,11 @@ async def process_email(service, msg, email_processor: EmailProcessor, mcp_servi
         sent_at = next((h['value'] for h in headers if h['name'] == 'Date'), '')
         direction = "outbound" if 'SENT' in message.get('labelIds', []) else "inbound"
         logger.info(f"[DB저장전] direction: {direction}, msg_id: {msg_id}, from: {from_email}, to: {to_email}")
+        
+        # 이메일 주소 파싱
+        from_email = extract_email_address(from_email)
+        to_email = extract_email_address(to_email)
+        
         content = email_processor.get_message_content(msg_id)
 
         # PO 번호 추출
