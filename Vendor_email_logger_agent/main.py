@@ -9,6 +9,7 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 from Vendor_email_logger_agent.config import settings, AgentSettings
 import openai
+from google.auth.transport.requests import Request
 
 from Vendor_email_logger_agent.src.gmail.gmail_watcher import GmailWatcher
 from Vendor_email_logger_agent.src.gmail.email_collector import EmailCollector
@@ -310,6 +311,24 @@ async def run_for_user(user_row):
         if service is None:
             logger.error(f"[{user_row['email']}] Gmail service 생성 실패 (None 반환). 토큰/인증 정보 확인 필요.")
             return
+
+        # 토큰 갱신 확인
+        if not service._credentials.valid and service._credentials.expired and service._credentials.refresh_token:
+            try:
+                service._credentials.refresh(Request())
+                logger.info(f"✅ Token refreshed successfully for {user_row['email']}")
+
+                # Supabase 업데이트
+                supabase.table("users").update({
+                    "email_access_token": service._credentials.token,
+                    "email_token_expiry": service._credentials.expiry.isoformat(),
+                    "email_token_json": service._credentials.to_json()
+                }).eq("id", user_row["id"]).execute()
+                logger.info(f"✅ Token updated in Supabase for {user_row['email']}")
+            except Exception as e:
+                logger.error(f"❌ Failed to refresh token for {user_row['email']}: {str(e)}")
+                logger.error(f"  - Error type: {type(e).__name__}")
+                return
 
         # 2. 벤더 이메일 매니저 (DB 기반)
         vendor_manager = VendorEmailManager(csv_path=None)  # DB만 사용
