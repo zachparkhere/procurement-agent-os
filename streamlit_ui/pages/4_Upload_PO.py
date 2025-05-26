@@ -1,5 +1,6 @@
 import sys
 import os
+import re
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")))
 import streamlit as st
 import datetime
@@ -25,8 +26,10 @@ if uploaded_files:
         user_email = getattr(getattr(st.session_state, 'user', None), 'email', 'anonymous')
         file_bytes = uploaded_file.getvalue()
         file_name = uploaded_file.name
+        # 파일명에서 한글, 공백, 특수문자 제거 (영문, 숫자, 언더스코어, 하이픈, 점만 허용)
+        safe_file_name = re.sub(r'[^A-Za-z0-9_.-]', '_', file_name)
         timestamp = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
-        storage_path = f"{user_email}/{timestamp}_{file_name}"
+        storage_path = f"{user_email}/{timestamp}_{safe_file_name}"
         res = supabase_storage.storage.from_("po-uploads").upload(
             storage_path,
             file_bytes,
