@@ -32,7 +32,10 @@ if uploaded_files:
             file_bytes,
             {"content-type": uploaded_file.type}
         )
-        if res.error is None:
+        st.write(res)  # 업로드 결과를 웹 UI에 출력
+        if hasattr(res, "error") and res.error is None:
             st.success("📦 File uploaded successfully!")
-        else:
+        elif hasattr(res, "error"):
             st.error(f"Storage upload failed for '{file_name}': {res.error.message}")
+        else:
+            st.info("res.error 속성이 없습니다. 업로드 결과를 위에서 확인하세요.")
