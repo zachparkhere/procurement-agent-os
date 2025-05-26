@@ -162,18 +162,22 @@ async def collect_historical_emails(service, email_processor: EmailProcessor, mc
                 date_str = clean_date_str(date_str)
                 logger.debug(f"[get_msg_date] final date_str: '{date_str}'")
                 try:
-                    dt = datetime.strptime(date_str, "%a, %d %b %Y %H:%M:%S %z")
+                    # RFC 2822 형식 시도 (예: Wed, 21 May 2025 05:30:31 GMT)
+                    dt = datetime.strptime(date_str, "%a, %d %b %Y %H:%M:%S %Z")
                 except ValueError:
                     try:
-                        dt = datetime.strptime(date_str, "%a, %d %b %Y %H:%M:%S")
-                        from datetime import timezone
-                        dt = dt.replace(tzinfo=timezone.utc)
+                        # 다른 일반적인 형식 시도
+                        dt = datetime.strptime(date_str, "%d %b %Y %H:%M:%S %z")
                     except ValueError:
                         try:
-                            dt = datetime.strptime(date_str, "%d %b %Y %H:%M:%S %z")
+                            # 시간대 없는 형식 시도
+                            dt = datetime.strptime(date_str, "%d %b %Y %H:%M:%S")
+                            from datetime import timezone
+                            dt = dt.replace(tzinfo=timezone.utc)
                         except ValueError:
                             try:
-                                dt = datetime.strptime(date_str, "%d %b %Y %H:%M:%S")
+                                # RFC 2822 형식 (시간대 없음)
+                                dt = datetime.strptime(date_str, "%a, %d %b %Y %H:%M:%S")
                                 from datetime import timezone
                                 dt = dt.replace(tzinfo=timezone.utc)
                             except Exception as e:
@@ -327,15 +331,9 @@ async def run_for_user(user_row):
         logger.error(f"[{user_row.get('email', 'unknown')}] Error in run_for_user: {e}")
 
 async def main():
-    # Supabase에서 모든 유저 조회 (email_access_token 조건 제거)
-    users = supabase.table("users").select("*").execute().data
-    print(f"Found {len(users)} users in database")
-    
-    tasks = []
-    for user in users:
-        print(f"Processing user: {user['email']}")
-        tasks.append(run_for_user(user))
-    
+    # Supabase에서 email_access_token이 있는 모든 유저 조회
+    users = supabase.table("users").select("*").not_.is_("email_access_token", "null").execute().data
+    tasks = [run_for_user(user) for user in users]
     await asyncio.gather(*tasks)
 
 if __name__ == "__main__":
