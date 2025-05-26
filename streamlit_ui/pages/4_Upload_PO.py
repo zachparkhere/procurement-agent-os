@@ -32,7 +32,6 @@ if uploaded_files:
             file_bytes,
             {"content-type": uploaded_file.type}
         )
-        st.write(res)  # 업로드 결과를 웹 UI에 출력
         if getattr(res, "path", None):
             st.success("📦 File uploaded successfully!")
         else:
