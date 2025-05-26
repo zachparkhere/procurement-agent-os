@@ -68,7 +68,7 @@ def authenticate_gmail():
             token.write(creds.to_json())
     return build('gmail', 'v1', credentials=creds)
 
-async def process_email(service, msg, email_processor: EmailProcessor, mcp_service: MCPService, vendor_manager: VendorEmailManager):
+async def process_email(service, msg, email_processor: EmailProcessor, mcp_service: MCPService, vendor_manager: VendorEmailManager, user_id):
     """이메일 처리"""
     try:
         msg_id = msg['id']
@@ -95,7 +95,8 @@ async def process_email(service, msg, email_processor: EmailProcessor, mcp_servi
             "sent_at": sent_at,
             "body_text": content["body_text"],
             "direction": direction,
-            "attachments": content["attachments"]
+            "attachments": content["attachments"],
+            "user_id": user_id
         }
         await email_processor.save_email_log(parsed_message)
         await mcp_service.send_message(parsed_message)
@@ -103,7 +104,7 @@ async def process_email(service, msg, email_processor: EmailProcessor, mcp_servi
         logger.error(f"Error processing email {msg['id']}: {str(e)}")
         raise
 
-async def collect_historical_emails(service, email_processor: EmailProcessor, mcp_service: MCPService, vendor_manager: VendorEmailManager, months_back=1):
+async def collect_historical_emails(service, email_processor: EmailProcessor, mcp_service: MCPService, vendor_manager: VendorEmailManager, user_row: dict, months_back=1):
     """과거 이메일 수집"""
     try:
         # 검색 쿼리 생성 (보낸 이메일과 받은 이메일 모두 포함)
@@ -132,7 +133,6 @@ async def collect_historical_emails(service, email_processor: EmailProcessor, mc
         ).execute()
         
         sent_messages = sent_results.get('messages', [])
-        # logger.info(f"Found {len(sent_messages)} sent messages")
         
         # 받은 메일 + 보낸 메일
         all_messages = messages + sent_messages
@@ -197,7 +197,7 @@ async def collect_historical_emails(service, email_processor: EmailProcessor, mc
                 result = is_vendor_email(message, vendor_manager)
                 logger.info(f"is_vendor_email 결과: {result}")
                 if result:
-                    await process_email(service, msg, email_processor, mcp_service, vendor_manager)
+                    await process_email(service, msg, email_processor, mcp_service, vendor_manager, user_row["id"])
             except Exception as e:
                 logger.error(f"Error processing message {msg['id']}: {e}")
                 continue
@@ -205,7 +205,7 @@ async def collect_historical_emails(service, email_processor: EmailProcessor, mc
     except Exception as e:
         logger.error(f"Error collecting historical emails: {e}")
 
-async def watch_new_vendor_emails(service, email_processor, mcp_service, vendor_manager):
+async def watch_new_vendor_emails(service, email_processor, mcp_service, vendor_manager, user_row):
     """10분마다 purchase_orders 테이블에서 vendor_email을 조회해 새로운 이메일이 있으면 히스토리 수집 트리거"""
     supabase_service = SupabaseService()
     while True:
@@ -221,18 +221,15 @@ async def watch_new_vendor_emails(service, email_processor, mcp_service, vendor_
                     # 벤더 이메일 set에 추가
                     vendor_manager.vendor_emails.add(email)
                     # 해당 이메일에 대한 히스토리 수집 트리거
-                    # (collect_historical_emails는 전체를 도는 구조라면, 이메일 필터링 추가 필요)
-                    # 아래는 예시: 해당 이메일만 대상으로 수집
-                    await collect_historical_emails_for_vendor(service, email_processor, mcp_service, vendor_manager, email)
+                    await collect_historical_emails_for_vendor(service, email_processor, mcp_service, vendor_manager, email, user_row["id"])
             await asyncio.sleep(600)  # 10분마다 반복
         except Exception as e:
             print(f"[watch_new_vendor_emails] Error: {e}")
             await asyncio.sleep(60)
 
-async def collect_historical_emails_for_vendor(service, email_processor, mcp_service, vendor_manager, vendor_email):
+async def collect_historical_emails_for_vendor(service, email_processor, mcp_service, vendor_manager, vendor_email, user_id):
     """특정 벤더 이메일에 대한 과거 이메일만 수집"""
     # Gmail API에서 해당 벤더 이메일과 관련된 과거 이메일만 검색
-    # (예시: from:vendor_email OR to:vendor_email)
     query = f'from:{vendor_email} OR to:{vendor_email}'
     print(f"[HISTORY] {vendor_email} 과거 이메일 수집 쿼리: {query}")
     try:
@@ -251,7 +248,7 @@ async def collect_historical_emails_for_vendor(service, email_processor, mcp_ser
                     metadataHeaders=['Subject', 'From', 'Date', 'To']
                 ).execute()
                 if is_vendor_email(message, vendor_manager):
-                    await process_email(service, msg, email_processor, mcp_service, vendor_manager)
+                    await process_email(service, msg, email_processor, mcp_service, vendor_manager, user_id)
             except Exception as e:
                 print(f"[HISTORY] Error processing message for {vendor_email}: {e}")
     except Exception as e:
@@ -297,57 +294,41 @@ async def run_for_user(user_row):
             logger.error(f"[{user_row['email']}] Gmail service 생성 실패 (None 반환). 토큰/인증 정보 확인 필요.")
             return
 
-        # 🔑 credentials 갱신 로직 (기존 그대로 유지)
+        # 토큰 갱신 확인
         credentials = service._http.credentials
         if not credentials.valid and credentials.expired and credentials.refresh_token:
             try:
                 credentials.refresh(Request())
-                logger.info(f"[{user_row['email']}] ✅ Token refreshed successfully")
+                logger.info(f"✅ Token refreshed successfully for {user_row['email']}")
 
+                # Supabase 업데이트
                 supabase.table("users").update({
                     "email_access_token": credentials.token,
                     "email_token_expiry": credentials.expiry.isoformat(),
                     "email_token_json": credentials.to_json()
                 }).eq("id", user_row["id"]).execute()
-                logger.info(f"[{user_row['email']}] ✅ Token updated in Supabase")
+                logger.info(f"✅ Token updated in Supabase for {user_row['email']}")
             except Exception as e:
-                logger.error(f"[{user_row['email']}] ❌ Failed to refresh token: {e}")
+                logger.error(f"❌ Failed to refresh token for {user_row['email']}: {str(e)}")
+                logger.error(f"  - Error type: {type(e).__name__}")
                 return
 
-        # ✅ 2. 이 유저의 vendor_email만 가져오기
-        po_result = supabase.table("purchase_orders").select("vendor_email") \
-            .eq("user_id", user_row["id"]) \
-            .not_.is_("vendor_email", "null") \
-            .execute()
-
-        vendor_emails = set(
-            row["vendor_email"].lower().strip()
-            for row in po_result.data
-            if row.get("vendor_email")
-        )
-
-        logger.info(f"[{user_row['email']}] 🔍 Loaded {len(vendor_emails)} vendor emails")
-
-        # ✅ VendorEmailManager에 넘김
-        vendor_manager = VendorEmailManager(vendor_emails=vendor_emails)
-
-        # 3. 서비스 초기화
+        # 2. 벤더 이메일 매니저 (DB 기반)
+        vendor_manager = VendorEmailManager(csv_path=None)  # DB만 사용
+        # 3. 서비스/프로세서 초기화
         text_processor = TextProcessor()
         mcp_service = MCPService()
         supabase_service = SupabaseService()
         email_processor = EmailProcessor(service, text_processor, supabase_client=supabase_service)
+        # 4. 실시간 감시자
         watcher = GmailWatcher(service, vendor_manager)
-
         logger.info(f"[{user_row['email']}] GmailWatcher initialized")
-
-        # 4. 이메일 수집 및 실시간 감시 병렬 실행
+        # 5. 벤더 이메일 실시간 감시 및 히스토리 수집 동시 실행
         await asyncio.gather(
-            collect_historical_emails(service, email_processor, mcp_service, vendor_manager, months_back=1),
-            watch_new_vendor_emails(service, email_processor, mcp_service, vendor_manager),
-            asyncio.to_thread(watcher.watch, lambda email: asyncio.create_task(
-                process_email(service, email, email_processor, mcp_service, vendor_manager)))
+            collect_historical_emails(service, email_processor, mcp_service, vendor_manager, user_row, months_back=1),
+            watch_new_vendor_emails(service, email_processor, mcp_service, vendor_manager, user_row),
+            asyncio.to_thread(watcher.watch, lambda email: asyncio.create_task(process_email(service, email, email_processor, mcp_service, vendor_manager, user_row["id"])))
         )
-
     except Exception as e:
         logger.error(f"[{user_row.get('email', 'unknown')}] Error in run_for_user: {e}")
 
