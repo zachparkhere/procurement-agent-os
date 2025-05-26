@@ -313,16 +313,17 @@ async def run_for_user(user_row):
             return
 
         # 토큰 갱신 확인
-        if not service._credentials.valid and service._credentials.expired and service._credentials.refresh_token:
+        credentials = service._http.credentials
+        if not credentials.valid and credentials.expired and credentials.refresh_token:
             try:
-                service._credentials.refresh(Request())
+                credentials.refresh(Request())
                 logger.info(f"✅ Token refreshed successfully for {user_row['email']}")
 
                 # Supabase 업데이트
                 supabase.table("users").update({
-                    "email_access_token": service._credentials.token,
-                    "email_token_expiry": service._credentials.expiry.isoformat(),
-                    "email_token_json": service._credentials.to_json()
+                    "email_access_token": credentials.token,
+                    "email_token_expiry": credentials.expiry.isoformat(),
+                    "email_token_json": credentials.to_json()
                 }).eq("id", user_row["id"]).execute()
                 logger.info(f"✅ Token updated in Supabase for {user_row['email']}")
             except Exception as e:
