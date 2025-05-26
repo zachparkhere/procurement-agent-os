@@ -297,41 +297,57 @@ async def run_for_user(user_row):
             logger.error(f"[{user_row['email']}] Gmail service 생성 실패 (None 반환). 토큰/인증 정보 확인 필요.")
             return
 
-        # 토큰 갱신 확인
+        # 🔑 credentials 갱신 로직 (기존 그대로 유지)
         credentials = service._http.credentials
         if not credentials.valid and credentials.expired and credentials.refresh_token:
             try:
                 credentials.refresh(Request())
-                logger.info(f"✅ Token refreshed successfully for {user_row['email']}")
+                logger.info(f"[{user_row['email']}] ✅ Token refreshed successfully")
 
-                # Supabase 업데이트
                 supabase.table("users").update({
                     "email_access_token": credentials.token,
                     "email_token_expiry": credentials.expiry.isoformat(),
                     "email_token_json": credentials.to_json()
                 }).eq("id", user_row["id"]).execute()
-                logger.info(f"✅ Token updated in Supabase for {user_row['email']}")
+                logger.info(f"[{user_row['email']}] ✅ Token updated in Supabase")
             except Exception as e:
-                logger.error(f"❌ Failed to refresh token for {user_row['email']}: {str(e)}")
-                logger.error(f"  - Error type: {type(e).__name__}")
+                logger.error(f"[{user_row['email']}] ❌ Failed to refresh token: {e}")
                 return
 
-        # 2. 벤더 이메일 매니저 (DB 기반)
-        vendor_manager = VendorEmailManager(csv_path=None)  # DB만 사용
-        # 3. 서비스/프로세서 초기화
+        # ✅ 2. 이 유저의 vendor_email만 가져오기
+        po_result = supabase.table("purchase_orders").select("vendor_email") \
+            .eq("user_id", user_row["id"]) \
+            .not_.is_("vendor_email", "null") \
+            .execute()
+
+        vendor_emails = set(
+            row["vendor_email"].lower().strip()
+            for row in po_result.data
+            if row.get("vendor_email")
+        )
+
+        logger.info(f"[{user_row['email']}] 🔍 Loaded {len(vendor_emails)} vendor emails")
+
+        # ✅ VendorEmailManager에 넘김
+        vendor_manager = VendorEmailManager(vendor_emails=vendor_emails)
+
+        # 3. 서비스 초기화
         text_processor = TextProcessor()
         mcp_service = MCPService()
         supabase_service = SupabaseService()
         email_processor = EmailProcessor(service, text_processor, supabase_client=supabase_service)
-        # 4. 실시간 감시자
         watcher = GmailWatcher(service, vendor_manager)
+
         logger.info(f"[{user_row['email']}] GmailWatcher initialized")
-        # 5. 벤더 이메일 실시간 감시 및 히스토리 수집 동시 실행
+
+        # 4. 이메일 수집 및 실시간 감시 병렬 실행
         await asyncio.gather(
             collect_historical_emails(service, email_processor, mcp_service, vendor_manager, months_back=1),
             watch_new_vendor_emails(service, email_processor, mcp_service, vendor_manager),
-            asyncio.to_thread(watcher.watch, lambda email: asyncio.create_task(process_email(service, email, email_processor, mcp_service, vendor_manager)))
+            asyncio.to_thread(watcher.watch, lambda email: asyncio.create_task(
+                process_email(service, email, email_processor, mcp_service, vendor_manager)))
         )
+
     except Exception as e:
         logger.error(f"[{user_row.get('email', 'unknown')}] Error in run_for_user: {e}")
 
