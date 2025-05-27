@@ -99,10 +99,10 @@ def handle_general_vendor_email():
                 "recipient_email": vendor_email,
                 "draft_body": draft_body,
                 "auto_approve": False,
-                "llm_analysis_result": None,
-                "info_needed_to_reply": None,
-                "suggested_reply_type": "general_reply",
-                "reply_needed": True
+                "llm_analysis_result": info.get("llm_analysis_result"),
+                "info_needed_to_reply": info.get("information_needed"),
+                "suggested_reply_type": info.get("suggested_reply_type", "general_reply"),
+                "reply_needed": info.get("reply_needed", True)
             }).execute()
 
             # 해당 이메일 status를 processed로 업데이트

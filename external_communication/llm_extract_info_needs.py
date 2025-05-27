@@ -47,8 +47,13 @@ def enrich_email_with_llm(subject: str, body: str, po_number: str = None) -> dic
         )
         content = response.choices[0].message.content
         parsed = json.loads(content)
-        if "delivery_date" not in parsed:
+        
+        # delivery_date 필드가 없거나 잘못된 형식인 경우 None으로 설정
+        if "delivery_date" not in parsed or not isinstance(parsed["delivery_date"], (str, type(None))):
             parsed["delivery_date"] = None
+        elif parsed["delivery_date"] == "null":
+            parsed["delivery_date"] = None
+            
     except Exception as e:
         print("❌ LLM parsing failed:", e)
         parsed = {

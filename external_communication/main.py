@@ -56,7 +56,7 @@ def receive_from_mcp(agent_id: str) -> List[Dict]:
 async def poll_new_pos():
     while True:
         try:
-            result = supabase.table("purchase_orders").select("po_number", "submitted_at") \
+            result = supabase.table("purchase_orders").select("po_number", "po_id", "submitted_at") \
                 .eq("human_confirmed", True) \
                 .is_("submitted_at", "null") \
                 .execute()
@@ -64,7 +64,7 @@ async def poll_new_pos():
             if result.data:
                 print(f"[🔔 POLL: PO] {len(result.data)} new POs found")
                 for po in result.data:
-                    await handle_po_message({"po_number": po["po_number"]})
+                    await handle_po_message({"po_number": po["po_number"], "po_id": po["po_id"]})
         except Exception as e:
             print(f"[❌ poll_new_pos ERROR] {e}")
         await asyncio.sleep(10)
