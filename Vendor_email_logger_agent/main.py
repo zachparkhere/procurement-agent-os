@@ -123,7 +123,7 @@ async def collect_historical_emails(service, email_processor: EmailProcessor, mc
     """과거 이메일 수집"""
     try:
         # 검색 쿼리 생성 (보낸 이메일과 받은 이메일 모두 포함)
-        query = f'after:{(datetime.utcnow() - timedelta(days=30*months_back)).strftime("%Y/%m/%d")}'
+        query = f'after:{(datetime.utcnow() - timedelta(days=14)).strftime("%Y/%m/%d")}'
         logger.info(f"Searching emails with query: {query}")
         
         # 받은 이메일 검색
