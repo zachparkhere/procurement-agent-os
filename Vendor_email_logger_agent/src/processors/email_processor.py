@@ -213,8 +213,9 @@ class EmailProcessor:
             po_number = message_data.get("po_number")
             attachments = message_data.get("attachments", [])
             if not po_number:
-                po_number = self.text_processor.extract_po_number(
-                    message_data.get("subject", "") + "\n" + message_data.get("body_text", ""),
+                po_number = self.text_processor.find_po_number(
+                    subject=message_data.get("subject", ""),
+                    body=message_data.get("body_text", ""),
                     attachments=attachments
                 )
                 message_data["po_number"] = po_number
@@ -440,9 +441,7 @@ class EmailProcessor:
         po_number = self.text_processor.find_po_number(
             subject=subject,
             body=body,
-            attachments=attachments,
-            thread_id=thread_id,
-            thread_po_cache=self.thread_po_cache
+            attachments=attachments
         )
 
         processed_email = {

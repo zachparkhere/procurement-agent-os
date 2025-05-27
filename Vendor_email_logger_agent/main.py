@@ -95,9 +95,7 @@ async def process_email(service, msg, email_processor: EmailProcessor, mcp_servi
         po_number = email_processor.text_processor.find_po_number(
             subject=subject,
             body=content["body_text"],
-            attachments=content["attachments"],
-            thread_id=message.get("threadId"),
-            thread_po_cache=email_processor.thread_po_cache
+            attachments=content["attachments"]
         )
 
         parsed_message = {
@@ -221,26 +219,36 @@ async def collect_historical_emails(service, email_processor: EmailProcessor, mc
         logger.error(f"Error collecting historical emails: {e}")
 
 async def watch_new_vendor_emails(service, email_processor, mcp_service, vendor_manager, user_row):
-    """10분마다 purchase_orders 테이블에서 vendor_email을 조회해 새로운 이메일이 있으면 히스토리 수집 트리거"""
+    """10분마다 현재 유저의 purchase_orders에서 vendor_email 조회해 새로운 이메일 있으면 수집"""
     supabase_service = SupabaseService()
     while True:
         try:
-            # DB에서 vendor_email과 user_id 목록 재조회
-            result = supabase_service.client.from_("purchase_orders").select("vendor_email,user_id").not_.is_("vendor_email", "null").execute()
-            # vendor_email과 user_id를 매핑하는 딕셔너리 생성
-            vendor_email_to_user_id = {row["vendor_email"].strip().lower(): row["user_id"] for row in result.data if row.get("vendor_email")}
-            db_emails = set(vendor_email_to_user_id.keys())
+            # ✅ 현재 user_id 기준으로 필터링하여 자신의 PO만 가져옴
+            result = supabase_service.client.from_("purchase_orders") \
+                .select("vendor_email,user_id") \
+                .eq("user_id", user_row["id"]) \
+                .not_.is_("vendor_email", "null") \
+                .execute()
             
-            # 새로 발견된 이메일
+            # vendor_email만 추출
+            vendor_email_to_user_id = {
+                row["vendor_email"].strip().lower(): row["user_id"]
+                for row in result.data if row.get("vendor_email")
+            }
+            db_emails = set(vendor_email_to_user_id.keys())
+
+            # 현재 감시 중인 이메일과 비교해 새로운 이메일 발견
             new_emails = db_emails - vendor_manager.vendor_emails
             if new_emails:
                 for email in new_emails:
                     print(f"[NEW VENDOR EMAIL] {email} 발견! 히스토리 수집 시작...")
-                    # 벤더 이메일 set에 추가
                     vendor_manager.vendor_emails.add(email)
-                    # 해당 이메일에 대한 히스토리 수집 트리거 (user_id 전달)
-                    await collect_historical_emails_for_vendor(service, email_processor, mcp_service, vendor_manager, email, vendor_email_to_user_id[email])
-            await asyncio.sleep(600)  # 10분마다 반복
+                    await collect_historical_emails_for_vendor(
+                        service, email_processor, mcp_service,
+                        vendor_manager, email, user_row["id"]  # ✅ 현재 user_row["id"] 사용
+                    )
+
+            await asyncio.sleep(600)  # 10분 주기
         except Exception as e:
             print(f"[watch_new_vendor_emails] Error: {e}")
             await asyncio.sleep(60)
