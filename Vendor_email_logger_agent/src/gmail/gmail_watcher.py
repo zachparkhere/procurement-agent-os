@@ -21,6 +21,18 @@ class GmailWatcher:
         self.error_count = 0
         self.max_errors = 3
 
+    def update_timezone(self, new_timezone):
+        """
+        시간대 업데이트
+        """
+        try:
+            self.user_timezone = timezone(new_timezone)
+            # 마지막 체크 시간을 새로운 시간대로 변환
+            self.last_check_time = datetime.now(self.user_timezone)
+            logger.info(f"[Watcher] 시간대 업데이트: {new_timezone}")
+        except Exception as e:
+            logger.error(f"[Watcher] 시간대 업데이트 실패: {e}")
+
     def get_new_emails(self) -> List[Dict]:
         """
         새로운 이메일만 가져오기

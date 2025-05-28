@@ -8,6 +8,7 @@ import bcrypt
 from po_agent_os.supabase_client_anon import supabase
 import requests
 from streamlit_ui.utils.logging_config import logging
+from Vendor_email_logger_agent.src.gmail.watcher_manager import watcher_manager
 
 # 로깅 설정
 logger = logging.getLogger(__name__)
@@ -93,6 +94,8 @@ if st.button("🔄 Detect Timezone"):
             ).eq("id", user_id).execute()
             
             if result.data:
+                # Watcher 시간대 업데이트
+                watcher_manager.update_watcher_timezone(user_email, detected_timezone)
                 st.success(f"✅ Timezone updated to {detected_timezone}")
                 st.rerun()
             else:
@@ -115,11 +118,14 @@ selected_timezone = st.selectbox(
 if selected_timezone != current_timezone:
     if st.button("💾 Save Timezone"):
         try:
+            # DB 업데이트
             result = supabase.table("users").update(
                 {"timezone": selected_timezone}
             ).eq("id", user_id).execute()
             
             if result.data:
+                # Watcher 시간대 업데이트
+                watcher_manager.update_watcher_timezone(user_email, selected_timezone)
                 st.success(f"✅ Timezone updated to {selected_timezone}")
                 st.rerun()
             else:
