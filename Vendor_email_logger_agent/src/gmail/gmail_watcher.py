@@ -139,31 +139,45 @@ class GmailWatcher:
             logger.debug(f"[Watcher] 벤더 이메일 아님: {from_email}")
             return None
 
-def run_for_user(user_email: str, interval: int = 15):
+async def poll_emails(interval: int = 15):
     """
-    특정 사용자의 이메일을 감시하는 함수
+    이메일 폴링 함수
     """
     try:
-        logger.info(f"[Watcher] 사용자 {user_email}의 이메일 감시 시작")
+        # DB에서 사용자 목록 가져오기
+        from po_agent_os.supabase_client_anon import supabase
+        users = supabase.table("users").select("email,timezone").execute()
         
-        # Gmail 서비스 가져오기
-        service = get_gmail_service(user_email)
-        if not service:
-            logger.error(f"[Watcher] 사용자 {user_email}의 Gmail 서비스를 초기화할 수 없음")
+        if not users.data:
+            logger.error("사용자 정보를 가져올 수 없음")
             return
         
-        # VendorManager 생성
-        vendor_manager = VendorManager()
-        
-        # DB에서 사용자의 timezone 가져오기
-        from po_agent_os.supabase_client_anon import supabase
-        user_data = supabase.table("users").select("timezone").eq("email", user_email).single().execute()
-        timezone = user_data.data.get("timezone", "UTC") if user_data.data else "UTC"
-        
-        # GmailWatcher 생성 및 시작
-        watcher = GmailWatcher(service, vendor_manager, user_email, timezone)
-        watcher.watch(lambda email: process_email(email, user_email))
+        # 각 사용자별로 이메일 감시 시작
+        for user in users.data:
+            user_email = user.get('email')
+            timezone = user.get('timezone', 'UTC')
+            
+            if not user_email:
+                continue
+                
+            try:
+                # 각 사용자별로 Gmail 서비스 가져오기
+                service = get_gmail_service(user_email)  # user_email 전달
+                if not service:
+                    logger.error(f"[Watcher] 사용자 {user_email}의 Gmail 서비스를 초기화할 수 없음")
+                    continue
+                
+                # VendorManager 생성
+                vendor_manager = VendorManager()
+                
+                # GmailWatcher 생성 및 시작
+                watcher = GmailWatcher(service, vendor_manager, user_email, timezone)
+                watcher.watch(lambda email: process_email(email, user_email))
+            except Exception as e:
+                logger.error(f"[{user_email}] Error in poll_emails: {e}")
+                logger.error(traceback.format_exc())
+                continue
         
     except Exception as e:
-        logger.error(f"[{user_email}] Error in run_for_user: {e}")
+        logger.error(f"Error in poll_emails: {e}")
         logger.error(traceback.format_exc())
