@@ -8,8 +8,9 @@ import traceback
 import logging
 from googleapiclient.discovery import Resource
 from pytz import timezone, UTC
-from services.vendor_manager import VendorManager
-from gmail.gmail_auth import get_gmail_service
+from Vendor_email_logger_agent.src.services.vendor_manager import VendorManager
+from Vendor_email_logger_agent.src.gmail.gmail_auth import get_gmail_service
+from Vendor_email_logger_agent.src.po_agent_os.supabase_client_anon import supabase
 
 logger = logging.getLogger(__name__)
 
@@ -170,7 +171,6 @@ def run_for_user(user_email: str, interval: int = 15):
         vendor_manager = VendorManager()
         
         # DB에서 사용자의 timezone 가져오기
-        from po_agent_os.supabase_client_anon import supabase
         user_data = supabase.table("users").select("timezone").eq("email", user_email).single().execute()
         timezone = user_data.data.get("timezone", "UTC") if user_data.data else "UTC"
         
@@ -188,7 +188,6 @@ async def poll_emails(interval: int = 15):
     """
     try:
         # DB에서 사용자 목록 가져오기
-        from po_agent_os.supabase_client_anon import supabase
         users = supabase.table("users").select("email,timezone").execute()
         
         if not users.data:

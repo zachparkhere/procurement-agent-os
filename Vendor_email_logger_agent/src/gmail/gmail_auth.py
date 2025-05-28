@@ -7,7 +7,7 @@ import google.auth.transport.requests
 from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
-from Vendor_email_logger_agent.config import settings
+from Vendor_email_logger_agent.src.config import settings
 
 SCOPES = ['https://www.googleapis.com/auth/gmail.readonly']
 
