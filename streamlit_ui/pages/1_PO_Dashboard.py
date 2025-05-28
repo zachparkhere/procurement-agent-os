@@ -16,38 +16,24 @@ if "user" not in st.session_state:
     st.warning("Please log in to continue.")
     st.stop()
 
-# 디버깅: 세션 상태, user 객체 정보만 출력
-# st.write("[DEBUG] session_state:", dict(st.session_state))
-# st.write("[DEBUG] user:", st.session_state.get("user"))
-
-# 토큰을 session_state에서 직접 꺼내서 사용
 access_token = st.session_state.get("access_token")
 refresh_token = st.session_state.get("refresh_token")
 if not access_token or not refresh_token:
     st.error("Missing tokens. Please log in again.")
     st.stop()
 
-# ✅ Set Supabase auth session
 try:
-    supabase.auth.set_session(
-        access_token,
-        refresh_token
-    )
+    supabase.auth.set_session(access_token, refresh_token)
 except Exception as e:
     st.error("Authentication failed. Please log in again.")
     st.exception(e)
     st.stop()
+
 st.sidebar.markdown(f"**Logged in as:** {st.session_state.user.email}")
 
-# Supabase user ID
 user_email = st.session_state.user.email
 user_row = supabase.table("users").select("id").eq("email", user_email).single().execute().data
 user_id = user_row["id"]
-
-# Debugging output
-# st.write("[DEBUG] user:", st.session_state.get("user"))
-# st.write("[DEBUG] access_token:", getattr(st.session_state.user, "access_token", None))
-# st.write("[DEBUG] refresh_token:", getattr(st.session_state.user, "refresh_token", None))
 
 po_list = fetch_user_pos(user_id=user_id)
 
@@ -85,22 +71,27 @@ else:
 
                 card_style = f"""
                     background-color: #fff;
-                    border: 2px solid {border_color};
+                    border: 1px solid {border_color};
                     border-radius: 16px;
-                    padding: 20px;
-                    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
-                    margin-bottom: 24px;
+                    padding: 12px;
+                    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+                    margin-bottom: 16px;
                 """
 
                 st.markdown(f"<div style='{card_style}'>", unsafe_allow_html=True)
 
-                st.markdown(f"<div style='font-size:1.1em; font-weight:bold;'>🆔 {po_number}</div>", unsafe_allow_html=True)
-                st.markdown(f"<div style='color:gray; margin-bottom:12px;'>Vendor: {vendor_name}</div>", unsafe_allow_html=True)
+                # 상단: PO 번호 + Edit 토글 버튼
+                top_cols = st.columns([0.8, 0.2])
+                with top_cols[0]:
+                    st.markdown(f"<div style='font-size:1.05em; font-weight:bold;'>🆔 {po_number}</div>", unsafe_allow_html=True)
+                    st.markdown(f"<div style='color:gray; margin-bottom:8px;'>Vendor: {vendor_name}</div>", unsafe_allow_html=True)
+                with top_cols[1]:
+                    st.toggle("✏️", key=edit_key)
 
                 st.markdown(f"**📅 Expected Delivery Date**: {expected_str or 'None'}")
                 st.markdown(f"**📦 ETA**: {eta_str or 'Not set'}")
 
-                if not st.toggle("✏️ Edit", key=edit_key):
+                if not st.session_state.get(edit_key, False):
                     color = (
                         "red" if status_text_lower in ["delayed", "cancelled"]
                         else "green" if status_text_lower == "done"
@@ -121,10 +112,9 @@ else:
                         else:
                             supabase.table("purchase_orders").update({
                                 "status": new_status,
-                                "eta": new_eta,
-                                "expected_delivery_date": new_expected
+                                "eta": new_eta if new_eta.strip() else None,
+                                "expected_delivery_date": new_expected if new_expected.strip() else None
                             }).eq("po_id", po_id).execute()
-                            st.rerun()
 
                 summary, summary_date = fetch_latest_email_summary(po_number)
                 if summary:
@@ -139,7 +129,7 @@ else:
 
                 btn_cols = st.columns([0.5, 0.5])
                 with btn_cols[0]:
-                    st.button("📨 Generate Follow-up", key=f"followup-{po_id}")
+                    st.button("📨 Generate Follow-up", key=f"followup-{po_id}") 
                 with btn_cols[1]:
                     st.toggle("🔍 View Details", key=detail_key)
 
