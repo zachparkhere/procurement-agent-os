@@ -12,18 +12,15 @@ from google.auth.transport.requests import Request
 from dotenv import load_dotenv
 from utils.email_utils import get_gmail_service, send_email_reply
 
-# 프로젝트 루트(=po_agent_os) 경로
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-load_dotenv(dotenv_path=os.path.join(BASE_DIR, '.env'))
-
-sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'Vendor_email_logger_agent'))
-from config import supabase
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+from external_communication.config import settings
 
 # Gmail API scopes
 SCOPES = ['https://www.googleapis.com/auth/gmail.send', 'https://www.googleapis.com/auth/gmail.modify']
 
 # credentials.json, token.json 경로를 po_agent_os 폴더 기준으로 설정
-CREDENTIALS_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'credentials.json')
+BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+CREDENTIALS_PATH = os.path.join(BASE_DIR, 'credentials.json')
 TOKEN_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'token.json')
 
 def confirm_and_send_drafts():

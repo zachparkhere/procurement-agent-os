@@ -45,7 +45,8 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-CREDENTIALS_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'credentials.json')
+BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+CREDENTIALS_PATH = os.path.join(BASE_DIR, 'credentials.json')
 
 def authenticate_gmail():
     """Gmail API 인증"""

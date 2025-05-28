@@ -2,7 +2,7 @@
 
 import sys
 import os
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")))
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 from pydantic_settings import BaseSettings
 from typing import List, ClassVar
@@ -12,9 +12,12 @@ from po_agent_os.supabase_client import supabase
 # .env 로드
 load_dotenv(os.path.join(os.path.dirname(os.path.dirname(__file__)), ".env"))
 
+BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+GMAIL_CREDENTIALS_FILE: str = os.path.join(BASE_DIR, 'credentials.json')
+
 class AgentSettings(BaseSettings):
     # Gmail
-    GMAIL_CREDENTIALS_FILE: str = '../credentials.json'
+    GMAIL_CREDENTIALS_FILE: str = GMAIL_CREDENTIALS_FILE
     GMAIL_TOKEN_FILE: str = 'token.json'
     GMAIL_SCOPES: ClassVar[List[str]] = [
         'https://www.googleapis.com/auth/gmail.send',

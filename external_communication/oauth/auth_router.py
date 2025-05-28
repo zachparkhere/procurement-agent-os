@@ -10,13 +10,14 @@ from po_agent_os.supabase_client import supabase
 router = APIRouter()
 
 BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
-CREDENTIALS_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'credentials.json')
+CREDENTIALS_PATH = os.path.join(BASE_DIR, 'credentials.json')
 REDIRECT_URI = os.getenv("GOOGLE_REDIRECT_URI", "http://localhost:8000/auth/callback/google")
 SCOPES = ["https://mail.google.com/", "https://www.googleapis.com/auth/userinfo.email", "openid"]
 
 @router.get("/google")
 def start_google_oauth(user_id: str = None):
     print(f"🔑 [OAuth] Start Google login for user_id: {user_id}")
+    print(f"🔑 [OAuth] Using credentials file at: {CREDENTIALS_PATH}")
     flow = Flow.from_client_secrets_file(
         CREDENTIALS_PATH,
         scopes=SCOPES,

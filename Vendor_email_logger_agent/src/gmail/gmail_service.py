@@ -1,14 +1,18 @@
 # gmail/gmail_service.py
+import os
+import sys
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../..")))
 from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
-import os
+from Vendor_email_logger_agent.config import settings
 
 SCOPES = ['https://www.googleapis.com/auth/gmail.readonly']
 
 os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
 
-CREDENTIALS_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), 'credentials.json')
+BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../.."))
+CREDENTIALS_PATH = os.path.join(BASE_DIR, 'credentials.json')
 
 def get_gmail_service():
     creds = None
