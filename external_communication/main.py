@@ -78,10 +78,6 @@ async def poll_vendor_emails():
             # 벤더 이메일 처리 후 ETA 업데이트 실행
             print("[📅 ETA Update] Checking for ETA updates from new vendor emails...")
             process_eta_updates()
-            # 벤더 이메일 처리 후 PO 상태 업데이트
-            print("[🔄 PO Status] Updating PO statuses based on latest email...")
-            for po in supabase.table("purchase_orders").select("po_number").execute().data:
-                analyze_po_status(po["po_number"])
         except Exception as e:
             print(f"[❌ poll_vendor_emails ERROR] {e}")
         await asyncio.sleep(30)

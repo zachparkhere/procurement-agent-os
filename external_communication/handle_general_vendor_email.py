@@ -10,13 +10,14 @@ from external_communication.analyze_vendor_emails import analyze_email_content
 from external_communication.aggregate_context_blocks import aggregate_context_blocks as get_context_blocks
 from external_communication.generate_multi_context_reply import generate_multi_context_reply as generate_reply_draft
 from utils.email_thread_utils import get_latest_thread_id_for_po
+from utils.po_status_updater import handle_new_email
 
 # Load Supabase
 load_dotenv()
 SUPABASE_URL = os.getenv("SUPABASE_URL")
 SUPABASE_ANON_KEY = os.getenv("SUPABASE_ANON_KEY")
 
-def handle_general_vendor_email():
+async def handle_general_vendor_email():
     print("[📬 VENDOR AGENT] Scanning vendor replies...")
     # Step 1: 모든 이메일을 thread_id별로 최신순 정렬하여 가져옴
     response = supabase.table("email_logs") \
@@ -61,6 +62,8 @@ def handle_general_vendor_email():
             if po_response.data:
                 po_number = po_response.data[0]["po_number"]
                 print(f"🔗 Found PO number {po_number} mapped to thread {thread_id}")
+                # PO 상태 업데이트
+                await handle_new_email(po_number, email_body)
             else:
                 po_number = "UNKNOWN"
                 print("⚠️ Could not determine PO number — proceeding with placeholder.")
