@@ -9,9 +9,9 @@ from streamlit_ui.utils.logging_config import logging
 logger = logging.getLogger(__name__)
 
 import streamlit as st
+st.set_page_config(page_title="Shifts Procurement", layout="wide")
 
 def home():
-    st.set_page_config(page_title="Shifts Procurement", layout="wide")
     st.title("📦 Shifts Procurement Agent")
     st.markdown("Select a page from the left sidebar.")
 

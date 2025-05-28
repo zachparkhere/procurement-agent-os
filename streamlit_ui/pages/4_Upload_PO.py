@@ -6,6 +6,8 @@ import streamlit as st
 import datetime
 from supabase import create_client
 
+st.set_page_config(layout="wide")
+
 # 환경변수 또는 config에서 가져오기
 SUPABASE_URL = os.getenv("SUPABASE_URL")
 SUPABASE_KEY = os.getenv("SUPABASE_SERVICE_ROLE_KEY")

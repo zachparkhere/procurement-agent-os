@@ -11,6 +11,8 @@ from streamlit_ui.utils.logging_config import logging
 # 로깅 설정
 logger = logging.getLogger(__name__)
 
+st.set_page_config(layout="wide")
+
 # 🔐 Login check
 if "user" not in st.session_state:
     st.warning("Please log in to continue.")

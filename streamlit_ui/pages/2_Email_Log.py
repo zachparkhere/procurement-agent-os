@@ -6,6 +6,7 @@ from po_agent_os.supabase_client_anon import supabase
 from datetime import datetime
 import html
 
+st.set_page_config(layout="wide")
 
 supabase = supabase
 

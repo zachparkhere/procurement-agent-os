@@ -2,6 +2,7 @@ import sys
 import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")))
 import streamlit as st
+st.set_page_config(layout="wide")
 
 from datetime import datetime
 from po_agent_os.supabase_client_anon import supabase
