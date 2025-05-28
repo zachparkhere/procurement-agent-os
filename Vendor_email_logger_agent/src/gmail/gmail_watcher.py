@@ -20,7 +20,6 @@ class GmailWatcher:
         self.vendor_manager = vendor_manager
         self.user_timezone = timezone(user_timezone)
         self.user_email = user_email
-        self.last_check_time = datetime.now(self.user_timezone)
         self.processed_message_ids = set()
         self.error_count = 0
         self.max_errors = 3
@@ -31,27 +30,18 @@ class GmailWatcher:
         self.callback = callback
 
     def update_timezone(self, new_timezone: str):
-        """Update timezone and reset last check time"""
+        """Update timezone"""
         self.user_timezone = timezone(new_timezone)
-        self.last_check_time = datetime.now(self.user_timezone)
         logger.info(f"[Watcher-{self.user_email}] timezone 업데이트됨: {new_timezone}")
 
     def get_new_emails(self):
-        """Get new emails since last check"""
-        current_time = datetime.now(self.user_timezone)
-        search_after = self.last_check_time.strftime('%Y/%m/%d %H:%M:%S')
-        
-        logger.info(f"[Watcher-{self.user_email}] 검색 쿼리: after:{search_after}")
-        logger.info(f"[Watcher-{self.user_email}] 사용자 시간대: {self.user_timezone}")
-        logger.info(f"[Watcher-{self.user_email}] 사용자 현재 시간: {current_time}")
-        logger.info(f"[Watcher-{self.user_email}] 검색 시작 시간 (UTC): {self.last_check_time}")
-        
+        """Get recent emails"""
         try:
-            # 검색 쿼리 실행
-            query = f'after:{search_after}'
+            # 최근 메시지 가져오기 (INBOX와 SENT만)
             results = self.service.users().messages().list(
                 userId='me',
-                q=query
+                maxResults=10,  # 최근 10개 메시지만 가져오기
+                labelIds=['INBOX', 'SENT']  # INBOX와 SENT만 포함
             ).execute()
             
             messages = results.get('messages', [])
@@ -73,11 +63,11 @@ class GmailWatcher:
                         self.processed_message_ids.add(msg_id)
             
             logger.info(f"[Watcher-{self.user_email}] 새 메시지 {len(new_emails)}건 발견")
-            self.last_check_time = current_time
             return new_emails
             
         except Exception as e:
             logger.error(f"[Watcher-{self.user_email}] 이메일 검색 중 오류 발생: {e}")
+            logger.error(traceback.format_exc())  # 스택 트레이스 추가
             return []
 
     def watch(self, callback):
@@ -115,7 +105,6 @@ class GmailWatcher:
                 if self.error_count >= self.max_errors:
                     logger.error("최대 에러 횟수 도달. 감시 재시작")
                     self.error_count = 0
-                    self.last_check_time = datetime.now(self.user_timezone)
                 
                 time.sleep(min(10 * self.error_count, 30))
 

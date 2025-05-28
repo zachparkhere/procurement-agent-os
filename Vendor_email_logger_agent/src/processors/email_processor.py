@@ -411,7 +411,8 @@ class EmailProcessor:
 
     def is_already_logged(self, message_id: str) -> bool:
         try:
-            existing = self.supabase.client.from_("email_logs").select("message_id").eq("message_id", message_id).execute().data
+            # supabase.client 대신 supabase 직접 사용
+            existing = self.supabase.table("email_logs").select("message_id").eq("message_id", message_id).execute().data
             return bool(existing)
         except Exception as e:
             logger.error(f"Error checking duplicate message_id: {e}")
@@ -484,6 +485,7 @@ class EmailProcessor:
                 "attachments": email_data["attachments"]
             }
             
+            # supabase.client 대신 supabase 직접 사용
             result = self.supabase.table("email_logs").insert(data).execute()
             return result
         except Exception as e:
