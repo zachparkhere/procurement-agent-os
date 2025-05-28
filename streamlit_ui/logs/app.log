@@ -456,3 +456,34 @@ Traceback (most recent call last):
   File "C:\Users\USER\procurement-agent-os\.venv\lib\site-packages\streamlit_extras\switch_page_button\__init__.py", line 21, in switch_page
     from streamlit.source_util import get_pages
 ImportError: cannot import name 'get_pages' from 'streamlit.source_util' (C:\Users\USER\procurement-agent-os\.venv\lib\site-packages\streamlit\source_util.py)
+2025-05-28 19:56:31,255 - INFO - \U0001f680 Launching Streamlit app.
+2025-05-28 19:56:34,550 - INFO - \U0001f680 Launching Streamlit app.
+2025-05-28 19:56:39,019 - INFO - \U0001f680 Launching Streamlit app.
+2025-05-28 19:56:42,742 - INFO - \U0001f680 Launching Streamlit app.
+2025-05-28 19:56:42,884 - INFO - \U0001f680 Launching Streamlit app.
+2025-05-28 19:56:43,988 - INFO - HTTP Request: POST https://hgxqgvqrnyuoyxnnptwt.supabase.co/auth/v1/token?grant_type=password "HTTP/2 200 OK"
+2025-05-28 19:56:44,052 - INFO - \U0001f680 Launching Streamlit app.
+2025-05-28 19:56:44,816 - INFO - \U0001f680 Launching Streamlit app.
+2025-05-28 19:56:47,535 - INFO - HTTP Request: GET https://hgxqgvqrnyuoyxnnptwt.supabase.co/auth/v1/user "HTTP/2 200 OK"
+2025-05-28 19:56:48,127 - INFO - HTTP Request: GET https://hgxqgvqrnyuoyxnnptwt.supabase.co/rest/v1/users?select=id&email=eq.zach%40shiftsai.com "HTTP/2 200 OK"
+2025-05-28 19:56:48,617 - INFO - HTTP Request: GET https://hgxqgvqrnyuoyxnnptwt.supabase.co/rest/v1/purchase_orders?select=%2A&user_id=eq.3f2f9ee5-728c-43af-b531-a9f841497c22&order=created_at.desc "HTTP/2 200 OK"
+2025-05-28 19:56:49,103 - INFO - HTTP Request: GET https://hgxqgvqrnyuoyxnnptwt.supabase.co/rest/v1/email_logs?select=summary%2Ccreated_at&po_number=eq.PO-240430-002&order=created_at.desc&limit=1 "HTTP/2 200 OK"
+2025-05-28 19:56:49,301 - INFO - HTTP Request: GET https://hgxqgvqrnyuoyxnnptwt.supabase.co/rest/v1/po_items?select=%2A&po_number=eq.PO-240430-002&order=item_no.asc "HTTP/2 200 OK"
+2025-05-28 19:56:49,796 - INFO - HTTP Request: GET https://hgxqgvqrnyuoyxnnptwt.supabase.co/rest/v1/email_logs?select=summary%2Ccreated_at&po_number=eq.PO-202505-D04&order=created_at.desc&limit=1 "HTTP/2 200 OK"
+2025-05-28 19:56:49,978 - INFO - HTTP Request: GET https://hgxqgvqrnyuoyxnnptwt.supabase.co/rest/v1/po_items?select=%2A&po_number=eq.PO-202505-D04&order=item_no.asc "HTTP/2 200 OK"
+2025-05-28 19:56:53,816 - INFO - \U0001f680 Launching Streamlit app.
+2025-05-28 19:56:54,411 - INFO - HTTP Request: GET https://hgxqgvqrnyuoyxnnptwt.supabase.co/auth/v1/user "HTTP/2 200 OK"
+2025-05-28 19:56:54,932 - INFO - HTTP Request: GET https://hgxqgvqrnyuoyxnnptwt.supabase.co/rest/v1/users?select=id&email=eq.zach%40shiftsai.com "HTTP/2 200 OK"
+2025-05-28 19:56:55,395 - INFO - HTTP Request: GET https://hgxqgvqrnyuoyxnnptwt.supabase.co/rest/v1/purchase_orders?select=%2A&user_id=eq.3f2f9ee5-728c-43af-b531-a9f841497c22&order=created_at.desc "HTTP/2 200 OK"
+2025-05-28 19:56:55,876 - INFO - HTTP Request: GET https://hgxqgvqrnyuoyxnnptwt.supabase.co/rest/v1/email_logs?select=summary%2Ccreated_at&po_number=eq.PO-240430-002&order=created_at.desc&limit=1 "HTTP/2 200 OK"
+2025-05-28 19:56:56,334 - INFO - HTTP Request: GET https://hgxqgvqrnyuoyxnnptwt.supabase.co/rest/v1/po_items?select=%2A&po_number=eq.PO-240430-002&order=item_no.asc "HTTP/2 200 OK"
+2025-05-28 19:56:56,509 - INFO - HTTP Request: GET https://hgxqgvqrnyuoyxnnptwt.supabase.co/rest/v1/email_logs?select=summary%2Ccreated_at&po_number=eq.PO-202505-D04&order=created_at.desc&limit=1 "HTTP/2 200 OK"
+2025-05-28 19:56:56,678 - INFO - HTTP Request: GET https://hgxqgvqrnyuoyxnnptwt.supabase.co/rest/v1/po_items?select=%2A&po_number=eq.PO-202505-D04&order=item_no.asc "HTTP/2 200 OK"
+2025-05-28 19:56:58,285 - INFO - \U0001f680 Launching Streamlit app.
+2025-05-28 19:56:58,751 - INFO - HTTP Request: GET https://hgxqgvqrnyuoyxnnptwt.supabase.co/auth/v1/user "HTTP/2 200 OK"
+2025-05-28 19:56:59,300 - INFO - HTTP Request: GET https://hgxqgvqrnyuoyxnnptwt.supabase.co/rest/v1/users?select=id&email=eq.zach%40shiftsai.com "HTTP/2 200 OK"
+2025-05-28 19:56:59,559 - INFO - HTTP Request: GET https://hgxqgvqrnyuoyxnnptwt.supabase.co/rest/v1/purchase_orders?select=%2A&user_id=eq.3f2f9ee5-728c-43af-b531-a9f841497c22&order=created_at.desc "HTTP/2 200 OK"
+2025-05-28 19:57:00,038 - INFO - HTTP Request: GET https://hgxqgvqrnyuoyxnnptwt.supabase.co/rest/v1/email_logs?select=summary%2Ccreated_at&po_number=eq.PO-240430-002&order=created_at.desc&limit=1 "HTTP/2 200 OK"
+2025-05-28 19:57:00,230 - INFO - HTTP Request: GET https://hgxqgvqrnyuoyxnnptwt.supabase.co/rest/v1/po_items?select=%2A&po_number=eq.PO-240430-002&order=item_no.asc "HTTP/2 200 OK"
+2025-05-28 19:57:00,714 - INFO - HTTP Request: GET https://hgxqgvqrnyuoyxnnptwt.supabase.co/rest/v1/email_logs?select=summary%2Ccreated_at&po_number=eq.PO-202505-D04&order=created_at.desc&limit=1 "HTTP/2 200 OK"
+2025-05-28 19:57:00,897 - INFO - HTTP Request: GET https://hgxqgvqrnyuoyxnnptwt.supabase.co/rest/v1/po_items?select=%2A&po_number=eq.PO-202505-D04&order=item_no.asc "HTTP/2 200 OK"

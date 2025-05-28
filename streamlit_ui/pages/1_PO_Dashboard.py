@@ -127,11 +127,7 @@ else:
                 categories = list(set(item.get('category', '') for item in items if item.get('category')))
                 st.markdown(f"**📂 Item Categories**: {', '.join(categories) if categories else '(TBD)'}")
 
-                btn_cols = st.columns([0.5, 0.5])
-                with btn_cols[0]:
-                    st.button("📨 Generate Follow-up", key=f"followup-{po_id}") 
-                with btn_cols[1]:
-                    st.toggle("🔍 View Details", key=detail_key)
+                st.toggle("🔍 View Details", key=detail_key)
 
                 if st.session_state.get(detail_key, False):
                     st.markdown("---")
