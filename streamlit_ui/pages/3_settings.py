@@ -9,6 +9,7 @@ from po_agent_os.supabase_client_anon import supabase
 import requests
 from streamlit_ui.utils.logging_config import logging
 from Vendor_email_logger_agent.src.gmail.watcher_manager import watcher_manager
+import pytz
 
 # 로깅 설정
 logger = logging.getLogger(__name__)
@@ -71,14 +72,41 @@ st.markdown("---")
 st.subheader("🌍 Timezone Settings")
 
 def get_timezone_from_ip():
+    """
+    IP 기반으로 시간대 감지
+    """
     try:
-        response = requests.get('http://ip-api.com/json/')
-        data = response.json()
-        if data['status'] == 'success':
-            return data['timezone']
+        # 여러 서비스 시도
+        services = [
+            'http://ip-api.com/json/',
+            'https://ipapi.co/json/',
+            'https://ipwho.is/'
+        ]
+        
+        for service in services:
+            try:
+                response = requests.get(service, timeout=5)
+                data = response.json()
+                logger.info(f"[Timezone Detection] Response from {service}: {data}")
+                
+                if service == 'http://ip-api.com/json/':
+                    if data['status'] == 'success':
+                        return data['timezone']
+                elif service == 'https://ipapi.co/json/':
+                    if 'timezone' in data:
+                        return data['timezone']
+                elif service == 'https://ipwho.is/':
+                    if 'timezone' in data:
+                        return data['timezone']['id']
+            except Exception as e:
+                logger.warning(f"Failed to get timezone from {service}: {e}")
+                continue
+                
+        logger.error("All timezone detection services failed")
+        return 'UTC'
     except Exception as e:
         logger.error(f"Failed to detect timezone: {e}")
-    return 'UTC'
+        return 'UTC'
 
 # 현재 시간대 표시
 st.markdown(f"**Current Timezone**: {current_timezone}")
@@ -107,7 +135,6 @@ if st.button("🔄 Detect Timezone"):
         st.info("Timezone is already set correctly")
 
 # 수동 선택 옵션
-import pytz
 all_timezones = pytz.all_timezones
 selected_timezone = st.selectbox(
     "Or select timezone manually",

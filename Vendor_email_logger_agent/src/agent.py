@@ -3,7 +3,7 @@
 from typing import Dict, List, Optional
 import json
 from datetime import datetime
-from gmail.gmail_watcher import poll_emails
+from gmail.watcher_manager import watcher_manager
 from gmail.message_filter import is_vendor_email
 from services.mcp_service import MCPService
 from utils.text_processor import TextProcessor
@@ -117,9 +117,20 @@ class VendorEmailLoggerAgent:
         }
         await self.mcp_service.send_message(message)
 
-    async def start_monitoring(self, interval: int = 15):
-        """Start monitoring emails"""
+    async def start_monitoring(self, user_email: str, interval: int = 15):
+        """Start monitoring emails for a specific user"""
         try:
-            await poll_emails(interval=interval)
+            # WatcherManager를 통해 이메일 감시 시작
+            watcher = watcher_manager.get_watcher(user_email)
+            if not watcher:
+                raise Exception(f"No watcher found for user {user_email}")
+            
+            # 이메일 처리 콜백 설정
+            watcher.set_callback(self.process_email)
+            
+            logger.info(f"Started monitoring emails for {user_email}")
+        except Exception as e:
+            logger.error(f"Error starting monitoring for {user_email}: {e}")
+            raise e
         finally:
             await self.mcp_service.close()
