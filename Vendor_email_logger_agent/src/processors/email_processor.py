@@ -204,9 +204,9 @@ class EmailProcessor:
             now = datetime.utcnow()
             
             # 저장 전 중복 체크
-            existing = self.supabase.client.from_("email_logs").select("message_id").eq("message_id", message_data["message_id"]).execute().data
+            existing = self.supabase.from_("email_logs").select("message_id").eq("message_id", message_data["message_id"]).execute().data
             if existing:
-                logger.info(f"Duplicate message_id {message_data['message_id']} detected, skipping save.")
+                logger.info(f"Skip: Already exists for message_id={message_data['message_id']}")
                 return None
 
             # PO 번호 추출 (정규식+LLM)

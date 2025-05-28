@@ -237,7 +237,7 @@ async def main():
         text_processor = TextProcessor()
         mcp_service = MCPService()
         supabase_service = SupabaseService()
-        email_processor = EmailProcessor(service, text_processor, supabase_client=supabase_service)
+        email_processor = EmailProcessor(service, text_processor, supabase_service)
         
         # 과거 이메일 수집
         await collect_historical_emails(service, email_processor, mcp_service, months_back=1)

@@ -22,7 +22,6 @@ from Vendor_email_logger_agent.src.services.mcp_service import MCPService
 from Vendor_email_logger_agent.src.services.supabase_service import SupabaseService
 from Vendor_email_logger_agent.src.gmail.message_filter import VendorEmailManager, is_vendor_email, extract_email_address
 from external_communication.utils.email_utils import get_gmail_service
-from Vendor_email_logger_agent.config import supabase
 
 # Load settings
 settings = AgentSettings()
@@ -48,6 +47,9 @@ logger = logging.getLogger(__name__)
 
 BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 CREDENTIALS_PATH = os.path.join(BASE_DIR, 'credentials.json')
+
+# SupabaseService 인스턴스 생성
+supabase_service = SupabaseService()
 
 def authenticate_gmail():
     """Gmail API 인증"""
@@ -222,7 +224,6 @@ async def collect_historical_emails(service, email_processor: EmailProcessor, mc
 
 async def watch_new_vendor_emails(service, email_processor, mcp_service, vendor_manager, user_row):
     """10분마다 현재 유저의 purchase_orders에서 vendor_email 조회해 새로운 이메일 있으면 수집"""
-    supabase_service = SupabaseService()
     while True:
         try:
             # ✅ 현재 user_id 기준으로 필터링하여 자신의 PO만 가져옴
@@ -336,16 +337,16 @@ async def run_for_user(user_row):
         vendor_manager = VendorEmailManager()
         
         # DB에서 사용자의 timezone 가져오기
-        user_data = supabase.table("users").select("timezone").eq("email", user_email).single().execute()
+        user_data = supabase_service.client.from_("users").select("timezone").eq("email", user_email).single().execute()
         timezone = user_data.data.get("timezone", "UTC") if user_data.data else "UTC"
         
         # 이메일 프로세서와 MCP 서비스 생성
         text_processor = TextProcessor()
-        email_processor = EmailProcessor(service, text_processor, supabase)
+        user_supabase_service = SupabaseService()  # 각 사용자별 SupabaseService 인스턴스 생성
+        email_processor = EmailProcessor(service, text_processor, user_supabase_service)
         mcp_service = MCPService()
         
         # 벤더 이메일 목록 가져오기
-        supabase_service = SupabaseService()
         result = supabase_service.client.from_("purchase_orders") \
             .select("vendor_email,user_id") \
             .eq("user_id", user_row["id"]) \
@@ -383,9 +384,19 @@ async def run_for_user(user_row):
 
 async def main():
     # Supabase에서 email_access_token이 있는 모든 유저 조회
-    users = supabase.table("users").select("*").not_.is_("email_access_token", "null").execute().data
-    tasks = [run_for_user(user) for user in users]
-    await asyncio.gather(*tasks)
+    users = supabase_service.get_users_with_email_access()
+    
+    if not users:
+        logger.error("No users found with email access")
+        return
+        
+    for user in users:
+        try:
+            await run_for_user(user)
+        except Exception as e:
+            logger.error(f"Error processing user {user.get('email')}: {e}")
+            logger.error(traceback.format_exc())
+            continue
 
 if __name__ == "__main__":
     asyncio.run(main())
