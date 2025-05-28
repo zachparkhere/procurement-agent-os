@@ -10,7 +10,7 @@ from googleapiclient.discovery import Resource
 from pytz import timezone, UTC
 from Vendor_email_logger_agent.src.services.vendor_manager import VendorManager
 from Vendor_email_logger_agent.src.gmail.gmail_auth import get_gmail_service
-from Vendor_email_logger_agent.src.po_agent_os.supabase_client_anon import supabase
+from po_agent_os.supabase_client_anon import supabase
 
 logger = logging.getLogger(__name__)
 

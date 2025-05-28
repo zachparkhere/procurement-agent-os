@@ -1,6 +1,6 @@
 from typing import Dict, List, Optional
 import logging
-from Vendor_email_logger_agent.src.po_agent_os.supabase_client_anon import supabase
+from po_agent_os.supabase_client_anon import supabase
 
 logger = logging.getLogger(__name__)
 
