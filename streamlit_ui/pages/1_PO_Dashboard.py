@@ -127,7 +127,7 @@ else:
                 categories = list(set(item.get('category', '') for item in items if item.get('category')))
                 st.markdown(f"**📂 Item Categories**: {', '.join(categories) if categories else '(TBD)'}")
 
-                st.toggle("🔍 View Details", key=detail_key)
+                st.toggle("🔍 Show Details", key=detail_key)
 
                 if st.session_state.get(detail_key, False):
                     st.markdown("---")
