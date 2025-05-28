@@ -327,7 +327,7 @@ async def run_for_user(user_row):
         logger.info(f"[Watcher] 사용자 {user_email}의 이메일 감시 시작")
         
         # Gmail 서비스 가져오기
-        service = get_gmail_service(user_email)
+        service = get_gmail_service(user_row)  # user_email 대신 user_row 전달
         if not service:
             logger.error(f"[Watcher] 사용자 {user_email}의 Gmail 서비스를 초기화할 수 없음")
             return

@@ -161,8 +161,14 @@ def run_for_user(user_email: str, interval: int = 15):
     try:
         logger.info(f"[Watcher] 사용자 {user_email}의 이메일 감시 시작")
         
+        # DB에서 사용자 정보 가져오기
+        user_data = supabase.table("users").select("*").eq("email", user_email).single().execute()
+        if not user_data.data:
+            logger.error(f"[Watcher] 사용자 {user_email}의 정보를 찾을 수 없음")
+            return
+        
         # Gmail 서비스 가져오기
-        service = get_gmail_service(user_email)
+        service = get_gmail_service(user_data.data)  # user_email 대신 user_data.data 전달
         if not service:
             logger.error(f"[Watcher] 사용자 {user_email}의 Gmail 서비스를 초기화할 수 없음")
             return
@@ -171,8 +177,7 @@ def run_for_user(user_email: str, interval: int = 15):
         vendor_manager = VendorManager()
         
         # DB에서 사용자의 timezone 가져오기
-        user_data = supabase.table("users").select("timezone").eq("email", user_email).single().execute()
-        timezone = user_data.data.get("timezone", "UTC") if user_data.data else "UTC"
+        timezone = user_data.data.get("timezone", "UTC")
         
         # GmailWatcher 생성 및 시작
         watcher = GmailWatcher(service, vendor_manager, user_email, timezone)
@@ -188,7 +193,7 @@ async def poll_emails(interval: int = 15):
     """
     try:
         # DB에서 사용자 목록 가져오기
-        users = supabase.table("users").select("email,timezone").execute()
+        users = supabase.table("users").select("*").execute()
         
         if not users.data:
             logger.error("사용자 정보를 가져올 수 없음")
@@ -204,7 +209,7 @@ async def poll_emails(interval: int = 15):
                 
             try:
                 # 각 사용자별로 Gmail 서비스 가져오기
-                service = get_gmail_service(user_email)
+                service = get_gmail_service(user)  # user_email 대신 user 전달
                 if not service:
                     logger.error(f"[Watcher] 사용자 {user_email}의 Gmail 서비스를 초기화할 수 없음")
                     continue
