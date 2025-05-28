@@ -472,22 +472,58 @@ class EmailProcessor:
             email_data (Dict): 저장할 이메일 데이터
         """
         try:
-            data = {
-                "message_id": email_data["message_id"],
-                "thread_id": email_data["thread_id"],
-                "subject": email_data["subject"],
-                "body": email_data["body"],
-                "from_email": email_data["from_email"],
-                "to_email": email_data["to_email"],
-                "sent_at": email_data["sent_at"],
-                "direction": email_data["direction"],
-                "po_number": email_data["po_number"],
-                "attachments": email_data["attachments"]
+            now = datetime.utcnow()
+            thread_id = email_data.get("thread_id")
+            message_id = email_data.get("message_id")
+
+            # 1. (thread_id, message_id) 조합이 이미 있는지 확인
+            exists = self.supabase.from_("email_logs") \
+                .select("message_id") \
+                .eq("thread_id", thread_id) \
+                .eq("message_id", message_id) \
+                .execute().data
+            if exists:
+                logger.info(f"Skip: Already exists for thread_id={thread_id}, message_id={message_id}")
+                return None
+
+            # 2. user_id 우선 할당, 없으면 sender/recipient_email로 매핑
+            user_id = email_data.get("user_id")
+            if not user_id:
+                user_id = await self.get_user_id_from_email(email_data.get("sender_email"))
+                if not user_id:
+                    user_id = await self.get_user_id_from_email(email_data.get("recipient_email"))
+            logger.info(f"Mapped user_id {user_id} for email {email_data.get('sender_email') or email_data.get('recipient_email')}")
+
+            # 3. email_log_data 생성 및 저장
+            email_log_data = {
+                "thread_id": thread_id,
+                "direction": email_data.get("direction", "inbound"),
+                "sender_email": email_data.get("sender_email"),
+                "recipient_email": email_data.get("recipient_email"),
+                "subject": email_data.get("subject"),
+                "sent_at": email_data.get("sent_at"),
+                "created_at": now.isoformat(),
+                "updated_at": now.isoformat(),
+                "received_at": email_data.get("received_at"),
+                "status": email_data.get("status"),
+                "email_type": email_data.get("email_type"),
+                "has_attachment": email_data.get("has_attachment", False),
+                "filename": email_data.get("filename"),
+                "attachment_types": email_data.get("attachment_types", False),
+                "summary": email_data.get("summary", ""),
+                "sender_role": email_data.get("sender_role"),
+                "parsed_delivery_date": email_data.get("parsed_delivery_date"),
+                "body": email_data.get("body"),
+                "message_id": message_id,
+                "po_number": email_data.get("po_number"),
+                "user_id": user_id
             }
-            
-            # supabase.client 대신 supabase 직접 사용
-            result = self.supabase.table("email_logs").insert(data).execute()
-            return result
+            logger.info(f"[INSERT-DEBUG] email_log_data to insert: {email_log_data}")
+            response = self.supabase.from_("email_logs").insert(email_log_data).execute()
+            logger.info(f"[INSERT-DEBUG] insert response: {response}")
+            return response
         except Exception as e:
-            logger.error(f"Error saving email to Supabase: {e}")
+            logger.error(f"Supabase insert error: {str(e)}")
+            logger.error(f"Error type: {type(e).__name__}")
+            logger.error(f"Email data: {email_data}")
             raise 

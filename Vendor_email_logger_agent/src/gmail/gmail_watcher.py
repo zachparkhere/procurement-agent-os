@@ -20,10 +20,10 @@ class GmailWatcher:
         self.vendor_manager = vendor_manager
         self.user_timezone = timezone(user_timezone)
         self.user_email = user_email
-        self.processed_message_ids = set()
         self.error_count = 0
         self.max_errors = 3
         self.callback = None
+        self.supabase = supabase  # supabase 클라이언트 추가
 
     def set_callback(self, callback):
         """Set callback function for new emails"""
@@ -40,7 +40,7 @@ class GmailWatcher:
             # 최근 메시지 가져오기 (INBOX와 SENT만)
             results = self.service.users().messages().list(
                 userId='me',
-                maxResults=10,  # 최근 10개 메시지만 가져오기
+                maxResults=50,  # 최근 50개 메시지로 증가
                 labelIds=['INBOX', 'SENT']  # INBOX와 SENT만 포함
             ).execute()
             
@@ -50,7 +50,13 @@ class GmailWatcher:
             new_emails = []
             for message in messages:
                 msg_id = message['id']
-                if msg_id not in self.processed_message_ids:
+                # DB에서 중복 체크
+                exists = self.supabase.from_("email_logs") \
+                    .select("message_id") \
+                    .eq("message_id", msg_id) \
+                    .execute().data
+                
+                if not exists:  # DB에 없으면 처리
                     msg = self.service.users().messages().get(
                         userId='me',
                         id=msg_id,
@@ -60,7 +66,6 @@ class GmailWatcher:
                     email_data = self._process_message(msg)
                     if email_data:
                         new_emails.append(email_data)
-                        self.processed_message_ids.add(msg_id)
             
             logger.info(f"[Watcher-{self.user_email}] 새 메시지 {len(new_emails)}건 발견")
             return new_emails
