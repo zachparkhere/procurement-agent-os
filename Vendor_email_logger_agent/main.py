@@ -327,7 +327,7 @@ async def run_for_user(user_row):
         logger.info(f"[Watcher] 사용자 {user_email}의 이메일 감시 시작")
         
         # Gmail 서비스 가져오기
-        service = get_gmail_service(user_row)  # user_email 대신 user_row 전달
+        service = get_gmail_service(user_row)
         if not service:
             logger.error(f"[Watcher] 사용자 {user_email}의 Gmail 서비스를 초기화할 수 없음")
             return
@@ -339,9 +339,43 @@ async def run_for_user(user_row):
         user_data = supabase.table("users").select("timezone").eq("email", user_email).single().execute()
         timezone = user_data.data.get("timezone", "UTC") if user_data.data else "UTC"
         
+        # 이메일 프로세서와 MCP 서비스 생성
+        text_processor = TextProcessor()
+        email_processor = EmailProcessor(service, text_processor, supabase)
+        mcp_service = MCPService()
+        
+        # 벤더 이메일 목록 가져오기
+        supabase_service = SupabaseService()
+        result = supabase_service.client.from_("purchase_orders") \
+            .select("vendor_email,user_id") \
+            .eq("user_id", user_row["id"]) \
+            .not_.is_("vendor_email", "null") \
+            .execute()
+        
+        # vendor_email만 추출하여 VendorManager에 추가
+        vendor_emails = {
+            row["vendor_email"].strip().lower()
+            for row in result.data if row.get("vendor_email")
+        }
+        vendor_manager.vendor_emails.update(vendor_emails)
+        logger.info(f"벤더 이메일 목록: {vendor_manager.vendor_emails}")
+        
+        # 히스토리 이메일 수집
+        logger.info(f"[Watcher] 사용자 {user_email}의 히스토리 이메일 수집 시작")
+        await collect_historical_emails(service, email_processor, mcp_service, vendor_manager, user_row, months_back=1)
+        logger.info(f"[Watcher] 사용자 {user_email}의 히스토리 이메일 수집 완료")
+        
+        # 새로운 벤더 이메일 감시 시작
+        watch_task = asyncio.create_task(
+            watch_new_vendor_emails(service, email_processor, mcp_service, vendor_manager, user_row)
+        )
+        
         # GmailWatcher 생성 및 시작
         watcher = GmailWatcher(service, vendor_manager, user_email, timezone)
         watcher.watch(lambda email: process_email(service, email, email_processor, mcp_service, vendor_manager, user_row["id"]))
+        
+        # watch_task 완료 대기
+        await watch_task
         
     except Exception as e:
         logger.error(f"[{user_email}] Error in run_for_user: {e}")
