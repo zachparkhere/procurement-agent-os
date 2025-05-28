@@ -1,12 +1,12 @@
+import streamlit as st
+st.set_page_config(layout="wide")
+
 import sys
 import os
 import re
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")))
-import streamlit as st
 import datetime
 from supabase import create_client
-
-st.set_page_config(layout="wide")
 
 # 환경변수 또는 config에서 가져오기
 SUPABASE_URL = os.getenv("SUPABASE_URL")

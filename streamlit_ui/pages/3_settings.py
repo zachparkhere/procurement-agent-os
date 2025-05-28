@@ -1,8 +1,10 @@
+import streamlit as st
+st.set_page_config(layout="wide")
+
 import sys
 import os
 import logging
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")))
-import streamlit as st
 import bcrypt
 from po_agent_os.supabase_client_anon import supabase
 import requests
@@ -10,8 +12,6 @@ from streamlit_ui.utils.logging_config import logging
 
 # 로깅 설정
 logger = logging.getLogger(__name__)
-
-st.set_page_config(layout="wide")
 
 # 🔐 Login check
 if "user" not in st.session_state:

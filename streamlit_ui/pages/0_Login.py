@@ -1,9 +1,9 @@
-import sys
-import os
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")))
 import streamlit as st
 st.set_page_config(layout="wide")
 
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")))
 from streamlit_ui.api.supabase import supabase
 
 # 로그아웃 처리
