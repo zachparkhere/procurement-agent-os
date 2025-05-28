@@ -350,11 +350,15 @@ async def run_for_user(user_row):
         # 4. 실시간 감시자
         watcher = GmailWatcher(service, vendor_manager)
         logger.info(f"[{user_row['email']}] GmailWatcher initialized")
+
+        async def process_email_wrapper(email):
+            await process_email(service, email, email_processor, mcp_service, vendor_manager, user_row["id"])
+
         # 5. 벤더 이메일 실시간 감시 및 히스토리 수집 동시 실행
         await asyncio.gather(
             collect_historical_emails(service, email_processor, mcp_service, vendor_manager, user_row, months_back=1),
             watch_new_vendor_emails(service, email_processor, mcp_service, vendor_manager, user_row),
-            asyncio.to_thread(watcher.watch, lambda email: asyncio.create_task(process_email(service, email, email_processor, mcp_service, vendor_manager, user_row["id"])))
+            asyncio.to_thread(watcher.watch, process_email_wrapper)
         )
     except Exception as e:
         logger.error(f"[{user_row.get('email', 'unknown')}] Error in run_for_user: {e}")
