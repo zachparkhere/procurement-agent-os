@@ -138,3 +138,32 @@ class GmailWatcher:
         else:
             logger.debug(f"[Watcher] 벤더 이메일 아님: {from_email}")
             return None
+
+def run_for_user(user_email: str, interval: int = 15):
+    """
+    특정 사용자의 이메일을 감시하는 함수
+    """
+    try:
+        logger.info(f"[Watcher] 사용자 {user_email}의 이메일 감시 시작")
+        
+        # Gmail 서비스 가져오기
+        service = get_gmail_service(user_email)
+        if not service:
+            logger.error(f"[Watcher] 사용자 {user_email}의 Gmail 서비스를 초기화할 수 없음")
+            return
+        
+        # VendorManager 생성
+        vendor_manager = VendorManager()
+        
+        # DB에서 사용자의 timezone 가져오기
+        from po_agent_os.supabase_client_anon import supabase
+        user_data = supabase.table("users").select("timezone").eq("email", user_email).single().execute()
+        timezone = user_data.data.get("timezone", "UTC") if user_data.data else "UTC"
+        
+        # GmailWatcher 생성 및 시작
+        watcher = GmailWatcher(service, vendor_manager, user_email, timezone)
+        watcher.watch(lambda email: process_email(email, user_email))
+        
+    except Exception as e:
+        logger.error(f"[{user_email}] Error in run_for_user: {e}")
+        logger.error(traceback.format_exc())
