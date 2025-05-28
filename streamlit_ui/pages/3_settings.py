@@ -27,7 +27,7 @@ st.sidebar.markdown(f"**Logged in as:** {user_email}")
 # ✅ DB에서 현재 사용자 정보 가져오기
 try:
     user_res = supabase.table("users") \
-        .select("eta_followup_interval_days, email_provider, email_address") \
+        .select("eta_followup_interval_days, email_provider, email_address, timezone") \
         .eq("id", user_id) \
         .limit(1) \
         .execute()
@@ -41,6 +41,7 @@ user_data = user_res.data[0] if user_res.data else {}
 current_interval = user_data.get("eta_followup_interval_days", 3)
 current_provider = user_data.get("email_provider", None)
 linked_email = user_data.get("email_address", None)
+current_timezone = user_data.get("timezone", "UTC")
 
 # 토큰을 session_state에서 직접 꺼내서 사용
 access_token = st.session_state.get("access_token")
@@ -62,6 +63,71 @@ except Exception as e:
     st.error("Authentication failed. Please log in again.")
     st.exception(e)
     st.stop()
+
+# -----------------------
+# 🌍 Timezone Section
+# -----------------------
+st.markdown("---")
+st.subheader("🌍 Timezone Settings")
+
+def get_timezone_from_ip():
+    try:
+        response = requests.get('http://ip-api.com/json/')
+        data = response.json()
+        if data['status'] == 'success':
+            return data['timezone']
+    except Exception as e:
+        logger.error(f"Failed to detect timezone: {e}")
+    return 'UTC'
+
+# 현재 시간대 표시
+st.markdown(f"**Current Timezone**: {current_timezone}")
+
+# 자동 감지 버튼
+if st.button("🔄 Detect Timezone"):
+    detected_timezone = get_timezone_from_ip()
+    if detected_timezone != current_timezone:
+        try:
+            # DB 업데이트
+            result = supabase.table("users").update(
+                {"timezone": detected_timezone}
+            ).eq("id", user_id).execute()
+            
+            if result.data:
+                st.success(f"✅ Timezone updated to {detected_timezone}")
+                st.rerun()
+            else:
+                st.error("Failed to update timezone")
+        except Exception as e:
+            logger.error(f"Error updating timezone: {e}")
+            st.error("An error occurred while updating timezone")
+    else:
+        st.info("Timezone is already set correctly")
+
+# 수동 선택 옵션
+import pytz
+all_timezones = pytz.all_timezones
+selected_timezone = st.selectbox(
+    "Or select timezone manually",
+    all_timezones,
+    index=all_timezones.index(current_timezone) if current_timezone in all_timezones else 0
+)
+
+if selected_timezone != current_timezone:
+    if st.button("💾 Save Timezone"):
+        try:
+            result = supabase.table("users").update(
+                {"timezone": selected_timezone}
+            ).eq("id", user_id).execute()
+            
+            if result.data:
+                st.success(f"✅ Timezone updated to {selected_timezone}")
+                st.rerun()
+            else:
+                st.error("Failed to update timezone")
+        except Exception as e:
+            logger.error(f"Error updating timezone: {e}")
+            st.error("An error occurred while updating timezone")
 
 # -----------------------
 # 🔑 Password Section

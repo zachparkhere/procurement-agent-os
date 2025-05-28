@@ -7,14 +7,16 @@ from Vendor_email_logger_agent.src.gmail.message_filter import is_vendor_email
 import traceback
 import logging
 from googleapiclient.discovery import Resource
+from pytz import timezone, UTC
 
 logger = logging.getLogger(__name__)
 
 class GmailWatcher:
-    def __init__(self, service, vendor_manager):
+    def __init__(self, service, vendor_manager, user_timezone='UTC'):
         self.service = service
         self.vendor_manager = vendor_manager
-        self.last_check_time = datetime.utcnow()
+        self.user_timezone = timezone(user_timezone)
+        self.last_check_time = datetime.now(self.user_timezone)
         self.processed_message_ids = set()
         self.error_count = 0
         self.max_errors = 3
@@ -24,16 +26,26 @@ class GmailWatcher:
         새로운 이메일만 가져오기
         """
         try:
-            # 마지막 체크 시간 이후의 모든 이메일 검색 (unread 조건 제거)
-            query = f'after:{self.last_check_time.strftime("%Y/%m/%d %H:%M:%S")}'
+            # 사용자의 시간대 기준으로 현재 시간 계산
+            user_now = datetime.now(self.user_timezone)
+            # 5분 전부터 검색
+            search_start = (user_now - timedelta(minutes=5))
+            
+            # UTC로 변환 (Gmail API는 UTC 사용)
+            search_start_utc = search_start.astimezone(UTC)
+            search_start_str = search_start_utc.strftime("%Y/%m/%d %H:%M:%S")
+            
+            query = f'after:{search_start_str}'
             logger.info(f"[Watcher] 검색 쿼리: {query}")
-            logger.info(f"[Watcher] 마지막 체크 시간: {self.last_check_time}")
+            logger.info(f"[Watcher] 사용자 시간대: {self.user_timezone}")
+            logger.info(f"[Watcher] 사용자 현재 시간: {user_now}")
+            logger.info(f"[Watcher] 검색 시작 시간 (UTC): {search_start_utc}")
             
             results = self.service.users().messages().list(
                 userId='me',
                 labelIds=['INBOX'],
                 q=query,
-                maxResults=50  # 한 번에 더 많은 메시지 처리
+                maxResults=50
             ).execute()
             
             messages = results.get('messages', [])
@@ -44,13 +56,11 @@ class GmailWatcher:
             for msg in messages:
                 msg_id = msg['id']
                 
-                # 이미 처리한 메시지는 건너뛰기
                 if msg_id in self.processed_message_ids:
                     logger.debug(f"[Watcher] 이미 처리된 메시지 건너뛰기: {msg_id}")
                     continue
                 
                 try:
-                    # 메시지 상세 정보 가져오기
                     message = self.service.users().messages().get(
                         userId='me',
                         id=msg_id,
@@ -58,19 +68,26 @@ class GmailWatcher:
                         metadataHeaders=['Subject', 'From', 'Date', 'To']
                     ).execute()
                     
-                    # 메시지 정보 로깅
                     headers = message.get("payload", {}).get("headers", [])
                     subject = next((h['value'] for h in headers if h['name'] == 'Subject'), '')
                     from_email = next((h['value'] for h in headers if h['name'] == 'From'), '')
-                    logger.info(f"[Watcher] 메시지 확인: ID={msg_id}, 제목={subject}, 발신자={from_email}")
+                    date = next((h['value'] for h in headers if h['name'] == 'Date'), '')
                     
-                    # 벤더 이메일 필터링
+                    # 이메일 수신 시간을 사용자의 시간대로 변환
+                    try:
+                        from email.utils import parsedate_to_datetime
+                        received_time = parsedate_to_datetime(date)
+                        received_time_user_tz = received_time.astimezone(self.user_timezone)
+                        logger.info(f"[Watcher] 메시지 확인: ID={msg_id}, 제목={subject}, 발신자={from_email}, 수신시간(사용자 시간대)={received_time_user_tz}")
+                    except Exception as e:
+                        logger.warning(f"[Watcher] 시간 파싱 실패: {date}, 에러: {e}")
+                        received_time_user_tz = None
+                    
                     if is_vendor_email(message, self.vendor_manager):
                         logger.info(f"[Watcher] 벤더 이메일 발견: {from_email}")
                         new_messages.append(message)
                         self.processed_message_ids.add(msg_id)
                         
-                        # 메시지를 읽음으로 표시
                         self.service.users().messages().modify(
                             userId='me',
                             id=msg_id,
@@ -82,8 +99,8 @@ class GmailWatcher:
                     logger.error(f"[Watcher] 메시지 처리 중 에러 {msg_id}: {e}")
                     continue
             
-            # 마지막 체크 시간 업데이트
-            self.last_check_time = datetime.utcnow()
+            # 마지막 체크 시간 업데이트 (사용자 시간대 기준)
+            self.last_check_time = user_now
             logger.info(f"[Watcher] 새 메시지 {len(new_messages)}건 발견")
             return new_messages
             
@@ -96,7 +113,7 @@ class GmailWatcher:
         """
         실시간 이메일 감시
         """
-        logger.info("[Watcher] 실시간 감시 루프 시작")
+        logger.info(f"[Watcher] 실시간 감시 루프 시작 (사용자 시간대: {self.user_timezone})")
         while True:
             try:
                 logger.debug("[Watcher] 새 메일 체크")
@@ -114,10 +131,7 @@ class GmailWatcher:
                 else:
                     logger.debug("[Watcher] 새 메일 없음")
                 
-                # 성공적으로 처리되면 에러 카운트 리셋
                 self.error_count = 0
-                
-                # 에러 발생 시 대기 시간 조정
                 wait_time = 10 if self.error_count > 0 else 60
                 logger.debug(f"[Watcher] 다음 체크까지 {wait_time}초 대기")
                 time.sleep(wait_time)
@@ -130,6 +144,6 @@ class GmailWatcher:
                 if self.error_count >= self.max_errors:
                     logger.error("최대 에러 횟수 도달. 감시 재시작")
                     self.error_count = 0
-                    self.last_check_time = datetime.utcnow()  # 체크 시간 리셋
+                    self.last_check_time = datetime.now(self.user_timezone)
                 
-                time.sleep(min(10 * self.error_count, 30))  # 점진적으로 대기 시간 증가
+                time.sleep(min(10 * self.error_count, 30))
