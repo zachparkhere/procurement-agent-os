@@ -314,20 +314,16 @@ async def fetch_and_save_user_inbox(user_row, email_processor):
 
 async def run_for_user(user_row):
     try:
-        # 1. Gmail 인증
         service = get_gmail_service(user_row)
         if service is None:
             logger.error(f"[{user_row['email']}] Gmail service 생성 실패 (None 반환). 토큰/인증 정보 확인 필요.")
             return
 
-        # 토큰 갱신 확인
         credentials = service._http.credentials
         if not credentials.valid and credentials.expired and credentials.refresh_token:
             try:
                 credentials.refresh(Request())
                 logger.info(f"✅ Token refreshed successfully for {user_row['email']}")
-
-                # Supabase 업데이트
                 supabase.table("users").update({
                     "email_access_token": credentials.token,
                     "email_token_expiry": credentials.expiry.isoformat(),
@@ -336,25 +332,40 @@ async def run_for_user(user_row):
                 logger.info(f"✅ Token updated in Supabase for {user_row['email']}")
             except Exception as e:
                 logger.error(f"❌ Failed to refresh token for {user_row['email']}: {str(e)}")
-                logger.error(f"  - Error type: {type(e).__name__}")
                 return
 
-        # 2. 벤더 이메일 매니저 (DB 기반)
-        vendor_manager = VendorEmailManager(csv_path=None)  # DB만 사용
-        # 3. 서비스/프로세서 초기화
+        vendor_manager = VendorEmailManager(csv_path=None)
         text_processor = TextProcessor()
         mcp_service = MCPService()
         supabase_service = SupabaseService()
         email_processor = EmailProcessor(service, text_processor, supabase_client=supabase_service)
-        # 4. 실시간 감시자
         watcher = GmailWatcher(service, vendor_manager)
-        logger.info(f"[{user_row['email']}] GmailWatcher initialized")
-        # 5. 벤더 이메일 실시간 감시 및 히스토리 수집 동시 실행
-        await asyncio.gather(
-            collect_historical_emails(service, email_processor, mcp_service, vendor_manager, user_row, months_back=1),
+
+        tasks = []
+
+        # ✅ 신규 유저인 경우에만 초기 히스토리 수집 실행
+        if not user_row.get("email_logger_initialized", False):
+            logger.info(f"[{user_row['email']}] 신규 유저로 판단됨. 초기 이메일 히스토리 수집 시작.")
+            tasks.append(
+                collect_historical_emails(
+                    service, email_processor, mcp_service, vendor_manager, user_row, months_back=1
+                )
+            )
+            # ✅ 히스토리 수집 완료 후 플래그 업데이트
+            supabase.table("users").update({
+                "email_logger_initialized": True
+            }).eq("id", user_row["id"]).execute()
+
+        # ✅ 실시간 감시 작업 공통 실행
+        tasks.extend([
             watch_new_vendor_emails(service, email_processor, mcp_service, vendor_manager, user_row),
-            asyncio.to_thread(watcher.watch, lambda email: asyncio.create_task(process_email(service, email, email_processor, mcp_service, vendor_manager, user_row["id"])))
-        )
+            asyncio.to_thread(watcher.watch, lambda email: asyncio.create_task(
+                process_email(service, email, email_processor, mcp_service, vendor_manager, user_row["id"])
+            ))
+        ])
+
+        await asyncio.gather(*tasks)
+
     except Exception as e:
         logger.error(f"[{user_row.get('email', 'unknown')}] Error in run_for_user: {e}")
 
