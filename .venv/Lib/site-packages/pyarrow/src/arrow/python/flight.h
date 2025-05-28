@@ -114,8 +114,7 @@ class ARROW_PYFLIGHT_EXPORT PyServerAuthHandler
  public:
   explicit PyServerAuthHandler(PyObject* handler,
                                const PyServerAuthHandlerVtable& vtable);
-  Status Authenticate(const arrow::flight::ServerCallContext& context,
-                      arrow::flight::ServerAuthSender* outgoing,
+  Status Authenticate(arrow::flight::ServerAuthSender* outgoing,
                       arrow::flight::ServerAuthReader* incoming) override;
   Status IsValid(const std::string& token, std::string* peer_identity) override;
 
@@ -226,7 +225,7 @@ class ARROW_PYFLIGHT_EXPORT PyServerMiddlewareFactory
   explicit PyServerMiddlewareFactory(PyObject* factory, StartCallCallback start_call);
 
   Status StartCall(const arrow::flight::CallInfo& info,
-                   const arrow::flight::ServerCallContext& context,
+                   const arrow::flight::CallHeaders& incoming_headers,
                    std::shared_ptr<arrow::flight::ServerMiddleware>* middleware) override;
 
  private:
@@ -338,8 +337,7 @@ ARROW_PYFLIGHT_EXPORT
 Status CreateFlightInfo(const std::shared_ptr<arrow::Schema>& schema,
                         const arrow::flight::FlightDescriptor& descriptor,
                         const std::vector<arrow::flight::FlightEndpoint>& endpoints,
-                        int64_t total_records, int64_t total_bytes, bool ordered,
-                        const std::string& app_metadata,
+                        int64_t total_records, int64_t total_bytes,
                         std::unique_ptr<arrow::flight::FlightInfo>* out);
 
 /// \brief Create a SchemaResult from schema.
