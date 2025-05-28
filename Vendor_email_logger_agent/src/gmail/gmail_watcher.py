@@ -142,7 +142,7 @@ class GmailWatcher:
             logger.debug(f"[Watcher] 벤더 이메일 아님: {from_email}")
             return None
 
-def process_email(email_data: Dict, user_email: str):
+def process_gmail_message(email_data: Dict, user_email: str):
     """
     이메일 처리 함수
     """
@@ -176,7 +176,7 @@ def run_for_user(user_email: str, interval: int = 15):
         
         # GmailWatcher 생성 및 시작
         watcher = GmailWatcher(service, vendor_manager, user_email, timezone)
-        watcher.watch(lambda email: process_email(email, user_email))
+        watcher.watch(lambda email: process_gmail_message(email, user_email))
         
     except Exception as e:
         logger.error(f"[{user_email}] Error in run_for_user: {e}")
@@ -214,7 +214,7 @@ async def poll_emails(interval: int = 15):
                 
                 # GmailWatcher 생성 및 시작
                 watcher = GmailWatcher(service, vendor_manager, user_email, timezone)
-                watcher.watch(lambda email: process_email(email, user_email))
+                watcher.watch(lambda email: process_gmail_message(email, user_email))
             except Exception as e:
                 logger.error(f"[{user_email}] Error in poll_emails: {e}")
                 logger.error(traceback.format_exc())
