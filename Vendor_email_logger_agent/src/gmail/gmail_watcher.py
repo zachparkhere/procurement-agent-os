@@ -12,113 +12,69 @@ from pytz import timezone, UTC
 logger = logging.getLogger(__name__)
 
 class GmailWatcher:
-    def __init__(self, service, vendor_manager, user_timezone='UTC'):
+    def __init__(self, service, vendor_manager, user_email: str, user_timezone='UTC'):
         self.service = service
         self.vendor_manager = vendor_manager
         self.user_timezone = timezone(user_timezone)
+        self.user_email = user_email
         self.last_check_time = datetime.now(self.user_timezone)
         self.processed_message_ids = set()
         self.error_count = 0
         self.max_errors = 3
+        self.callback = None
 
-    def update_timezone(self, new_timezone):
-        """
-        시간대 업데이트
-        """
-        try:
-            self.user_timezone = timezone(new_timezone)
-            # 마지막 체크 시간을 새로운 시간대로 변환
-            self.last_check_time = datetime.now(self.user_timezone)
-            logger.info(f"[Watcher] 시간대 업데이트: {new_timezone}")
-        except Exception as e:
-            logger.error(f"[Watcher] 시간대 업데이트 실패: {e}")
+    def set_callback(self, callback):
+        """Set callback function for new emails"""
+        self.callback = callback
 
-    def get_new_emails(self) -> List[Dict]:
-        """
-        새로운 이메일만 가져오기
-        """
+    def update_timezone(self, new_timezone: str):
+        """Update timezone and reset last check time"""
+        self.user_timezone = timezone(new_timezone)
+        self.last_check_time = datetime.now(self.user_timezone)
+        logger.info(f"[Watcher-{self.user_email}] timezone 업데이트됨: {new_timezone}")
+
+    def get_new_emails(self):
+        """Get new emails since last check"""
+        current_time = datetime.now(self.user_timezone)
+        search_after = self.last_check_time.strftime('%Y/%m/%d %H:%M:%S')
+        
+        logger.info(f"[Watcher-{self.user_email}] 검색 쿼리: after:{search_after}")
+        logger.info(f"[Watcher-{self.user_email}] 사용자 시간대: {self.user_timezone}")
+        logger.info(f"[Watcher-{self.user_email}] 사용자 현재 시간: {current_time}")
+        logger.info(f"[Watcher-{self.user_email}] 검색 시작 시간 (UTC): {self.last_check_time}")
+        
         try:
-            # 사용자의 시간대 기준으로 현재 시간 계산
-            user_now = datetime.now(self.user_timezone)
-            # 5분 전부터 검색
-            search_start = (user_now - timedelta(minutes=5))
-            
-            # UTC로 변환 (Gmail API는 UTC 사용)
-            search_start_utc = search_start.astimezone(UTC)
-            search_start_str = search_start_utc.strftime("%Y/%m/%d %H:%M:%S")
-            
-            query = f'after:{search_start_str}'
-            logger.info(f"[Watcher] 검색 쿼리: {query}")
-            logger.info(f"[Watcher] 사용자 시간대: {self.user_timezone}")
-            logger.info(f"[Watcher] 사용자 현재 시간: {user_now}")
-            logger.info(f"[Watcher] 검색 시작 시간 (UTC): {search_start_utc}")
-            
+            # 검색 쿼리 실행
+            query = f'after:{search_after}'
             results = self.service.users().messages().list(
                 userId='me',
-                labelIds=['INBOX'],
-                q=query,
-                maxResults=50
+                q=query
             ).execute()
             
             messages = results.get('messages', [])
-            logger.info(f"[Watcher] 검색된 메시지 수: {len(messages)}")
+            logger.info(f"[Watcher-{self.user_email}] 검색된 메시지 수: {len(messages)}")
             
-            new_messages = []
-            
-            for msg in messages:
-                msg_id = msg['id']
-                
-                if msg_id in self.processed_message_ids:
-                    logger.debug(f"[Watcher] 이미 처리된 메시지 건너뛰기: {msg_id}")
-                    continue
-                
-                try:
-                    message = self.service.users().messages().get(
+            new_emails = []
+            for message in messages:
+                msg_id = message['id']
+                if msg_id not in self.processed_message_ids:
+                    msg = self.service.users().messages().get(
                         userId='me',
                         id=msg_id,
-                        format='metadata',
-                        metadataHeaders=['Subject', 'From', 'Date', 'To']
+                        format='full'
                     ).execute()
                     
-                    headers = message.get("payload", {}).get("headers", [])
-                    subject = next((h['value'] for h in headers if h['name'] == 'Subject'), '')
-                    from_email = next((h['value'] for h in headers if h['name'] == 'From'), '')
-                    date = next((h['value'] for h in headers if h['name'] == 'Date'), '')
-                    
-                    # 이메일 수신 시간을 사용자의 시간대로 변환
-                    try:
-                        from email.utils import parsedate_to_datetime
-                        received_time = parsedate_to_datetime(date)
-                        received_time_user_tz = received_time.astimezone(self.user_timezone)
-                        logger.info(f"[Watcher] 메시지 확인: ID={msg_id}, 제목={subject}, 발신자={from_email}, 수신시간(사용자 시간대)={received_time_user_tz}")
-                    except Exception as e:
-                        logger.warning(f"[Watcher] 시간 파싱 실패: {date}, 에러: {e}")
-                        received_time_user_tz = None
-                    
-                    if is_vendor_email(message, self.vendor_manager):
-                        logger.info(f"[Watcher] 벤더 이메일 발견: {from_email}")
-                        new_messages.append(message)
+                    email_data = self._process_message(msg)
+                    if email_data:
+                        new_emails.append(email_data)
                         self.processed_message_ids.add(msg_id)
-                        
-                        self.service.users().messages().modify(
-                            userId='me',
-                            id=msg_id,
-                            body={'removeLabelIds': ['UNREAD']}
-                        ).execute()
-                    else:
-                        logger.debug(f"[Watcher] 벤더 이메일 아님: {from_email}")
-                except Exception as e:
-                    logger.error(f"[Watcher] 메시지 처리 중 에러 {msg_id}: {e}")
-                    continue
             
-            # 마지막 체크 시간 업데이트 (사용자 시간대 기준)
-            self.last_check_time = user_now
-            logger.info(f"[Watcher] 새 메시지 {len(new_messages)}건 발견")
-            return new_messages
+            logger.info(f"[Watcher-{self.user_email}] 새 메시지 {len(new_emails)}건 발견")
+            self.last_check_time = current_time
+            return new_emails
             
         except Exception as e:
-            logger.error(f"[Watcher] 이메일 검색 중 에러: {e}")
-            self.error_count += 1
+            logger.error(f"[Watcher-{self.user_email}] 이메일 검색 중 오류 발생: {e}")
             return []
 
     def watch(self, callback):
@@ -159,3 +115,26 @@ class GmailWatcher:
                     self.last_check_time = datetime.now(self.user_timezone)
                 
                 time.sleep(min(10 * self.error_count, 30))
+
+    def _process_message(self, message):
+        headers = message.get("payload", {}).get("headers", [])
+        subject = next((h['value'] for h in headers if h['name'] == 'Subject'), '')
+        from_email = next((h['value'] for h in headers if h['name'] == 'From'), '')
+        date = next((h['value'] for h in headers if h['name'] == 'Date'), '')
+        
+        # 이메일 수신 시간을 사용자의 시간대로 변환
+        try:
+            from email.utils import parsedate_to_datetime
+            received_time = parsedate_to_datetime(date)
+            received_time_user_tz = received_time.astimezone(self.user_timezone)
+            logger.info(f"[Watcher] 메시지 확인: ID={message['id']}, 제목={subject}, 발신자={from_email}, 수신시간(사용자 시간대)={received_time_user_tz}")
+        except Exception as e:
+            logger.warning(f"[Watcher] 시간 파싱 실패: {date}, 에러: {e}")
+            received_time_user_tz = None
+        
+        if is_vendor_email(message, self.vendor_manager):
+            logger.info(f"[Watcher] 벤더 이메일 발견: {from_email}")
+            return message
+        else:
+            logger.debug(f"[Watcher] 벤더 이메일 아님: {from_email}")
+            return None

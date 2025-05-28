@@ -85,6 +85,18 @@ async def stop_watching(user_email: str):
         logger.error(f"Error stopping watch for {user_email}: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
+@app.put("/watch/{user_email}/timezone")
+async def update_timezone(user_email: str, new_timezone: str):
+    """
+    특정 사용자의 timezone 업데이트
+    """
+    try:
+        watcher_manager.update_timezone(user_email, new_timezone)
+        return {"status": "success", "message": f"Updated timezone for {user_email}"}
+    except Exception as e:
+        logger.error(f"Error updating timezone for {user_email}: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000) 
