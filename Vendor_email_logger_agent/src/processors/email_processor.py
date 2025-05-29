@@ -97,11 +97,11 @@ class EmailProcessor:
                 
                 # Supabase Storage에 업로드
                 file_path = f"/{filename}"  # 파일 경로 설정
-                upload_response = self.supabase.storage.from_(bucket_name).upload(file_path, file_data)
+                upload_response = self.supabase.client.storage.from_(bucket_name).upload(file_path, file_data)
                 
                 if upload_response.status_code == 200:
                     # 파일 업로드 성공 후 public URL을 가져오기
-                    public_url = self.supabase.storage.from_(bucket_name).get_public_url(file_path).public_url
+                    public_url = self.supabase.client.storage.from_(bucket_name).get_public_url(file_path).public_url
                     logger.info(f"File uploaded successfully: {public_url}")
                     return public_url  # 업로드된 파일의 URL을 반환
                 else:
@@ -167,14 +167,14 @@ class EmailProcessor:
                 try:
                     # 파일 업로드
                     with open(temp_file.name, 'rb') as f:
-                        self.supabase.storage.from_('email-attachments').upload(
+                        self.supabase.client.storage.from_('email-attachments').upload(
                             file_path,
                             f.read(),
                             {"content-type": attachment['mime_type']}
                         )
                     
                     # 파일 URL 가져오기
-                    file_url = self.supabase.storage.from_('email-attachments').get_public_url(file_path)
+                    file_url = self.supabase.client.storage.from_('email-attachments').get_public_url(file_path)
                     
                     return {
                         "filename": attachment['filename'],
@@ -198,122 +198,22 @@ class EmailProcessor:
             logger.error(f"Error processing attachment: {e}")
             return None
 
-    async def save_email_log(self, message_data):
-        """이메일 로그를 데이터베이스에 저장"""
+    async def save_email_log(self, email_data: Dict):
+        """이메일 로그를 Supabase에 저장"""
         try:
-            now = datetime.utcnow()
+            # SupabaseService를 통해 이메일 로그 저장
+            response = await self.supabase.save_email_log(email_data)
             
-            # 저장 전 중복 체크
-            existing = self.supabase.from_("email_logs").select("message_id").eq("message_id", message_data["message_id"]).execute().data
-            if existing:
-                logger.info(f"Skip: Already exists for message_id={message_data['message_id']}")
-                return None
-
-            # PO 번호 추출 (정규식+LLM)
-            po_number = message_data.get("po_number")
-            attachments = message_data.get("attachments", [])
-            if not po_number:
-                po_number = self.text_processor.find_po_number(
-                    subject=message_data.get("subject", ""),
-                    body=message_data.get("body_text", ""),
-                    attachments=attachments
-                )
-                message_data["po_number"] = po_number
-            print(f"[DEBUG] 추출된 PO 번호: {po_number}")
-
-            # 이메일 내용 처리
-            summary, email_type = self.text_processor.process_email_content(message_data)
-            logger.info(f"Generated email type: {email_type}")
-            
-            # 첨부파일 처리
-            has_attachment = len(attachments) > 0
-            attachment_types = [att["mime_type"] for att in attachments]
-            filenames = [att["filename"] for att in attachments]
-            
-            processed_attachments = []
-            if has_attachment:
-                for attachment in attachments:
-                    processed = await self.process_attachment(message_data['message_id'], attachment)
-                    if processed:
-                        processed_attachments.append(processed)
-            
-            # 기존 배송 날짜 조회
-            existing_delivery_date = None
-            if message_data.get("thread_id"):
-                thread_history = await self.supabase.get_thread_history(message_data["thread_id"])
-                if thread_history:
-                    # 가장 최근의 배송 날짜 찾기
-                    for email in reversed(thread_history):
-                        if email.get("parsed_delivery_date"):
-                            existing_delivery_date = email["parsed_delivery_date"]
-                            received_at = email["received_at"]
-                            break
-            
-            # 배송 날짜 파싱
-            delivery_date = self.text_processor.parse_delivery_date(
-                message_data.get("body_text", ""),
-                processed_attachments,
-                existing_delivery_date,
-                message_data.get("received_at")
-            )
-            logger.info(f"Parsed delivery date: {delivery_date}")
-            
-            # 이메일 방향에 따른 처리
-            direction = message_data.get("direction")
-            status = "sent" if direction == "outbound" else "received"
-            sender_role = "admin" if direction == "outbound" else "vendor"
-            
-            # 이메일 방향에 따른 시간 설정
-            sent_at = message_data.get("sent_at") if direction == "outbound" else None
-            received_at = message_data.get("sent_at") if direction == "inbound" else None  # sent_at이 실제 이메일 수신 시간
-            
-            # 이메일 로그 데이터 준비
-            email_log_data = {
-                "thread_id": message_data.get("thread_id"),
-                "po_number": po_number,
-                "direction": direction,
-                "sender_email": message_data.get("from"),
-                "recipient_email": message_data.get("to"),
-                "subject": message_data.get("subject"),
-                "sent_at": sent_at,  # outbound인 경우에만 설정, 보낸 시간
-                "created_at": now.isoformat(),  # DB에 저장된 시간
-                "updated_at": now.isoformat(),  # DB 업데이트 시간
-                "received_at": received_at,  # inbound인 경우에만 설정, 받은 시간
-                "status": status,  # outbound면 "sent", inbound면 "received"
-                "email_type": email_type,
-                "has_attachment": has_attachment,
-                "filename": filenames[0] if filenames else None,
-                "attachment_types": attachment_types,
-                "summary": summary if summary else "",
-                "sender_role": sender_role,  # outbound면 "admin", inbound면 "vendor"
-                "parsed_delivery_date": delivery_date,
-                "body": message_data.get("body_text"),
-                "message_id": message_data.get("message_id"),  # ✅ message_id도 항상 저장
-                "user_id": message_data.get("user_id")  # user_id 추가
-            }
-            
-            # Supabase에 저장 (중복 체크/업데이트 기준은 thread_id)
-            response = await self.supabase.save_email_log(email_log_data, summary)
             if not response:
                 logger.error("Failed to save email log to Supabase")
-                return False
-                
-            # 첨부파일 저장
-            if processed_attachments:
-                for attachment in processed_attachments:
-                    attachment_data = {
-                        "email_log_id": response.data[0]['id'],
-                        "filename": attachment['filename'],
-                        "mime_type": attachment['mime_type'],
-                    }
-                    await self.supabase.save_attachment(response.data[0]['id'], attachment_data)
+                raise Exception("Failed to save email log")
             
-            return response
-            
+            logger.info(f"Email log saved successfully: {email_data.get('message_id')}")
+            return response.data
         except Exception as e:
-            logger.error(f"Error saving email log: {e}")
+            logger.error(f"Error saving email log: {str(e)}")
             logger.error(f"Error type: {type(e).__name__}")
-            return None
+            raise
 
     def cleanup(self):
         """임시 디렉토리 정리"""
@@ -411,8 +311,8 @@ class EmailProcessor:
 
     def is_already_logged(self, message_id: str) -> bool:
         try:
-            # supabase.client 대신 supabase 직접 사용
-            existing = self.supabase.table("email_logs").select("message_id").eq("message_id", message_id).execute().data
+            # supabase.client 사용
+            existing = self.supabase.client.table("email_logs").select("message_id").eq("message_id", message_id).execute().data
             return bool(existing)
         except Exception as e:
             logger.error(f"Error checking duplicate message_id: {e}")
@@ -477,7 +377,7 @@ class EmailProcessor:
             message_id = email_data.get("message_id")
 
             # 1. (thread_id, message_id) 조합이 이미 있는지 확인
-            exists = self.supabase.from_("email_logs") \
+            exists = self.supabase.client.from_("email_logs") \
                 .select("message_id") \
                 .eq("thread_id", thread_id) \
                 .eq("message_id", message_id) \
@@ -519,7 +419,7 @@ class EmailProcessor:
                 "user_id": user_id
             }
             logger.info(f"[INSERT-DEBUG] email_log_data to insert: {email_log_data}")
-            response = self.supabase.from_("email_logs").insert(email_log_data).execute()
+            response = self.supabase.client.from_("email_logs").insert(email_log_data).execute()
             logger.info(f"[INSERT-DEBUG] insert response: {response}")
             return response
         except Exception as e:

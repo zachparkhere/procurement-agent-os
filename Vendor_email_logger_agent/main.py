@@ -77,6 +77,13 @@ async def process_email(service, msg, email_processor: EmailProcessor, mcp_servi
     """이메일 처리"""
     try:
         msg_id = msg['id']
+        
+        # 이미 처리된 이메일인지 확인
+        existing_email = await email_processor.check_existing_email(msg_id)
+        if existing_email:
+            logger.info(f"이미 처리된 이메일입니다: {msg_id}")
+            return
+            
         message = service.users().messages().get(
             userId='me',
             id=msg_id,
@@ -114,12 +121,14 @@ async def process_email(service, msg, email_processor: EmailProcessor, mcp_servi
             "direction": direction,
             "attachments": content["attachments"],
             "po_number": po_number,
-            "user_id": user_id  # 전달받은 user_id 사용
+            "user_id": user_id
         }
         await email_processor.save_email_log(parsed_message)
         await mcp_service.send_message(parsed_message)
     except Exception as e:
         logger.error(f"Error processing email {msg['id']}: {str(e)}")
+        # 실패한 이메일 ID 저장
+        await email_processor.save_failed_email(msg['id'], str(e))
         raise
 
 async def collect_historical_emails(service, email_processor: EmailProcessor, mcp_service: MCPService, vendor_manager: VendorEmailManager, user_row: dict, months_back=1):
@@ -139,8 +148,6 @@ async def collect_historical_emails(service, email_processor: EmailProcessor, mc
         
         messages = results.get('messages', [])
         logger.info(f"INBOX에서 가져온 메시지 수: {len(messages)}")
-        for msg in messages:
-            logger.info(f"INBOX 메시지 ID: {msg['id']}")
         
         # 보낸 이메일 검색
         sent_results = service.users().messages().list(
@@ -154,17 +161,15 @@ async def collect_historical_emails(service, email_processor: EmailProcessor, mc
         
         # 받은 메일 + 보낸 메일
         all_messages = messages + sent_messages
+        total_emails = len(all_messages)
+        processed = 0
         
         # 메시지를 날짜 기준으로 정렬
         def clean_date_str(date_str):
             import re
-            # 1. +0000 (UTC) → +0000
             date_str = re.sub(r"([+-][0-9]{4}) ?\([^)]+\)", r"\1", date_str)
-            # 2. +0000 +0000 → 마지막만 남기기
             date_str = re.sub(r"([+-][0-9]{4}) ?([+-][0-9]{4})", r"\2", date_str)
-            # 3. 남은 괄호 및 앞 공백 제거
             date_str = re.sub(r" ?\([^)]+\)", "", date_str)
-            # 4. 여러 공백 정리
             date_str = re.sub(r" +", " ", date_str).strip()
             logger.debug(f"[clean_date_str] after clean: '{date_str}'")
             return date_str
@@ -182,7 +187,6 @@ async def collect_historical_emails(service, email_processor: EmailProcessor, mc
                 date_str = clean_date_str(date_str)
                 logger.debug(f"[get_msg_date] final date_str: '{date_str}'")
                 try:
-                    # dateutil.parser로 날짜 파싱
                     dt = parser.parse(date_str)
                     dt = dt.astimezone(__import__('datetime').timezone.utc)
                     return dt
@@ -199,13 +203,17 @@ async def collect_historical_emails(service, email_processor: EmailProcessor, mc
 
         for msg in all_messages:
             try:
+                processed += 1
+                if processed % 100 == 0:
+                    logger.info(f"진행률: {processed}/{total_emails} ({(processed/total_emails)*100:.1f}%)")
+                    
                 message = service.users().messages().get(
                     userId='me',
                     id=msg['id'],
                     format='metadata',
                     metadataHeaders=['Subject', 'From', 'Date', 'To']
                 ).execute()
-                # 필터 전 정보 출력
+                
                 headers = message.get("payload", {}).get("headers", [])
                 subject = next((h['value'] for h in headers if h['name'] == 'Subject'), '')
                 from_email = next((h['value'] for h in headers if h['name'] == 'From'), '')
@@ -218,10 +226,14 @@ async def collect_historical_emails(service, email_processor: EmailProcessor, mc
                     await process_email(service, msg, email_processor, mcp_service, vendor_manager, user_row["id"])
             except Exception as e:
                 logger.error(f"Error processing message {msg['id']}: {e}")
+                # 실패한 이메일 ID 저장
+                await email_processor.save_failed_email(msg['id'], str(e))
                 continue
             
     except Exception as e:
         logger.error(f"Error collecting historical emails: {e}")
+        # 전체 실패 로깅
+        await email_processor.log_collection_failure(str(e))
 
 async def watch_new_vendor_emails(service, email_processor, mcp_service, vendor_manager, user_row):
     """10분마다 현재 유저의 purchase_orders에서 vendor_email 조회해 새로운 이메일 있으면 수집"""

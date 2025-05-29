@@ -40,7 +40,7 @@ class GmailWatcher:
             # 최근 메시지 가져오기 (INBOX와 SENT만)
             results = self.service.users().messages().list(
                 userId='me',
-                maxResults=50,  # 최근 50개 메시지로 증가
+                maxResults=5,  # 최근 50개 메시지로 증가
                 labelIds=['INBOX', 'SENT']  # INBOX와 SENT만 포함
             ).execute()
             
@@ -51,7 +51,7 @@ class GmailWatcher:
             for message in messages:
                 msg_id = message['id']
                 # DB에서 중복 체크
-                exists = self.supabase.from_("email_logs") \
+                exists = self.supabase.client.from_("email_logs") \
                     .select("message_id") \
                     .eq("message_id", msg_id) \
                     .execute().data
