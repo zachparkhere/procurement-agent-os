@@ -21,6 +21,7 @@ from Vendor_email_logger_agent.src.processors.attachment_processor import Attach
 from Vendor_email_logger_agent.src.services.mcp_service import MCPService
 from Vendor_email_logger_agent.src.services.supabase_service import SupabaseService
 from Vendor_email_logger_agent.src.gmail.message_filter import VendorEmailManager, is_vendor_email, extract_email_address
+from Vendor_email_logger_agent.src.gmail.watcher_manager import watcher_manager
 from external_communication.utils.email_utils import get_gmail_service
 
 # Load settings
@@ -371,9 +372,8 @@ async def run_for_user(user_row):
             watch_new_vendor_emails(service, email_processor, mcp_service, vendor_manager, user_row)
         )
         
-        # GmailWatcher 생성 및 시작
-        watcher = GmailWatcher(service, vendor_manager, user_email, timezone)
-        watcher.watch(lambda email: process_email(service, email, email_processor, mcp_service, vendor_manager, user_row["id"]))
+        # WatcherManager를 통해 이메일 감시 시작
+        watcher_manager.add_watcher(user_email, service, vendor_manager, timezone)
         
         # watch_task 완료 대기
         await watch_task
@@ -390,13 +390,13 @@ async def main():
         logger.error("No users found with email access")
         return
         
+    # 각 유저에 대해 병렬 실행 태스크 생성
+    tasks = []
     for user in users:
-        try:
-            await run_for_user(user)
-        except Exception as e:
-            logger.error(f"Error processing user {user.get('email')}: {e}")
-            logger.error(traceback.format_exc())
-            continue
+        tasks.append(run_for_user(user))
+    
+    # 모든 태스크 병렬 실행
+    await asyncio.gather(*tasks)
 
 if __name__ == "__main__":
     asyncio.run(main())
