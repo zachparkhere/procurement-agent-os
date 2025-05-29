@@ -142,4 +142,25 @@ class SupabaseService:
         except Exception as e:
             logger.error(f"Error updating delivery date: {str(e)}")
             logger.error(f"Error type: {type(e).__name__}")
-            raise 
+            raise
+
+    def get_users_with_email_access(self):
+        """이메일 접근 권한이 있는 모든 사용자를 조회합니다."""
+        try:
+            logger.info("Fetching users with email access")
+            response = self.client.from_("users") \
+                .select("id, email, email_access_token, email_refresh_token") \
+                .not_.is_("email_access_token", "null") \
+                .execute()
+            
+            if not response.data:
+                logger.warning("No users found with email access")
+                return []
+                
+            logger.info(f"Found {len(response.data)} users with email access")
+            return response.data
+            
+        except Exception as e:
+            logger.error(f"Error getting users with email access: {str(e)}")
+            logger.error(f"Error type: {type(e).__name__}")
+            return [] 
