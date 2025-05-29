@@ -106,8 +106,6 @@ class EmailProcessor:
                 'recipient_email': to_email,
                 'subject': subject,
                 'body': body_text,
-                'summary': summary,
-                'email_type': email_type,
                 'parsed_delivery_date': parsed_delivery_date,
                 'thread_id': thread_id,
                 'message_id': message_id,
@@ -118,6 +116,11 @@ class EmailProcessor:
                 'filename': attachments[0]['filename'] if attachments else None,
                 'po_number': po_number
             }
+
+            # 명시적으로 summary와 email_type 추가
+            email_data["summary"] = summary
+            email_data["email_type"] = email_type
+            
             logger.info(f"[DEBUG] email_data summary field: {email_data.get('summary')}")
 
             return email_data, attachments
@@ -386,6 +389,15 @@ class EmailProcessor:
         Returns:
             Dict: Processed email information
         """
+        # 이메일 내용 처리
+        email_content = {
+            'body': body,
+            'subject': subject
+        }
+        summary, email_type = self.text_processor.process_email_content(email_content)
+        logger.info(f"[DEBUG] Processed summary in process_email: {summary}")
+        logger.info(f"[DEBUG] Processed email_type in process_email: {email_type}")
+
         # Find PO number using thread cache
         po_number = self.text_processor.find_po_number(
             subject=subject,
@@ -403,7 +415,9 @@ class EmailProcessor:
             "to_email": to_email,
             "sent_at": sent_at,
             "direction": direction,
-            "po_number": po_number
+            "po_number": po_number,
+            "summary": summary,
+            "email_type": email_type
         }
 
         # Save to Supabase
