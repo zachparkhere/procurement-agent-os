@@ -443,6 +443,7 @@ class EmailProcessor:
             logger.info(f"Mapped user_id {user_id} for email {email_data.get('sender_email') or email_data.get('recipient_email')}")
 
             # 3. email_log_data 생성 및 저장
+            logger.info(f"[DEBUG] email_data summary before creating email_log_data: {email_data.get('summary')}")
             email_log_data = {
                 "thread_id": thread_id,
                 "direction": email_data.get("direction", "inbound"),
@@ -458,7 +459,7 @@ class EmailProcessor:
                 "has_attachment": email_data.get("has_attachment", False),
                 "filename": email_data.get("filename"),
                 "attachment_types": email_data.get("attachment_types", False),
-                "summary": email_data.get("summary", ""),
+                "summary": email_data["summary"],  # get() 대신 직접 접근
                 "sender_role": email_data.get("sender_role"),
                 "parsed_delivery_date": email_data.get("parsed_delivery_date"),
                 "body": email_data.get("body"),
@@ -466,6 +467,7 @@ class EmailProcessor:
                 "po_number": email_data.get("po_number"),
                 "user_id": user_id
             }
+            logger.info(f"[DEBUG] email_log_data summary after creation: {email_log_data.get('summary')}")
             logger.info(f"[INSERT-DEBUG] email_log_data to insert: {email_log_data}")
             response = self.supabase.client.from_("email_logs").insert(email_log_data).execute()
             logger.info(f"[INSERT-DEBUG] insert response: {response}")
