@@ -74,7 +74,7 @@ def send_approved_drafts():
             continue
         email_log = email_log_data[0]
 
-        user_data = supabase.table("users").select("*").eq("email", email_log["sender_email"]).execute().data
+        user_data = supabase.table("users").select("id, email, email_access_token, email_refresh_token, email_token_expiry").eq("email", email_log["sender_email"]).execute().data
         if not user_data:
             print(f"❌ No user found for email {email_log['sender_email']}")
             continue

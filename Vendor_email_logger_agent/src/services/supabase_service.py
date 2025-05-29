@@ -149,7 +149,7 @@ class SupabaseService:
         try:
             logger.info("Fetching users with email access")
             response = self.client.from_("users") \
-                .select("id, email, email_access_token, email_refresh_token") \
+                .select("id, email, email_access_token, email_refresh_token, email_token_expiry") \
                 .not_.is_("email_access_token", "null") \
                 .execute()
             
