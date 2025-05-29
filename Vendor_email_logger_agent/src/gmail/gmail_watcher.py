@@ -51,7 +51,7 @@ class GmailWatcher:
             for message in messages:
                 msg_id = message['id']
                 # DB에서 중복 체크
-                exists = self.supabase.client.from_("email_logs") \
+                exists = self.supabase.from_("email_logs") \
                     .select("message_id") \
                     .eq("message_id", msg_id) \
                     .execute().data

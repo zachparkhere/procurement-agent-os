@@ -84,49 +84,49 @@ async def process_email(service, msg, email_processor: EmailProcessor, mcp_servi
             logger.info(f"이미 처리된 이메일입니다: {msg_id}")
             return
             
+        # 이메일 내용 및 메타데이터 추출
+        email_data, attachments = email_processor.get_message_content(msg_id)
+        if not email_data:
+            logger.error(f"이메일 내용 추출 실패: {msg_id}")
+            return
+
+        # 이메일 방향 결정
         message = service.users().messages().get(
             userId='me',
             id=msg_id,
             format='metadata',
             metadataHeaders=['Subject', 'From', 'Date', 'To']
         ).execute()
-        headers = message.get("payload", {}).get("headers", [])
-        subject = next((h['value'] for h in headers if h['name'] == 'Subject'), '')
-        from_email = next((h['value'] for h in headers if h['name'] == 'From'), '')
-        to_email = next((h['value'] for h in headers if h['name'] == 'To'), '')
-        sent_at = next((h['value'] for h in headers if h['name'] == 'Date'), '')
         direction = "outbound" if 'SENT' in message.get('labelIds', []) else "inbound"
-        logger.info(f"[DB저장전] direction: {direction}, msg_id: {msg_id}, from: {from_email}, to: {to_email}")
-        
-        # 이메일 주소 파싱
-        from_email = extract_email_address(from_email)
-        to_email = extract_email_address(to_email)
-        content = email_processor.get_message_content(msg_id)
+        logger.info(f"[DB저장전] direction: {direction}, msg_id: {msg_id}, from: {email_data['sender_email']}, to: {email_data['recipient_email']}")
 
-        # PO 번호 추출
-        po_number = email_processor.text_processor.find_po_number(
-            subject=subject,
-            body=content["body_text"],
-            attachments=content["attachments"]
-        )
-
+        # 이메일 데이터 구성
         parsed_message = {
-            "thread_id": message.get("threadId"),
-            "message_id": msg_id,
-            "subject": subject,
-            "from": from_email,
-            "to": to_email,
-            "sent_at": sent_at,
-            "body_text": content["body_text"],
+            **email_data,  # 기존 email_data의 모든 필드 포함
             "direction": direction,
-            "attachments": content["attachments"],
-            "po_number": po_number,
-            "user_id": user_id
+            "user_id": user_id,
+            "status": "processed",
+            "sender_role": "vendor" if direction == "inbound" else "admin"
         }
-        await email_processor.save_email_log(parsed_message)
-        await mcp_service.send_message(parsed_message)
+        
+        try:
+            # Supabase에 이메일 로그 저장
+            await email_processor.save_email_log(parsed_message)
+            logger.info(f"이메일 로그 저장 성공: {msg_id}")
+            
+            # MCP 서비스로 메시지 전송
+            await mcp_service.send_message(parsed_message)
+            logger.info(f"MCP 서비스로 메시지 전송 성공: {msg_id}")
+        except Exception as e:
+            logger.error(f"Error saving email log: {str(e)}")
+            logger.error(f"Error type: {type(e).__name__}")
+            # 실패한 이메일 ID 저장
+            await email_processor.save_failed_email(msg_id, str(e))
+            raise
+            
     except Exception as e:
         logger.error(f"Error processing email {msg['id']}: {str(e)}")
+        logger.error(f"Error type: {type(e).__name__}")
         # 실패한 이메일 ID 저장
         await email_processor.save_failed_email(msg['id'], str(e))
         raise

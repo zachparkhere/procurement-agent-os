@@ -11,6 +11,7 @@ from Vendor_email_logger_agent.src.gmail.message_filter import get_email_type
 from typing import Dict, List
 from po_agent_os.supabase_client import supabase
 import re
+import traceback
 
 logger = logging.getLogger(__name__)
 
@@ -24,60 +25,96 @@ class EmailProcessor:
 
     def get_message_content(self, msg_id):
         """
-        이메일 내용 추출
-        이메일 본문과 첨부파일 정보를 추출
-        text/plain, text/html 형식의 본문 처리
-        첨부파일 정보 수집
+        Extracts email content and metadata for logging.
+        Returns a dictionary with body text, headers, summary, delivery date, etc.
         """
         try:
             message = self.service.users().messages().get(userId='me', id=msg_id, format='full').execute()
-            payload = message.get("payload", {})
-            parts = payload.get("parts", [])
-            
+            payload = message.get('payload', {})
+            parts = payload.get('parts', [])
+            headers = payload.get('headers', [])
+
             attachments = []
-            body_text = ""
-            
+            body_text = ''
+
+            # Extract body from parts
             def process_part(part):
                 nonlocal body_text
-                mime_type = part.get("mimeType", "")
-                
-                if mime_type in ["text/plain", "text/html"]:
-                    if "body" in part and "data" in part["body"]:
-                        data = part["body"]["data"]
+                mime_type = part.get('mimeType', '')
+                if mime_type in ['text/plain', 'text/html']:
+                    if 'body' in part and 'data' in part['body']:
+                        data = part['body']['data']
                         decoded_bytes = base64.urlsafe_b64decode(data.encode('UTF-8'))
                         decoded_text = decoded_bytes.decode('utf-8', errors='replace')
-                        if mime_type == "text/plain":
+                        if mime_type == 'text/plain':
                             body_text = decoded_text
-                        elif mime_type == "text/html" and not body_text:
+                        elif mime_type == 'text/html' and not body_text:
                             body_text = decoded_text
-                
-                if "filename" in part and part["filename"]:
+                if 'filename' in part and part['filename']:
                     attachment = {
-                        "filename": part["filename"],
-                        "mime_type": mime_type,
-                        "attachment_id": part.get("body", {}).get("attachmentId")
+                        'filename': part['filename'],
+                        'mime_type': mime_type,
+                        'attachment_id': part.get('body', {}).get('attachmentId')
                     }
                     attachments.append(attachment)
-                
-                if "parts" in part:
-                    for subpart in part["parts"]:
+                if 'parts' in part:
+                    for subpart in part['parts']:
                         process_part(subpart)
-            
-            if "body" in payload and "data" in payload["body"]:
-                data = payload["body"]["data"]
-                decoded_bytes = base64.urlsafe_b64decode(data.encode('UTF-8'))
-                body_text = decoded_bytes.decode('utf-8', errors='replace')
+
+            if 'body' in payload and 'data' in payload['body']:
+                part = payload
+                process_part(part)
             else:
                 for part in parts:
                     process_part(part)
+
+            # Extract headers
+            def extract_header(name):
+                return next((h['value'] for h in headers if h['name'].lower() == name.lower()), None)
+
+            from_email = extract_header('From')
+            to_email = extract_header('To')
+            subject = extract_header('Subject')
+            date_str = extract_header('Date')
+            thread_id = message.get('threadId')
+            message_id = message.get('id')
+
+            # NLP processing
+            summary, email_type = self.text_processor.process_email_content(body_text)
+            parsed_delivery_date = self.text_processor.parse_delivery_date(body_text)
             
-            return {
-                "body_text": body_text,
-                "attachments": attachments
+            # PO 번호 추출
+            po_number = self.text_processor.find_po_number(
+                subject=subject,
+                body=body_text,
+                attachments=attachments
+            )
+
+            # Build email_data dictionary
+            email_data = {
+                'sender_email': from_email,
+                'recipient_email': to_email,
+                'subject': subject,
+                'body': body_text,
+                'summary': summary,
+                'email_type': email_type,
+                'parsed_delivery_date': parsed_delivery_date,
+                'thread_id': thread_id,
+                'message_id': message_id,
+                'sent_at': date_str,
+                'received_at': date_str,
+                'has_attachment': bool(attachments),
+                'attachment_types': [a['mime_type'] for a in attachments if 'mime_type' in a],
+                'filename': attachments[0]['filename'] if attachments else None,
+                'po_number': po_number
             }
+
+            return email_data, attachments
+
         except Exception as e:
-            logger.error(f"Error getting message content: {e}")
-            return {"body_text": "", "attachments": []}
+            logger.error(f"Error in get_message_content for msg_id {msg_id}: {e}")
+            logger.error(traceback.format_exc())
+            return None, []
 
     def download_attachment(self, message_id, attachment_id):
         """첨부파일 다운로드, Supabase Storage에 업로드"""
