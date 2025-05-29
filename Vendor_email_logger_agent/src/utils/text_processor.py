@@ -77,6 +77,12 @@ Your task is to analyze the following email and deliver two outputs:
    Provide a short but clear 2–3 word phrase that best describes the critical **action and purpose** of this email for a procurement specialist.  
    Avoid vague or generic words. Be specific and professional.
 
+⚠️ IMPORTANT:
+Only analyze the most recent email message.  
+**Ignore any quoted, forwarded, or past thread messages below.**  
+Assume the email starts from the top and older replies follow.  
+Do not summarize anything below the first message.
+
 Examples:
 - delivery delay
 - delay confirmation
@@ -85,8 +91,6 @@ Examples:
 - contract negotiation
 - shipment inquiry
 - invoice issue
-
-Pick a phrase that immediately tells a procurement professional what the email is about.
 
 Format your response exactly like this:
 ---

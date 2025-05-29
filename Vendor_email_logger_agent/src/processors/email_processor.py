@@ -89,6 +89,8 @@ class EmailProcessor:
                 'subject': subject
             }
             summary, email_type = self.text_processor.process_email_content(email_content)
+            logger.info(f"[DEBUG] Processed summary: {summary}")
+            logger.info(f"[DEBUG] Processed email_type: {email_type}")
             parsed_delivery_date = self.text_processor.parse_delivery_date(email_content)
             
             # PO 번호 추출
@@ -116,6 +118,7 @@ class EmailProcessor:
                 'filename': attachments[0]['filename'] if attachments else None,
                 'po_number': po_number
             }
+            logger.info(f"[DEBUG] email_data summary field: {email_data.get('summary')}")
 
             return email_data, attachments
 
