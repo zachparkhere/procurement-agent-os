@@ -59,7 +59,7 @@ class TextProcessor:
 
     def process_email_content(self, message_data):
         try:
-            body_text = message_data.get("body_text", "")
+            body_text = message_data.get("body", "")
             if not body_text:
                 return "", ""
                 
@@ -119,8 +119,12 @@ Email content:
             logger.error(f"Error processing email content: {e}")
             return "", ""
 
-    def parse_delivery_date(self, email_content: str, attachments: List[Dict] = None, existing_date: str = None, received_date: str = None) -> Optional[str]:
+    def parse_delivery_date(self, message_data: Dict, attachments: List[Dict] = None, existing_date: str = None, received_date: str = None) -> Optional[str]:
         try:
+            body_text = message_data.get("body", "")
+            if not body_text:
+                return None
+
             context = []
             if received_date:
                 context.append(f"Email received date: {received_date}")
@@ -156,7 +160,7 @@ Context:
 {context_str}
 
 Email Content:
-{email_content}
+{body_text}
 """
             response = self.client.chat.completions.create(
                 model="gpt-4-turbo-preview",

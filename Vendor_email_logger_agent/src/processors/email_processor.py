@@ -80,8 +80,12 @@ class EmailProcessor:
             message_id = message.get('id')
 
             # NLP processing
-            summary, email_type = self.text_processor.process_email_content(body_text)
-            parsed_delivery_date = self.text_processor.parse_delivery_date(body_text)
+            email_content = {
+                'body': body_text,
+                'subject': subject
+            }
+            summary, email_type = self.text_processor.process_email_content(email_content)
+            parsed_delivery_date = self.text_processor.parse_delivery_date(email_content)
             
             # PO 번호 추출
             po_number = self.text_processor.find_po_number(
