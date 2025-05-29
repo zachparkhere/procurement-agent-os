@@ -427,3 +427,63 @@ class EmailProcessor:
             logger.error(f"Error type: {type(e).__name__}")
             logger.error(f"Email data: {email_data}")
             raise 
+
+    async def check_existing_email(self, message_id: str) -> bool:
+        """이메일이 이미 처리되었는지 확인"""
+        try:
+            existing = self.supabase.client.from_("email_logs") \
+                .select("message_id") \
+                .eq("message_id", message_id) \
+                .execute().data
+            return bool(existing)
+        except Exception as e:
+            logger.error(f"Error checking existing email: {e}")
+            return False
+
+    async def save_failed_email(self, message_id: str, error_message: str):
+        """실패한 이메일 정보 저장"""
+        try:
+            failed_email_data = {
+                "message_id": message_id,
+                "error_message": error_message,
+                "failed_at": datetime.utcnow().isoformat()
+            }
+            response = self.supabase.client.from_("failed_emails").insert(failed_email_data).execute()
+            logger.info(f"Failed email saved: {message_id}")
+            return response.data
+        except Exception as e:
+            logger.error(f"Error saving failed email: {e}")
+            return None
+
+    async def log_collection_failure(self, error_message: str):
+        """이메일 수집 실패 로깅"""
+        try:
+            failure_data = {
+                "error_message": error_message,
+                "failed_at": datetime.utcnow().isoformat()
+            }
+            response = self.supabase.client.from_("collection_failures").insert(failure_data).execute()
+            logger.info("Collection failure logged")
+            return response.data
+        except Exception as e:
+            logger.error(f"Error logging collection failure: {e}")
+            return None
+
+    async def get_user_id_from_email(self, email: str) -> str:
+        """이메일 주소로 사용자 ID 조회"""
+        try:
+            if not email:
+                return None
+                
+            response = self.supabase.client.from_("users") \
+                .select("id") \
+                .eq("email", email.lower()) \
+                .single() \
+                .execute()
+                
+            if response.data:
+                return response.data.get("id")
+            return None
+        except Exception as e:
+            logger.error(f"Error getting user ID from email: {e}")
+            return None 
