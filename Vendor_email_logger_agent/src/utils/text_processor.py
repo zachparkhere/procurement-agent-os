@@ -109,11 +109,22 @@ Email content:
             result = response.choices[0].message.content.strip()
             summary = ""
             email_type = ""
-            for line in result.split('\n'):
-                if line.startswith('SUMMARY:'):
-                    summary = line.replace('SUMMARY:', '').strip()
-                elif line.startswith('TYPE:'):
-                    email_type = line.replace('TYPE:', '').strip().lower()
+
+            # 정규식으로 SUMMARY와 TYPE을 추출
+            summary_match = re.search(r"SUMMARY:\s*(.+?)(?:\n|TYPE:)", result, re.IGNORECASE | re.DOTALL)
+            type_match = re.search(r"TYPE:\s*(.+)", result, re.IGNORECASE)
+
+            if summary_match:
+                summary = summary_match.group(1).strip()
+            if type_match:
+                email_type = type_match.group(1).strip().lower()
+
+            # 추출 결과가 없으면 전체 응답 로깅
+            if not summary or not email_type:
+                logger.warning(f"[TextProcessor] Raw LLM result: {result}")
+
+            logger.info(f"[TextProcessor] Extracted summary: {summary}")
+            logger.info(f"[TextProcessor] Extracted type: {email_type}")
             return summary, email_type
         except Exception as e:
             logger.error(f"Error processing email content: {e}")

@@ -7,7 +7,7 @@ import PyPDF2
 import docx
 import pandas as pd
 from Vendor_email_logger_agent.src.utils.text_processor import TextProcessor
-from Vendor_email_logger_agent.src.gmail.message_filter import get_email_type
+from Vendor_email_logger_agent.src.gmail.message_filter import get_email_type, extract_email_address
 from typing import Dict, List
 from po_agent_os.supabase_client import supabase
 import re
@@ -78,6 +78,10 @@ class EmailProcessor:
             date_str = extract_header('Date')
             thread_id = message.get('threadId')
             message_id = message.get('id')
+
+            # 이메일 주소 추출
+            from_email = extract_email_address(from_email)
+            to_email = extract_email_address(to_email)
 
             # NLP processing
             email_content = {
