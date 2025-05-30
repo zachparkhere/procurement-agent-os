@@ -10,6 +10,7 @@ from Vendor_email_logger_agent.src.utils.text_processor import TextProcessor
 from Vendor_email_logger_agent.src.gmail.message_filter import get_email_type, extract_email_address
 from typing import Dict, List
 from po_agent_os.supabase_client import supabase
+from ..services.supabase_service import SupabaseService
 import re
 import traceback
 
@@ -20,6 +21,7 @@ class EmailProcessor:
         self.service = service
         self.text_processor = text_processor
         self.supabase = supabase_client
+        self.supabase_service = SupabaseService()
         self.temp_dir = tempfile.mkdtemp(prefix='email_attachments_')
         self.thread_po_cache = {}  # 스레드 ID를 키로 하는 PO 번호 캐시
 
@@ -253,7 +255,7 @@ class EmailProcessor:
         """이메일 로그를 Supabase에 저장"""
         try:
             # SupabaseService를 통해 이메일 로그 저장
-            response = await self.supabase.save_email_log(email_data)
+            response = await self.supabase_service.save_email_log(email_data, email_data.get("summary"))
             
             if not response:
                 logger.error("Failed to save email log to Supabase")
@@ -419,7 +421,7 @@ class EmailProcessor:
             "summary": summary,
             "email_type": email_type
         }
-
+        print(processed_email)
         # Save to Supabase
         if self.supabase:
             await self.save_to_supabase(processed_email)

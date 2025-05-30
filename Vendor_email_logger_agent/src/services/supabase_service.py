@@ -4,6 +4,7 @@ from po_agent_os.supabase_client import supabase
 from supabase import Client
 from Vendor_email_logger_agent.config import settings
 from storage3.utils import StorageException
+from typing import Dict
 
 logger = logging.getLogger(__name__)
 
@@ -163,4 +164,41 @@ class SupabaseService:
         except Exception as e:
             logger.error(f"Error getting users with email access: {str(e)}")
             logger.error(f"Error type: {type(e).__name__}")
-            return [] 
+            return []
+
+    async def insert_email_log(self, email_data: Dict) -> Dict:
+        """이메일 로그를 Supabase에 저장"""
+        try:
+            logger.info(f"[CHECK] summary before constructing email_log_data: {email_data.get('summary')}")
+            
+            email_log_data = {
+                "thread_id": email_data.get("thread_id"),
+                "direction": email_data.get("direction", "inbound"),
+                "sender_email": email_data.get("sender_email"),
+                "recipient_email": email_data.get("recipient_email"),
+                "subject": email_data.get("subject"),
+                "sent_at": email_data.get("sent_at"),
+                "created_at": datetime.utcnow().isoformat(),
+                "updated_at": datetime.utcnow().isoformat(),
+                "received_at": email_data.get("received_at"),
+                "status": email_data.get("status"),
+                "email_type": email_data.get("email_type"),
+                "has_attachment": email_data.get("has_attachment", False),
+                "filename": email_data.get("filename"),
+                "attachment_types": email_data.get("attachment_types", False),
+                "summary": email_data.get("summary", ""),
+                "sender_role": email_data.get("sender_role"),
+                "parsed_delivery_date": email_data.get("parsed_delivery_date"),
+                "body": email_data.get("body"),
+                "message_id": email_data.get("message_id"),
+                "po_number": email_data.get("po_number"),
+                "user_id": email_data.get("user_id")
+            }
+            
+            logger.info(f"[CHECK] email_log_data['summary']: {email_log_data.get('summary')}")
+            
+            response = self.client.from_("email_logs").insert(email_log_data).execute()
+            return response.data
+        except Exception as e:
+            logger.error(f"Error inserting email log: {str(e)}")
+            raise 
