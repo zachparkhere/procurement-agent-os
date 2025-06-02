@@ -4,6 +4,7 @@ from gmail.watcher_manager import watcher_manager
 from gmail.gmail_auth import get_gmail_service
 from services.vendor_manager import VendorManager
 import logging
+from Vendor_email_logger_agent.main import process_email
 
 logger = logging.getLogger(__name__)
 
@@ -66,7 +67,7 @@ async def start_watching(user_email: str):
         timezone = user_data.data.get("timezone", "UTC") if user_data.data else "UTC"
 
         # WatcherManager에 Watcher 추가
-        watcher_manager.add_watcher(user_email, service, vendor_manager, timezone)
+        watcher_manager.add_watcher(user_email, service, vendor_manager, timezone, process_callback=process_email)
         
         return {"status": "success", "message": f"Started watching emails for {user_email}"}
     except Exception as e:

@@ -9,18 +9,15 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 from Vendor_email_logger_agent.config import settings, AgentSettings
 import openai
-from google.auth.transport.requests import Request
 from dateutil import parser
 import traceback
 
-from Vendor_email_logger_agent.src.gmail.gmail_watcher import GmailWatcher
-from Vendor_email_logger_agent.src.gmail.email_collector import EmailCollector
 from Vendor_email_logger_agent.src.utils.text_processor import TextProcessor
 from Vendor_email_logger_agent.src.processors.email_processor import EmailProcessor
 from Vendor_email_logger_agent.src.processors.attachment_processor import AttachmentProcessor
 from Vendor_email_logger_agent.src.services.mcp_service import MCPService
 from Vendor_email_logger_agent.src.services.supabase_service import SupabaseService
-from Vendor_email_logger_agent.src.gmail.message_filter import VendorEmailManager, is_vendor_email, extract_email_address
+from Vendor_email_logger_agent.src.gmail.message_filter import VendorEmailManager, is_vendor_email
 from Vendor_email_logger_agent.src.gmail.watcher_manager import watcher_manager
 from external_communication.utils.email_utils import get_gmail_service
 
@@ -135,7 +132,7 @@ async def collect_historical_emails(service, email_processor: EmailProcessor, mc
     """과거 이메일 수집"""
     try:
         # 검색 쿼리 생성 (보낸 이메일과 받은 이메일 모두 포함)
-        query = f'after:{(datetime.utcnow() - timedelta(days=14)).strftime("%Y/%m/%d")}'
+        query = f'after:{(datetime.utcnow() - timedelta(days=3)).strftime("%Y/%m/%d")}'
         logger.info(f"Searching emails with query: {query}")
         
         # 받은 이메일 검색
@@ -385,7 +382,7 @@ async def run_for_user(user_row):
         )
         
         # WatcherManager를 통해 이메일 감시 시작
-        watcher_manager.add_watcher(user_email, service, vendor_manager, timezone)
+        await watcher_manager.add_watcher(user_email, service, vendor_manager, timezone, email_processor=email_processor, mcp_service=mcp_service, user_id=user_row["id"], process_callback=process_email)
         
         # watch_task 완료 대기
         await watch_task
